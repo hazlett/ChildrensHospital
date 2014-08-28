@@ -72,7 +72,7 @@
      <None Include="Assets\JMO Assets\Cartoon FX\CartoonFX2 Readme.txt" />
      <None Include="Assets\JMO Assets\Cartoon FX\CartoonFX Readme.txt" />
  <Reference Include="Assembly-UnityScript">
- <HintPath>C:/Users/bbric_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
+ <HintPath>C:/Users/hazle_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
@@ -80,20 +80,20 @@
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/Editor/UnityEditor.UI.dll</HintPath>
  </Reference>
+ <Reference Include="JMOAssets">
+ <HintPath>C:/Users/hazle_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/JMO Assets/Editor/JMOAssets.dll</HintPath>
+ </Reference>
  <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
- <HintPath>C:/Users/bbric_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+ <HintPath>C:/Users/hazle_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
  </Reference>
  <Reference Include="SyntaxTree.VisualStudio.Unity.Messaging">
- <HintPath>C:/Users/bbric_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Messaging.dll</HintPath>
+ <HintPath>C:/Users/hazle_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Messaging.dll</HintPath>
  </Reference>
  <Reference Include="UnityVS.VersionSpecific">
- <HintPath>C:/Users/bbric_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/UnityVS/Editor/UnityVS.VersionSpecific.dll</HintPath>
+ <HintPath>C:/Users/hazle_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/UnityVS/Editor/UnityVS.VersionSpecific.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
- </Reference>
- <Reference Include="JMOAssets">
- <HintPath>C:/Users/bbric_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/JMO Assets/Editor/JMOAssets.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
