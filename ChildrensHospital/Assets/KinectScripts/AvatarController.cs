@@ -25,8 +25,6 @@ public class AvatarController : MonoBehaviour
 	// Slerp smooth factor
 	public float SmoothFactor = 10.0f;
 
-    public Transform cart;
-
 	
 	// Public variables that will get matched to bones. If empty, the Kinect will simply not track it.
 	public Transform HipCenter;
@@ -125,7 +123,7 @@ public class AvatarController : MonoBehaviour
 		}
 
 		// move the avatar to its Kinect position
-		MoveAvatar(UserID);
+		//MoveAvatar(UserID);
 
 		// Update Head, Neck, Spine, and Hips
 		TransformBone(UserID, JointType.SpineBase, 0, flipJoint);

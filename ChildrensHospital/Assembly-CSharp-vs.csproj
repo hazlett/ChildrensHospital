@@ -74,6 +74,7 @@
      <Compile Include="Assets\KinectScripts\KinectInterop.cs" />
      <Compile Include="Assets\KinectScripts\KinectManager.cs" />
      <Compile Include="Assets\KinectScripts\KinectServer.cs" />
+     <Compile Include="Assets\Scripts\HandBehavior.cs" />
      <Compile Include="Assets\Scripts\TestScript.cs" />
      <Compile Include="Assets\Toon_Level_Kit\Examples\Script\CarCamera.cs" />
      <Compile Include="Assets\Toon_Level_Kit\Examples\Script\Fog.cs" />
