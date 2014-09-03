@@ -146,7 +146,8 @@ public class CubemanController : MonoBehaviour
 		}
 		
 		// set the position in space
-		Vector3 posPointMan = manager.GetUserPosition(userID);
+        Vector3 posPointMan = manager.GetUserPosition(userID);
+        
 		posPointMan.z = !MirroredMovement ? -posPointMan.z : posPointMan.z;
 		
 		// store the initial position
