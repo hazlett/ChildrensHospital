@@ -44,7 +44,7 @@ public class EndGUI : MonoBehaviour
         }
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 250, 300, 100), "Quit"))
         {
-            //Main Menu
+            Application.LoadLevel("MainMenu");
         }
 
         saveData = GUI.Toggle(new Rect(scaledResolutionWidth / 2 - 125, nativeVerticalResolution - 125, 50, 50), saveData, "");
