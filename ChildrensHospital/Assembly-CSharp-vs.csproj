@@ -46,6 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\GUI\Scripts\EndGUI.cs" />
+     <Compile Include="Assets\GUI\Scripts\MainMenuGUI.cs" />
+     <Compile Include="Assets\GUI\Scripts\SettingsGUI.cs" />
+     <Compile Include="Assets\GUI\Scripts\SettingsSerializer.cs" />
+     <Compile Include="Assets\GUI\Scripts\XmlSettings.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX2_Demo.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs" />
