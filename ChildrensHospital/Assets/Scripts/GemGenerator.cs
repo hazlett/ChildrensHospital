@@ -27,9 +27,9 @@ public class GemGenerator : MonoBehaviour {
         {
             float randomX, randomY, randomZ;
             gemType gem;
-            randomX = Random.Range(-5.0f, 5.0f);
-            randomY = Random.Range(-5.0f, 5.0f);
-            randomZ = Random.Range(-5.0f, 5.0f);
+            randomX = Random.Range(-5.0f, 15.0f);
+            randomY = Random.Range(-5.0f, 15.0f);
+            randomZ = Random.Range(-5.0f, 15.0f);
 
             gem = (gemType)Random.Range(0, 7);
 
