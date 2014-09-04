@@ -85,12 +85,9 @@
     <Compile Include="Assets\KinectScripts\KinectInterop.cs" />
     <Compile Include="Assets\KinectScripts\KinectManager.cs" />
     <Compile Include="Assets\KinectScripts\KinectServer.cs" />
-    <Compile Include="Assets\Scripts\GemBehavior.cs" />
-    <Compile Include="Assets\Scripts\GemGenerator.cs" />
-    <Compile Include="Assets\Scripts\HandBehavior.cs" />
-    <Compile Include="Assets\Scripts\TestScript.cs" />
     <Compile Include="Assets\Scripts\DebugCamera.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\GemBehavior.cs" />
     <Compile Include="Assets\Scripts\GemGenerator.cs" />
     <Compile Include="Assets\Scripts\LeftHandBehaviour.cs" />
     <Compile Include="Assets\Scripts\RightHandBehaviour.cs" />

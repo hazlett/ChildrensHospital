@@ -4,30 +4,74 @@ using System.Collections;
 public class GemBehavior : MonoBehaviour {
 
     private GameObject mainCamera, dirt;
-
     private Vector3 mainCameraBehind;
+    private GemGenerator.Area area;
 
-	// Use this for initialization
 	void Start () {
 
         mainCamera = GameObject.Find("Main Camera");
-        dirt = GameObject.Find("Cube");
-
         mainCameraBehind = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z - 2);
 	}
 	
-	// Update is called once per frame
 	void Update () {
-
-        if (dirt.transform.position.z > this.transform.position.z)
+        if (dirt == null)
+            return;
+        switch (area)
         {
-            this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
-        }
+            case GemGenerator.Area.XRIGHT:
+                if (dirt.transform.position.x > this.transform.position.x)
+                {
+                    this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
+                }
 
-        if (this.transform.position.z < mainCamera.transform.position.z - 1)
-        {
-            GameObject.Destroy(this.gameObject);
+                if (this.transform.position.z < mainCamera.transform.position.z - 1)
+                {
+                    GameObject.Destroy(this.gameObject);
+                }
+                break;
+            case GemGenerator.Area.XLEFT:
+                if (dirt.transform.position.x < this.transform.position.x)
+                {
+                    this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
+                }
+
+                if (this.transform.position.z < mainCamera.transform.position.z - 1)
+                {
+                    GameObject.Destroy(this.gameObject);
+                }
+                break;
+            case GemGenerator.Area.Y:
+                if (dirt.transform.position.y > this.transform.position.y)
+                {
+                    this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
+                }
+
+                if (this.transform.position.z < mainCamera.transform.position.z - 1)
+                {
+                    GameObject.Destroy(this.gameObject);
+                }
+                break;
+            case GemGenerator.Area.Z:
+                if (dirt.transform.position.z > this.transform.position.z)
+                {
+                    this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
+                }
+
+                if (this.transform.position.z < mainCamera.transform.position.z - 1)
+                {
+                    GameObject.Destroy(this.gameObject);
+                }
+                break;
         }
 
 	}
+    public void SetDirt(GameObject dirt, GemGenerator.Area area)
+    {
+        if (dirt == null)
+        {
+            Destroy(gameObject);
+        }
+        this.dirt = dirt;
+        this.area = area;
+    }
 }

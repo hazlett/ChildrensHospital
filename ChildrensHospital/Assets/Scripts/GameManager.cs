@@ -5,8 +5,8 @@ public class GameManager : MonoBehaviour {
 
     private float timer;
     private string message;
+    private float lowerLeftVolume, lowerRightVolume, middleLeftVolume, middleRightVolume, upperLeftVolume, upperRightVolume, yRightValue, yLeftValue;
     public MonoBehaviour rightHand, leftHand;
-    private bool skeletonInitialized;
 	void Start () {
         timer = 0.0f;
 	}
@@ -32,15 +32,34 @@ public class GameManager : MonoBehaviour {
             timer = 0.0f;
             return;
         }
-        
+        CalculateVolumes();
 	}
     void OnGUI()
     {
         GUILayout.Box(message);
+        GUILayout.Box("LowerLeftVolume: " + lowerLeftVolume);
+        GUILayout.Box("MiddleLeftVolume: " + middleLeftVolume);
+        GUILayout.Box("UpperLeftVolume: " + upperLeftVolume);
+        GUILayout.Box("LowerRightVolume: " + lowerRightVolume);
+        GUILayout.Box("MiddleRightVolume: " + middleRightVolume);
+        GUILayout.Box("UpperRightVolume: " + upperRightVolume);
+        GUILayout.Box("Left Y Value: " + yLeftValue);
+        GUILayout.Box("Right Y Value: " + yRightValue);
     }
     private void StartGame()
     {
         rightHand.enabled = true;
         leftHand.enabled = true;
+    }
+    private void CalculateVolumes()
+    {
+        lowerRightVolume = ((RightHandBehaviour)rightHand).LowerVolume;
+        middleRightVolume = ((RightHandBehaviour)rightHand).MiddleVolume;
+        upperRightVolume = ((RightHandBehaviour)rightHand).UpperVolume;
+        lowerLeftVolume = Mathf.Abs(((LeftHandBehaviour)leftHand).LowerVolume);
+        middleLeftVolume = Mathf.Abs(((LeftHandBehaviour)leftHand).MiddleVolume);
+        upperLeftVolume = Mathf.Abs(((LeftHandBehaviour)leftHand).UpperVolume);
+        yLeftValue = ((LeftHandBehaviour)leftHand).TopVolume;
+        yRightValue = ((RightHandBehaviour)rightHand).TopVolume;
     }
 }
