@@ -20,7 +20,7 @@ public class GameControl : MonoBehaviour {
     {
         public string Name;
         public DateTime Birthdate;
-        public float BrooksScale;
+        public int brookeScale;
         public float UlnaLength;
     };
 
@@ -52,7 +52,7 @@ public class GameControl : MonoBehaviour {
     public string Print()
     {
         return ("Name: " + user.Name + " \nID: " + idKey + " \nBirthdate: " + user.Birthdate.Month.ToString() + '/' + user.Birthdate.Day.ToString()
-            + '/' + user.Birthdate.Year.ToString() + " \nBrook's Scale: " + user.BrooksScale + " \nUlna Length: " + user.UlnaLength);
+            + '/' + user.Birthdate.Year.ToString() + " \nBrooke Scale: " + user.brookeScale + " \nUlna Length: " + user.UlnaLength);
     }
 
     public void AddUser(int ID)
@@ -82,7 +82,7 @@ public class GameControl : MonoBehaviour {
         foreach(KeyValuePair<int,userInformation> pair in playerData)
         {
             dataString += ("<KEY>" + pair.Key.ToString() + "<NAME>" + pair.Value.Name + "<BIRTHDATE>"
-                + pair.Value.Birthdate.ToString() + "<SCALE>" + pair.Value.BrooksScale.ToString() + "<ULNA>" + pair.Value.UlnaLength.ToString() + "<END>\n");
+                + pair.Value.Birthdate.ToString() + "<SCALE>" + pair.Value.brookeScale.ToString() + "<ULNA>" + pair.Value.UlnaLength.ToString() + "<END>\n");
         }
 
         PlayerData data = new PlayerData();
@@ -92,7 +92,7 @@ public class GameControl : MonoBehaviour {
         file.Close();
     }
 
-    public void LoadUser(int ID, float BrooksScale, float UlnaLength)
+    public void LoadUser(int ID, int brookeScale, float UlnaLength)
     {
         idKey = ID;
         if(playerData.ContainsKey(ID)){
@@ -100,13 +100,13 @@ public class GameControl : MonoBehaviour {
             user.Birthdate = playerData[ID].Birthdate;
 
             // If no changes have been made, keep the past Brook's Scale and Ulna Length values
-            if (BrooksScale == 0)
+            if (brookeScale == 0)
             {
-                user.BrooksScale = playerData[ID].BrooksScale;
+                user.brookeScale = playerData[ID].brookeScale;
             }
             else
             {
-                user.BrooksScale = BrooksScale;
+                user.brookeScale = brookeScale;
             }
             if (UlnaLength == 0)
             {
@@ -153,7 +153,7 @@ public class GameControl : MonoBehaviour {
 
                 index1 = dataString.IndexOf("<ULNA>");
 
-                user.BrooksScale = float.Parse(dataString.Substring(index2 + 7, (index1 - index2 - 7)));
+                user.brookeScale = int.Parse(dataString.Substring(index2 + 7, (index1 - index2 - 7)));
 
                 index2 = dataString.IndexOf("<END>");
 
