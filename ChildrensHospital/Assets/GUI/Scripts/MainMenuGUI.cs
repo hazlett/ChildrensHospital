@@ -45,7 +45,6 @@ public class MainMenuGUI : MonoBehaviour {
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 145, 300, 100), "Start Trial"))
         {
-            //Start the scene
         }
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 35, 300, 100), "New User"))
         {
@@ -73,6 +72,6 @@ public class MainMenuGUI : MonoBehaviour {
 
     private void SetPlayerStatus()
     {
-        playerStatus = settings.settings.ToString();
+        playerStatus = GameControl.Instance.Print();
     }
 }

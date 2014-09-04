@@ -13,7 +13,7 @@ public class GemBehavior : MonoBehaviour {
         mainCamera = GameObject.Find("Main Camera");
         dirt = GameObject.Find("Cube");
 
-        mainCameraBehind = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z - 2);
+        mainCameraBehind = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z - 8);
 	}
 	
 	// Update is called once per frame
@@ -24,7 +24,7 @@ public class GemBehavior : MonoBehaviour {
             this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
         }
 
-        if (this.transform.position.z < mainCamera.transform.position.z - 1)
+        if (this.transform.position.z < mainCamera.transform.position.z - 7)
         {
             GameObject.Destroy(this.gameObject);
         }

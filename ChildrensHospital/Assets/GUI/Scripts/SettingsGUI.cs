@@ -10,12 +10,12 @@ public class SettingsGUI : MonoBehaviour
     public MainMenuGUI mainMenu;
 
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI, ulnaLength, brooksScale;
-    private string birthdate, IDstring, name, brooksScaleString, ulnaLengthString, errorMessage;
+    private string birthdate, IDstring, name, brooksScaleString, ulnaLengthString, errorMessage, loadSave;
     private int ID, textBoxWidth = 300, textBoxHeight = 50;
     private DateTime birthDateTime;
     
     internal XmlSettings settings = new XmlSettings();
-    internal bool newUser, invalidInput = false;
+    internal bool newUser, invalidInput = false, saving = true;
 
     // Use this for initialization
     void Start()
@@ -23,6 +23,7 @@ public class SettingsGUI : MonoBehaviour
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
         birthdate = IDstring = name = brooksScaleString = ulnaLengthString = "";
+        loadSave = "Save";
         this.enabled = false;
     }
 
@@ -37,7 +38,7 @@ public class SettingsGUI : MonoBehaviour
     {
         if (newUser)
         {
-            ID = UnityEngine.Random.Range(0, 2000);
+            NewID();
         }
         birthdate = IDstring = name = brooksScaleString = ulnaLengthString = "";
     }
@@ -59,35 +60,38 @@ public class SettingsGUI : MonoBehaviour
         if (newUser)
         {
             // Text fields for new users
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 200, textBoxWidth, textBoxHeight), "Name");
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 90, textBoxWidth, textBoxHeight), "ID (Generated)");
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 20, textBoxWidth, textBoxHeight), "Birthdate (mm/dd/yy)");
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 130, textBoxWidth, textBoxHeight), "Brook's Scale");
-
-            name = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 165, textBoxWidth, textBoxHeight), name);
-            GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 55, textBoxWidth, textBoxHeight), ID.ToString());
-            birthdate = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 55, textBoxWidth, textBoxHeight), birthdate);
-            brooksScaleString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 165, textBoxWidth, textBoxHeight), brooksScaleString);
-
-        }
-        else
-        {
-            // Text fields for new users
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 310, textBoxWidth, textBoxHeight), "Name");
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 200, textBoxWidth, textBoxHeight), "Identification Number");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 200, textBoxWidth, textBoxHeight), "ID (Generated)");
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 90, textBoxWidth, textBoxHeight), "Birthdate (mm/dd/yy)");
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 20, textBoxWidth, textBoxHeight), "Brook's Scale");
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 130, textBoxWidth, textBoxHeight), "Ulna Length");
 
-            // Text fields for exitsting users
             name = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 275, textBoxWidth, textBoxHeight), name);
-            IDstring = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 165, textBoxWidth, textBoxHeight), IDstring);
+            GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 165, textBoxWidth, textBoxHeight), ID.ToString());
             birthdate = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 55, textBoxWidth, textBoxHeight), birthdate);
             brooksScaleString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 55, textBoxWidth, textBoxHeight), brooksScaleString);
             ulnaLengthString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 165, textBoxWidth, textBoxHeight), ulnaLengthString);
+
+            loadSave = "Save";
+            saving = true;
+        }
+        else
+        {
+            // Text field labels for existing users
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 90, textBoxWidth, textBoxHeight), "Identification Number");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 20, textBoxWidth, textBoxHeight), "Brook's Scale");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 130, textBoxWidth, textBoxHeight), "Ulna Length");
+
+            // Text fields for exitsting users
+            birthdate = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 55, textBoxWidth, textBoxHeight), IDstring);
+            brooksScaleString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 55, textBoxWidth, textBoxHeight), brooksScaleString);
+            ulnaLengthString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 165, textBoxWidth, textBoxHeight), ulnaLengthString);
+
+            loadSave = "Load";
+            saving = false;
         }
 
-        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution - 255, 300, 100), "Save"))
+        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution - 255, 300, 100), loadSave))
         {
             ApplyChanges();
             if (!invalidInput)
@@ -95,7 +99,18 @@ public class SettingsGUI : MonoBehaviour
                 mainMenu.enabled = true;
                 this.enabled = false;
             }
+            if (saving)
+            {
+                GameControl.Instance.AddUser(ID);
+                GameControl.Instance.Save();
+            }
+            else
+            {
+                GameControl.Instance.LoadUser(ID, brooksScale, ulnaLength);
+            }
         }
+
+        // Cancel Button
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution - 150, 300, 100), "Cancel"))
         {
             invalidInput = false;
@@ -103,6 +118,7 @@ public class SettingsGUI : MonoBehaviour
             this.enabled = false;
         }
 
+        // Error box
         if (invalidInput)
         {
             GUI.Box(new Rect(scaledResolutionWidth / 2 - 380, 15, 760, 100), errorMessage);
@@ -123,49 +139,52 @@ public class SettingsGUI : MonoBehaviour
         }
     }
 
+    // Error checking for changes
+    // For new users, check that nothing is blank and that everything is in the correct format.
+    // For existing users, check if the user exists, and update user data if necessary.
     private void ApplyChanges()
     {
+        if (newUser)
+        {
+            if (name.Equals(string.Empty))
+            {
+                errorMessage = "  Name is blank.\n  Please enter a valid name.";
+                invalidInput = true;
+                return;
+            }
+            else
+            {
+                GameControl.Instance.user.Name = name;
+                invalidInput = false;
+            }
 
-        if (name.Equals(string.Empty))
-        {
-            errorMessage = "  Name is blank.\n  Please enter a valid name.";
-            invalidInput = true;
-            return;
-        }
-        else
-        {
-            invalidInput = false;
-        }
-
-        try
-        {
-            birthDateTime = DateTime.Parse(birthdate);
-            invalidInput = false;
-        }
-        catch (Exception)
-        {
-            errorMessage = "  Birthdate is invalid.\n  Please follow the given format.";
-            invalidInput = true;
-            return;
-        }
-
-        try
-        {
-            brooksScale = float.Parse(brooksScaleString);
-            invalidInput = false;
-        }
-        catch (Exception)
-        {
-            errorMessage = "  Invalid Brook's Scale Format.\n  Please enter the correct format.";
-            invalidInput = true;
-            return;
-        }
-
-        if (!newUser)
-        {
             try
             {
-                ulnaLength = float.Parse(ulnaLengthString);
+                GameControl.Instance.user.Birthdate = DateTime.Parse(birthdate);
+                invalidInput = false;
+            }
+            catch (Exception)
+            {
+                errorMessage = "  Birthdate is invalid.\n  Please follow the given format.";
+                invalidInput = true;
+                return;
+            }
+
+            try
+            {
+                GameControl.Instance.user.BrooksScale = float.Parse(brooksScaleString);
+                invalidInput = false;
+            }
+            catch (Exception)
+            {
+                errorMessage = "  Invalid Brook's Scale Format.\n  Please enter the correct format.";
+                invalidInput = true;
+                return;
+            }
+
+            try
+            {
+                GameControl.Instance.user.UlnaLength = float.Parse(ulnaLengthString);
                 invalidInput = false;
             }
             catch (Exception)
@@ -174,11 +193,19 @@ public class SettingsGUI : MonoBehaviour
                 invalidInput = true;
                 return;
             }
+        }
 
+        if (!newUser)
+        {
             try
             {
                 ID = int.Parse(IDstring);
                 invalidInput = false;
+
+                if(!GameControl.Instance.playerData.ContainsKey(ID)) {
+                    invalidInput = true;
+                    errorMessage = "  No user with ID Number: " + IDstring + "exists.\n  Please enter a correct identification number.";
+                }
             }
             catch (Exception)
             {
@@ -186,8 +213,56 @@ public class SettingsGUI : MonoBehaviour
                 invalidInput = true;
                 return;
             }
+
+            try
+            {
+                if (brooksScaleString.Equals(""))
+                {
+                    brooksScale = 0;
+                }
+                else
+                {
+                    brooksScale = float.Parse(brooksScaleString);
+                }
+                invalidInput = false;
+            }
+            catch (Exception)
+            {
+                errorMessage = "  Invalid Brook's Scale Format.\n  Please enter the correct format.";
+                invalidInput = true;
+                return;
+            }
+
+            try
+            {
+                if (ulnaLengthString.Equals(""))
+                {
+                    ulnaLength = 0;
+                }
+                else
+                {
+                    ulnaLength = float.Parse(ulnaLengthString);
+                }
+                invalidInput = false;
+            }
+            catch (Exception)
+            {
+                errorMessage = "  Invalid ulna length.\n  Please enter a correct length.";
+                invalidInput = true;
+                return;
+            }
         }
 
         settings.SetXmlSettings(name, ID, birthDateTime.Month.ToString() + '/' + birthDateTime.Day.ToString() +'/' + birthDateTime.Year.ToString(), brooksScale, ulnaLength);
+    }
+
+    private void NewID()
+    {
+        ID = UnityEngine.Random.Range(0, 2000);
+
+        if (GameControl.Instance.playerData.ContainsKey(ID))
+        {
+            NewID();
+        }
     }
 }
