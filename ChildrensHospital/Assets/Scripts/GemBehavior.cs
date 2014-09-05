@@ -10,13 +10,10 @@ public class GemBehavior : MonoBehaviour {
 	void Start () {
 
         mainCamera = GameObject.Find("Main Camera");
-<<<<<<< HEAD
         mainCameraBehind = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z - 2);
-=======
-        dirt = GameObject.Find("Cube");
 
+        dirt = GameObject.Find("Cube");
         mainCameraBehind = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z - 8);
->>>>>>> origin/master
 	}
 	
 	void Update () {
@@ -30,7 +27,6 @@ public class GemBehavior : MonoBehaviour {
                     this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
                 }
 
-<<<<<<< HEAD
                 if (this.transform.position.z < mainCamera.transform.position.z - 1)
                 {
                     GameObject.Destroy(this.gameObject);
@@ -69,11 +65,10 @@ public class GemBehavior : MonoBehaviour {
                     GameObject.Destroy(this.gameObject);
                 }
                 break;
-=======
+        }
         if (this.transform.position.z < mainCamera.transform.position.z - 7)
         {
             GameObject.Destroy(this.gameObject);
->>>>>>> origin/master
         }
 
 	}

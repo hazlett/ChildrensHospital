@@ -3,12 +3,16 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
-    private float timer;
+    public GUISkin mainMenuSkin;
+
+    private float timer, nativeVerticalResolution, scaledResolutionWidth, updateGUI;
     private string message;
     private float lowerLeftVolume, lowerRightVolume, middleLeftVolume, middleRightVolume, upperLeftVolume, upperRightVolume, yRightValue, yLeftValue;
     public MonoBehaviour rightHand, leftHand;
 	void Start () {
         timer = 0.0f;
+        nativeVerticalResolution = 1080.0f;
+        scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
 	}
 	
 	// Update is called once per frame
@@ -33,18 +37,32 @@ public class GameManager : MonoBehaviour {
             return;
         }
         CalculateVolumes();
+        TimedScreenResize();
 	}
     void OnGUI()
     {
-        GUILayout.Box(message);
-        GUILayout.Box("LowerLeftVolume: " + lowerLeftVolume);
-        GUILayout.Box("MiddleLeftVolume: " + middleLeftVolume);
-        GUILayout.Box("UpperLeftVolume: " + upperLeftVolume);
-        GUILayout.Box("LowerRightVolume: " + lowerRightVolume);
-        GUILayout.Box("MiddleRightVolume: " + middleRightVolume);
-        GUILayout.Box("UpperRightVolume: " + upperRightVolume);
-        GUILayout.Box("Left Y Value: " + yLeftValue);
-        GUILayout.Box("Right Y Value: " + yRightValue);
+
+        if (mainMenuSkin)
+        {
+            GUI.skin = mainMenuSkin;
+        }
+        else
+        {
+            Debug.Log("MainMenuGUI: GUI Skin object missing!");
+        }
+
+        // Scale the GUI to any resolution based on 1920 x 1080 base resolution
+        GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(Screen.height / nativeVerticalResolution, Screen.height / nativeVerticalResolution, 1));
+
+        GUI.Box(new Rect(scaledResolutionWidth / 2 - 200, 10, 400, 75), message);
+        GUI.Box(new Rect(10, 10, 400, 75), "Lower Left Volume: " + lowerLeftVolume);
+        GUI.Box(new Rect(10, 85, 400, 75), "Middle Left Volume: " + middleLeftVolume);
+        GUI.Box(new Rect(10, 160, 400, 75), "Upper Left Volume: " + upperLeftVolume);
+        GUI.Box(new Rect(10, 235, 400, 75), "Left Y Value: " + yLeftValue);
+        GUI.Box(new Rect(scaledResolutionWidth - 410, 10, 400, 75), "Lower Right Volume: " + lowerRightVolume);
+        GUI.Box(new Rect(scaledResolutionWidth - 410, 85, 400, 75), "Middle Right Volume: " + middleRightVolume);
+        GUI.Box(new Rect(scaledResolutionWidth - 410, 160, 400, 75), "Upper Right Volume: " + upperRightVolume);
+        GUI.Box(new Rect(scaledResolutionWidth - 410, 235, 400, 75), "Right Y Value: " + yRightValue);
     }
     private void StartGame()
     {
@@ -61,5 +79,13 @@ public class GameManager : MonoBehaviour {
         upperLeftVolume = Mathf.Abs(((LeftHandBehaviour)leftHand).UpperVolume);
         yLeftValue = ((LeftHandBehaviour)leftHand).TopVolume;
         yRightValue = ((RightHandBehaviour)rightHand).TopVolume;
+    }
+
+    private void TimedScreenResize()
+    {
+        if (Time.time > updateGUI)
+        {
+            scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
+        }
     }
 }
