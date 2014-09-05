@@ -9,9 +9,9 @@ public class SettingsGUI : MonoBehaviour
     public GUISkin mainMenuSkin;
     public MainMenuGUI mainMenu;
 
-    private float nativeVerticalResolution, scaledResolutionWidth, updateGUI, ulnaLength, brooksScale;
-    private string birthdate, IDstring, name, brooksScaleString, ulnaLengthString, errorMessage, loadSave;
-    private int ID, textBoxWidth = 300, textBoxHeight = 50;
+    private float nativeVerticalResolution, scaledResolutionWidth, updateGUI, ulnaLength;
+    private string birthdate, IDstring, name, brookeScaleString, ulnaLengthString, errorMessage, loadSave;
+    private int ID, textBoxWidth = 300, textBoxHeight = 50, brookeScale;
     private DateTime birthDateTime;
     
     internal XmlSettings settings = new XmlSettings();
@@ -22,7 +22,7 @@ public class SettingsGUI : MonoBehaviour
     {
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
-        birthdate = IDstring = name = brooksScaleString = ulnaLengthString = "";
+        birthdate = IDstring = name = brookeScaleString = ulnaLengthString = "";
         loadSave = "Save";
         this.enabled = false;
     }
@@ -40,7 +40,7 @@ public class SettingsGUI : MonoBehaviour
         {
             NewID();
         }
-        birthdate = IDstring = name = brooksScaleString = ulnaLengthString = "";
+        birthdate = IDstring = name = brookeScaleString = ulnaLengthString = "";
     }
 
     void OnGUI()
@@ -63,13 +63,13 @@ public class SettingsGUI : MonoBehaviour
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 310, textBoxWidth, textBoxHeight), "Name");
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 200, textBoxWidth, textBoxHeight), "ID (Generated)");
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 90, textBoxWidth, textBoxHeight), "Birthdate (mm/dd/yy)");
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 20, textBoxWidth, textBoxHeight), "Brook's Scale");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 20, textBoxWidth, textBoxHeight), "Brooke Scale");
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 130, textBoxWidth, textBoxHeight), "Ulna Length");
 
             name = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 275, textBoxWidth, textBoxHeight), name);
             GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 165, textBoxWidth, textBoxHeight), ID.ToString());
             birthdate = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 55, textBoxWidth, textBoxHeight), birthdate);
-            brooksScaleString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 55, textBoxWidth, textBoxHeight), brooksScaleString);
+            brookeScaleString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 55, textBoxWidth, textBoxHeight), brookeScaleString);
             ulnaLengthString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 165, textBoxWidth, textBoxHeight), ulnaLengthString);
 
             loadSave = "Save";
@@ -79,12 +79,12 @@ public class SettingsGUI : MonoBehaviour
         {
             // Text field labels for existing users
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 90, textBoxWidth, textBoxHeight), "Identification Number");
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 20, textBoxWidth, textBoxHeight), "Brook's Scale");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 20, textBoxWidth, textBoxHeight), "Brooke Scale");
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 130, textBoxWidth, textBoxHeight), "Ulna Length");
 
             // Text fields for exitsting users
             birthdate = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 55, textBoxWidth, textBoxHeight), IDstring);
-            brooksScaleString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 55, textBoxWidth, textBoxHeight), brooksScaleString);
+            brookeScaleString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 55, textBoxWidth, textBoxHeight), brookeScaleString);
             ulnaLengthString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 165, textBoxWidth, textBoxHeight), ulnaLengthString);
 
             loadSave = "Load";
@@ -106,7 +106,7 @@ public class SettingsGUI : MonoBehaviour
             }
             else
             {
-                GameControl.Instance.LoadUser(ID, brooksScale, ulnaLength);
+                GameControl.Instance.LoadUser(ID, brookeScale, ulnaLength);
             }
         }
 
@@ -124,7 +124,7 @@ public class SettingsGUI : MonoBehaviour
             GUI.Box(new Rect(scaledResolutionWidth / 2 - 380, 15, 760, 100), errorMessage);
         }
 
-        brooksScaleString = Regex.Replace(brooksScaleString, @"[^0-9.]", "");
+        brookeScaleString = Regex.Replace(brookeScaleString, @"[^1-6]", "");
         name = Regex.Replace(name, @"[^a-zA-Z.]", "");
         birthdate = Regex.Replace(birthdate, @"[^0-9/]", "");
         ulnaLengthString = Regex.Replace(ulnaLengthString, @"[^0-9.]", "");
@@ -172,7 +172,7 @@ public class SettingsGUI : MonoBehaviour
 
             try
             {
-                GameControl.Instance.user.BrooksScale = float.Parse(brooksScaleString);
+                GameControl.Instance.user.brookeScale = int.Parse(brookeScaleString);
                 invalidInput = false;
             }
             catch (Exception)
@@ -216,13 +216,13 @@ public class SettingsGUI : MonoBehaviour
 
             try
             {
-                if (brooksScaleString.Equals(""))
+                if (brookeScaleString.Equals(""))
                 {
-                    brooksScale = 0;
+                    brookeScale = 0;
                 }
                 else
                 {
-                    brooksScale = float.Parse(brooksScaleString);
+                    brookeScale = int.Parse(brookeScaleString);
                 }
                 invalidInput = false;
             }
@@ -253,7 +253,7 @@ public class SettingsGUI : MonoBehaviour
             }
         }
 
-        settings.SetXmlSettings(name, ID, birthDateTime.Month.ToString() + '/' + birthDateTime.Day.ToString() +'/' + birthDateTime.Year.ToString(), brooksScale, ulnaLength);
+        settings.SetXmlSettings(name, ID, birthDateTime.Month.ToString() + '/' + birthDateTime.Day.ToString() +'/' + birthDateTime.Year.ToString(), brookeScale, ulnaLength);
     }
 
     private void NewID()
