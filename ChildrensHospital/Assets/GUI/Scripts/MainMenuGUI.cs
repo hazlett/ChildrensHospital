@@ -59,7 +59,7 @@ public class MainMenuGUI : MonoBehaviour {
             this.enabled = false;
         }
 
-        GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution - 300, 540, 270), playerStatus);
+        GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution - 300, 540, 270), "Current User\n" + playerStatus);
     }
 
     private void TimedScreenResize()

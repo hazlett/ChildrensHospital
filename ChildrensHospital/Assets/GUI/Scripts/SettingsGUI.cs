@@ -124,7 +124,7 @@ public class SettingsGUI : MonoBehaviour
             GUI.Box(new Rect(scaledResolutionWidth / 2 - 380, 15, 760, 100), errorMessage);
         }
 
-        brookeScaleString = Regex.Replace(brookeScaleString, @"[^0-9]", "");
+        brookeScaleString = Regex.Replace(brookeScaleString, @"[^1-6]", "");
         name = Regex.Replace(name, @"[^a-zA-Z.]", "");
         birthdate = Regex.Replace(birthdate, @"[^0-9/]", "");
         ulnaLengthString = Regex.Replace(ulnaLengthString, @"[^0-9.]", "");
