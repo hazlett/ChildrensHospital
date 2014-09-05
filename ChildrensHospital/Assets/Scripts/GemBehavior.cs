@@ -5,23 +5,22 @@ public class GemBehavior : MonoBehaviour {
 
     private GameObject mainCamera, dirt;
     private Vector3 mainCameraBehind;
-    private GemGenerator.Area area;
-
+    public GemGenerator.Area area;
+    public string Dirt;
+    public Vector3 dirtPosition;
 	void Start () {
 
         mainCamera = GameObject.Find("Main Camera");
-<<<<<<< HEAD
-        mainCameraBehind = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z - 2);
-=======
-        dirt = GameObject.Find("Cube");
 
+        mainCameraBehind = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z - 2);
         mainCameraBehind = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z - 8);
->>>>>>> origin/master
+
 	}
 	
 	void Update () {
         if (dirt == null)
             return;
+        dirtPosition = dirt.transform.position;
         switch (area)
         {
             case GemGenerator.Area.XRIGHT:
@@ -30,7 +29,6 @@ public class GemBehavior : MonoBehaviour {
                     this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
                 }
 
-<<<<<<< HEAD
                 if (this.transform.position.z < mainCamera.transform.position.z - 1)
                 {
                     GameObject.Destroy(this.gameObject);
@@ -69,13 +67,12 @@ public class GemBehavior : MonoBehaviour {
                     GameObject.Destroy(this.gameObject);
                 }
                 break;
-=======
+        }
         if (this.transform.position.z < mainCamera.transform.position.z - 7)
         {
             GameObject.Destroy(this.gameObject);
->>>>>>> origin/master
-        }
 
+        }
 	}
     public void SetDirt(GameObject dirt, GemGenerator.Area area)
     {
@@ -84,6 +81,7 @@ public class GemBehavior : MonoBehaviour {
             Destroy(gameObject);
         }
         this.dirt = dirt;
+        Dirt = this.dirt.name;
         this.area = area;
     }
 }
