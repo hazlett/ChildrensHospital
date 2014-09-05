@@ -195,7 +195,15 @@ public class GemGenerator : MonoBehaviour {
             }
             
             gemType gem;
+<<<<<<< HEAD
             gem = (gemType)Random.Range(0, 7);            
+=======
+            randomX = Random.Range(-5.0f, 15.0f);
+            randomY = Random.Range(-5.0f, 5.0f);
+            randomZ = Random.Range(-5.0f, 15.0f);
+
+            gem = (gemType)Random.Range(0, 7);
+>>>>>>> origin/master
 
             switch (gem)
             {
