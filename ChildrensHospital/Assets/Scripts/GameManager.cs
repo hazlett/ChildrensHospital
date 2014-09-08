@@ -20,8 +20,8 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //if (KinectManager.Instance.GetUsersCount() > 0)
-        //{
+        if (KinectManager.Instance.GetUsersCount() > 0)
+        {
             timer += Time.deltaTime;
             if (timer > 1.5)
             {
@@ -32,18 +32,18 @@ public class GameManager : MonoBehaviour {
             {
                 message = "COUNTING DOWN";
             }
-            if (timer > 10)
+            if (timer > 20)
             {
                 GUIon = false;
                 endStats.enabled = true;
             }
-        //}
-        //else
-        //{
-        //    message = "SKELETON NOT FOUND";
-        //    timer = 0.0f;
-        //    return;
-        //}
+        }
+        else
+        {
+            message = "SKELETON NOT FOUND";
+            timer = 0.0f;
+            return;
+        }
         CalculateVolumes();
         TimedScreenResize();
 	}
