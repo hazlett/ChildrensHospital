@@ -24,7 +24,8 @@ public class GemBehavior : MonoBehaviour {
             case GemGenerator.Area.XRIGHT:
                 if (dirt.transform.position.x > this.transform.position.x)
                 {
-                    this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
+                    GravityOn();
+                    //this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
                 }
 
                 if (this.transform.position.z < mainCamera.transform.position.z - 1)
@@ -35,7 +36,8 @@ public class GemBehavior : MonoBehaviour {
             case GemGenerator.Area.XLEFT:
                 if (dirt.transform.position.x < this.transform.position.x)
                 {
-                    this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
+                    GravityOn();
+                    //this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
                 }
 
                 if (this.transform.position.z < mainCamera.transform.position.z - 1)
@@ -46,8 +48,10 @@ public class GemBehavior : MonoBehaviour {
             case GemGenerator.Area.Y:
                 if (dirt.transform.position.y > this.transform.position.y)
                 {
-                    this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
+                    GravityOn();
+                    //this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
                 }
+
 
                 if (this.transform.position.z < mainCamera.transform.position.z - 1)
                 {
@@ -57,7 +61,8 @@ public class GemBehavior : MonoBehaviour {
             case GemGenerator.Area.Z:
                 if (dirt.transform.position.z > this.transform.position.z)
                 {
-                    this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
+                    GravityOn();
+                    //this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
                 }
 
                 if (this.transform.position.z < mainCamera.transform.position.z - 1)
@@ -80,5 +85,10 @@ public class GemBehavior : MonoBehaviour {
         this.dirt = dirt;
         Dirt = this.dirt.name;
         this.area = area;
+    }
+
+    private void GravityOn()
+    {
+        this.rigidbody.useGravity = true;
     }
 }

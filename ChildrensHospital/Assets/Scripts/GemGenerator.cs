@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GemGenerator : MonoBehaviour {
 
-    private GameObject[] gems = new GameObject[500];
+    private GameObject[] gems = new GameObject[50];
     private float xMax = 2.5f, xMidLeft = 0.0f, xMidRight = 0.0f, xMin = -2.5f, zMin = 0.0f, zMax = 10.0f, yMin = 1.0f, yMax = 3.0f, zFarMin = 0.0f, zFarMax = 10.0f, zTop = 0.1f;
     private GameObject dirt,
         LOWERLEFT,
@@ -214,7 +214,7 @@ public class GemGenerator : MonoBehaviour {
                 case gemType.TOPAZ: gems[i] = (GameObject)Instantiate(Resources.Load<GameObject>("Prefabs/Topaz"));
                     break;
             }
-            gems[i].transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            gems[i].transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
             gems[i].transform.position = new Vector3(randomX, randomY, randomZ);
 
             randomX = Random.Range(0, 360);
