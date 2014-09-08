@@ -52,7 +52,7 @@ public class MainMenuGUI : MonoBehaviour {
         }
         else
         {
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 145, 300, 100), "Please Choose User", "GreyStart");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 145, 300, 100), "Choose User", "GreyStart");
         }
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 35, 300, 100), "New User"))
         {
