@@ -28,6 +28,7 @@ public class GameControl : MonoBehaviour {
     internal IDictionary<int, userInformation> playerData = new Dictionary<int, userInformation>();
 
     private int idKey;
+    public int IdKey { get { return idKey; } }
 
 	void Awake () {
 
@@ -53,6 +54,17 @@ public class GameControl : MonoBehaviour {
     {
         return ("Name: " + user.Name + " \nID: " + idKey + " \nBirthdate: " + user.Birthdate.Month.ToString() + '/' + user.Birthdate.Day.ToString()
             + '/' + user.Birthdate.Year.ToString() + " \nBrooke Scale: " + user.brookeScale + " \nUlna Length: " + user.UlnaLength);
+    }
+
+    public void AddUser(string Name, DateTime Birthdate, int ID, int BrookeScale, float UlnaLength)
+    {
+        user.Name = Name;
+        user.Birthdate = Birthdate;
+        user.brookeScale = BrookeScale;
+        user.UlnaLength = UlnaLength;
+        playerData.Add(ID, user);
+        Debug.Log(playerData.ContainsKey(ID).ToString());
+        idKey = ID;
     }
 
     public void AddUser(int ID)
@@ -163,6 +175,13 @@ public class GameControl : MonoBehaviour {
                 user.UlnaLength = float.Parse(dataString.Substring(index1 + 6, (index2 - index1 - 6)));
 
                 AddUser(idKey);
+
+                idKey = -1;
+                user.Name = "";
+                user.Birthdate = DateTime.MinValue;
+                user.brookeScale = 0;
+                user.UlnaLength = 0;
+
                 dataString = dataString.Substring(index2 + 5);
             }
         }

@@ -98,15 +98,16 @@ public class SettingsGUI : MonoBehaviour
             {
                 mainMenu.enabled = true;
                 this.enabled = false;
-            }
-            if (saving)
-            {
-                GameControl.Instance.AddUser(ID);
-                GameControl.Instance.Save();
-            }
-            else
-            {
-                GameControl.Instance.LoadUser(ID, brookeScale, ulnaLength);
+
+                if (saving)
+                {
+                    GameControl.Instance.AddUser(name, birthDateTime, ID, brookeScale, ulnaLength);
+                    GameControl.Instance.Save();
+                }
+                else
+                {
+                    GameControl.Instance.LoadUser(ID, brookeScale, ulnaLength);
+                }
             }
         }
 
@@ -153,13 +154,12 @@ public class SettingsGUI : MonoBehaviour
             }
             else
             {
-                GameControl.Instance.user.Name = name;
                 invalidInput = false;
             }
 
             try
             {
-                GameControl.Instance.user.Birthdate = DateTime.Parse(birthdate);
+                birthDateTime = DateTime.Parse(birthdate);
                 invalidInput = false;
             }
             catch (Exception)
@@ -171,19 +171,7 @@ public class SettingsGUI : MonoBehaviour
 
             try
             {
-                GameControl.Instance.user.brookeScale = int.Parse(brookeScaleString);
-                invalidInput = false;
-            }
-            catch (Exception)
-            {
-                errorMessage = "  Invalid Brook's Scale Format.\n  Please enter the correct format.";
-                invalidInput = true;
-                return;
-            }
-
-            try
-            {
-                GameControl.Instance.user.UlnaLength = float.Parse(ulnaLengthString);
+                ulnaLength = float.Parse(ulnaLengthString);
                 invalidInput = false;
             }
             catch (Exception)
@@ -196,23 +184,6 @@ public class SettingsGUI : MonoBehaviour
 
         if (!newUser)
         {
-            try
-            {
-                ID = int.Parse(IDstring);
-                invalidInput = false;
-
-                if(!GameControl.Instance.playerData.ContainsKey(ID)) {
-                    invalidInput = true;
-                    errorMessage = "  No user with ID Number: " + IDstring + "exists.\n  Please enter a correct identification number.";
-                }
-            }
-            catch (Exception)
-            {
-                errorMessage = "  Invalid identification number.\n  Please enter a correct identification number.";
-                invalidInput = true;
-                return;
-            }
-
             try
             {
                 if (brookeScaleString.Equals(""))
@@ -250,6 +221,29 @@ public class SettingsGUI : MonoBehaviour
                 invalidInput = true;
                 return;
             }
+
+            try
+            {
+                ID = int.Parse(IDstring);
+
+                if (!GameControl.Instance.playerData.ContainsKey(ID))
+                {
+                    invalidInput = true;
+                    errorMessage = "  No user with ID Number: " + IDstring + " exists.\n  Please enter a correct identification number.";
+                }
+                else
+                {
+                    invalidInput = false;
+                }
+            }
+            catch (Exception)
+            {
+                errorMessage = "  Invalid identification number.\n  Please enter a correct identification number.";
+                invalidInput = true;
+                return;
+            }
+
+            
         }
 
         settings.SetXmlSettings(name, ID, birthDateTime.Month.ToString() + '/' + birthDateTime.Day.ToString() +'/' + birthDateTime.Year.ToString(), brookeScale, ulnaLength);
@@ -257,7 +251,7 @@ public class SettingsGUI : MonoBehaviour
 
     private void NewID()
     {
-        ID = UnityEngine.Random.Range(0, 2000);
+        ID = UnityEngine.Random.Range(0, 500);
 
         if (GameControl.Instance.playerData.ContainsKey(ID))
         {

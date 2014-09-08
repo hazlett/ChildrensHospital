@@ -43,9 +43,16 @@ public class MainMenuGUI : MonoBehaviour {
         // Scale the GUI to any resolution based on 1920 x 1080 base resolution
         GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(Screen.height / nativeVerticalResolution, Screen.height / nativeVerticalResolution, 1));
 
-        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 145, 300, 100), "Start Trial"))
+        if (GameControl.Instance.playerData.ContainsKey(GameControl.Instance.IdKey))
         {
-            Application.LoadLevel("GemGame");
+            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 145, 300, 100), "Start Trial"))
+            {
+                Application.LoadLevel("GemGame");
+            }
+        }
+        else
+        {
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 145, 300, 100), "Please Choose User", "GreyStart");
         }
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 35, 300, 100), "New User"))
         {
