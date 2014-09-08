@@ -3,8 +3,8 @@ using System.Collections;
 
 public class GemGenerator : MonoBehaviour {
 
-    private GameObject[] gems = new GameObject[50];
-    private float xMax = 60.0f, xMidLeft = 0.0f, xMidRight = 0.0f, xMin = -60.0f, zMin = 0.0f, zMax = 100.0f, yMin = 1.0f, yMax = 50.0f;
+    private GameObject[] gems = new GameObject[500];
+    private float xMax = 2.5f, xMidLeft = 0.0f, xMidRight = 0.0f, xMin = -2.5f, zMin = 0.0f, zMax = 10.0f, yMin = 1.0f, yMax = 3.0f, zFarMin = 0.0f, zFarMax = 10.0f, zTop = 0.1f;
     private GameObject dirt,
         LOWERLEFT,
         LOWERRIGHT,
@@ -133,56 +133,56 @@ public class GemGenerator : MonoBehaviour {
                     dirt = TOPLEFT;
                     randomX = Random.Range(dirt.renderer.bounds.min.x, dirt.renderer.bounds.max.x);
                     randomY = Random.Range(yMin, yMax);
-                    randomZ = Random.Range(dirt.renderer.bounds.min.z, dirt.renderer.bounds.max.z);
+                    randomZ = Random.Range(zFarMin, zTop);
                     area = Area.Y;
                     break;
                 case SpawnArea.TOPRIGHT:
                     dirt = TOPRIGHT;
                     randomX = Random.Range(dirt.renderer.bounds.min.x, dirt.renderer.bounds.max.x);
                     randomY = Random.Range(yMin, yMax);
-                    randomZ = Random.Range(dirt.renderer.bounds.min.z, dirt.renderer.bounds.max.z);
+                    randomZ = Random.Range(zFarMin, zTop);
                     area = Area.Y;
                     break;
                 case SpawnArea.LOWERFARLEFT:
                     dirt = LOWERFARLEFT;
                     randomX = Random.Range(xMin, xMidLeft);
                     randomY = Random.Range(dirt.renderer.bounds.min.y, dirt.renderer.bounds.max.y);
-                    randomZ = Random.Range(dirt.renderer.bounds.min.z, dirt.renderer.bounds.max.z);
+                    randomZ = Random.Range(zFarMin, zFarMax);
                     area = Area.XLEFT;
                     break;
                 case SpawnArea.LOWERFARRIGHT:
                     dirt = LOWERFARRIGHT;
                     randomX = Random.Range(xMidRight, xMax);
                     randomY = Random.Range(dirt.renderer.bounds.min.y, dirt.renderer.bounds.max.y);
-                    randomZ = Random.Range(dirt.renderer.bounds.min.z, dirt.renderer.bounds.max.z);
+                    randomZ = Random.Range(zFarMin, zFarMax);
                     area = Area.XRIGHT;
                     break;
                 case SpawnArea.MIDDLEFARLEFT:
                     dirt = MIDDLEFARLEFT;
                     randomX = Random.Range(xMin, xMidLeft);
                     randomY = Random.Range(dirt.renderer.bounds.min.y, dirt.renderer.bounds.max.y);
-                    randomZ = Random.Range(dirt.renderer.bounds.min.z, dirt.renderer.bounds.max.z);
+                    randomZ = Random.Range(zFarMin, zFarMax);
                     area = Area.XLEFT;
                     break;
                 case SpawnArea.MIDDLEFARRIGHT:
                     dirt = MIDDLEFARRIGHT;
                     randomX = Random.Range(xMidRight, xMax);
                     randomY = Random.Range(dirt.renderer.bounds.min.y, dirt.renderer.bounds.max.y);
-                    randomZ = Random.Range(dirt.renderer.bounds.min.z, dirt.renderer.bounds.max.z);
+                    randomZ = Random.Range(zFarMin, zFarMax);
                     area = Area.XRIGHT;
                     break;
                 case SpawnArea.UPPERFARLEFT:
                     dirt = UPPERFARLEFT;
                     randomX = Random.Range(xMin, xMidLeft);
-                    randomY = Random.Range(dirt.renderer.bounds.min.y, dirt.renderer.bounds.max.y);
-                    randomZ = Random.Range(dirt.renderer.bounds.min.z, dirt.renderer.bounds.max.z);
+                    randomY = Random.Range(yMin, yMax);
+                    randomZ = Random.Range(zFarMin, zFarMax);
                     area = Area.XLEFT;
                     break;
                 case SpawnArea.UPPERFARRIGHT:
                     dirt = UPPERFARRIGHT;
                     randomX = Random.Range(xMidRight, xMax);
-                    randomY = Random.Range(dirt.renderer.bounds.min.y, dirt.renderer.bounds.max.y);
-                    randomZ = Random.Range(dirt.renderer.bounds.min.z, dirt.renderer.bounds.max.z);
+                    randomY = Random.Range(yMin, yMax);
+                    randomZ = Random.Range(zFarMin, zFarMax);
                     area = Area.XRIGHT;
                     break;
                 default:
@@ -196,7 +196,6 @@ public class GemGenerator : MonoBehaviour {
             
             gemType gem;
             gem = (gemType)Random.Range(0, 7);            
-
 
             switch (gem)
             {
@@ -215,7 +214,7 @@ public class GemGenerator : MonoBehaviour {
                 case gemType.TOPAZ: gems[i] = (GameObject)Instantiate(Resources.Load<GameObject>("Prefabs/Topaz"));
                     break;
             }
-
+            gems[i].transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
             gems[i].transform.position = new Vector3(randomX, randomY, randomZ);
 
             randomX = Random.Range(0, 360);
