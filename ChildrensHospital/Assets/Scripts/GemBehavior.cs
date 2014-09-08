@@ -11,17 +11,8 @@ public class GemBehavior : MonoBehaviour {
 	void Start () {
 
         mainCamera = GameObject.Find("Main Camera");
-<<<<<<< HEAD
-
-        mainCameraBehind = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z - 2);
-        mainCameraBehind = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z - 8);
-
-=======
         mainCameraBehind = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z - 2);
 
-        dirt = GameObject.Find("Cube");
-        mainCameraBehind = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z - 8);
->>>>>>> origin/master
 	}
 	
 	void Update () {
@@ -78,11 +69,6 @@ public class GemBehavior : MonoBehaviour {
         if (this.transform.position.z < mainCamera.transform.position.z - 7)
         {
             GameObject.Destroy(this.gameObject);
-<<<<<<< HEAD
-=======
-        }
->>>>>>> origin/master
-
         }
 	}
     public void SetDirt(GameObject dirt, GemGenerator.Area area)

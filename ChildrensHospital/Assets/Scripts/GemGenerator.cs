@@ -195,14 +195,7 @@ public class GemGenerator : MonoBehaviour {
             }
             
             gemType gem;
-<<<<<<< HEAD
-
-            gem = (gemType)Random.Range(0, 7);
-
-=======
             gem = (gemType)Random.Range(0, 7);            
-
->>>>>>> origin/master
 
             switch (gem)
             {

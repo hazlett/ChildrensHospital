@@ -33,7 +33,7 @@ public class LeftHandBehaviour : MonoBehaviour {
             {
                 lowerZMax = gameObject.transform.position.z;
             }
-            if (gameObject.transform.position.x > lowerXMax)
+            if (gameObject.transform.position.x < lowerXMax)
             {
                 lowerXMax = gameObject.transform.position.x;
             }
@@ -44,7 +44,7 @@ public class LeftHandBehaviour : MonoBehaviour {
             {
                 middleZMax = gameObject.transform.position.z;
             }
-            if (gameObject.transform.position.x > middleXMax)
+            if (gameObject.transform.position.x < middleXMax)
             {
                 middleXMax = gameObject.transform.position.x;
             }
@@ -55,7 +55,7 @@ public class LeftHandBehaviour : MonoBehaviour {
             {
                 upperZMax = gameObject.transform.position.z;
             }
-            if (gameObject.transform.position.x > upperXMax)
+            if (gameObject.transform.position.x < upperXMax)
             {
                 upperXMax = gameObject.transform.position.x;
             }
