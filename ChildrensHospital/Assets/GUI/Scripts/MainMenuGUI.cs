@@ -45,6 +45,7 @@ public class MainMenuGUI : MonoBehaviour {
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 145, 300, 100), "Start Trial"))
         {
+            Application.LoadLevel("GemGame");
         }
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 35, 300, 100), "New User"))
         {

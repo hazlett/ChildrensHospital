@@ -4,6 +4,7 @@ using System.Collections;
 public class EndGUI : MonoBehaviour
 {
     public GUISkin mainMenuSkin;
+    public GameManager gameManager;
 
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
     private bool saveData = false;
@@ -14,6 +15,7 @@ public class EndGUI : MonoBehaviour
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
+        enabled = false;
     }
 
     // Update is called once per frame
@@ -36,11 +38,12 @@ public class EndGUI : MonoBehaviour
         // Scale the GUI to any resolution based on 1920 x 1080 base resolution
         GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(Screen.height / nativeVerticalResolution, Screen.height / nativeVerticalResolution, 1));
 
-        GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 270, 540, 540), "Results\nName: \nVolume: \nOther Stats");
+        GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 270, 540, 540), "Results\nName: " + GameControl.Instance.user.Name + "\nVolume: "
+            + gameManager.TotalVolume().ToString() + "\nOther Stats", "EndBox");
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 250, 300, 100), "Run Trial Again"))
         {
-            //Start the scene
+            Application.LoadLevel("GemGame");
         }
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 250, 300, 100), "Quit"))
         {
@@ -49,7 +52,7 @@ public class EndGUI : MonoBehaviour
 
         saveData = GUI.Toggle(new Rect(scaledResolutionWidth / 2 - 125, nativeVerticalResolution - 125, 50, 50), saveData, "");
 
-        GUI.Label(new Rect(scaledResolutionWidth / 2 - 65, nativeVerticalResolution - 125, 200, 50), "Save Results");
+        GUI.Label(new Rect(scaledResolutionWidth / 2 - 65, nativeVerticalResolution - 125, 200, 50), "Save Results", "ToggleLabel");
     }
 
     private void TimedScreenResize()

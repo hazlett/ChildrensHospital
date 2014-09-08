@@ -71,6 +71,7 @@ public class GameControl : MonoBehaviour {
         }
     }
 
+    // Saves the dictionary values into a file
     public void Save()
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -92,6 +93,7 @@ public class GameControl : MonoBehaviour {
         file.Close();
     }
 
+    // Loads a specific user, and updates the values if necessary
     public void LoadUser(int ID, int brookeScale, float UlnaLength)
     {
         idKey = ID;
@@ -120,6 +122,7 @@ public class GameControl : MonoBehaviour {
         }
     }
 
+    // Loads all users and stores them in the dictionary
     public void LoadUsers()
     {
         if (File.Exists(Application.persistentDataPath + "/userInfo.dat"))

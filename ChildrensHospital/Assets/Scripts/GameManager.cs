@@ -4,21 +4,24 @@ using System.Collections;
 public class GameManager : MonoBehaviour {
 
     public GUISkin mainMenuSkin;
+    public EndGUI endStats;
 
     private float timer, nativeVerticalResolution, scaledResolutionWidth, updateGUI;
     private string message;
     private float lowerLeftVolume, lowerRightVolume, middleLeftVolume, middleRightVolume, upperLeftVolume, upperRightVolume, yRightValue, yLeftValue;
+    private bool GUIon;
     public MonoBehaviour rightHand, leftHand;
 	void Start () {
         timer = 0.0f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
+        GUIon = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (KinectManager.Instance.GetUsersCount() > 0)
-        {
+        //if (KinectManager.Instance.GetUsersCount() > 0)
+        //{
             timer += Time.deltaTime;
             if (timer > 1.5)
             {
@@ -29,13 +32,18 @@ public class GameManager : MonoBehaviour {
             {
                 message = "COUNTING DOWN";
             }
-        }
-        else
-        {
-            message = "SKELETON NOT FOUND";
-            timer = 0.0f;
-            return;
-        }
+            if (timer > 10)
+            {
+                GUIon = false;
+                endStats.enabled = true;
+            }
+        //}
+        //else
+        //{
+        //    message = "SKELETON NOT FOUND";
+        //    timer = 0.0f;
+        //    return;
+        //}
         CalculateVolumes();
         TimedScreenResize();
 	}
@@ -54,15 +62,20 @@ public class GameManager : MonoBehaviour {
         // Scale the GUI to any resolution based on 1920 x 1080 base resolution
         GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(Screen.height / nativeVerticalResolution, Screen.height / nativeVerticalResolution, 1));
 
-        GUI.Box(new Rect(scaledResolutionWidth / 2 - 200, 10, 400, 75), message);
-        GUI.Box(new Rect(10, 10, 400, 75), "Lower Left Volume: " + lowerLeftVolume);
-        GUI.Box(new Rect(10, 85, 400, 75), "Middle Left Volume: " + middleLeftVolume);
-        GUI.Box(new Rect(10, 160, 400, 75), "Upper Left Volume: " + upperLeftVolume);
-        GUI.Box(new Rect(10, 235, 400, 75), "Left Y Value: " + yLeftValue);
-        GUI.Box(new Rect(scaledResolutionWidth - 410, 10, 400, 75), "Lower Right Volume: " + lowerRightVolume);
-        GUI.Box(new Rect(scaledResolutionWidth - 410, 85, 400, 75), "Middle Right Volume: " + middleRightVolume);
-        GUI.Box(new Rect(scaledResolutionWidth - 410, 160, 400, 75), "Upper Right Volume: " + upperRightVolume);
-        GUI.Box(new Rect(scaledResolutionWidth - 410, 235, 400, 75), "Right Y Value: " + yRightValue);
+        if (GUIon)
+        {
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - 200, 10, 400, 75), message);
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - 200, 85, 400, 75), "Score: " + " ");
+
+            GUI.Label(new Rect(10, 10, 400, 75), "Lower Left Volume: " + lowerLeftVolume);
+            GUI.Label(new Rect(10, 85, 400, 75), "Middle Left Volume: " + middleLeftVolume);
+            GUI.Label(new Rect(10, 160, 400, 75), "Upper Left Volume: " + upperLeftVolume);
+            GUI.Label(new Rect(10, 235, 400, 75), "Left Y Value: " + yLeftValue);
+            GUI.Label(new Rect(scaledResolutionWidth - 410, 10, 400, 75), "Lower Right Volume: " + lowerRightVolume);
+            GUI.Label(new Rect(scaledResolutionWidth - 410, 85, 400, 75), "Middle Right Volume: " + middleRightVolume);
+            GUI.Label(new Rect(scaledResolutionWidth - 410, 160, 400, 75), "Upper Right Volume: " + upperRightVolume);
+            GUI.Label(new Rect(scaledResolutionWidth - 410, 235, 400, 75), "Right Y Value: " + yRightValue);
+        }
     }
     private void StartGame()
     {
@@ -79,6 +92,13 @@ public class GameManager : MonoBehaviour {
         upperLeftVolume = Mathf.Abs(((LeftHandBehaviour)leftHand).UpperVolume);
         yLeftValue = ((LeftHandBehaviour)leftHand).TopVolume;
         yRightValue = ((RightHandBehaviour)rightHand).TopVolume;
+    }
+
+    internal float TotalVolume()
+    {
+        return (((RightHandBehaviour)rightHand).LowerVolume + ((RightHandBehaviour)rightHand).MiddleVolume + ((RightHandBehaviour)rightHand).UpperVolume
+            + Mathf.Abs(((LeftHandBehaviour)leftHand).LowerVolume) + Mathf.Abs(((LeftHandBehaviour)leftHand).MiddleVolume) + Mathf.Abs(((LeftHandBehaviour)leftHand).UpperVolume)
+            + ((LeftHandBehaviour)leftHand).TopVolume + ((RightHandBehaviour)rightHand).TopVolume);
     }
 
     private void TimedScreenResize()
