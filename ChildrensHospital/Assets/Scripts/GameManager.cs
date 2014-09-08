@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class GameManager : MonoBehaviour {
 
@@ -84,14 +85,14 @@ public class GameManager : MonoBehaviour {
     }
     private void CalculateVolumes()
     {
-        lowerRightVolume = ((RightHandBehaviour)rightHand).LowerVolume;
-        middleRightVolume = ((RightHandBehaviour)rightHand).MiddleVolume;
-        upperRightVolume = ((RightHandBehaviour)rightHand).UpperVolume;
-        lowerLeftVolume = Mathf.Abs(((LeftHandBehaviour)leftHand).LowerVolume);
-        middleLeftVolume = Mathf.Abs(((LeftHandBehaviour)leftHand).MiddleVolume);
-        upperLeftVolume = Mathf.Abs(((LeftHandBehaviour)leftHand).UpperVolume);
-        yLeftValue = ((LeftHandBehaviour)leftHand).TopVolume;
-        yRightValue = ((RightHandBehaviour)rightHand).TopVolume;
+        lowerRightVolume = (float)(Math.Truncate(((RightHandBehaviour)rightHand).LowerVolume * 100f) / 100f);
+        middleRightVolume = (float)(Math.Truncate(((RightHandBehaviour)rightHand).MiddleVolume * 100f) / 100f);
+        upperRightVolume = (float)(Math.Truncate(((RightHandBehaviour)rightHand).UpperVolume * 100f) / 100f);
+        lowerLeftVolume = (float)(Math.Truncate(Mathf.Abs(((LeftHandBehaviour)leftHand).LowerVolume) * 100f) / 100f);
+        middleLeftVolume = (float)(Math.Truncate(Mathf.Abs(((LeftHandBehaviour)leftHand).MiddleVolume) * 100f) / 100f);
+        upperLeftVolume = (float)(Math.Truncate(Mathf.Abs(((LeftHandBehaviour)leftHand).UpperVolume) * 100f) / 100f);
+        yLeftValue = (float)(Math.Truncate(((LeftHandBehaviour)leftHand).TopVolume * 100f) / 100f);
+        yRightValue = (float)(Math.Truncate(((RightHandBehaviour)rightHand).TopVolume * 100f) / 100f);
     }
 
     internal float TotalVolume()

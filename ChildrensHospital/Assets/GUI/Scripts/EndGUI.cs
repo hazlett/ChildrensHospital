@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class EndGUI : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class EndGUI : MonoBehaviour
     public GameManager gameManager;
 
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
-    private bool saveData = false;
+    private bool saveData = true;
 
     // Use this for initialization
     void Start()
@@ -22,6 +23,10 @@ public class EndGUI : MonoBehaviour
     void Update()
     {
         TimedScreenResize();
+
+        if (saveData)
+        {
+        }
     }
 
     void OnGUI()
@@ -39,7 +44,7 @@ public class EndGUI : MonoBehaviour
         GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(Screen.height / nativeVerticalResolution, Screen.height / nativeVerticalResolution, 1));
 
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 270, 540, 540), "Results\nName: " + GameControl.Instance.user.Name + "\nVolume: "
-            + gameManager.TotalVolume().ToString() + "\nOther Stats", "EndBox");
+            + (Math.Truncate(gameManager.TotalVolume() * 100f) / 100f).ToString() + "\nOther Stats", "EndBox");
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 250, 300, 100), "Run Trial Again"))
         {
