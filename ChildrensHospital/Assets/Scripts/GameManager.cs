@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
 
     public GUISkin mainMenuSkin;
     public EndGUI endStats;
+    public GemGenerator generator;
 
     private float timer, nativeVerticalResolution, scaledResolutionWidth, updateGUI;
     private string message;
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour {
             else
             {
                 message = "COUNTING DOWN";
+                generator.enabled = true;
             }
             if (timer > 20)
             {
@@ -66,7 +68,7 @@ public class GameManager : MonoBehaviour {
         if (GUIon)
         {
             GUI.Label(new Rect(scaledResolutionWidth / 2 - 200, 10, 400, 75), message);
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - 200, 85, 400, 75), "Score: " + " ");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - 200, 85, 400, 75), "Score: " + GameControl.Instance.score);
 
             GUI.Label(new Rect(10, 10, 400, 75), "Lower Left Volume: " + lowerLeftVolume);
             GUI.Label(new Rect(10, 85, 400, 75), "Middle Left Volume: " + middleLeftVolume);

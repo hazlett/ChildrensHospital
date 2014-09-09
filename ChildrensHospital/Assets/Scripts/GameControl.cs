@@ -24,6 +24,7 @@ public class GameControl : MonoBehaviour {
         public float UlnaLength;
     };
 
+    internal int score = 0;
     internal userInformation user;
     internal IDictionary<int, userInformation> playerData = new Dictionary<int, userInformation>();
 

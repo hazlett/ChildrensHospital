@@ -58,9 +58,15 @@ public class GemGenerator : MonoBehaviour {
 
     void Start()
     {
+        this.enabled = false;
+    }
+
+    void OnEnable()
+    {
         SetAreas();
         SpawnGems();
     }
+
     private void SetAreas()
     {
         LOWERLEFT = GameObject.Find("LowerLeft");
