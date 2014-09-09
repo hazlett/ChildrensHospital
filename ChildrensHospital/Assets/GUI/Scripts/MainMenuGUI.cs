@@ -9,15 +9,13 @@ public class MainMenuGUI : MonoBehaviour {
     private string playerStatus;
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
 
-	// Use this for initialization
 	void Start () {
 
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 
         TimedScreenResize();
