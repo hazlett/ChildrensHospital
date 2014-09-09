@@ -10,7 +10,7 @@ public class RightHandBehaviour : MonoBehaviour {
 
     void Start()
     {
-        scale = 10.0f;
+        scale = 3.0f;
        // ResetMaxes();
     }
 

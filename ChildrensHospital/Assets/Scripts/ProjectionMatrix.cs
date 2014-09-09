@@ -6,11 +6,8 @@ public class ProjectionMatrix : MonoBehaviour {
     public float right = 1.0f;
     public float top = 1.0f;
     public float bottom = 0.0f;
-    void Start()
-    {
 
-    }
-    void Awake()
+    void Start()
     {
         camera.projectionMatrix = PerspectiveOffCenter(left, right, bottom, top, camera.nearClipPlane, camera.farClipPlane);
     }
