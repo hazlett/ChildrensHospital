@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     private string message;
     private float lowerLeftVolume, lowerRightVolume, middleLeftVolume, middleRightVolume, upperLeftVolume, upperRightVolume, yRightValue, yLeftValue;
     private bool GUIon;
+    public bool DebugMode;
     public MonoBehaviour rightHand, leftHand;
 	void Start () {
         timer = 0.0f;
@@ -35,8 +36,11 @@ public class GameManager : MonoBehaviour {
             }
             if (timer > 20)
             {
+                if (!DebugMode)
+                { 
                 GUIon = false;
                 endStats.enabled = true;
+                    }
             }
         }
         else
