@@ -94,6 +94,8 @@
     <Compile Include="Assets\Scripts\LeftHandBehaviour.cs" />
     <Compile Include="Assets\Scripts\ProjectionMatrix.cs" />
     <Compile Include="Assets\Scripts\RightHandBehaviour.cs" />
+    <Compile Include="Assets\Scripts\SpiderBehavior.cs" />
+    <Compile Include="Assets\Scripts\SpiderSpawner.cs" />
     <Compile Include="Assets\Toon_Level_Kit\Examples\Script\CarCamera.cs" />
     <Compile Include="Assets\Toon_Level_Kit\Examples\Script\Fog.cs" />
     <Compile Include="Assets\Toon_Level_Kit\Examples\Script\Kart.cs" />

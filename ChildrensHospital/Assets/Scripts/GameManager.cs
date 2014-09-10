@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
     public GUISkin mainMenuSkin;
     public EndGUI endStats;
     public GemGenerator generator;
+    public SpiderSpawner spiders;
 
     private float timer, nativeVerticalResolution, scaledResolutionWidth, updateGUI;
     private string message;
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour {
             {
                 message = "COUNTING DOWN";
                 generator.enabled = true;
+                spiders.enabled = true;
             }
             if (timer > 20)
             {

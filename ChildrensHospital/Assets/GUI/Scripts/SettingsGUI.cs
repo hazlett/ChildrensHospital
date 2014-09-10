@@ -10,7 +10,7 @@ public class SettingsGUI : MonoBehaviour
     public MainMenuGUI mainMenu;
 
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI, ulnaLength;
-    private string birthdate, IDstring, name, brookeScaleString, ulnaLengthString, errorMessage, loadSave;
+    private string birthdate, IDstring, name, ulnaLengthString, errorMessage, loadSave;
     private int ID, textBoxWidth = 300, textBoxHeight = 50, brookeScale;
     private DateTime birthDateTime;
     
@@ -22,7 +22,7 @@ public class SettingsGUI : MonoBehaviour
     {
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
-        birthdate = IDstring = name = brookeScaleString = ulnaLengthString = "";
+        birthdate = IDstring = name = ulnaLengthString = "";
         brookeScale = 1;
         loadSave = "Save";
         this.enabled = false;
@@ -40,7 +40,7 @@ public class SettingsGUI : MonoBehaviour
         {
             NewID();
         }
-        birthdate = IDstring = name = brookeScaleString = ulnaLengthString = "";
+        birthdate = IDstring = name = ulnaLengthString = "";
     }
 
     void OnGUI()
@@ -184,25 +184,6 @@ public class SettingsGUI : MonoBehaviour
 
         if (!newUser)
         {
-            try
-            {
-                if (brookeScaleString.Equals(""))
-                {
-                    brookeScale = 0;
-                }
-                else
-                {
-                    brookeScale = int.Parse(brookeScaleString);
-                }
-                invalidInput = false;
-            }
-            catch (Exception)
-            {
-                errorMessage = "  Invalid Brook's Scale Format.\n  Please enter the correct format.";
-                invalidInput = true;
-                return;
-            }
-
             try
             {
                 if (ulnaLengthString.Equals(""))
