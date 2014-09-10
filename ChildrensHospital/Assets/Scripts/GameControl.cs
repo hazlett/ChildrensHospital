@@ -29,8 +29,8 @@ public class GameControl : MonoBehaviour {
     internal IDictionary<int, userInformation> playerData = new Dictionary<int, userInformation>();
     internal enum Characters
     {
-        Justin,
-        Alexis
+        Male,
+        Female
     };
     private Characters character;
     internal Characters Character { get { return character; } }
