@@ -14,11 +14,25 @@ public class GameManager : MonoBehaviour {
     private bool GUIon;
     public bool DebugMode;
     private MonoBehaviour rightHand, leftHand;
+    private GameObject character;
 	void Start () {
         timer = 0.0f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
         GUIon = true;
+        character = (GameObject)Instantiate(Resources.Load<GameObject>(GameControl.Instance.Character.ToString()));
+        //switch (GameControl.Instance.Character)
+        //{
+        //    case GameControl.Characters.Alexis:
+        //        character =
+        //        break;
+        //    case GameControl.Characters.Justin:
+        //        character = (GameObject)Instantiate(Resources.Load<GameObject>("KinectJustin"));
+        //        break;
+        //    default:
+        //        character = (GameObject)Instantiate(Resources.Load<GameObject>("KinectJustin"));
+        //        break;
+        //}
         rightHand = GameObject.Find("LeftHand").GetComponent<LeftHandBehaviour>();
         leftHand = GameObject.Find("RightHand").GetComponent<RightHandBehaviour>();
 	}

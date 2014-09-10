@@ -27,7 +27,13 @@ public class GameControl : MonoBehaviour {
     internal int score = 0;
     internal userInformation user;
     internal IDictionary<int, userInformation> playerData = new Dictionary<int, userInformation>();
-
+    internal enum Characters
+    {
+        Justin,
+        Alexis
+    };
+    private Characters character;
+    internal Characters Character { get { return character; } }
     private int idKey;
     public int IdKey { get { return idKey; } }
 
