@@ -5,12 +5,19 @@ public class LeftHandBehaviour : MonoBehaviour {
 
     public float LowerYBound, UpperYBound, xOffset, yOffset, zOffset;
     public float lowerXMax, middleXMax, upperXMax, yMax, lowerZMax, middleZMax, upperZMax, lowerHeight, middleHeight, upperHeight;
-    public GameObject LowerLeft, MiddleLeft, UpperLeft, TopLeft, LowerFarLeft, MiddleFarLeft, UpperFarLeft;
+    private GameObject LowerLeft, MiddleLeft, UpperLeft, TopLeft, LowerFarLeft, MiddleFarLeft, UpperFarLeft;
     private float scale, lerpScale = 0.5f;
 
     void Start()
     {
         scale = 3.0f;
+        LowerLeft = GameObject.Find("LowerLeft");
+        MiddleLeft = GameObject.Find("MiddleLeft");
+        UpperLeft = GameObject.Find("UpperLeft");
+        TopLeft = GameObject.Find("TopLeft");
+        LowerFarLeft = GameObject.Find("LowerFarLeft");
+        MiddleFarLeft = GameObject.Find("MiddleFarLeft");
+        UpperFarLeft = GameObject.Find("UpperFarLeft");
        // ResetMaxes();
     }
 

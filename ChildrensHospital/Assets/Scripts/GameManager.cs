@@ -13,12 +13,14 @@ public class GameManager : MonoBehaviour {
     private float lowerLeftVolume, lowerRightVolume, middleLeftVolume, middleRightVolume, upperLeftVolume, upperRightVolume, yRightValue, yLeftValue;
     private bool GUIon;
     public bool DebugMode;
-    public MonoBehaviour rightHand, leftHand;
+    private MonoBehaviour rightHand, leftHand;
 	void Start () {
         timer = 0.0f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
         GUIon = true;
+        rightHand = GameObject.Find("LeftHand").GetComponent<LeftHandBehaviour>();
+        leftHand = GameObject.Find("RightHand").GetComponent<RightHandBehaviour>();
 	}
 	
 	// Update is called once per frame
