@@ -23,6 +23,7 @@ public class GameControl : MonoBehaviour {
         public int brookeScale;
         public float UlnaLength;
         public bool gender; // True = male, false = female
+        public List<float> volumeTotal;
     };
 
     internal int score = 0;
@@ -127,6 +128,7 @@ public class GameControl : MonoBehaviour {
         if(playerData.ContainsKey(ID)){
             user.Name = playerData[ID].Name;
             user.Birthdate = playerData[ID].Birthdate;
+            user.gender = playerData[ID].gender;
 
             // If no changes have been made, keep the past Brook's Scale and Ulna Length values
             if (brookeScale == 0)

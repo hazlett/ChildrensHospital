@@ -50,7 +50,7 @@ public class EndGUI : MonoBehaviour
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 380, 300, 100), "Run Trial Again"))
         {
-            Application.LoadLevel("GemGame");
+            Application.LoadLevel("Game");
         }
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), "Quit"))
         {

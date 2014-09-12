@@ -49,8 +49,6 @@
      <Compile Include="Assets\GUI\Scripts\EndGUI.cs" />
      <Compile Include="Assets\GUI\Scripts\MainMenuGUI.cs" />
      <Compile Include="Assets\GUI\Scripts\SettingsGUI.cs" />
-     <Compile Include="Assets\GUI\Scripts\SettingsSerializer.cs" />
-     <Compile Include="Assets\GUI\Scripts\XmlSettings.cs" />
      <Compile Include="Assets\Gem Shader\Example\GemSpawner.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX2_Demo.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo.cs" />
@@ -93,6 +91,9 @@
      <Compile Include="Assets\Scripts\SpiderBehavior.cs" />
      <Compile Include="Assets\Scripts\SpiderSpawner.cs" />
      <Compile Include="Assets\Scripts\Volumes.cs" />
+     <Compile Include="Assets\Scripts\User.cs" />
+     <Compile Include="Assets\Scripts\UserContainer.cs" />
+     <Compile Include="Assets\Scripts\XmlSerializer.cs" />
      <Compile Include="Assets\Toon_Level_Kit\Examples\Script\CarCamera.cs" />
      <Compile Include="Assets\Toon_Level_Kit\Examples\Script\Fog.cs" />
      <Compile Include="Assets\Toon_Level_Kit\Examples\Script\Kart.cs" />
