@@ -14,7 +14,6 @@ public class SettingsGUI : MonoBehaviour
     private int ID, textBoxWidth = 300, textBoxHeight = 50, brookeScale;
     private DateTime birthDateTime;
     
-    internal XmlSettings settings = new XmlSettings();
     internal bool newUser, invalidInput = false, saving = true, male = false;
 
     // Use this for initialization
@@ -111,12 +110,14 @@ public class SettingsGUI : MonoBehaviour
 
                 if (saving)
                 {
-                    GameControl.Instance.AddUser(name, birthDateTime, ID, brookeScale, ulnaLength, male);
-                    GameControl.Instance.Save();
+                    //GameControl.Instance.AddUser(name, birthDateTime, ID, brookeScale, ulnaLength, male);
+                    //GameControl.Instance.Save();
+                    User.Instance.AddUser(name, ID, birthDateTime, brookeScale, ulnaLength, male);
+                    User.Instance.SaveUser();
                 }
                 else
                 {
-                    GameControl.Instance.LoadUser(ID, brookeScale, ulnaLength);
+                    //GameControl.Instance.LoadUser(ID, brookeScale, ulnaLength);
                 }
             }
         }
@@ -236,17 +237,10 @@ public class SettingsGUI : MonoBehaviour
 
             
         }
-
-        settings.SetXmlSettings(name, ID, birthDateTime.Month.ToString() + '/' + birthDateTime.Day.ToString() +'/' + birthDateTime.Year.ToString(), brookeScale, ulnaLength);
     }
 
     private void NewID()
     {
-        ID = UnityEngine.Random.Range(0, 500);
-
-        if (GameControl.Instance.playerData.ContainsKey(ID))
-        {
-            NewID();
-        }
+        ID = User.Instance.numberOfUsers;
     }
 }
