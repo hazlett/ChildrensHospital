@@ -45,14 +45,7 @@ public class MainMenuGUI : MonoBehaviour {
         {
             if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 145, 300, 100), "Start Trial"))
             {
-                if (GameControl.Instance.user.gender)
-                {
-                    Application.LoadLevel("SpiderScene");
-                }
-                else
-                {
-                    Application.LoadLevel("GemGame");
-                }
+                Application.LoadLevel("Game");
             }
         }
         else

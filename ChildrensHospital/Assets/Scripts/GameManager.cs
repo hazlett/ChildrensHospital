@@ -29,8 +29,8 @@ public class GameManager : MonoBehaviour {
         {
             character = (GameObject)Instantiate(Resources.Load<GameObject>("Female"));
         }
-        rightHand = GameObject.Find("RightHand").GetComponent<LeftHandBehaviour>();
-        leftHand = GameObject.Find("LeftHand").GetComponent<RightHandBehaviour>();
+        rightHand = GameObject.Find("RightHand").GetComponent<RightHandBehaviour>();
+        leftHand = GameObject.Find("LeftHand").GetComponent<LeftHandBehaviour>();
 	}
 	
 	// Update is called once per frame
