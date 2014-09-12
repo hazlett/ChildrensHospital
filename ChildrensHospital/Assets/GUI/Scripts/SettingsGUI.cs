@@ -15,7 +15,7 @@ public class SettingsGUI : MonoBehaviour
     private DateTime birthDateTime;
     
     internal XmlSettings settings = new XmlSettings();
-    internal bool newUser, invalidInput = false, saving = true;
+    internal bool newUser, invalidInput = false, saving = true, male = false;
 
     // Use this for initialization
     void Start()
@@ -63,14 +63,24 @@ public class SettingsGUI : MonoBehaviour
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 310, textBoxWidth, textBoxHeight), "Name");
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 200, textBoxWidth, textBoxHeight), "ID (Generated)");
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 90, textBoxWidth, textBoxHeight), "Birthdate (mm/dd/yy)");
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 20, textBoxWidth, textBoxHeight), "Brooke Scale: " + brookeScale.ToString());
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 130, textBoxWidth, textBoxHeight), "Ulna Length");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2, textBoxWidth, textBoxHeight), "Brooke Scale: " + brookeScale.ToString());
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 90, textBoxWidth, textBoxHeight), "Ulna Length");
 
             name = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 275, textBoxWidth, textBoxHeight), name);
             GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 165, textBoxWidth, textBoxHeight), ID.ToString());
             birthdate = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 55, textBoxWidth, textBoxHeight), birthdate);
-            brookeScale = (int)GUI.HorizontalSlider(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 75, textBoxWidth, textBoxHeight), brookeScale, 1, 6);
-            ulnaLengthString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 165, textBoxWidth, textBoxHeight), ulnaLengthString);
+            brookeScale = (int)GUI.HorizontalSlider(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 55, textBoxWidth, textBoxHeight), brookeScale, 1, 6);
+            ulnaLengthString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 125, textBoxWidth, textBoxHeight), ulnaLengthString);
+            male = GUI.Toggle(new Rect(scaledResolutionWidth / 2 - 80, nativeVerticalResolution / 2 + 215, 50, 25), male, " ", "Gender");
+
+            if (male)
+            {
+                GUI.Label(new Rect(scaledResolutionWidth / 2 - 70, nativeVerticalResolution / 2 + 130, 200, 200), "Male");
+            }
+            else
+            {
+                GUI.Label(new Rect(scaledResolutionWidth / 2 - 70, nativeVerticalResolution / 2 + 130, 200, 200), "Female");
+            }
 
             loadSave = "Save";
             saving = true;
@@ -101,7 +111,7 @@ public class SettingsGUI : MonoBehaviour
 
                 if (saving)
                 {
-                    GameControl.Instance.AddUser(name, birthDateTime, ID, brookeScale, ulnaLength);
+                    GameControl.Instance.AddUser(name, birthDateTime, ID, brookeScale, ulnaLength, male);
                     GameControl.Instance.Save();
                 }
                 else

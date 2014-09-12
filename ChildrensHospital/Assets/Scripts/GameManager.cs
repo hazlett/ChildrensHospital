@@ -21,16 +21,16 @@ public class GameManager : MonoBehaviour {
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
         GUIon = true;
-        try
-        {
-            character = (GameObject)Instantiate(Resources.Load<GameObject>(GameControl.Instance.Character.ToString()));
-        }
-        catch (Exception)
+        if (GameControl.Instance.user.gender)
         {
             character = (GameObject)Instantiate(Resources.Load<GameObject>("Male"));
         }
-        rightHand = GameObject.Find("LeftHand").GetComponent<LeftHandBehaviour>();
-        leftHand = GameObject.Find("RightHand").GetComponent<RightHandBehaviour>();
+        else
+        {
+            character = (GameObject)Instantiate(Resources.Load<GameObject>("Female"));
+        }
+        rightHand = GameObject.Find("RightHand").GetComponent<LeftHandBehaviour>();
+        leftHand = GameObject.Find("LeftHand").GetComponent<RightHandBehaviour>();
 	}
 	
 	// Update is called once per frame
@@ -46,8 +46,14 @@ public class GameManager : MonoBehaviour {
             else
             {
                 message = "COUNTING DOWN";
-                generator.enabled = true;
-                spiders.enabled = true;
+                if (GameControl.Instance.user.gender)
+                {
+                    spiders.enabled = true;
+                }
+                else
+                {
+                    generator.enabled = true;
+                }
             }
             if (timer > 20)
             {

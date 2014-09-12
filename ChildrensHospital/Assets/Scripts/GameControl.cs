@@ -22,18 +22,13 @@ public class GameControl : MonoBehaviour {
         public DateTime Birthdate;
         public int brookeScale;
         public float UlnaLength;
+        public bool gender; // True = male, false = female
     };
 
     internal int score = 0;
     internal userInformation user;
     internal IDictionary<int, userInformation> playerData = new Dictionary<int, userInformation>();
-    internal enum Characters
-    {
-        Male,
-        Female
-    };
-    private Characters character;
-    internal Characters Character { get { return character; } }
+    
     private int idKey;
     public int IdKey { get { return idKey; } }
 
@@ -59,16 +54,28 @@ public class GameControl : MonoBehaviour {
 
     public string Print()
     {
+        string userGender;
+        if (user.gender)
+        {
+            userGender = "Male";
+        }
+        else
+        {
+            userGender = "Female";
+        }
+
         return ("Name: " + user.Name + " \nID: " + idKey + " \nBirthdate: " + user.Birthdate.Month.ToString() + '/' + user.Birthdate.Day.ToString()
-            + '/' + user.Birthdate.Year.ToString() + " \nBrooke Scale: " + user.brookeScale + " \nUlna Length: " + user.UlnaLength);
+            + '/' + user.Birthdate.Year.ToString() + " \nBrooke Scale: " + user.brookeScale + " \nUlna Length: " + user.UlnaLength
+            + "\nGender: " + userGender);
     }
 
-    public void AddUser(string Name, DateTime Birthdate, int ID, int BrookeScale, float UlnaLength)
+    public void AddUser(string Name, DateTime Birthdate, int ID, int BrookeScale, float UlnaLength, bool Gender)
     {
         user.Name = Name;
         user.Birthdate = Birthdate;
         user.brookeScale = BrookeScale;
         user.UlnaLength = UlnaLength;
+        user.gender = Gender;
         playerData.Add(ID, user);
         Debug.Log(playerData.ContainsKey(ID).ToString());
         idKey = ID;
@@ -102,7 +109,8 @@ public class GameControl : MonoBehaviour {
         foreach(KeyValuePair<int,userInformation> pair in playerData)
         {
             dataString += ("<KEY>" + pair.Key.ToString() + "<NAME>" + pair.Value.Name + "<BIRTHDATE>"
-                + pair.Value.Birthdate.ToString() + "<SCALE>" + pair.Value.brookeScale.ToString() + "<ULNA>" + pair.Value.UlnaLength.ToString() + "<END>\n");
+                + pair.Value.Birthdate.ToString() + "<SCALE>" + pair.Value.brookeScale.ToString() + "<ULNA>" + pair.Value.UlnaLength.ToString() + 
+                "<GENDER>" + pair.Value.gender.ToString() + "<END>\n");
         }
 
         PlayerData data = new PlayerData();
@@ -177,9 +185,13 @@ public class GameControl : MonoBehaviour {
 
                 user.brookeScale = int.Parse(dataString.Substring(index2 + 7, (index1 - index2 - 7)));
 
-                index2 = dataString.IndexOf("<END>");
+                index2 = dataString.IndexOf("<GENDER>");
 
                 user.UlnaLength = float.Parse(dataString.Substring(index1 + 6, (index2 - index1 - 6)));
+
+                index1 = dataString.IndexOf("<END>");
+
+                user.gender = bool.Parse(dataString.Substring(index2 + 8, (index1 - index2 - 8)));
 
                 AddUser(idKey);
 
@@ -189,7 +201,7 @@ public class GameControl : MonoBehaviour {
                 user.brookeScale = 0;
                 user.UlnaLength = 0;
 
-                dataString = dataString.Substring(index2 + 5);
+                dataString = dataString.Substring(index1 + 5);
             }
         }
     }
