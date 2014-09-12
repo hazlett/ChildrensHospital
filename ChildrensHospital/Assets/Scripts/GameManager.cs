@@ -8,14 +8,19 @@ public class GameManager : MonoBehaviour {
     public EndGUI endStats;
     public GemGenerator generator;
     public SpiderSpawner spiders;
-
+    private float endTrial = 20.0f;
+    public float EndTrial {get {return endTrial;} }
     private float timer, nativeVerticalResolution, scaledResolutionWidth, updateGUI;
-    private string message;
+    internal string message;
+    private Volumes volumes;
+    public Volumes Volumes { get { return volumes; } }
     private float lowerLeftVolume, lowerRightVolume, middleLeftVolume, middleRightVolume, upperLeftVolume, upperRightVolume, yRightValue, yLeftValue;
     private bool GUIon;
     public bool DebugMode;
-    private MonoBehaviour rightHand, leftHand;
+    internal MonoBehaviour rightHand, leftHand;
     private GameObject character;
+    private bool playing;
+    public bool Playing { get { return playing; } }
 	void Start () {
         timer = 0.0f;
         nativeVerticalResolution = 1080.0f;
@@ -40,8 +45,11 @@ public class GameManager : MonoBehaviour {
             timer += Time.deltaTime;
             if (timer > 1.5)
             {
-                message = "PLAYING GAME";
-                StartGame();
+                if (!playing)
+                {
+                    message = "PLAYING GAME";
+                    StartGame();
+                }
             }
             else
             {
@@ -67,7 +75,6 @@ public class GameManager : MonoBehaviour {
         else
         {
             message = "SKELETON NOT FOUND";
-            timer = 0.0f;
             return;
         }
         CalculateVolumes();
@@ -105,6 +112,7 @@ public class GameManager : MonoBehaviour {
     }
     private void StartGame()
     {
+        playing = true;
         rightHand.enabled = true;
         leftHand.enabled = true;
     }
@@ -119,7 +127,6 @@ public class GameManager : MonoBehaviour {
         yLeftValue = (float)(Math.Truncate(((LeftHandBehaviour)leftHand).TopVolume * 100f) / 100f);
         yRightValue = (float)(Math.Truncate(((RightHandBehaviour)rightHand).TopVolume * 100f) / 100f);
     }
-
     internal float TotalVolume()
     {
         return (((RightHandBehaviour)rightHand).LowerVolume + ((RightHandBehaviour)rightHand).MiddleVolume + ((RightHandBehaviour)rightHand).UpperVolume

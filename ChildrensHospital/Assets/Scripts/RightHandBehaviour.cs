@@ -84,14 +84,17 @@ public class RightHandBehaviour : MonoBehaviour {
     {
         get { return lowerXMax * lowerZMax * lowerHeight; }
     }
+    public float RelativeLowerVolume { get { return lowerXMax * lowerZMax * 1.0f; } }
     public float MiddleVolume
     {
         get { return middleXMax * middleZMax * middleHeight; }
     }
+    public float RelativeMiddleVolume { get { return middleXMax * middleZMax * 1.0f; } }
     public float UpperVolume
     {
         get { return upperXMax * upperZMax * upperHeight; }
     }
+    public float RelativeUpperVolume { get { return upperXMax * upperZMax * 1.0f; } }
     public float TopVolume
     {
         get { return yMax; }

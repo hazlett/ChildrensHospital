@@ -83,14 +83,17 @@ public class LeftHandBehaviour : MonoBehaviour {
     {
         get { return lowerXMax * lowerZMax * lowerHeight; }
     }
+    public float RelativeLowerVolume { get { return Mathf.Abs(lowerXMax * lowerZMax * 1.0f); } }
     public float MiddleVolume
     {
         get { return middleXMax * middleZMax * middleHeight; }
     }
+    public float RelativeMiddleVolume { get { return Mathf.Abs(middleXMax * middleZMax * 1.0f); } }
     public float UpperVolume
     {
         get { return upperXMax * upperZMax * upperHeight; }
     }
+    public float RelativeUpperVolume { get { return Mathf.Abs(upperXMax * upperZMax * 1.0f); } }
     public float TopVolume
     {
         get { return yMax; }

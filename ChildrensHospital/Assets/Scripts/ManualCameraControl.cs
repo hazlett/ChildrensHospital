@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class ManualCameraControl : MonoBehaviour {
-    public Camera[] cameras;
+    public Camera mainCamera, shoulderCamera;
+    public CameraControl control;
     private int index;
 	void Start () {
         index = 0;
@@ -11,29 +12,20 @@ public class ManualCameraControl : MonoBehaviour {
 	void Update () {
 	    if (Input.GetKeyUp(KeyCode.C))
         {
-            Debug.Log("C Pressed");
-            index++;
-            if (index < cameras.Length)
+            control.gameManager.message = "MANUAL CONTROL";
+            control.enabled = false;
+            shoulderCamera.enabled = !shoulderCamera.enabled;
+            shoulderCamera.gameObject.GetComponent<DebugCamera>().enabled = true;
+        }
+        if (Input.GetKeyUp(KeyCode.M))
+        {
+            control.enabled = !control.enabled;
+            if (control.enabled)
             {
-                if (index != 1)
-                {
-                    Debug.Log("index != 1");
-                    cameras[index - 1].enabled = false;
-                    cameras[index].enabled = true;
-                }
-                else
-                {
-                    Debug.Log("index == 1");
-                    cameras[index].enabled = true;
-                }
+                control.gameManager.message = "AUTOMATING CAMERA";
             }
-            else
-            {
-                Debug.Log("else");
-                cameras[index - 1].enabled = false;
-                index = 0;
-            }
-            Debug.Log("index = " + index);
+            shoulderCamera.gameObject.GetComponent<DebugCamera>().enabled = !control.enabled;
+            control.automating = true;
         }
 	}
 }
