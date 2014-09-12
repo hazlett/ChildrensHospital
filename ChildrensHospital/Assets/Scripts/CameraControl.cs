@@ -21,9 +21,9 @@ public class CameraControl : MonoBehaviour {
 	void Update () {
         if (gameManager.Playing)
         {
-            timer += Time.deltaTime;
             if (automating)
             {
+                timer += Time.deltaTime;
                 if (timer > gameManager.EndTrial * 0.1f)
                 {
                     timer = 0.0f;
@@ -58,10 +58,20 @@ public class CameraControl : MonoBehaviour {
                         shoulderCamera.gameObject.transform.localEulerAngles = new Vector3(0, 45.0f, 0);
                     }
                 }
+                
+                if (gameManager.timer > gameManager.EndTrial * 0.75f)
+                {
+                    automating = false;
+                }
             }
             else
             {
-                if (timer > gameManager.EndTrial * 0.25f)
+                if (gameManager.timer > gameManager.EndTrial * 0.75f)
+                {
+                    gameManager.message = "SESSION ENDS SOON";
+                    shoulderCamera.enabled = false;
+                }
+                else if (gameManager.timer > gameManager.EndTrial * 0.25f)
                 {
                     automating = true;
                     timer = 0;

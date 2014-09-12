@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour {
     public SpiderSpawner spiders;
     private float endTrial = 20.0f;
     public float EndTrial {get {return endTrial;} }
-    private float timer, nativeVerticalResolution, scaledResolutionWidth, updateGUI;
+    internal float timer;
+    private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
     internal string message;
     private Volumes volumes;
     public Volumes Volumes { get { return volumes; } }
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour {
             }
             else
             {
-                message = "COUNTING DOWN";
+                message = "SETTING UP GAME";
                 if (GameControl.Instance.user.gender)
                 {
                     spiders.enabled = true;
@@ -67,9 +68,9 @@ public class GameManager : MonoBehaviour {
             {
                 if (!DebugMode)
                 { 
-                GUIon = false;
-                endStats.enabled = true;
-                    }
+                    GUIon = false;
+                    endStats.enabled = true;
+                }
             }
         }
         else
