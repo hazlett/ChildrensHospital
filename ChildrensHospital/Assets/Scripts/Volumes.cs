@@ -12,6 +12,7 @@ public class Volumes {
     public float UpperRightVolume { get { return upperRightVolume; } }
     public float YLeftValue { get { return yLeftValue; } }
     public float YRightValue { get { return yRightValue; } }
+
     public Volumes (float lowerLeftVolume, float lowerRightVolume, float middleLeftVolume, float middleRightVolume, float upperLeftVolume, float upperRightVolume, float yRightValue, float yLeftValue)
     {
         SetVolumes(lowerLeftVolume, lowerRightVolume, middleLeftVolume, middleRightVolume, upperLeftVolume, upperRightVolume, yLeftValue, yRightValue);
@@ -36,6 +37,21 @@ public class Volumes {
         SetVolumes(lowerLeftVolume, lowerRightVolume, middleLeftVolume, middleRightVolume, upperLeftVolume, upperRightVolume);
         this.yLeftValue = yLeftValue;
         this.yRightValue = yRightValue;
+    }
+
+    public float[] VolumeArray()
+    {
+        float[] volumeArray = new float[8];
+        volumeArray[0] = lowerLeftVolume;
+        volumeArray[1] = lowerRightVolume;
+        volumeArray[2] = middleLeftVolume;
+        volumeArray[3] = middleRightVolume;
+        volumeArray[4] = upperLeftVolume;
+        volumeArray[5] = upperRightVolume;
+        volumeArray[6] = yLeftValue;
+        volumeArray[7] = yRightValue;
+
+        return volumeArray;
     }
 
 }
