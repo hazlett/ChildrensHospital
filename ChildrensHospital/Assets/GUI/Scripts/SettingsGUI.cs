@@ -26,7 +26,6 @@ public class SettingsGUI : MonoBehaviour
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
         birthdate = IDstring = name = ulnaLengthString = "";
-        brookeScale = 1;
         loadSave = "Save";
         this.enabled = false;
     }
@@ -62,6 +61,8 @@ public class SettingsGUI : MonoBehaviour
 
         if (newUser)
         {
+            brookeScale = 1;
+
             // Text fields for new users
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 310, textBoxWidth, textBoxHeight), "Name");
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 200, textBoxWidth, textBoxHeight), "ID (Generated)");
@@ -90,6 +91,8 @@ public class SettingsGUI : MonoBehaviour
         }
         else
         {
+            brookeScale = 0; 
+
             // Text field labels for existing users
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 90, textBoxWidth, textBoxHeight), "Identification Number");
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 20, textBoxWidth, textBoxHeight), "Brooke Scale: " + brookeScale.ToString());
@@ -114,14 +117,11 @@ public class SettingsGUI : MonoBehaviour
 
                 if (saving)
                 {
-                    //GameControl.Instance.AddUser(name, birthDateTime, ID, brookeScale, ulnaLength, male);
-                    //GameControl.Instance.Save();
                     user = new User(name, ID, birthDateTime, brookeScale, ulnaLength, male);
                     user.SaveUser();
                 }
                 else
                 {
-                    //GameControl.Instance.LoadUser(ID, brookeScale, ulnaLength);
                     user.LoadSpecificUser(ID, brookeScale, ulnaLength);
                 }
             }
@@ -141,6 +141,7 @@ public class SettingsGUI : MonoBehaviour
             GUI.Box(new Rect(scaledResolutionWidth / 2 - 380, 15, 760, 100), errorMessage);
         }
 
+        // Limiting entry characters for each specific text field
         name = Regex.Replace(name, @"[^a-zA-Z.]", "");
         birthdate = Regex.Replace(birthdate, @"[^0-9/]", "");
         ulnaLengthString = Regex.Replace(ulnaLengthString, @"[^0-9.]", "");
@@ -222,11 +223,6 @@ public class SettingsGUI : MonoBehaviour
             try
             {
                 ID = int.Parse(IDstring);
-
-                foreach (KeyValuePair<int, User> pair in UserContainer.Instance.UserDictionary)
-                {
-                    Debug.Log(pair.Key.ToString());
-                }
                 
                 if (!UserContainer.Instance.UserDictionary.ContainsKey(ID))
                 {

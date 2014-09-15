@@ -97,7 +97,6 @@ public class SpiderBehavior : MonoBehaviour {
         GameObject particles = (GameObject)Instantiate(Resources.Load<GameObject>("Prefabs/SpiderBlood"));
         particles.transform.position = this.transform.position;
         
-        GameControl.Instance.score += 50;
         GameObject.Destroy(this.gameObject);
     }
 }

@@ -11,7 +11,7 @@ public class User  {
     public string Name;
 
     [XmlAttribute("id")]
-    public int ID;
+    public int ID = -1;
 
     [XmlAttribute("birthdate")]
     public DateTime Birthdate;
@@ -25,8 +25,8 @@ public class User  {
     [XmlAttribute("gender")]
     public bool Gender;
 
-    [XmlAttribute("volume")]
-    public List<Volumes> Volume;
+    [XmlAttribute("Volume Trial")]
+    public List<Volumes> Trial;
 
     internal int numberOfUsers;
 
@@ -34,6 +34,7 @@ public class User  {
     {
         UserContainer.Instance.Users.Add(this);
         UserContainer.Instance.UserDictionary.Add(ID, this);
+        UserContainer.Instance.currentUser = ID;
         UserContainer.Instance.Save(Path.Combine(Application.persistentDataPath, "users.xml"));
     }
 
@@ -46,6 +47,7 @@ public class User  {
 
     public void LoadSpecificUser(int id, int brookeScale, float ulnaLength)
     {
+
         if (UserContainer.Instance.UserDictionary.ContainsKey(id))
         {
             Name = UserContainer.Instance.UserDictionary[id].Name;
@@ -54,7 +56,7 @@ public class User  {
             BrookeScale = UserContainer.Instance.UserDictionary[id].BrookeScale;
             UlnaLength = UserContainer.Instance.UserDictionary[id].UlnaLength;
             Gender = UserContainer.Instance.UserDictionary[id].Gender;
-            Volume = UserContainer.Instance.UserDictionary[id].Volume;
+            Trial = UserContainer.Instance.UserDictionary[id].Trial;
 
             if (brookeScale != 0)
             {
@@ -64,8 +66,11 @@ public class User  {
             {
                 UlnaLength = UserContainer.Instance.UserDictionary[id].UlnaLength = ulnaLength;
             }
+
+            UserContainer.Instance.currentUser = ID;
         }
     }
+
     public User() { }
     public User(string name, int id, DateTime birthdate, int brookeScale, float ulnaLength, bool gender)
     {

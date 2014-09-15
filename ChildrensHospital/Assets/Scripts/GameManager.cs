@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
     internal float timer;
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
     internal string message;
-    private Volumes volumes;
+    private Volumes volumes = new Volumes();
     public Volumes Volumes { get { return volumes; } }
     private float lowerLeftVolume, lowerRightVolume, middleLeftVolume, middleRightVolume, upperLeftVolume, upperRightVolume, yRightValue, yLeftValue;
     private bool GUIon;
@@ -22,12 +22,13 @@ public class GameManager : MonoBehaviour {
     private GameObject character;
     private bool playing;
     public bool Playing { get { return playing; } }
+
 	void Start () {
         timer = 0.0f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
         GUIon = true;
-        if (GameControl.Instance.user.gender)
+        if (UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Gender)
         {
             character = (GameObject)Instantiate(Resources.Load<GameObject>("Male"));
         }
@@ -55,7 +56,7 @@ public class GameManager : MonoBehaviour {
             else
             {
                 message = "SETTING UP GAME";
-                if (GameControl.Instance.user.gender)
+                if (UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Gender)
                 {
                     spiders.enabled = true;
                 }
@@ -64,7 +65,7 @@ public class GameManager : MonoBehaviour {
                     generator.enabled = true;
                 }
             }
-            if (timer > 20)
+            if (timer > endTrial)
             {
                 if (!DebugMode)
                 { 
@@ -99,7 +100,7 @@ public class GameManager : MonoBehaviour {
         if (GUIon)
         {
             GUI.Label(new Rect(scaledResolutionWidth / 2 - 200, 10, 400, 75), message);
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - 200, 85, 400, 75), "Score: " + GameControl.Instance.score);
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - 200, 85, 400, 75), "Score: " );
 
             GUI.Label(new Rect(10, 10, 400, 75), "Lower Left Volume: " + lowerLeftVolume);
             GUI.Label(new Rect(10, 85, 400, 75), "Middle Left Volume: " + middleLeftVolume);
