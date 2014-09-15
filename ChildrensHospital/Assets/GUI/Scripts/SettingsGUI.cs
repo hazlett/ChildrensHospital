@@ -13,7 +13,7 @@ public class SettingsGUI : MonoBehaviour
     private string birthdate, IDstring, name, ulnaLengthString, errorMessage, loadSave;
     private int ID, textBoxWidth = 300, textBoxHeight = 50, brookeScale;
     private DateTime birthDateTime;
-    
+    private Calibration calibration;
     internal bool newUser, invalidInput = false, saving = true, male = false;
 
     // Use this for initialization
@@ -102,6 +102,8 @@ public class SettingsGUI : MonoBehaviour
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution - 255, 300, 100), loadSave))
         {
+            calibration = new Calibration();
+            calibration.Calibrate();
             ApplyChanges();
             if (!invalidInput)
             {
