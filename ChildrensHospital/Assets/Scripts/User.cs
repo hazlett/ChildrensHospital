@@ -25,8 +25,8 @@ public class User  {
     [XmlAttribute("gender")]
     public bool Gender;
 
-    [XmlAttribute("Volume Trial")]
-    public List<Volumes> Trial;
+    [XmlArray("TrialNumber"), XmlArrayItem("Volume")]
+    public List<float[]> Trial = new List<float[]>();
 
     internal int numberOfUsers;
 
@@ -56,7 +56,6 @@ public class User  {
             BrookeScale = UserContainer.Instance.UserDictionary[id].BrookeScale;
             UlnaLength = UserContainer.Instance.UserDictionary[id].UlnaLength;
             Gender = UserContainer.Instance.UserDictionary[id].Gender;
-            Trial = UserContainer.Instance.UserDictionary[id].Trial;
 
             if (brookeScale != 0)
             {

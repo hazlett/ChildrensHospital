@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
     internal float timer;
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
     internal string message;
-    private Volumes volumes = new Volumes();
+    private Volumes volumes;
     public Volumes Volumes { get { return volumes; } }
     private float lowerLeftVolume, lowerRightVolume, middleLeftVolume, middleRightVolume, upperLeftVolume, upperRightVolume, yRightValue, yLeftValue;
     private bool GUIon;
@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour {
     public bool Playing { get { return playing; } }
 
 	void Start () {
+
+        volumes = new Volumes();
         timer = 0.0f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
@@ -120,6 +122,17 @@ public class GameManager : MonoBehaviour {
     }
     private void CalculateVolumes()
     {
+        lowerRightVolume = (float)((RightHandBehaviour)rightHand).LowerVolume;
+        middleRightVolume = (float)((RightHandBehaviour)rightHand).MiddleVolume;
+        upperRightVolume = (float)((RightHandBehaviour)rightHand).UpperVolume;
+        lowerLeftVolume = (float)Mathf.Abs(((LeftHandBehaviour)leftHand).LowerVolume);
+        middleLeftVolume = (float)Mathf.Abs(((LeftHandBehaviour)leftHand).MiddleVolume);
+        upperLeftVolume = (float)Mathf.Abs(((LeftHandBehaviour)leftHand).UpperVolume);
+        yLeftValue = (float)((LeftHandBehaviour)leftHand).TopVolume;
+        yRightValue = (float)((RightHandBehaviour)rightHand).TopVolume;
+
+        volumes.SetVolumes(lowerLeftVolume, lowerRightVolume, middleLeftVolume, middleRightVolume, upperLeftVolume, upperRightVolume, yRightValue, yLeftValue);
+
         lowerRightVolume = (float)(Math.Truncate(((RightHandBehaviour)rightHand).LowerVolume * 100f) / 100f);
         middleRightVolume = (float)(Math.Truncate(((RightHandBehaviour)rightHand).MiddleVolume * 100f) / 100f);
         upperRightVolume = (float)(Math.Truncate(((RightHandBehaviour)rightHand).UpperVolume * 100f) / 100f);
