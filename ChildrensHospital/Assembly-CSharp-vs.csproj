@@ -1,50 +1,49 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.20506</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{846BDA55-7DED-2AA2-1CFA-CD8AAA8398DB}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>
-    </RootNamespace>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <BaseDirectory>Assets</BaseDirectory>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{846BDA55-7DED-2AA2-1CFA-CD8AAA8398DB}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_4_6_0;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>0169</NoWarn>
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_6_0;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>Temp\bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>0169</NoWarn>
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+	<Reference Include="System" />
     <Reference Include="System.XML" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="UnityEngine">
-      <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor">
-      <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
-    </Reference>
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\GUI\Scripts\EndGUI.cs" />
@@ -134,91 +133,6 @@
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
-    <Compile Include="Assets\GUI\Scripts\EndGUI.cs" />
-    <Compile Include="Assets\GUI\Scripts\MainMenuGUI.cs" />
-    <Compile Include="Assets\GUI\Scripts\SettingsGUI.cs" />
-    <Compile Include="Assets\Gem Shader\Example\GemSpawner.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX2_Demo.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX2_AutoRotate.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutodestructWhenNoChildren.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_ShurikenThreadFix.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX\Spawn System\CFX_SpawnSystem.cs" />
-    <Compile Include="Assets\JMO Assets\JMO Assets 3\Cartoon FX\Demo\Assets\CFX3_AutoStopLoopedEffect.cs" />
-    <Compile Include="Assets\JMO Assets\JMO Assets 3\Cartoon FX\Demo\Assets\CFX3_Demo.cs" />
-    <Compile Include="Assets\JMO Assets\JMO Assets 3\Cartoon FX\Demo\Assets\CFX3_Demo_Translate.cs" />
-    <Compile Include="Assets\KinectScripts\AvatarController.cs" />
-    <Compile Include="Assets\KinectScripts\Cubeman\CubemanController.cs" />
-    <Compile Include="Assets\KinectScripts\Extras\LoadMainLevel.cs" />
-    <Compile Include="Assets\KinectScripts\Extras\MouseControl.cs" />
-    <Compile Include="Assets\KinectScripts\Extras\SetSceneAvatars.cs" />
-    <Compile Include="Assets\KinectScripts\Extras\SimpleGestureListener.cs" />
-    <Compile Include="Assets\KinectScripts\Filters\BoneOrientationsConstraint.cs" />
-    <Compile Include="Assets\KinectScripts\Filters\JointPositionsFilter.cs" />
-    <Compile Include="Assets\KinectScripts\InteractionManager.cs" />
-    <Compile Include="Assets\KinectScripts\KinectGestures.cs" />
-    <Compile Include="Assets\KinectScripts\KinectInterop.cs" />
-    <Compile Include="Assets\KinectScripts\KinectManager.cs" />
-    <Compile Include="Assets\KinectScripts\KinectServer.cs" />
-    <Compile Include="Assets\Scripts\CameraControl.cs" />
-    <Compile Include="Assets\Scripts\DebugCamera.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\GemBehavior.cs" />
-    <Compile Include="Assets\Scripts\GemGenerator.cs" />
-    <Compile Include="Assets\Scripts\LeftHandBehaviour.cs" />
-    <Compile Include="Assets\Scripts\ManualCameraControl.cs" />
-    <Compile Include="Assets\Scripts\ProjectionMatrix.cs" />
-    <Compile Include="Assets\Scripts\RightHandBehaviour.cs" />
-    <Compile Include="Assets\Scripts\SpiderBehavior.cs" />
-    <Compile Include="Assets\Scripts\SpiderSpawner.cs" />
-    <Compile Include="Assets\Scripts\User.cs" />
-    <Compile Include="Assets\Scripts\UserContainer.cs" />
-    <Compile Include="Assets\Scripts\Volumes.cs" />
-    <Compile Include="Assets\Toon_Level_Kit\Examples\Script\CarCamera.cs" />
-    <Compile Include="Assets\Toon_Level_Kit\Examples\Script\Fog.cs" />
-    <Compile Include="Assets\Toon_Level_Kit\Examples\Script\Kart.cs" />
-    <Compile Include="Assets\Toon_Level_Kit\Examples\Script\LevelJump.cs" />
-    <Compile Include="Assets\Toon_Level_Kit\Examples\Script\RotateObject.cs" />
-    <Compile Include="Assets\Toon_Level_Kit\Examples\Script\Spawner.cs" />
-    <Compile Include="Assets\Toon_Level_Kit\TLK-Medias\Scripts\BillboardLaub.cs" />
-    <Compile Include="Assets\Toon_Level_Kit\TLK-Medias\Scripts\BillboardLaub1.cs" />
-    <Compile Include="Assets\Toon_Level_Kit\TLK-Medias\Scripts\Butterfly.cs" />
-    <Compile Include="Assets\Toon_Level_Kit\TLK-Medias\Scripts\FpsCounter.cs" />
-    <Compile Include="Assets\Toon_Level_Kit\TLK-Medias\Scripts\HTLiquidSpriteSheet.cs" />
-    <Compile Include="Assets\Toon_Level_Kit\TLK-Medias\Scripts\HTSpriteSheet.cs" />
-    <Compile Include="Assets\Windows\Kinect\KinectWrapper.HandCoded.cs" />
-    <Compile Include="Assets\Windows\Kinect\KinectWrapper.cs" />
-    <None Include="Assets\JMO Assets\JMO Assets 3\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
-    <None Include="Assets\Toon_Level_Kit\TLK-Medias\Shaders\Vegetation.shader" />
-    <None Include="Assets\JMO Assets\Cartoon FX\Shaders (Mobile)\CFXM_MobileParticleAdd_Alpha8.shader" />
-    <None Include="Assets\Toon_Level_Kit\TLK-Medias\Shaders\Rim.shader" />
-    <None Include="Assets\JMO Assets\Cartoon FX\CartoonFX Releases Notes.txt" />
-    <None Include="Assets\JMO Assets\JMO Assets 3\Cartoon FX\CartoonFX3 Readme.txt" />
-    <None Include="Assets\JMO Assets\Cartoon FX\CartoonFX2 Releases Notes.txt" />
-    <None Include="Assets\Toon_Level_Kit\Documentation\Readme.txt" />
-    <None Include="Assets\Toon_Level_Kit\TLK-Medias\Materials\GlassTypeA.shader" />
-    <None Include="Assets\Toon_Level_Kit\TLK-Medias\Shaders\Vegetation-Lightmap.shader" />
-    <None Include="Assets\Toon_Level_Kit\TLK-Medias\Shaders\Glass.shader" />
-    <None Include="Assets\JMO Assets\JMO Assets 3\Cartoon FX\Shaders\CFX3 Invert.shader" />
-    <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX2 Particle Alpha Blend Add.shader" />
-    <None Include="Assets\JMO Assets\Cartoon FX Easy Editor\CartoonFX Easy Editor Readme.txt" />
-    <None Include="Assets\JMO Assets\!JMO Assets Readme.txt" />
-    <None Include="Assets\Toon_Level_Kit\TLK-Medias\Shaders\Leave.shader" />
-    <None Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_WaterWiggle.shader" />
-    <None Include="Assets\Toon_Level_Kit\TLK-Medias\Shaders\Rim2.shader" />
-    <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX2 Particle Alpha Blend Tint.shader" />
-    <None Include="Assets\JMO Assets\Cartoon FX\CartoonFX2 Readme.txt" />
-    <None Include="Assets\Gem Shader\diamond shader.shader" />
-    <None Include="Assets\JMO Assets\Cartoon FX\CartoonFX Readme.txt" />
-    <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -228,4 +142,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  
 </Project>

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MainMenuGUI : MonoBehaviour {
+public class MainMenuGUI : MonoBehaviour
+{
 
     public GUISkin mainMenuSkin;
     public SettingsGUI settings;
@@ -9,18 +10,20 @@ public class MainMenuGUI : MonoBehaviour {
     private string playerStatus;
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
 
-	void Start () {
+    void Start()
+    {
 
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
-	}
+    }
 
-	void Update () {
+    void Update()
+    {
 
         TimedScreenResize();
         SetPlayerStatus();
-	}
+    }
 
     void OnEnable()
     {
@@ -41,18 +44,12 @@ public class MainMenuGUI : MonoBehaviour {
         // Scale the GUI to any resolution based on 1920 x 1080 base resolution
         GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(Screen.height / nativeVerticalResolution, Screen.height / nativeVerticalResolution, 1));
 
-        if ((GameControl.Instance.playerData.ContainsKey(GameControl.Instance.IdKey)) && (GameControl.Instance.IsCalibrated))
+        if (UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID))
         {
             if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 145, 300, 100), "Start Trial"))
             {
                 Application.LoadLevel("Game");
             }
-        }
-        else if ((GameControl.Instance.playerData.ContainsKey(GameControl.Instance.IdKey)) && (!GameControl.Instance.IsCalibrated))
-        {
-            //Show "Calibrating User" on GUI
-            Debug.Log("Calibrating User");
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 145, 300, 100), "Choose User", "GreyStart");
         }
         else
         {
@@ -84,6 +81,6 @@ public class MainMenuGUI : MonoBehaviour {
 
     private void SetPlayerStatus()
     {
-        playerStatus = GameControl.Instance.Print();
+        playerStatus = settings.user.ToString();
     }
 }
