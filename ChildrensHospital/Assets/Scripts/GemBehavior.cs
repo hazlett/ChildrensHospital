@@ -96,6 +96,5 @@ public class GemBehavior : MonoBehaviour {
     {
         this.rigidbody.useGravity = true;
         audioPlay.Play();
-        GameControl.Instance.score += 50;
     }
 }

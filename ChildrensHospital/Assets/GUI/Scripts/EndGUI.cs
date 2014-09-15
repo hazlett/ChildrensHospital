@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.IO;
 
 public class EndGUI : MonoBehaviour
 {
@@ -23,10 +24,6 @@ public class EndGUI : MonoBehaviour
     void Update()
     {
         TimedScreenResize();
-
-        if (saveData)
-        {
-        }
     }
 
     void OnGUI()
@@ -45,15 +42,27 @@ public class EndGUI : MonoBehaviour
 
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 350, nativeVerticalResolution / 2 - 445, 700, 850), "", "Window");
 
-        GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "Results\nName: " + GameControl.Instance.user.Name + "\nVolume: "
-            + (Math.Truncate(gameManager.TotalVolume() * 100f) / 100f).ToString() + "\nOther Stats", "EndBox");
+        GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "Results\nName: " + UserContainer.Instance.UserDictionary
+            [UserContainer.Instance.currentUser].Name + "\nVolume: " + (Math.Truncate(gameManager.TotalVolume() * 100f) / 100f).ToString() + "\nOther Stats", "EndBox");
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 380, 300, 100), "Run Trial Again"))
         {
+            if (saveData)
+            {
+                UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Trial.Add(gameManager.Volumes);
+                UserContainer.Instance.Users[UserContainer.Instance.currentUser].Trial.Add(gameManager.Volumes);
+                UserContainer.Instance.Save(Path.Combine(Application.persistentDataPath, "users.xml"));
+            }
             Application.LoadLevel("Game");
         }
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), "Quit"))
         {
+            if (saveData)
+            {
+                UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Trial.Add(gameManager.Volumes);
+                UserContainer.Instance.Users[UserContainer.Instance.currentUser].Trial.Add(gameManager.Volumes);
+                UserContainer.Instance.Save(Path.Combine(Application.persistentDataPath, "users.xml"));
+            }
             Application.LoadLevel("MainMenu");
         }
 
