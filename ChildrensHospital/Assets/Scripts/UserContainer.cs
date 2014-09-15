@@ -7,6 +7,18 @@ using System.IO;
 [XmlRoot("UserCollection")]
 public class UserContainer {
 
+    private static UserContainer instance = new UserContainer();
+    public static UserContainer Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
+    [XmlIgnore]
+    public Dictionary<int, User> UserDictionary = new Dictionary<int, User>();
+
     [XmlArray("Users"), XmlArrayItem("User")]
     public List<User> Users = new List<User>();
 
@@ -19,12 +31,24 @@ public class UserContainer {
         }
     }
 
-    public static UserContainer Load(string path)
+    public void Load(string path)
     {
         XmlSerializer serializer = new XmlSerializer(typeof(UserContainer));
-        using (FileStream stream = new FileStream(path, FileMode.Create))
+        if (File.Exists(path))
         {
-            return serializer.Deserialize(stream) as UserContainer;
+            using (FileStream stream = new FileStream(path, FileMode.Open))
+            {
+                instance = serializer.Deserialize(stream) as UserContainer;
+            }
+        }
+    }
+
+    public void PopulateDictionary()
+    {
+        for (int i = 0; i < Users.Count; i++)
+        {
+            Debug.Log("Loading");
+            UserDictionary.Add(Users[i].ID, Users[i]);
         }
     }
 }

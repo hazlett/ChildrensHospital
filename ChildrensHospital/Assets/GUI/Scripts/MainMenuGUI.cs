@@ -78,6 +78,6 @@ public class MainMenuGUI : MonoBehaviour {
 
     private void SetPlayerStatus()
     {
-        playerStatus = GameControl.Instance.Print();
+        playerStatus = settings.user.ToString();
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Text.RegularExpressions;
 using System;
+using System.Collections.Generic;
 
 public class SettingsGUI : MonoBehaviour
 {
@@ -13,12 +14,15 @@ public class SettingsGUI : MonoBehaviour
     private string birthdate, IDstring, name, ulnaLengthString, errorMessage, loadSave;
     private int ID, textBoxWidth = 300, textBoxHeight = 50, brookeScale;
     private DateTime birthDateTime;
+
+    internal User user = new User();
     
     internal bool newUser, invalidInput = false, saving = true, male = false;
 
     // Use this for initialization
     void Start()
     {
+        user.LoadUsers();
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
         birthdate = IDstring = name = ulnaLengthString = "";
@@ -112,12 +116,13 @@ public class SettingsGUI : MonoBehaviour
                 {
                     //GameControl.Instance.AddUser(name, birthDateTime, ID, brookeScale, ulnaLength, male);
                     //GameControl.Instance.Save();
-                    User.Instance.AddUser(name, ID, birthDateTime, brookeScale, ulnaLength, male);
-                    User.Instance.SaveUser();
+                    user = new User(name, ID, birthDateTime, brookeScale, ulnaLength, male);
+                    user.SaveUser();
                 }
                 else
                 {
                     //GameControl.Instance.LoadUser(ID, brookeScale, ulnaLength);
+                    user.LoadSpecificUser(ID, brookeScale, ulnaLength);
                 }
             }
         }
@@ -218,7 +223,12 @@ public class SettingsGUI : MonoBehaviour
             {
                 ID = int.Parse(IDstring);
 
-                if (!GameControl.Instance.playerData.ContainsKey(ID))
+                foreach (KeyValuePair<int, User> pair in UserContainer.Instance.UserDictionary)
+                {
+                    Debug.Log(pair.Key.ToString());
+                }
+                
+                if (!UserContainer.Instance.UserDictionary.ContainsKey(ID))
                 {
                     invalidInput = true;
                     errorMessage = "  No user with ID Number: " + IDstring + " exists.\n  Please enter a correct identification number.";
@@ -241,6 +251,6 @@ public class SettingsGUI : MonoBehaviour
 
     private void NewID()
     {
-        ID = User.Instance.numberOfUsers;
+        ID = user.numberOfUsers;
     }
 }
