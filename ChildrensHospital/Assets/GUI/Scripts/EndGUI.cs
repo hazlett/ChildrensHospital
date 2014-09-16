@@ -43,7 +43,7 @@ public class EndGUI : MonoBehaviour
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 350, nativeVerticalResolution / 2 - 445, 700, 850), "", "Window");
 
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "Results\nName: " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Name
-            + "\nVolume: " + (Math.Truncate(gameManager.TotalVolume() * 100f) / 100f).ToString() + "\nOther Stats", "EndBox");
+            + "\nVolume: " + gameManager.TotalVolume().ToString("F4") + " meters cubed\nOther Stats", "EndBox");
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 380, 300, 100), "Run Trial Again"))
         {

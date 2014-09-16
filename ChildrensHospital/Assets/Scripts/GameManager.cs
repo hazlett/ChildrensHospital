@@ -118,25 +118,25 @@ public class GameManager : MonoBehaviour {
 
     private void ShowAvatarVolumes()
     {
-        GUI.Label(new Rect(10, 10, 400, 75), "Lower Left Volume: " + lowerLeftVolume);
-        GUI.Label(new Rect(10, 85, 400, 75), "Middle Left Volume: " + middleLeftVolume);
-        GUI.Label(new Rect(10, 160, 400, 75), "Upper Left Volume: " + upperLeftVolume);
-        GUI.Label(new Rect(10, 235, 400, 75), "Left Y Value: " + yLeftValue);
-        GUI.Label(new Rect(scaledResolutionWidth - 410, 10, 400, 75), "Lower Right Volume: " + lowerRightVolume);
-        GUI.Label(new Rect(scaledResolutionWidth - 410, 85, 400, 75), "Middle Right Volume: " + middleRightVolume);
-        GUI.Label(new Rect(scaledResolutionWidth - 410, 160, 400, 75), "Upper Right Volume: " + upperRightVolume);
-        GUI.Label(new Rect(scaledResolutionWidth - 410, 235, 400, 75), "Right Y Value: " + yRightValue);
+        GUI.Label(new Rect(10, 10, 400, 75), "Lower Left Volume: " + lowerLeftVolume.ToString("F3"));
+        GUI.Label(new Rect(10, 85, 400, 75), "Middle Left Volume: " + middleLeftVolume.ToString("F3"));
+        GUI.Label(new Rect(10, 160, 400, 75), "Upper Left Volume: " + upperLeftVolume.ToString("F3"));
+        GUI.Label(new Rect(10, 235, 400, 75), "Left Y Value: " + yLeftValue.ToString("F3"));
+        GUI.Label(new Rect(scaledResolutionWidth - 410, 10, 400, 75), "Lower Right Volume: " + lowerRightVolume.ToString("F3"));
+        GUI.Label(new Rect(scaledResolutionWidth - 410, 85, 400, 75), "Middle Right Volume: " + middleRightVolume.ToString("F3"));
+        GUI.Label(new Rect(scaledResolutionWidth - 410, 160, 400, 75), "Upper Right Volume: " + upperRightVolume.ToString("F3"));
+        GUI.Label(new Rect(scaledResolutionWidth - 410, 235, 400, 75), "Right Y Value: " + yRightValue.ToString("F3"));
     }
     private void ShowVolumes()
     {
-        GUI.Label(new Rect(10, 10, 400, 75), "Lower Left Volume: " + tracker.LowerLeftVolume());
-        GUI.Label(new Rect(10, 85, 400, 75), "Middle Left Volume: " + tracker.MiddleLeftVolume());
-        GUI.Label(new Rect(10, 160, 400, 75), "Upper Left Volume: " + tracker.UpperLeftVolume());
-        GUI.Label(new Rect(10, 235, 400, 75), "Left Y Value: " + tracker.YLeft);
-        GUI.Label(new Rect(scaledResolutionWidth - 410, 10, 400, 75), "Lower Right Volume: " + tracker.LowerRightVolume());
-        GUI.Label(new Rect(scaledResolutionWidth - 410, 85, 400, 75), "Middle Right Volume: " + tracker.MiddleRightVolume());
-        GUI.Label(new Rect(scaledResolutionWidth - 410, 160, 400, 75), "Upper Right Volume: " + tracker.UpperRightVolume());
-        GUI.Label(new Rect(scaledResolutionWidth - 410, 235, 400, 75), "Right Y Value: " + tracker.YRight);
+        GUI.Label(new Rect(10, 10, 400, 75), "Lower Left Volume: " + tracker.LowerLeftVolume().ToString("F3"));
+        GUI.Label(new Rect(10, 85, 400, 75), "Middle Left Volume: " + tracker.MiddleLeftVolume().ToString("F3"));
+        GUI.Label(new Rect(10, 160, 400, 75), "Upper Left Volume: " + tracker.UpperLeftVolume().ToString("F3"));
+        GUI.Label(new Rect(10, 235, 400, 75), "Left Y Value: " + tracker.YLeft.ToString("F3"));
+        GUI.Label(new Rect(scaledResolutionWidth - 410, 10, 400, 75), "Lower Right Volume: " + tracker.LowerRightVolume().ToString("F3"));
+        GUI.Label(new Rect(scaledResolutionWidth - 410, 85, 400, 75), "Middle Right Volume: " + tracker.MiddleRightVolume().ToString("F3"));
+        GUI.Label(new Rect(scaledResolutionWidth - 410, 160, 400, 75), "Upper Right Volume: " + tracker.UpperRightVolume().ToString("F3"));
+        GUI.Label(new Rect(scaledResolutionWidth - 410, 235, 400, 75), "Right Y Value: " + tracker.YRight.ToString("F3"));
     }
     private void StartGame()
     {
@@ -158,18 +158,7 @@ public class GameManager : MonoBehaviour {
             yLeftValue = (float)((LeftHandBehaviour)leftHand).TopVolume;
             yRightValue = (float)((RightHandBehaviour)rightHand).TopVolume;
 
-            volumes.SetVolumes(lowerLeftVolume, lowerRightVolume, middleLeftVolume, middleRightVolume, upperLeftVolume, upperRightVolume, yRightValue, yLeftValue);
-
-            // Populate GUI Volume Boxes
-            lowerRightVolume = (float)(Math.Truncate(((RightHandBehaviour)rightHand).LowerVolume * 100f) / 100f);
-            middleRightVolume = (float)(Math.Truncate(((RightHandBehaviour)rightHand).MiddleVolume * 100f) / 100f);
-            upperRightVolume = (float)(Math.Truncate(((RightHandBehaviour)rightHand).UpperVolume * 100f) / 100f);
-            lowerLeftVolume = (float)(Math.Truncate(Mathf.Abs(((LeftHandBehaviour)leftHand).LowerVolume) * 100f) / 100f);
-            middleLeftVolume = (float)(Math.Truncate(Mathf.Abs(((LeftHandBehaviour)leftHand).MiddleVolume) * 100f) / 100f);
-            upperLeftVolume = (float)(Math.Truncate(Mathf.Abs(((LeftHandBehaviour)leftHand).UpperVolume) * 100f) / 100f);
-            yLeftValue = (float)(Math.Truncate(((LeftHandBehaviour)leftHand).TopVolume * 100f) / 100f);
-            yRightValue = (float)(Math.Truncate(((RightHandBehaviour)rightHand).TopVolume * 100f) / 100f);
-        }
+            volumes.SetVolumes(lowerLeftVolume, lowerRightVolume, middleLeftVolume, middleRightVolume, upperLeftVolume, upperRightVolume, yRightValue, yLeftValue);}
     }
 
     internal float TotalAvatarVolume()
