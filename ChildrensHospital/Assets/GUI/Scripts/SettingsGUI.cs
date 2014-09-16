@@ -41,6 +41,11 @@ public class SettingsGUI : MonoBehaviour
         if (newUser)
         {
             NewID();
+            brookeScale = 1;
+        }
+        else
+        {
+            brookeScale = 0;
         }
         birthdate = IDstring = name = ulnaLengthString = "";
     }
@@ -61,7 +66,6 @@ public class SettingsGUI : MonoBehaviour
 
         if (newUser)
         {
-            brookeScale = 1;
 
             // Text fields for new users
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 310, textBoxWidth, textBoxHeight), "Name");
@@ -91,14 +95,12 @@ public class SettingsGUI : MonoBehaviour
         }
         else
         {
-            brookeScale = 0;
-
             // Text field labels for existing users
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 90, textBoxWidth, textBoxHeight), "Identification Number");
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 20, textBoxWidth, textBoxHeight), "Brooke Scale: " + brookeScale.ToString());
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 130, textBoxWidth, textBoxHeight), "Ulna Length");
 
-            // Text fields for exitsting users
+            // Text fields for existing users
             IDstring = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 55, textBoxWidth, textBoxHeight), IDstring);
             brookeScale = (int)GUI.HorizontalSlider(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 55, textBoxWidth, textBoxHeight), brookeScale, 0, 6);
             ulnaLengthString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 165, textBoxWidth, textBoxHeight), ulnaLengthString);

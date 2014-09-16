@@ -49,17 +49,11 @@ public class UserContainer {
 
     public void PopulateDictionary()
     {
+        Debug.Log("Populating Dictionary");
         for (int i = 0; i < Users.Count; i++)
         {
+            Debug.Log(Users[i].ID);
             UserDictionary.Add(Users[i].ID, Users[i]);
-        }
-    }
-
-    public void UpdateSaveList()
-    {
-        for (int i = 0; i < Users.Count; i++)
-        {
-            Users[i] = UserDictionary[i];
         }
     }
 }
