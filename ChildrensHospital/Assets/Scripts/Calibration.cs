@@ -18,7 +18,7 @@ public class Calibration {
         {
             calibration = new Process();
             calibration.StartInfo.FileName = fileName;
-            calibration.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+            calibration.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             calibration.EnableRaisingEvents = true;
             calibration.Exited += calibration_Exited;
             calibration.Start();
