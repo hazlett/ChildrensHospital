@@ -61,7 +61,7 @@ public class VolumeTracker {
     }
     public void DebugExtremas()
     {
-        using (StreamWriter file = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Extremas.txt"))
+        using (StreamWriter file = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Extremas.txt", true))
         {
             file.WriteLine("LowerXLeft: " + lowerXLeft);
             file.WriteLine("LowerXRight: " + lowerXRight);
