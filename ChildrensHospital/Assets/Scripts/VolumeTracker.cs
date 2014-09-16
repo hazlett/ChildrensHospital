@@ -156,8 +156,8 @@ public class VolumeTracker {
     }
     public float LowerLeftVolume() { return Mathf.Abs(lowerXLeft * lowerZLeft * lowerBound); }
     public float LowerRightVolume() { return Mathf.Abs(lowerXRight * lowerZRight * lowerBound); }
-    public float MiddleLeftVolume() { return Mathf.Abs(middleXLeft * middleZLeft * upperBound - lowerBound); }
-    public float MiddleRightVolume() { return Mathf.Abs(middleXRight * middleZRight * upperBound - lowerBound); }
+    public float MiddleLeftVolume() { return Mathf.Abs(middleXLeft * middleZLeft * (upperBound - lowerBound)); }
+    public float MiddleRightVolume() { return Mathf.Abs(middleXRight * middleZRight * (upperBound - lowerBound)); }
     public float UpperLeftVolume() {
         if (yLeft > upperBound)
             return Mathf.Abs(upperXLeft * upperZLeft * (yLeft - upperBound));
