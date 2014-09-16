@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour {
                 generator.enabled = true;
                 
             }
-            if (timer > endTrial)
+            if (timer > UserContainer.Instance.time)
             {
                 if (!DebugMode)
                 { 

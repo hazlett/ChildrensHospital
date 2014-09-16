@@ -28,6 +28,7 @@ public class User  {
     [XmlArray("TrialNumber"), XmlArrayItem("Volume")]
     public List<float[]> Trial = new List<float[]>();
 
+    [XmlIgnore]
     internal int numberOfUsers;
 
     public void SaveUser()

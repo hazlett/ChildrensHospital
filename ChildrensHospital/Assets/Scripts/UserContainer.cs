@@ -20,7 +20,7 @@ public class UserContainer {
     public Dictionary<int, User> UserDictionary = new Dictionary<int, User>();
 
     [XmlIgnore]
-    public int currentUser;
+    public int currentUser, time;
 
     [XmlArray("Users"), XmlArrayItem("User")]
     public List<User> Users = new List<User>();
