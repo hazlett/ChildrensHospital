@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Text.RegularExpressions;
+using System;
 
 public class MainMenuGUI : MonoBehaviour
 {
@@ -7,12 +9,18 @@ public class MainMenuGUI : MonoBehaviour
     public GUISkin mainMenuSkin;
     public SettingsGUI settings;
 
-    private string playerStatus;
+    private string playerStatus, timeString, errorMessage;
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
+<<<<<<< HEAD
     private bool manualCalibration = false;
+=======
+    private bool invalidInput = false;
+
+>>>>>>> origin/master
     void Start()
     {
-
+        errorMessage = "Invalid trial length. \nPlease enter a trial length between 0 and 120.";
+        timeString = "30";
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
@@ -46,8 +54,9 @@ public class MainMenuGUI : MonoBehaviour
 
         if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (GameControl.Instance.IsCalibrated))
         {
-            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 145, 300, 100), "Start Trial"))
+            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 175, 300, 100), "Start Trial"))
             {
+<<<<<<< HEAD
                 if (manualCalibration)
                 {
                     Debug.Log("Manual Transform Matrix: " + GameControl.Instance.ReadCalibration(Application.dataPath + @"/../ManualCalibration/" + "ChessBoardWCS.exe"));
@@ -57,6 +66,13 @@ public class MainMenuGUI : MonoBehaviour
                     Debug.Log("Auto Transform Matrix: " + GameControl.Instance.ReadCalibration());
                 }
                 Application.LoadLevel("Game");
+=======
+                CheckTime();
+                if (!invalidInput)
+                {
+                    Application.LoadLevel("Game");
+                }
+>>>>>>> origin/master
             }
         }
         else if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (!GameControl.Instance.IsCalibrated))
@@ -70,22 +86,33 @@ public class MainMenuGUI : MonoBehaviour
         }
         else
         {
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 145, 300, 100), "Choose User", "GreyStart");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 175, 300, 100), "Choose User", "GreyStart");
         }
-        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 35, 300, 100), "New User"))
+        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 70, 300, 100), "New User"))
         {
             settings.newUser = true;
             settings.enabled = true;
             this.enabled = false;
         }
-        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 75, 300, 100), "Existing User"))
+        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 35, 300, 100), "Existing User"))
         {
             settings.newUser = false;
             settings.enabled = true;
             this.enabled = false;
         }
 
+        GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 150, 300, 50), "Trial Length (sec)");
+        timeString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 185, 300, 50), timeString);
+
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution - 300, 540, 270), "Current User\n" + playerStatus);
+
+        // Error box
+        if (invalidInput)
+        {
+            GUI.Box(new Rect(scaledResolutionWidth / 2 - 380, 15, 760, 100), errorMessage);
+        }
+
+        timeString = Regex.Replace(timeString, @"[^0-9]", "");
     }
 
     private void TimedScreenResize()
@@ -99,5 +126,22 @@ public class MainMenuGUI : MonoBehaviour
     private void SetPlayerStatus()
     {
         playerStatus = settings.user.ToString();
+    }
+
+    private void CheckTime()
+    {
+        try
+        {
+            UserContainer.Instance.time = int.Parse(timeString);
+
+            if (UserContainer.Instance.time < 0 || UserContainer.Instance.time > 120)
+            {
+                invalidInput = true;
+            }
+        }
+        catch (Exception)
+        {
+            invalidInput = true;
+        }
     }
 }

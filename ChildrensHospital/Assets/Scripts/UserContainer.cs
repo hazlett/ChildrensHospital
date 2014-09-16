@@ -20,7 +20,7 @@ public class UserContainer {
     public Dictionary<int, User> UserDictionary = new Dictionary<int, User>();
 
     [XmlIgnore]
-    public int currentUser;
+    public int currentUser, time;
 
     [XmlArray("Users"), XmlArrayItem("User")]
     public List<User> Users = new List<User>();
@@ -50,17 +50,11 @@ public class UserContainer {
 
     public void PopulateDictionary()
     {
+        Debug.Log("Populating Dictionary");
         for (int i = 0; i < Users.Count; i++)
         {
+            Debug.Log(Users[i].ID);
             UserDictionary.Add(Users[i].ID, Users[i]);
-        }
-    }
-
-    public void UpdateSaveList()
-    {
-        for (int i = 0; i < Users.Count; i++)
-        {
-            Users[i] = UserDictionary[i];
         }
     }
 }

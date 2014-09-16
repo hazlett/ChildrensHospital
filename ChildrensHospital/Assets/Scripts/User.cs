@@ -7,27 +7,28 @@ using System.IO;
 
 public class User  {
 
-    [XmlAttribute("name")]
+    [XmlAttribute("Name")]
     public string Name;
 
-    [XmlAttribute("id")]
+    [XmlAttribute("ID")]
     public int ID = -1;
 
-    [XmlAttribute("birthdate")]
+    [XmlAttribute("Birthdate")]
     public DateTime Birthdate;
 
-    [XmlAttribute("brookeScale")]
+    [XmlAttribute("BrookeScale")]
     public int BrookeScale;
 
-    [XmlAttribute("ulnaLength")]
+    [XmlAttribute("UlnaLength")]
     public float UlnaLength;
 
-    [XmlAttribute("gender")]
+    [XmlAttribute("Gender")]
     public bool Gender;
 
-    [XmlAttribute("Volume Trial")]
-    public List<Volumes> Trial;
+    [XmlArray("TrialNumber"), XmlArrayItem("Volume")]
+    public List<float[]> Trial = new List<float[]>();
 
+    [XmlIgnore]
     internal int numberOfUsers;
 
     public void SaveUser()
@@ -50,21 +51,20 @@ public class User  {
 
         if (UserContainer.Instance.UserDictionary.ContainsKey(id))
         {
-            Name = UserContainer.Instance.UserDictionary[id].Name;
+            Name = UserContainer.Instance.Users[id].Name;
             ID = id;
-            Birthdate = UserContainer.Instance.UserDictionary[id].Birthdate;
-            BrookeScale = UserContainer.Instance.UserDictionary[id].BrookeScale;
-            UlnaLength = UserContainer.Instance.UserDictionary[id].UlnaLength;
-            Gender = UserContainer.Instance.UserDictionary[id].Gender;
-            Trial = UserContainer.Instance.UserDictionary[id].Trial;
+            Birthdate = UserContainer.Instance.Users[id].Birthdate;
+            BrookeScale = UserContainer.Instance.Users[id].BrookeScale;
+            UlnaLength = UserContainer.Instance.Users[id].UlnaLength;
+            Gender = UserContainer.Instance.Users[id].Gender;
 
             if (brookeScale != 0)
             {
-                BrookeScale = UserContainer.Instance.UserDictionary[id].BrookeScale = brookeScale;
+                BrookeScale = UserContainer.Instance.Users[id].BrookeScale = brookeScale;
             }
             if (ulnaLength != 0)
             {
-                UlnaLength = UserContainer.Instance.UserDictionary[id].UlnaLength = ulnaLength;
+                UlnaLength = UserContainer.Instance.Users[id].UlnaLength = ulnaLength;
             }
 
             UserContainer.Instance.currentUser = ID;
