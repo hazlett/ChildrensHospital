@@ -344,6 +344,26 @@ public class KinectManager : MonoBehaviour
 		
 		return Vector3.zero;
 	}
+
+    public Vector3 GetJointKinectPosition(Int64 userId, int joint)
+    {
+        if (dictUserIdToIndex.ContainsKey(userId))
+        {
+            int index = dictUserIdToIndex[userId];
+
+            if (index >= 0 && index < KinectInterop.Constants.BodyCount &&
+                bodyFrame.bodyData[index].bIsTracked != 0)
+            {
+                if (joint >= 0 && joint < KinectInterop.Constants.JointCount)
+                {
+                    KinectInterop.JointData jointData = bodyFrame.bodyData[index].joint[joint];
+                    return jointData.kinectPos;
+                }
+            }
+        }
+
+        return Vector3.zero;
+    }
 	
 	// returns the joint direction of the specified user, relative to the parent joint
 	public Vector3 GetJointDirection(Int64 userId, int joint, bool flipX, bool flipZ)

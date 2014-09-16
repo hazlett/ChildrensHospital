@@ -21,9 +21,12 @@ public class GameManager : MonoBehaviour {
     internal MonoBehaviour rightHand, leftHand;
     private GameObject character;
     private bool playing;
+    private VolumeTracker tracker;
+    public VolumeTracker Tracker { get { return tracker; } }
     public bool Playing { get { return playing; } }
 
 	void Start () {
+        tracker = new VolumeTracker();
         timer = 0.0f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
@@ -79,7 +82,8 @@ public class GameManager : MonoBehaviour {
             message = "SKELETON NOT FOUND";
             return;
         }
-        CalculateVolumes();
+        tracker.Update();
+        volumes = tracker.GetVolumes();
         TimedScreenResize();
 	}
     void OnGUI()
@@ -102,15 +106,32 @@ public class GameManager : MonoBehaviour {
             GUI.Label(new Rect(scaledResolutionWidth / 2 - 200, 10, 400, 75), message);
             GUI.Label(new Rect(scaledResolutionWidth / 2 - 200, 85, 400, 75), "Score: " );
 
-            GUI.Label(new Rect(10, 10, 400, 75), "Lower Left Volume: " + lowerLeftVolume);
-            GUI.Label(new Rect(10, 85, 400, 75), "Middle Left Volume: " + middleLeftVolume);
-            GUI.Label(new Rect(10, 160, 400, 75), "Upper Left Volume: " + upperLeftVolume);
-            GUI.Label(new Rect(10, 235, 400, 75), "Left Y Value: " + yLeftValue);
-            GUI.Label(new Rect(scaledResolutionWidth - 410, 10, 400, 75), "Lower Right Volume: " + lowerRightVolume);
-            GUI.Label(new Rect(scaledResolutionWidth - 410, 85, 400, 75), "Middle Right Volume: " + middleRightVolume);
-            GUI.Label(new Rect(scaledResolutionWidth - 410, 160, 400, 75), "Upper Right Volume: " + upperRightVolume);
-            GUI.Label(new Rect(scaledResolutionWidth - 410, 235, 400, 75), "Right Y Value: " + yRightValue);
+            //ShowAvatarVolumes();
+            ShowVolumes();
         }
+    }
+
+    private void ShowAvatarVolumes()
+    {
+        GUI.Label(new Rect(10, 10, 400, 75), "Lower Left Volume: " + lowerLeftVolume);
+        GUI.Label(new Rect(10, 85, 400, 75), "Middle Left Volume: " + middleLeftVolume);
+        GUI.Label(new Rect(10, 160, 400, 75), "Upper Left Volume: " + upperLeftVolume);
+        GUI.Label(new Rect(10, 235, 400, 75), "Left Y Value: " + yLeftValue);
+        GUI.Label(new Rect(scaledResolutionWidth - 410, 10, 400, 75), "Lower Right Volume: " + lowerRightVolume);
+        GUI.Label(new Rect(scaledResolutionWidth - 410, 85, 400, 75), "Middle Right Volume: " + middleRightVolume);
+        GUI.Label(new Rect(scaledResolutionWidth - 410, 160, 400, 75), "Upper Right Volume: " + upperRightVolume);
+        GUI.Label(new Rect(scaledResolutionWidth - 410, 235, 400, 75), "Right Y Value: " + yRightValue);
+    }
+    private void ShowVolumes()
+    {
+        GUI.Label(new Rect(10, 10, 400, 75), "Lower Left Volume: " + tracker.LowerLeftVolume());
+        GUI.Label(new Rect(10, 85, 400, 75), "Middle Left Volume: " + tracker.MiddleLeftVolume());
+        GUI.Label(new Rect(10, 160, 400, 75), "Upper Left Volume: " + tracker.UpperLeftVolume());
+        GUI.Label(new Rect(10, 235, 400, 75), "Left Y Value: " + tracker.YLeft);
+        GUI.Label(new Rect(scaledResolutionWidth - 410, 10, 400, 75), "Lower Right Volume: " + tracker.LowerRightVolume());
+        GUI.Label(new Rect(scaledResolutionWidth - 410, 85, 400, 75), "Middle Right Volume: " + tracker.MiddleRightVolume());
+        GUI.Label(new Rect(scaledResolutionWidth - 410, 160, 400, 75), "Upper Right Volume: " + tracker.UpperRightVolume());
+        GUI.Label(new Rect(scaledResolutionWidth - 410, 235, 400, 75), "Right Y Value: " + tracker.YRight);
     }
     private void StartGame()
     {
@@ -118,7 +139,7 @@ public class GameManager : MonoBehaviour {
         rightHand.enabled = true;
         leftHand.enabled = true;
     }
-    private void CalculateVolumes()
+    private void CalculateAvatarVolumes()
     {
         lowerRightVolume = (float)(Math.Truncate(((RightHandBehaviour)rightHand).LowerVolume * 100f) / 100f);
         middleRightVolume = (float)(Math.Truncate(((RightHandBehaviour)rightHand).MiddleVolume * 100f) / 100f);
@@ -129,11 +150,18 @@ public class GameManager : MonoBehaviour {
         yLeftValue = (float)(Math.Truncate(((LeftHandBehaviour)leftHand).TopVolume * 100f) / 100f);
         yRightValue = (float)(Math.Truncate(((RightHandBehaviour)rightHand).TopVolume * 100f) / 100f);
     }
-    internal float TotalVolume()
+
+    internal float TotalAvatarVolume()
     {
         return (((RightHandBehaviour)rightHand).LowerVolume + ((RightHandBehaviour)rightHand).MiddleVolume + ((RightHandBehaviour)rightHand).UpperVolume
             + Mathf.Abs(((LeftHandBehaviour)leftHand).LowerVolume) + Mathf.Abs(((LeftHandBehaviour)leftHand).MiddleVolume) + Mathf.Abs(((LeftHandBehaviour)leftHand).UpperVolume)
             + ((LeftHandBehaviour)leftHand).TopVolume + ((RightHandBehaviour)rightHand).TopVolume);
+    }
+    internal float TotalVolume()
+    {
+        return (tracker.LowerLeftVolume() + tracker.LowerRightVolume() 
+            + tracker.MiddleLeftVolume() + tracker.MiddleRightVolume() 
+            + tracker.UpperLeftVolume() + tracker.UpperRightVolume());
     }
 
     private void TimedScreenResize()

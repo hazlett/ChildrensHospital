@@ -6,14 +6,8 @@ using System.IO;
 
 public class Calibration {
 
-    private Matrix4x4 transform;
-    private float timer;
     private Process calibration;
-    public Calibration()
-    {
-        transform = new Matrix4x4();
-        timer = 0.0f;
-    }
+    private bool forcedKill;
     public bool Calibrate()
     {
         return Calibrate(Application.dataPath + @"/../Calibration/" + "ChessBoardWCS.exe");
@@ -23,18 +17,13 @@ public class Calibration {
         try
         {
             calibration = new Process();
-            //calibration.StartInfo.UseShellExecute = false;
             calibration.StartInfo.FileName = fileName;
-            //calibration.StartInfo.CreateNoWindow = true;
-            calibration.Start();
-            calibration.ErrorDataReceived += calibration_ErrorDataReceived;
-            calibration.Disposed += calibration_Disposed;
+            calibration.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+            calibration.EnableRaisingEvents = true;
             calibration.Exited += calibration_Exited;
-            calibration.OutputDataReceived += calibration_OutputDataReceived;
+            calibration.Start();
+
             UnityEngine.Debug.Log("Calibration Started");
-            calibration.WaitForExit(5000);
-            calibration.CloseMainWindow();
-            calibration.Dispose();
             return true;
         }
         catch (Exception e)
@@ -43,29 +32,33 @@ public class Calibration {
             return false;
         }
     }
-
-    void calibration_ErrorDataReceived(object sender, DataReceivedEventArgs e)
+    public void Kill()
     {
-        UnityEngine.Debug.Log("Calibration Error Data");
-        GameControl.Instance.Calibrated();
+        try
+        {
+            forcedKill = true;
+            calibration.Kill();
+        }
+        catch (Exception) { }
     }
-
-    void calibration_Disposed(object sender, EventArgs e)
+    private void TimedCalibrate()
     {
-        UnityEngine.Debug.Log("Calibration Disposed");
-        GameControl.Instance.Calibrated();
-    }
-
-    void calibration_OutputDataReceived(object sender, DataReceivedEventArgs e)
-    {
-        UnityEngine.Debug.Log("Calibration Data Received");
+        UnityEngine.Debug.Log("Timed Calibrate");
         GameControl.Instance.Calibrated();
     }
 
     void calibration_Exited(object sender, EventArgs e)
     {
-        UnityEngine.Debug.Log("Calibration Exited");
-        GameControl.Instance.Calibrated();
+        if (!forcedKill)
+        {
+            UnityEngine.Debug.Log("Calibration Exited");
+            GameControl.Instance.Calibrated();
+        }
+        else
+        {
+            UnityEngine.Debug.Log("Calibration Forced Kill");
+            forcedKill = false;
+        }
     }
    
 

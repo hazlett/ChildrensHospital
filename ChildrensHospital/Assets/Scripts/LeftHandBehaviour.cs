@@ -7,9 +7,11 @@ public class LeftHandBehaviour : MonoBehaviour {
     public float lowerXMax, middleXMax, upperXMax, yMax, lowerZMax, middleZMax, upperZMax, lowerHeight, middleHeight, upperHeight;
     private GameObject LowerLeft, MiddleLeft, UpperLeft, TopLeft, LowerFarLeft, MiddleFarLeft, UpperFarLeft;
     private float scale, lerpScale = 0.5f;
+    private VolumeTracker tracker;
 
     void Start()
     {
+        tracker = GameObject.Find("GameManager").GetComponent<GameManager>().Tracker;
         scale = 3.0f;
         LowerLeft = GameObject.Find("LowerLeft");
         MiddleLeft = GameObject.Find("MiddleLeft");
@@ -34,7 +36,7 @@ public class LeftHandBehaviour : MonoBehaviour {
 
     void Update()
     {
-        if (gameObject.transform.position.y < LowerYBound)
+        if (tracker.BoxStateLeft == VolumeTracker.BoxStates.LOWER)
         {
             if (gameObject.transform.position.z > lowerZMax)
             {
@@ -45,7 +47,7 @@ public class LeftHandBehaviour : MonoBehaviour {
                 lowerXMax = gameObject.transform.position.x;
             }
         }
-        else if ((gameObject.transform.position.y >= LowerYBound) && (gameObject.transform.position.y < UpperYBound))
+        else if (tracker.BoxStateLeft == VolumeTracker.BoxStates.MIDDLE)
         {
             if (gameObject.transform.position.z > middleZMax)
             {
@@ -56,7 +58,7 @@ public class LeftHandBehaviour : MonoBehaviour {
                 middleXMax = gameObject.transform.position.x;
             }
         }
-        else if (gameObject.transform.position.y >= UpperYBound)
+        else if (tracker.BoxStateLeft == VolumeTracker.BoxStates.UPPER)
         {
             if (gameObject.transform.position.z > upperZMax)
             {

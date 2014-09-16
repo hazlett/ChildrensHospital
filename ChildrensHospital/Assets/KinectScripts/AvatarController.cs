@@ -93,6 +93,7 @@ public class AvatarController : MonoBehaviour
 	
     public void Start()
     {	
+        
 		// Holds our bones for later.
 		bones = new Transform[25];
 		

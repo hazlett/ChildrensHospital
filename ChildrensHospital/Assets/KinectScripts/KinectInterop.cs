@@ -745,7 +745,8 @@ public class KinectInterop
 						{
 							Windows.Kinect.Joint joint = body.Joints[(JointType)j];
 							JointData jointData = bodyFrame.bodyData[i].joint[j];
-
+                            
+                            
 							jointData.jointType = (JointType)j;
 							jointData.trackingState = joint.TrackingState;
 

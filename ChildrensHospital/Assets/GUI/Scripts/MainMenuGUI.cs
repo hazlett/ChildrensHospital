@@ -9,7 +9,7 @@ public class MainMenuGUI : MonoBehaviour
 
     private string playerStatus;
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
-
+    private bool manualCalibration = false;
     void Start()
     {
 
@@ -44,11 +44,28 @@ public class MainMenuGUI : MonoBehaviour
         // Scale the GUI to any resolution based on 1920 x 1080 base resolution
         GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(Screen.height / nativeVerticalResolution, Screen.height / nativeVerticalResolution, 1));
 
-        if (UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID))
+        if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (GameControl.Instance.IsCalibrated))
         {
             if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 145, 300, 100), "Start Trial"))
             {
+                if (manualCalibration)
+                {
+                    Debug.Log("Manual Transform Matrix: " + GameControl.Instance.ReadCalibration(Application.dataPath + @"/../ManualCalibration/" + "ChessBoardWCS.exe"));
+                }
+                else
+                {
+                    Debug.Log("Auto Transform Matrix: " + GameControl.Instance.ReadCalibration());
+                }
                 Application.LoadLevel("Game");
+            }
+        }
+        else if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (!GameControl.Instance.IsCalibrated))
+        {
+            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 145, 300, 100), "Manual Calibration"))
+            {
+                Debug.Log("Manual Calibrating");
+                settings.calibration.Kill();
+                manualCalibration = settings.calibration.Calibrate(Application.dataPath + @"/../ManualCalibration/" + "ChessBoardWCS.exe");
             }
         }
         else

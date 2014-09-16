@@ -85,6 +85,7 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GemBehavior.cs" />
      <Compile Include="Assets\Scripts\GemGenerator.cs" />
+     <Compile Include="Assets\Scripts\KinectDebug.cs" />
      <Compile Include="Assets\Scripts\LeftHandBehaviour.cs" />
      <Compile Include="Assets\Scripts\ManualCameraControl.cs" />
      <Compile Include="Assets\Scripts\ProjectionMatrix.cs" />
@@ -93,6 +94,7 @@
      <Compile Include="Assets\Scripts\SpiderSpawner.cs" />
      <Compile Include="Assets\Scripts\User.cs" />
      <Compile Include="Assets\Scripts\UserContainer.cs" />
+     <Compile Include="Assets\Scripts\VolumeTracker.cs" />
      <Compile Include="Assets\Scripts\Volumes.cs" />
      <Compile Include="Assets\Toon_Level_Kit\Examples\Script\CarCamera.cs" />
      <Compile Include="Assets\Toon_Level_Kit\Examples\Script\Fog.cs" />

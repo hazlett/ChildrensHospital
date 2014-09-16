@@ -25,14 +25,13 @@ public class GameControl : MonoBehaviour {
         public bool gender; // True = male, false = female
         public List<float> volumeTotal;
     };
-    private Matrix4x4 transformMatrix;
-    public Matrix4x4 TransformMatrix { get { return transformMatrix; } }
     private bool isCalibrated = false;
     public bool IsCalibrated { get { return isCalibrated; } }
     internal int score = 0;
     internal userInformation user;
     internal IDictionary<int, userInformation> playerData = new Dictionary<int, userInformation>();
-    
+    private Matrix4x4 transformMatrix;
+    public Matrix4x4 TransformMatrix { get { return transformMatrix; } }
     private int idKey;
     public int IdKey { get { return idKey; } }
 
@@ -156,9 +155,8 @@ public class GameControl : MonoBehaviour {
     public void Calibrated()
     {
         isCalibrated = true;
-        transformMatrix = ReadCalibration();
     }
-    private Matrix4x4 ReadCalibration()
+    internal Matrix4x4 ReadCalibration(string fileName)
     {
         Matrix4x4 matrixCalibration = new Matrix4x4();
         try
@@ -184,7 +182,12 @@ public class GameControl : MonoBehaviour {
         {
             UnityEngine.Debug.Log("Error getting transform: " + e.Message);
         }
+        transformMatrix = matrixCalibration;
         return matrixCalibration;
+    }
+    internal Matrix4x4 ReadCalibration()
+    {
+        return ReadCalibration(Application.dataPath + @"/../transform_matrix.txt");
     }
     // Loads all users and stores them in the dictionary
     public void LoadUsers()

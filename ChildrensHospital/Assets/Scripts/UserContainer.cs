@@ -40,6 +40,7 @@ public class UserContainer {
         XmlSerializer serializer = new XmlSerializer(typeof(UserContainer));
         if (File.Exists(path))
         {
+            Debug.Log(path);
             using (FileStream stream = new FileStream(path, FileMode.Open))
             {
                 instance = serializer.Deserialize(stream) as UserContainer;
