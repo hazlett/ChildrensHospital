@@ -11,12 +11,8 @@ public class MainMenuGUI : MonoBehaviour
 
     private string playerStatus, timeString, errorMessage;
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
-<<<<<<< HEAD
-    private bool manualCalibration = false;
-=======
-    private bool invalidInput = false;
+    private bool manualCalibration = false, invalidInput = false;
 
->>>>>>> origin/master
     void Start()
     {
         errorMessage = "Invalid trial length. \nPlease enter a trial length between 0 and 120.";
@@ -56,7 +52,6 @@ public class MainMenuGUI : MonoBehaviour
         {
             if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 175, 300, 100), "Start Trial"))
             {
-<<<<<<< HEAD
                 if (manualCalibration)
                 {
                     Debug.Log("Manual Transform Matrix: " + GameControl.Instance.ReadCalibration(Application.dataPath + @"/../ManualCalibration/" + "ChessBoardWCS.exe"));
@@ -65,14 +60,11 @@ public class MainMenuGUI : MonoBehaviour
                 {
                     Debug.Log("Auto Transform Matrix: " + GameControl.Instance.ReadCalibration());
                 }
-                Application.LoadLevel("Game");
-=======
                 CheckTime();
                 if (!invalidInput)
                 {
                     Application.LoadLevel("Game");
                 }
->>>>>>> origin/master
             }
         }
         else if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (!GameControl.Instance.IsCalibrated))
