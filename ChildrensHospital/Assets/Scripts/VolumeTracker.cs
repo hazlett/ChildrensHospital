@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System;
 
@@ -61,22 +62,35 @@ public class VolumeTracker {
     }
     public void DebugExtremas()
     {
-        using (StreamWriter file = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Extremas.txt", true))
+        List<string> lines = new List<string>();
+        try
         {
-            file.WriteLine("LowerXLeft: " + lowerXLeft);
-            file.WriteLine("LowerXRight: " + lowerXRight);
-            file.WriteLine("MiddleXLeft: " + middleXLeft);
-            file.WriteLine("MiddleXRight: " + middleXRight);
-            file.WriteLine("UpperXLeft: " + upperXLeft);
-            file.WriteLine("UpperXRight: " + upperXRight);
-            file.WriteLine("LowerZLeft: " + lowerZLeft);
-            file.WriteLine("LowerZRight: " + lowerZRight);
-            file.WriteLine("MiddleLeft: " + middleZLeft);
-            file.WriteLine("MiddleZRight: " + middleZRight);
-            file.WriteLine("UpperZLeft: " + upperZLeft);
-            file.WriteLine("UpperZRight: " + upperZRight);
-            file.WriteLine("YLeft: " + yLeft);
-            file.WriteLine("YRight: " + yRight);
+            StreamReader reader = new StreamReader(File.OpenRead(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Extremas.csv"));       
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                if (!line.Contains("LowerXLeft"))
+                {
+                    lines.Add(line);
+                }
+            }
+            reader.Close();
+        }
+        catch (Exception)
+        {
+
+        }
+        using (StreamWriter file = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Extremas.csv"))
+        {
+            if (lines.Count == 0)
+            {
+                file.WriteLine("LowerXLeft, LowerXRight, MiddleXLeft, MiddleXRight, UpperXLeft, UpperXRight, LowerZLeft, LowerZRight, MiddleZLeft, MiddleZRight, UpperZLeft, UpperZRight, YLeft, YRight");
+            }
+            foreach(string line in lines)
+            {
+                file.WriteLine(line);
+            }
+            file.WriteLine(lowerXLeft.ToString("G8") + "," +  lowerXRight.ToString("G8") + "," +  middleXLeft.ToString("G8") + "," +  middleXRight.ToString("G8") + "," +  upperXLeft.ToString("G8") + "," +  upperXRight.ToString("G8") + "," +  lowerZLeft.ToString("G8") + "," +  lowerZRight.ToString("G8") + "," +  middleZLeft.ToString("G8") + "," +  middleZRight.ToString("G8") + "," +  upperZLeft.ToString("G8") + "," +  upperZRight.ToString("G8") + "," +  yLeft.ToString("G8") + "," +  yRight.ToString("G8"));
         }
 
     }
