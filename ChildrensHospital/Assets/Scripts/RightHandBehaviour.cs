@@ -8,6 +8,8 @@ public class RightHandBehaviour : MonoBehaviour {
     private GameObject LowerRight, MiddleRight, UpperRight, TopRight, LowerFarRight, MiddleFarRight, UpperFarRight;
     private float scale, lerpScale = 0.5f;
 
+    public AudioSource audioPlay;
+
     void Start()
     {
         scale = 3.0f;
@@ -39,10 +41,18 @@ public class RightHandBehaviour : MonoBehaviour {
             if (gameObject.transform.position.z > lowerZMax)
             {
                 lowerZMax = gameObject.transform.position.z;
+                if (!audioPlay.isPlaying)
+                {
+                    audioPlay.Play();
+                }
             }
             if (gameObject.transform.position.x > lowerXMax)
             {
                 lowerXMax = gameObject.transform.position.x;
+                if (!audioPlay.isPlaying)
+                {
+                    audioPlay.Play();
+                }
             }
         }
         else if ((gameObject.transform.position.y >= LowerYBound) && (gameObject.transform.position.y < UpperYBound))
@@ -50,10 +60,18 @@ public class RightHandBehaviour : MonoBehaviour {
             if (gameObject.transform.position.z > middleZMax)
             {
                 middleZMax = gameObject.transform.position.z;
+                if (!audioPlay.isPlaying)
+                {
+                    audioPlay.Play();
+                }
             }
             if (gameObject.transform.position.x > middleXMax)
             {
                 middleXMax = gameObject.transform.position.x;
+                if (!audioPlay.isPlaying)
+                {
+                    audioPlay.Play();
+                }
             }
         }
         else if (gameObject.transform.position.y >= UpperYBound)
@@ -61,10 +79,18 @@ public class RightHandBehaviour : MonoBehaviour {
             if (gameObject.transform.position.z > upperZMax)
             {
                 upperZMax = gameObject.transform.position.z;
+                if (!audioPlay.isPlaying)
+                {
+                    audioPlay.Play();
+                }
             }
             if (gameObject.transform.position.x > upperXMax)
             {
                 upperXMax = gameObject.transform.position.x;
+                if (!audioPlay.isPlaying)
+                {
+                    audioPlay.Play();
+                }
             }
         }
         if (gameObject.transform.position.y > yMax)
