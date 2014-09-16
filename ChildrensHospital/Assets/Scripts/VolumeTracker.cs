@@ -47,6 +47,7 @@ public class VolumeTracker {
         TrackRight();
         if (DebugMode)
             DebugPositions();
+        DebugExtremas();
 	}
     private BoxStates FindBoxState(float yPosition)
     {
@@ -56,6 +57,23 @@ public class VolumeTracker {
             return BoxStates.MIDDLE;
         else
             return BoxStates.UPPER;
+    }
+    private void DebugExtremas()
+    {
+        Debug.Log("LowerXLeft: " + lowerXLeft);
+        Debug.Log("LowerXRight: " + lowerXRight);
+        Debug.Log("MiddleXLeft: " + middleXLeft);
+        Debug.Log("MiddleXRight: " + middleXRight);
+        Debug.Log("UpperXLeft: " + upperXLeft);
+        Debug.Log("UpperXRight: " + upperXRight);
+        Debug.Log("LowerZLeft: " + lowerZLeft);
+        Debug.Log("LowerZRight: " + lowerZRight);
+        Debug.Log("MiddleLeft: " + middleZLeft);
+        Debug.Log("MiddleZRight: " + middleZRight);
+        Debug.Log("UpperZLeft: " + upperZLeft);
+        Debug.Log("UpperZRight: " + upperZRight);
+        Debug.Log("YLeft: " + yLeft);
+        Debug.Log("YRight: " + yRight);
     }
     private void DebugPositions()
     {
