@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.IO;
+using System;
 
 public class VolumeTracker {
 
@@ -47,7 +49,6 @@ public class VolumeTracker {
         TrackRight();
         if (DebugMode)
             DebugPositions();
-        DebugExtremas();
 	}
     private BoxStates FindBoxState(float yPosition)
     {
@@ -58,22 +59,26 @@ public class VolumeTracker {
         else
             return BoxStates.UPPER;
     }
-    private void DebugExtremas()
+    public void DebugExtremas()
     {
-        Debug.Log("LowerXLeft: " + lowerXLeft);
-        Debug.Log("LowerXRight: " + lowerXRight);
-        Debug.Log("MiddleXLeft: " + middleXLeft);
-        Debug.Log("MiddleXRight: " + middleXRight);
-        Debug.Log("UpperXLeft: " + upperXLeft);
-        Debug.Log("UpperXRight: " + upperXRight);
-        Debug.Log("LowerZLeft: " + lowerZLeft);
-        Debug.Log("LowerZRight: " + lowerZRight);
-        Debug.Log("MiddleLeft: " + middleZLeft);
-        Debug.Log("MiddleZRight: " + middleZRight);
-        Debug.Log("UpperZLeft: " + upperZLeft);
-        Debug.Log("UpperZRight: " + upperZRight);
-        Debug.Log("YLeft: " + yLeft);
-        Debug.Log("YRight: " + yRight);
+        using (StreamWriter file = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Extremas.txt"))
+        {
+            file.WriteLine("LowerXLeft: " + lowerXLeft);
+            file.WriteLine("LowerXRight: " + lowerXRight);
+            file.WriteLine("MiddleXLeft: " + middleXLeft);
+            file.WriteLine("MiddleXRight: " + middleXRight);
+            file.WriteLine("UpperXLeft: " + upperXLeft);
+            file.WriteLine("UpperXRight: " + upperXRight);
+            file.WriteLine("LowerZLeft: " + lowerZLeft);
+            file.WriteLine("LowerZRight: " + lowerZRight);
+            file.WriteLine("MiddleLeft: " + middleZLeft);
+            file.WriteLine("MiddleZRight: " + middleZRight);
+            file.WriteLine("UpperZLeft: " + upperZLeft);
+            file.WriteLine("UpperZRight: " + upperZRight);
+            file.WriteLine("YLeft: " + yLeft);
+            file.WriteLine("YRight: " + yRight);
+        }
+
     }
     private void DebugPositions()
     {

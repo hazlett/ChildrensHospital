@@ -51,6 +51,7 @@ public class EndGUI : MonoBehaviour
             {
                 UserContainer.Instance.Users[UserContainer.Instance.currentUser].Trial.Add(gameManager.Volumes.VolumeArray());
                 UserContainer.Instance.Save(Path.Combine(Application.persistentDataPath, "users.xml"));
+                gameManager.Tracker.DebugExtremas();
             }
             Application.LoadLevel("Game");
         }
@@ -60,6 +61,7 @@ public class EndGUI : MonoBehaviour
             {
                 UserContainer.Instance.Users[UserContainer.Instance.currentUser].Trial.Add(gameManager.Volumes.VolumeArray());
                 UserContainer.Instance.Save(Path.Combine(Application.persistentDataPath, "users.xml"));
+                gameManager.Tracker.DebugExtremas();
             }
             Application.LoadLevel("MainMenu");
         }
