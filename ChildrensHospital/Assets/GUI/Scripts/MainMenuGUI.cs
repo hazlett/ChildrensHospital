@@ -69,12 +69,7 @@ public class MainMenuGUI : MonoBehaviour
         }
         else if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (!GameControl.Instance.IsCalibrated))
         {
-            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 145, 300, 100), "Manual Calibration"))
-            {
-                Debug.Log("Manual Calibrating");
-                settings.calibration.Kill();
-                manualCalibration = settings.calibration.Calibrate(Application.dataPath + @"/../ManualCalibration/" + "ChessBoardWCS.exe");
-            }
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 175, 300, 100), "Calibrating", "GreyStart");
         }
         else
         {
