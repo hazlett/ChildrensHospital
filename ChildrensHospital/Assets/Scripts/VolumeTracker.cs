@@ -27,6 +27,7 @@ public class VolumeTracker {
     private bool trackRight, trackLeft;
     private Vector3 MeterToCentimeter = new Vector3(100.0f, 100.0f, 100.0f);
     private Volumes volumes;
+    private string path = Environment.SpecialFolder.MyDocuments + @"\ReachVolumeGame";
 	public VolumeTracker () {
         kinect = GameObject.Find("KinectManager").GetComponent<KinectManager>();
         transformMatrix = GameControl.Instance.TransformMatrix;
@@ -65,14 +66,11 @@ public class VolumeTracker {
         List<string> lines = new List<string>();
         try
         {
-            StreamReader reader = new StreamReader(File.OpenRead(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Extremas.csv"));       
+            StreamReader reader = new StreamReader(File.OpenRead(path + @"\Extremas.csv"));
             while (!reader.EndOfStream)
             {
-                string line = reader.ReadLine();
-                if (!line.Contains("LowerXLeft"))
-                {
-                    lines.Add(line);
-                }
+               string line = reader.ReadLine();
+               lines.Add(line);
             }
             reader.Close();
         }
@@ -80,17 +78,33 @@ public class VolumeTracker {
         {
 
         }
-        using (StreamWriter file = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Extremas.csv"))
+    
+        // Create a ReachVolumeGame folder if it doesn't exist
+        if(!System.IO.Directory.Exists(path)){
+            System.IO.Directory.CreateDirectory(path);
+        }
+        using (StreamWriter file = new StreamWriter(path + @"\Extremas.csv"))
         {
             if (lines.Count == 0)
             {
-                file.WriteLine("LowerXLeft, LowerXRight, MiddleXLeft, MiddleXRight, UpperXLeft, UpperXRight, LowerZLeft, LowerZRight, MiddleZLeft, MiddleZRight, UpperZLeft, UpperZRight, YLeft, YRight");
+                file.WriteLine("User Name, User ID, Birthdate, BrookeScale, UlnaLength, LowerXLeft, LowerXRight, MiddleXLeft, MiddleXRight, UpperXLeft, UpperXRight, LowerZLeft, LowerZRight, MiddleZLeft, MiddleZRight, UpperZLeft, UpperZRight, YLeft, YRight");
             }
             foreach(string line in lines)
             {
                 file.WriteLine(line);
             }
-            file.WriteLine(lowerXLeft.ToString("G8") + "," +  lowerXRight.ToString("G8") + "," +  middleXLeft.ToString("G8") + "," +  middleXRight.ToString("G8") + "," +  upperXLeft.ToString("G8") + "," +  upperXRight.ToString("G8") + "," +  lowerZLeft.ToString("G8") + "," +  lowerZRight.ToString("G8") + "," +  middleZLeft.ToString("G8") + "," +  middleZRight.ToString("G8") + "," +  upperZLeft.ToString("G8") + "," +  upperZRight.ToString("G8") + "," +  yLeft.ToString("G8") + "," +  yRight.ToString("G8"));
+            file.WriteLine(UserContainer.Instance.Users[UserContainer.Instance.currentUser].Name + "," +
+                UserContainer.Instance.Users[UserContainer.Instance.currentUser].ID.ToString() + "," +
+                UserContainer.Instance.Users[UserContainer.Instance.currentUser].Birthdate.ToString("MM/dd/yy") + "," +
+                UserContainer.Instance.Users[UserContainer.Instance.currentUser].BrookeScale + "," +
+                UserContainer.Instance.Users[UserContainer.Instance.currentUser].UlnaLength + "," +
+                lowerXLeft.ToString("G8") + "," + lowerXRight.ToString("G8") + "," 
+                + middleXLeft.ToString("G8") + "," + middleXRight.ToString("G8") + "," 
+                + upperXLeft.ToString("G8") + "," + upperXRight.ToString("G8") + "," 
+                + lowerZLeft.ToString("G8") + "," + lowerZRight.ToString("G8") + "," 
+                + middleZLeft.ToString("G8") + "," + middleZRight.ToString("G8") + "," 
+                + upperZLeft.ToString("G8") + "," + upperZRight.ToString("G8") + "," 
+                + yLeft.ToString("G8") + "," + yRight.ToString("G8"));
         }
 
     }

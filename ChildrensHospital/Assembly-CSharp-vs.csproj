@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\GUI\Scripts\EndGUI.cs" />
+     <Compile Include="Assets\GUI\Scripts\InstructionsGUI.cs" />
      <Compile Include="Assets\GUI\Scripts\MainMenuGUI.cs" />
      <Compile Include="Assets\GUI\Scripts\SettingsGUI.cs" />
      <Compile Include="Assets\Gem Shader\Example\GemSpawner.cs" />

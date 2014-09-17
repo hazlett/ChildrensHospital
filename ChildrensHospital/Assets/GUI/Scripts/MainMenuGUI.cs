@@ -8,6 +8,7 @@ public class MainMenuGUI : MonoBehaviour
 
     public GUISkin mainMenuSkin;
     public SettingsGUI settings;
+    public InstructionsGUI instructions;
 
     private string playerStatus, timeString, errorMessage;
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
@@ -86,6 +87,17 @@ public class MainMenuGUI : MonoBehaviour
             settings.newUser = false;
             settings.enabled = true;
             this.enabled = false;
+        }
+
+        if (GUI.Button(new Rect(25, nativeVerticalResolution - 125, 300, 100), "INSTRUCTIONS"))
+        {
+            instructions.enabled = true;
+            this.enabled = false;
+        }
+
+        if (GUI.Button(new Rect(scaledResolutionWidth - 325, nativeVerticalResolution - 125, 300, 100), "QUIT"))
+        {
+            Application.Quit();
         }
 
         GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 150, 300, 50), "Trial Length (sec)");

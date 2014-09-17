@@ -25,9 +25,6 @@ public class User  {
     [XmlAttribute("Gender")]
     public bool Gender;
 
-    [XmlArray("TrialNumber"), XmlArrayItem("Volume")]
-    public List<float[]> Trial = new List<float[]>();
-
     [XmlIgnore]
     internal int numberOfUsers;
 
