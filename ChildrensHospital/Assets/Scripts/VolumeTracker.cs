@@ -90,7 +90,7 @@ public class VolumeTracker {
         {
             if (lines.Count == 0)
             {
-                file.WriteLine("User Name, User ID, Trial Date and Time, Birthdate, BrookeScale, UlnaLength, TotalVolume, LowerLeftVolume, LowerRightVolume, MiddleLeftVolume, MiddleRightVolume, UpperLeftVolume, UpperRightVolume, LowerXLeft, LowerXRight, MiddleXLeft, MiddleXRight, UpperXLeft, UpperXRight, LowerZLeft, LowerZRight, MiddleZLeft, MiddleZRight, UpperZLeft, UpperZRight, YLeft, YRight, CalibrationMatrix, XOffset, YOffset, ZOffset");
+                file.WriteLine("User Name, User ID, Trial Date and Time, Birthdate, BrookeScale, UlnaLength, TotalVolume, LowerLeftVolume, LowerRightVolume, MiddleLeftVolume, MiddleRightVolume, UpperLeftVolume, UpperRightVolume, LowerXLeft, LowerXRight, MiddleXLeft, MiddleXRight, UpperXLeft, UpperXRight, LowerZLeft, LowerZRight, MiddleZLeft, MiddleZRight, UpperZLeft, UpperZRight, LowerY, MiddleY, LeftYReach, RightYReach, CalibrationMatrix, XOffset, YOffset, ZOffset");
             }
             foreach(string line in lines)
             {
@@ -112,6 +112,7 @@ public class VolumeTracker {
                 + lowerZLeft.ToString("G8") + "," + lowerZRight.ToString("G8") + "," 
                 + middleZLeft.ToString("G8") + "," + middleZRight.ToString("G8") + "," 
                 + upperZLeft.ToString("G8") + "," + upperZRight.ToString("G8") + "," 
+                + lowerBound.ToString("G2") + "," + (upperBound - lowerBound).ToString("G2") + ","  
                 + yLeft.ToString("G8") + "," + yRight.ToString("G8") + ","
                 + MatrixToString(transformMatrix) + ","
                 + offset.x.ToString("G4") + "," + offset.y.ToString("G4") + "," + offset.z.ToString("G4"));

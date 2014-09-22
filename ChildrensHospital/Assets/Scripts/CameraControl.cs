@@ -24,7 +24,7 @@ public class CameraControl : MonoBehaviour {
             if (automating)
             {
                 timer += Time.deltaTime;
-                if (timer > gameManager.EndTrial * 0.1f)
+                if (timer > gameManager.EndTrial * 0.2f)
                 {
                     timer = 0.0f;
                     relativeRightVolume = ((RightHandBehaviour)gameManager.rightHand).RelativeLowerVolume +
