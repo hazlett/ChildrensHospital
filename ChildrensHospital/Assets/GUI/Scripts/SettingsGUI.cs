@@ -39,7 +39,6 @@ public class SettingsGUI : MonoBehaviour
     {
         if (newUser)
         {
-            NewID();
             brookeScale = 1;
         }
         else
@@ -74,7 +73,7 @@ public class SettingsGUI : MonoBehaviour
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 90, textBoxWidth, textBoxHeight), "Ulna Length");
 
             name = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 275, textBoxWidth, textBoxHeight), name);
-            GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 165, textBoxWidth, textBoxHeight), ID.ToString());
+            IDstring = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 165, textBoxWidth, textBoxHeight), IDstring);
             birthdate = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 55, textBoxWidth, textBoxHeight), birthdate);
             brookeScale = (int)GUI.HorizontalSlider(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 55, textBoxWidth, textBoxHeight), brookeScale, 1, 6);
             ulnaLengthString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 125, textBoxWidth, textBoxHeight), ulnaLengthString);
@@ -198,6 +197,27 @@ public class SettingsGUI : MonoBehaviour
                 invalidInput = true;
                 return;
             }
+
+            try
+            {
+                ID = int.Parse(IDstring);
+
+                if (UserContainer.Instance.UserDictionary.ContainsKey(ID))
+                {
+                    invalidInput = true;
+                    errorMessage = "  ID Number " + IDstring + " exists.\n  Please choose a new ID number.";
+                }
+                else
+                {
+                    invalidInput = false;
+                }
+            }
+            catch (Exception)
+            {
+                errorMessage = "  Invalid identification number.\n  Please enter a correct identification number.";
+                invalidInput = true;
+                return;
+            }
         }
 
         if (!newUser)
@@ -244,10 +264,5 @@ public class SettingsGUI : MonoBehaviour
 
 
         }
-    }
-
-    private void NewID()
-    {
-        ID = user.numberOfUsers;
     }
 }

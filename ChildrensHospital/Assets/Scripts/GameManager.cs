@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour {
         if (GUIon)
         {
             GUI.Label(new Rect(scaledResolutionWidth / 2 - 200, 10, 400, 75), message);
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - 200, 85, 400, 75), "Score: ");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - 200, 85, 400, 75), "Score: " + TotalVolume().ToString("F3"));
 
             //ShowAvatarVolumes();
             ShowVolumes();
