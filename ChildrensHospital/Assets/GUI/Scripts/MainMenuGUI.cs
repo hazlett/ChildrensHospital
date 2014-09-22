@@ -17,7 +17,16 @@ public class MainMenuGUI : MonoBehaviour
     void Start()
     {
         errorMessage = "Invalid trial length. \nPlease enter a trial length between 0 and 120.";
-        timeString = "30";
+        try
+        {
+            timeString = UserContainer.Instance.time.ToString();
+            if (timeString == "0")
+                timeString = "30";
+        }
+        catch (Exception)
+        {
+            timeString = "30";
+        }
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
@@ -53,14 +62,6 @@ public class MainMenuGUI : MonoBehaviour
         {
             if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 175, 300, 100), "Start Trial"))
             {
-                if (manualCalibration)
-                {
-                    Debug.Log("Manual Transform Matrix: " + GameControl.Instance.ReadCalibration(Application.dataPath + @"/../ManualCalibration/" + "ChessBoardWCS.exe"));
-                }
-                else
-                {
-                    Debug.Log("Auto Transform Matrix: " + GameControl.Instance.ReadCalibration());
-                }
                 CheckTime();
                 if (!invalidInput)
                 {

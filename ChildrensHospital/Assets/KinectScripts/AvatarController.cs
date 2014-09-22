@@ -205,7 +205,6 @@ public class AvatarController : MonoBehaviour
 	// Invoked on the successful calibration of a player.
 	public void SuccessfulCalibration(Int64 userId)
 	{
-        Debug.Log("Successfully Calibrated!");
 		// reset the models position
 		if(offsetNode != null)
 		{

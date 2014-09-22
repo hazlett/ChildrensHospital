@@ -27,11 +27,13 @@ public class VolumeTracker {
     private bool trackRight, trackLeft;
     private Vector3 MeterToCentimeter = new Vector3(100.0f, 100.0f, 100.0f);
     private Volumes volumes;
+    private Vector3 offset;
     private string path = Environment.SpecialFolder.MyDocuments + @"\ReachVolumeGame";
 	public VolumeTracker () {
         kinect = GameObject.Find("KinectManager").GetComponent<KinectManager>();
         transformMatrix = GameControl.Instance.TransformMatrix;
         volumes = new Volumes();
+        offset = new Vector3(0.0f, -0.01f, 0.30f);
         trackLeft = true;
         trackRight = true;
 	}
@@ -40,6 +42,7 @@ public class VolumeTracker {
         kinect = GameObject.Find("KinectManager").GetComponent<KinectManager>();
         transformMatrix = GameControl.Instance.TransformMatrix;
         volumes = new Volumes();
+        offset = new Vector3(0.0f, -0.01f, 0.30f);
         this.trackLeft = trackLeft;
         this.trackRight = trackRight;
     }
@@ -87,7 +90,7 @@ public class VolumeTracker {
         {
             if (lines.Count == 0)
             {
-                file.WriteLine("User Name, User ID, Birthdate, BrookeScale, UlnaLength, LowerXLeft, LowerXRight, MiddleXLeft, MiddleXRight, UpperXLeft, UpperXRight, LowerZLeft, LowerZRight, MiddleZLeft, MiddleZRight, UpperZLeft, UpperZRight, YLeft, YRight");
+                file.WriteLine("User Name, User ID, Trial Date and Time, Birthdate, BrookeScale, UlnaLength, TotalVolume, LowerLeftVolume, LowerRightVolume, MiddleLeftVolume, MiddleRightVolume, UpperLeftVolume, UpperRightVolume, LowerXLeft, LowerXRight, MiddleXLeft, MiddleXRight, UpperXLeft, UpperXRight, LowerZLeft, LowerZRight, MiddleZLeft, MiddleZRight, UpperZLeft, UpperZRight, YLeft, YRight, CalibrationMatrix, XOffset, YOffset, ZOffset");
             }
             foreach(string line in lines)
             {
@@ -95,18 +98,40 @@ public class VolumeTracker {
             }
             file.WriteLine(UserContainer.Instance.Users[UserContainer.Instance.currentUser].Name + "," +
                 UserContainer.Instance.Users[UserContainer.Instance.currentUser].ID.ToString() + "," +
+                DateTime.Now.ToString("g") + "," + 
                 UserContainer.Instance.Users[UserContainer.Instance.currentUser].Birthdate.ToString("MM/dd/yy") + "," +
                 UserContainer.Instance.Users[UserContainer.Instance.currentUser].BrookeScale + "," +
                 UserContainer.Instance.Users[UserContainer.Instance.currentUser].UlnaLength + "," +
-                lowerXLeft.ToString("G8") + "," + lowerXRight.ToString("G8") + "," 
+                volumes.TotalVolume().ToString("G8") + ","
+                + LowerLeftVolume().ToString("G8") + "," + LowerRightVolume().ToString("G8") + ","
+                + MiddleLeftVolume().ToString("G8") + "," + MiddleRightVolume().ToString("G8") + ","
+                + UpperLeftVolume().ToString("G8") + "," + UpperRightVolume().ToString("G8") + ","
+                + lowerXLeft.ToString("G8") + "," + lowerXRight.ToString("G8") + "," 
                 + middleXLeft.ToString("G8") + "," + middleXRight.ToString("G8") + "," 
                 + upperXLeft.ToString("G8") + "," + upperXRight.ToString("G8") + "," 
                 + lowerZLeft.ToString("G8") + "," + lowerZRight.ToString("G8") + "," 
                 + middleZLeft.ToString("G8") + "," + middleZRight.ToString("G8") + "," 
                 + upperZLeft.ToString("G8") + "," + upperZRight.ToString("G8") + "," 
-                + yLeft.ToString("G8") + "," + yRight.ToString("G8"));
+                + yLeft.ToString("G8") + "," + yRight.ToString("G8") + ","
+                + MatrixToString(transformMatrix) + ","
+                + offset.x.ToString("G4") + "," + offset.y.ToString("G4") + "," + offset.z.ToString("G4"));
         }
 
+    }
+
+    private string MatrixToString(Matrix4x4 matrix)
+    {
+        string matrixString = "";
+        for (int x = 0; x < 4; x++)
+        {
+            matrixString += "[ ";
+            for (int y = 0; y < 4; y++)
+            {
+                matrixString += matrix[x, y] + " ";
+            }
+            matrixString += "] ";
+        }
+            return matrixString;
     }
     private void DebugPositions()
     {
@@ -121,7 +146,9 @@ public class VolumeTracker {
     private void TranslatePositions()
     {
         leftHandPosition = transformMatrix.MultiplyPoint3x4(leftHandPosition);
+        leftHandPosition -= offset;
         rightHandPosition = transformMatrix.MultiplyPoint3x4(rightHandPosition);
+        rightHandPosition -= offset;
     }
     private void TrackRight()
     {

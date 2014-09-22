@@ -23,12 +23,11 @@ public class Calibration {
             calibration.Exited += calibration_Exited;
             calibration.Start();
 
-            UnityEngine.Debug.Log("Calibration Started");
             return true;
         }
         catch (Exception e)
         {
-            UnityEngine.Debug.Log("Calibration Error: " + e.Message);
+            UnityEngine.Debug.LogError("Calibration Error: " + e.Message);
             return false;
         }
     }
@@ -51,12 +50,10 @@ public class Calibration {
     {
         if (!forcedKill)
         {
-            UnityEngine.Debug.Log("Calibration Exited");
             GameControl.Instance.Calibrated();
         }
         else
         {
-            UnityEngine.Debug.Log("Calibration Forced Kill");
             forcedKill = false;
         }
     }

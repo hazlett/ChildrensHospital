@@ -150,6 +150,7 @@ public class GameManager : MonoBehaviour {
         if (playing)
         {
             // Populate volume array
+            lowerRightVolume = (float)((RightHandBehaviour)rightHand).LowerVolume;
             middleRightVolume = (float)((RightHandBehaviour)rightHand).MiddleVolume;
             upperRightVolume = (float)((RightHandBehaviour)rightHand).UpperVolume;
             lowerLeftVolume = (float)Mathf.Abs(((LeftHandBehaviour)leftHand).LowerVolume);

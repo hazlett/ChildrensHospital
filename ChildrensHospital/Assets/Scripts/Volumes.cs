@@ -53,5 +53,23 @@ public class Volumes {
 
         return volumeArray;
     }
+    public float LowerVolume()
+    {
+        return lowerLeftVolume + lowerRightVolume;
+    }
+    public float MiddleVolume()
+    {
+        return middleLeftVolume + middleRightVolume;
+    }
+    public float UpperVolume()
+    {
+        return upperLeftVolume + upperRightVolume;
+    }
+    public float TotalVolume()
+    {
+        return lowerLeftVolume + lowerRightVolume
+            + middleLeftVolume + middleRightVolume
+            + upperLeftVolume + upperRightVolume;
+    }
 
 }
