@@ -10,6 +10,8 @@ public class MainMenuGUI : MonoBehaviour
     public SettingsGUI settings;
     public InstructionsGUI instructions;
 
+    internal Calibration calibration;
+
     private string playerStatus, timeString, errorMessage;
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
     private bool manualCalibration = false, invalidInput = false;
@@ -17,16 +19,8 @@ public class MainMenuGUI : MonoBehaviour
     void Start()
     {
         errorMessage = "Invalid trial length. \nPlease enter a trial length between 0 and 120.";
-        try
-        {
-            timeString = UserContainer.Instance.time.ToString();
-            if (timeString == "0")
-                timeString = "30";
-        }
-        catch (Exception)
-        {
-            timeString = "30";
-        }
+        UserContainer.Instance.time = 60;
+        timeString = UserContainer.Instance.time.ToString();
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
@@ -60,8 +54,16 @@ public class MainMenuGUI : MonoBehaviour
 
         if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (GameControl.Instance.IsCalibrated))
         {
-            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 175, 300, 100), "Start Trial"))
+            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 275, 300, 100), "Start Trial"))
             {
+                if (manualCalibration)
+                {
+                    Debug.Log("Manual Transform Matrix: " + GameControl.Instance.ReadCalibration(Application.dataPath + @"/../ManualCalibration/" + "ChessBoardWCS.exe"));
+                }
+                else
+                {
+                    Debug.Log("Auto Transform Matrix: " + GameControl.Instance.ReadCalibration());
+                }
                 CheckTime();
                 if (!invalidInput)
                 {
@@ -71,25 +73,42 @@ public class MainMenuGUI : MonoBehaviour
         }
         else if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (!GameControl.Instance.IsCalibrated))
         {
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 175, 300, 100), "Calibrating", "GreyStart");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 275, 300, 100), "Please Calibrate", "GreyStart");
         }
         else
         {
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 175, 300, 100), "Choose User", "GreyStart");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 275, 300, 100), "Choose User", "GreyStart");
         }
-        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 70, 300, 100), "New User"))
+        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 170, 300, 100), "New User"))
         {
             GameControl.Instance.IsCalibrated = false;
             settings.newUser = true;
             settings.enabled = true;
             this.enabled = false;
         }
-        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 35, 300, 100), "Existing User"))
+        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 65, 300, 100), "Existing User"))
         {
             GameControl.Instance.IsCalibrated = false;
             settings.newUser = false;
             settings.enabled = true;
             this.enabled = false;
+        }
+
+        if (!GameControl.Instance.IsCalibrated)
+        {
+            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 40, 300, 100), "Calibrate"))
+            {
+                calibration = new Calibration();
+                calibration.Calibrate();
+            }
+        }
+        else
+        {
+            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 40, 300, 100), "Recalibrate"))
+            {
+                calibration = new Calibration();
+                calibration.Calibrate();
+            }
         }
 
         if (GUI.Button(new Rect(25, nativeVerticalResolution - 125, 300, 100), "INSTRUCTIONS"))

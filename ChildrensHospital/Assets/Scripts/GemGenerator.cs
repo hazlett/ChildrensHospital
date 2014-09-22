@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GemGenerator : MonoBehaviour {
 
-    private GameObject[] gems = new GameObject[50];
+    private GameObject[] gems = new GameObject[100];
     private float xMax = 2.5f, xMidLeft = 0.0f, xMidRight = 0.0f, xMin = -2.5f, zMin = 0.0f, zMax = 10.0f, yMin = 1.0f, yMax = 3.0f, zFarMin = 0.0f, zFarMax = 10.0f, zTop = 0.1f;
     private GameObject dirt,
         LOWERLEFT,
