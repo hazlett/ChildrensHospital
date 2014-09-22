@@ -56,14 +56,7 @@ public class MainMenuGUI : MonoBehaviour
         {
             if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 275, 300, 100), "Start Trial"))
             {
-                if (manualCalibration)
-                {
-                    Debug.Log("Manual Transform Matrix: " + GameControl.Instance.ReadCalibration(Application.dataPath + @"/../ManualCalibration/" + "ChessBoardWCS.exe"));
-                }
-                else
-                {
-                    Debug.Log("Auto Transform Matrix: " + GameControl.Instance.ReadCalibration());
-                }
+                GameControl.Instance.ReadCalibration();
                 CheckTime();
                 if (!invalidInput)
                 {
@@ -100,6 +93,12 @@ public class MainMenuGUI : MonoBehaviour
             {
                 if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 40, 300, 100), "Calibrate"))
                 {
+                    try
+                    {
+                        calibration.Kill();
+                    }
+                    catch (Exception)
+                    { }
                     calibration = new Calibration();
                     calibration.Calibrate();
                 }
@@ -108,6 +107,12 @@ public class MainMenuGUI : MonoBehaviour
             {
                 if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 40, 300, 100), "Recalibrate"))
                 {
+                    try
+                    {
+                        calibration.Kill();
+                    }
+                    catch (Exception)
+                    { }
                     calibration = new Calibration();
                     calibration.Calibrate();
                 }
@@ -138,7 +143,14 @@ public class MainMenuGUI : MonoBehaviour
 
         timeString = Regex.Replace(timeString, @"[^0-9]", "");
     }
-
+    void OnDestroy()
+    {
+        try
+        {
+            calibration.Kill();
+        }
+        catch (Exception) { }
+    }
     private void TimedScreenResize()
     {
         if (Time.time > updateGUI)
