@@ -9,7 +9,6 @@ public class SettingsGUI : MonoBehaviour
 
     public GUISkin mainMenuSkin;
     public MainMenuGUI mainMenu;
-    internal Calibration calibration;
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI, ulnaLength;
     private string birthdate, IDstring, name, ulnaLengthString, errorMessage, loadSave;
     private int ID, textBoxWidth = 300, textBoxHeight = 50, brookeScale;
@@ -126,8 +125,6 @@ public class SettingsGUI : MonoBehaviour
                 {
                     user.LoadSpecificUser(ID, brookeScale, ulnaLength);
                 }
-                calibration = new Calibration();
-                calibration.Calibrate();
             }
         }
 
