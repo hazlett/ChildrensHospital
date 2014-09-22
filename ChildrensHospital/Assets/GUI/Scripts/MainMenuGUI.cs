@@ -94,20 +94,23 @@ public class MainMenuGUI : MonoBehaviour
             this.enabled = false;
         }
 
-        if (!GameControl.Instance.IsCalibrated)
+        if (UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID))
         {
-            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 40, 300, 100), "Calibrate"))
+            if (!GameControl.Instance.IsCalibrated)
             {
-                calibration = new Calibration();
-                calibration.Calibrate();
+                if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 40, 300, 100), "Calibrate"))
+                {
+                    calibration = new Calibration();
+                    calibration.Calibrate();
+                }
             }
-        }
-        else
-        {
-            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 40, 300, 100), "Recalibrate"))
+            else
             {
-                calibration = new Calibration();
-                calibration.Calibrate();
+                if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 40, 300, 100), "Recalibrate"))
+                {
+                    calibration = new Calibration();
+                    calibration.Calibrate();
+                }
             }
         }
 
