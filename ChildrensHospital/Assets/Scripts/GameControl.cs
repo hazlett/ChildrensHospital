@@ -18,6 +18,8 @@ public class GameControl : MonoBehaviour
     }
     private bool isCalibrated = false;
     public bool IsCalibrated { get { return isCalibrated; } set { isCalibrated = value; } }
+    private bool isCalibrating = false;
+    public bool IsCalibrating { get { return isCalibrating; } set { isCalibrating = value; } }
     internal int score = 0;
     private Matrix4x4 transformMatrix;
     public Matrix4x4 TransformMatrix { get { return transformMatrix; } }
@@ -27,6 +29,7 @@ public class GameControl : MonoBehaviour
     public void Calibrated()
     {
         isCalibrated = true;
+        isCalibrating = false;
     }
     internal Matrix4x4 ReadCalibration(string fileName)
     {

@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour {
 
     public GUISkin mainMenuSkin;
     public EndGUI endStats;
-    public GemGenerator generator;
+    private GemGenerator generator;
     public SpiderSpawner spiders;
     private float endTrial = 20.0f;
     public float EndTrial {get {return endTrial;} }
@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour {
         }
         rightHand = GameObject.Find("RightHand").GetComponent<RightHandBehaviour>();
         leftHand = GameObject.Find("LeftHand").GetComponent<LeftHandBehaviour>();
+        generator = GameObject.Find("GemGenerator").GetComponent<GemGenerator>();
+        generator.SetupGems();
 	}
 	
 	// Update is called once per frame

@@ -66,12 +66,22 @@ public class MainMenuGUI : MonoBehaviour
         }
         else if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (!GameControl.Instance.IsCalibrated))
         {
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 275, 300, 100), "Please Calibrate", "GreyStart");
+            string calibrateMessage;
+            if (GameControl.Instance.IsCalibrating)
+            {
+                calibrateMessage = "Calibrating";
+            }
+            else
+            {
+                calibrateMessage = "Please Calibrate";
+            }
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 275, 300, 100), calibrateMessage, "GreyStart");
         }
         else
         {
             GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 275, 300, 100), "Choose User", "GreyStart");
         }
+
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 170, 300, 100), "New User"))
         {
             GameControl.Instance.IsCalibrated = false;
@@ -79,6 +89,7 @@ public class MainMenuGUI : MonoBehaviour
             settings.enabled = true;
             this.enabled = false;
         }
+
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 65, 300, 100), "Existing User"))
         {
             GameControl.Instance.IsCalibrated = false;
@@ -93,6 +104,7 @@ public class MainMenuGUI : MonoBehaviour
             {
                 if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 40, 300, 100), "Calibrate"))
                 {
+                    GameControl.Instance.IsCalibrating = true;
                     try
                     {
                         calibration.Kill();
@@ -107,6 +119,8 @@ public class MainMenuGUI : MonoBehaviour
             {
                 if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 40, 300, 100), "Recalibrate"))
                 {
+                    GameControl.Instance.IsCalibrating = true;
+                    GameControl.Instance.IsCalibrated = false;
                     try
                     {
                         calibration.Kill();
@@ -128,7 +142,7 @@ public class MainMenuGUI : MonoBehaviour
         if (GUI.Button(new Rect(scaledResolutionWidth - 325, nativeVerticalResolution - 125, 300, 100), "QUIT"))
         {
             Application.Quit();
-        }
+        } 
 
         GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 150, 300, 50), "Trial Length (sec)");
         timeString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 185, 300, 50), timeString);

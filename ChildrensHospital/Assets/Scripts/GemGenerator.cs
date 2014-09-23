@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GemGenerator : MonoBehaviour {
 
-    private GameObject[] gems = new GameObject[100];
+    private GameObject[] gems = new GameObject[1000];
     private float xMax = 2.5f, xMidLeft = 0.0f, xMidRight = 0.0f, xMin = -2.5f, zMin = 0.0f, zMax = 10.0f, yMin = 1.0f, yMax = 3.0f, zFarMin = 0.0f, zFarMax = 10.0f, zTop = 0.1f;
     private GameObject dirt,
         LOWERLEFT,
@@ -58,10 +58,16 @@ public class GemGenerator : MonoBehaviour {
 
     void Start()
     {
+        InstantiateGems();
         this.enabled = false;
     }
 
-    void OnEnable()
+    void Awake()
+    {
+        GameObject.DontDestroyOnLoad(this.gameObject);
+    }
+
+    public void SetupGems()
     {
         SetAreas();
         SpawnGems();
@@ -84,6 +90,7 @@ public class GemGenerator : MonoBehaviour {
         UPPERFARLEFT = GameObject.Find("UpperFarLeft");
         UPPERFARRIGHT = GameObject.Find("UpperFarRight");
     }
+
     private void SpawnGems()
     {  
         for (int i = 0; i < gems.Length - 1; i++)
@@ -198,10 +205,26 @@ public class GemGenerator : MonoBehaviour {
                     randomZ = 0.0f;
                     area = 0;
                     break;
-            }
+            }         
             
+            gems[i].transform.localScale = new Vector3(0.04f, 0.04f, 0.04f);
+            gems[i].transform.position = new Vector3(randomX, randomY, randomZ);
+
+            randomX = Random.Range(0, 360);
+            randomY = Random.Range(0, 360);
+            randomZ = Random.Range(0, 360);
+
+            gems[i].transform.rotation = new Quaternion(randomX, randomY, randomZ, 0);
+            gems[i].GetComponent<GemBehavior>().SetDirt(dirt, area);
+        }
+    }
+
+    private void InstantiateGems()
+    {
+        for (int i = 0; i < gems.Length - 1; i++)
+        {
             gemType gem;
-            gem = (gemType)Random.Range(0, 7);            
+            gem = (gemType)Random.Range(0, 7);
 
             switch (gem)
             {
@@ -220,15 +243,7 @@ public class GemGenerator : MonoBehaviour {
                 case gemType.TOPAZ: gems[i] = (GameObject)Instantiate(Resources.Load<GameObject>("Prefabs/Topaz"));
                     break;
             }
-            gems[i].transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-            gems[i].transform.position = new Vector3(randomX, randomY, randomZ);
-
-            randomX = Random.Range(0, 360);
-            randomY = Random.Range(0, 360);
-            randomZ = Random.Range(0, 360);
-
-            gems[i].transform.rotation = new Quaternion(randomX, randomY, randomZ, 0);
-            gems[i].GetComponent<GemBehavior>().SetDirt(dirt, area);
+            gems[i].transform.parent = this.gameObject.transform;
         }
     }
 }
