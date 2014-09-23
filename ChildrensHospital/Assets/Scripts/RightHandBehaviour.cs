@@ -22,6 +22,7 @@ public class RightHandBehaviour : MonoBehaviour {
         LowerFarRight = GameObject.Find("LowerFarRight");
         MiddleFarRight = GameObject.Find("MiddleFarRight");
         UpperFarRight = GameObject.Find("UpperFarRight");
+        UpperFarRight.renderer.material.color = new Color(0,0,0,0);
        // ResetMaxes();
     }
 

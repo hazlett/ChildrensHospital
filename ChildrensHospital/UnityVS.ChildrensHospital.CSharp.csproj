@@ -93,6 +93,8 @@
     <Compile Include="Assets\Scripts\Calibration.cs" />
     <Compile Include="Assets\Scripts\CameraControl.cs" />
     <Compile Include="Assets\Scripts\DebugCamera.cs" />
+    <Compile Include="Assets\Scripts\FocusedCameraControl.cs" />
+    <Compile Include="Assets\Scripts\ForceStart.cs" />
     <Compile Include="Assets\Scripts\GameControl.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GemBehavior.cs" />

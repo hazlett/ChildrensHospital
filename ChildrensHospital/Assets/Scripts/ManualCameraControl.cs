@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ManualCameraControl : MonoBehaviour {
     public Camera mainCamera, shoulderCamera;
-    public CameraControl control;
+    public FocusedCameraControl control;
     private int index;
 	void Start () {
         index = 0;

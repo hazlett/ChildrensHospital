@@ -28,6 +28,8 @@ public class VolumeTracker {
     private Vector3 MeterToCentimeter = new Vector3(100.0f, 100.0f, 100.0f);
     private Volumes volumes;
     private Vector3 offset;
+    private Vector3 rightHandAxis = new Vector3(1.0f, 1.0f, -1.0f);
+    private Vector3 leftHandAxis = new Vector3(-1.0f, 1.0f, -1.0f);
     private string path = Environment.SpecialFolder.MyDocuments + @"\ReachVolumeGame";
 	public VolumeTracker () {
         kinect = GameObject.Find("KinectManager").GetComponent<KinectManager>();
@@ -47,6 +49,25 @@ public class VolumeTracker {
         this.trackRight = trackRight;
     }
 	
+    private void Initialize()
+    {
+        SetPositions();
+        TranslatePositions();
+        InitializeLeft();
+        InitializeRight();
+    }
+    private void InitializeRight()
+    {
+        lowerXRight = middleXRight = upperXRight = rightHandPosition.x;
+        lowerZRight = middleZRight = upperZRight = rightHandPosition.z;
+        yRight = rightHandPosition.y;
+    }
+    private void InitializeLeft()
+    {
+        lowerXLeft = middleXLeft = upperXLeft = leftHandPosition.x;
+        lowerZLeft = middleZLeft = upperZLeft = leftHandPosition.z;
+        yLeft = leftHandPosition.y;
+    }
 	public void Update () {
         SetPositions();
         TranslatePositions();
@@ -148,8 +169,10 @@ public class VolumeTracker {
     {
         leftHandPosition = transformMatrix.MultiplyPoint3x4(leftHandPosition);
         leftHandPosition -= offset;
+        leftHandPosition = Vector3.Scale(leftHandPosition, leftHandAxis);
         rightHandPosition = transformMatrix.MultiplyPoint3x4(rightHandPosition);
         rightHandPosition -= offset;
+        rightHandPosition = Vector3.Scale(rightHandPosition, rightHandAxis);
     }
     private void TrackRight()
     {
@@ -161,7 +184,7 @@ public class VolumeTracker {
                 {
                     lowerXRight = rightHandPosition.x;
                 }
-                if (rightHandPosition.z < lowerZRight)
+                if (rightHandPosition.z > lowerZRight)
                 {
                     lowerZRight = rightHandPosition.z;
                 }
@@ -171,7 +194,7 @@ public class VolumeTracker {
                 {
                     middleXRight = rightHandPosition.x;
                 }
-                if (rightHandPosition.z < middleZRight)
+                if (rightHandPosition.z > middleZRight)
                 {
                     middleZRight = rightHandPosition.z;
                 }
@@ -181,7 +204,7 @@ public class VolumeTracker {
                 {
                     upperXRight = rightHandPosition.x;
                 }
-                if (rightHandPosition.z < upperZRight)
+                if (rightHandPosition.z > upperZRight)
                 {
                     upperZRight = rightHandPosition.z;
                 }
@@ -198,31 +221,31 @@ public class VolumeTracker {
         switch (boxStateLeft)
         {
             case BoxStates.LOWER:
-                if (leftHandPosition.x < lowerXLeft)
+                if (leftHandPosition.x > lowerXLeft)
                 {
                     lowerXLeft = leftHandPosition.x;
                 }
-                if (leftHandPosition.z < lowerZLeft)
+                if (leftHandPosition.z > lowerZLeft)
                 {
                     lowerZLeft = leftHandPosition.z;
                 }
                 break;
             case BoxStates.MIDDLE:
-                if (leftHandPosition.x < middleXLeft)
+                if (leftHandPosition.x > middleXLeft)
                 {
                     middleXLeft = leftHandPosition.x;
                 }
-                if (leftHandPosition.z < middleZLeft)
+                if (leftHandPosition.z > middleZLeft)
                 {
                     middleZLeft = leftHandPosition.z;
                 }
                 break;
             case BoxStates.UPPER:
-                if (leftHandPosition.x < upperXLeft)
+                if (leftHandPosition.x > upperXLeft)
                 {
                     upperXLeft = leftHandPosition.x;
                 }
-                if (leftHandPosition.z < upperZLeft)
+                if (leftHandPosition.z > upperZLeft)
                 {
                     upperZLeft = leftHandPosition.z;
                 }
