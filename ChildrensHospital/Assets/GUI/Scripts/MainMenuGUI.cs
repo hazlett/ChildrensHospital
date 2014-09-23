@@ -9,6 +9,7 @@ public class MainMenuGUI : MonoBehaviour
     public GUISkin mainMenuSkin;
     public SettingsGUI settings;
     public InstructionsGUI instructions;
+    public KinectManager kinectManager;
 
     internal Calibration calibration;
 
@@ -54,6 +55,7 @@ public class MainMenuGUI : MonoBehaviour
 
         if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (GameControl.Instance.IsCalibrated))
         {
+            kinectManager.displayColorMap = false;
             if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 275, 300, 100), "Start Trial"))
             {
                 GameControl.Instance.ReadCalibration();
@@ -104,6 +106,7 @@ public class MainMenuGUI : MonoBehaviour
             {
                 if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 40, 300, 100), "Calibrate"))
                 {
+                    kinectManager.displayColorMap = true;
                     GameControl.Instance.IsCalibrating = true;
                     try
                     {
@@ -119,6 +122,7 @@ public class MainMenuGUI : MonoBehaviour
             {
                 if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 40, 300, 100), "Recalibrate"))
                 {
+                    kinectManager.displayColorMap = true;
                     GameControl.Instance.IsCalibrating = true;
                     GameControl.Instance.IsCalibrated = false;
                     try
@@ -133,13 +137,13 @@ public class MainMenuGUI : MonoBehaviour
             }
         }
 
-        if (GUI.Button(new Rect(25, nativeVerticalResolution - 125, 300, 100), "INSTRUCTIONS"))
+        if (GUI.Button(new Rect(25, nativeVerticalResolution - 250, 300, 100), "INSTRUCTIONS"))
         {
             instructions.enabled = true;
             this.enabled = false;
         }
 
-        if (GUI.Button(new Rect(scaledResolutionWidth - 325, nativeVerticalResolution - 125, 300, 100), "QUIT"))
+        if (GUI.Button(new Rect(25, nativeVerticalResolution - 125, 300, 100), "QUIT"))
         {
             Application.Quit();
         } 

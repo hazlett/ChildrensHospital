@@ -81,7 +81,6 @@
      <Compile Include="Assets\KinectScripts\KinectServer.cs" />
      <Compile Include="Assets\Scripts\Calibration.cs" />
      <Compile Include="Assets\Scripts\CameraControl.cs" />
-     <Compile Include="Assets\Scripts\Data.cs" />
      <Compile Include="Assets\Scripts\DebugCamera.cs" />
      <Compile Include="Assets\Scripts\GameControl.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -138,10 +137,10 @@
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="I18N">
- <HintPath>C:/Users/hazle_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/I18N.dll</HintPath>
+ <HintPath>C:/Users/bbric_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/I18N.dll</HintPath>
  </Reference>
  <Reference Include="I18N.West">
- <HintPath>C:/Users/hazle_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/I18N.West.dll</HintPath>
+ <HintPath>C:/Users/bbric_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/I18N.West.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

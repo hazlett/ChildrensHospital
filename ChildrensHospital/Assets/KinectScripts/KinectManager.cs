@@ -70,6 +70,8 @@ public class KinectManager : MonoBehaviour
 	
 	// GUI Text to show messages.
 	public GUIText calibrationText;
+
+    public Texture2D calibrateBox;
 	
 	// GUI Texture to display the hand cursor for Player1
 	//public GUITexture handCursor;
@@ -107,7 +109,7 @@ public class KinectManager : MonoBehaviour
 	// Color map
 	//private KinectInterop.ColorBuffer colorImage;
 	private Texture2D usersClrTex;
-	private Rect usersClrRect;
+	private Rect usersClrRect, usersCaliBox;
 	private int usersClrSize;
 	
 	// Kinect body frame data
@@ -1078,7 +1080,8 @@ public class KinectManager : MonoBehaviour
 			
 			// Initialize color map related stuff
 			usersClrTex = new Texture2D(sensorData.colorImageWidth, sensorData.colorImageHeight, TextureFormat.RGBA32, false);
-	        usersClrRect = new Rect(cameraRect.width - cameraRect.width * MapsPercentWidth, cameraRect.height, cameraRect.width * MapsPercentWidth, -cameraRect.height * MapsPercentHeight);
+	        usersClrRect = new Rect(cameraRect.width - 320, cameraRect.height, 320, -180);
+            usersCaliBox = new Rect(cameraRect.width - 160 - 320 / 14, cameraRect.height - 90, 320 / 7, 90);
 			usersClrSize = sensorData.colorImageWidth * sensorData.colorImageHeight;
 			
 			if(computeUserMap && displayColorMap)
@@ -1172,6 +1175,7 @@ public class KinectManager : MonoBehaviour
 			if(computeColorMap && displayColorMap)
 			{
 				GUI.DrawTexture(usersClrRect, usersClrTex);
+                GUI.DrawTexture(usersCaliBox, calibrateBox);
 			}
 		}
     }
