@@ -128,58 +128,81 @@ public class FocusedCameraControl : MonoBehaviour {
         }
 
     }
+    private void Focused()
+    {
+        if (timer > UserContainer.Instance.time * 0.2f)
+        {
+            ResetAlphas();
+            timer = 0.0f;
+            alphaTimer = 0.0f;
+            appear = true;
+            relativeRightVolume = ((RightHandBehaviour)gameManager.rightHand).RelativeLowerVolume +
+                ((RightHandBehaviour)gameManager.rightHand).RelativeMiddleVolume +
+                ((RightHandBehaviour)gameManager.rightHand).RelativeUpperVolume;
+            relativeLeftVolume = ((LeftHandBehaviour)gameManager.leftHand).RelativeLowerVolume +
+                ((LeftHandBehaviour)gameManager.leftHand).RelativeMiddleVolume +
+                ((LeftHandBehaviour)gameManager.leftHand).RelativeUpperVolume;
+            if (relativeRightVolume == 0)
+            {
+                shoulderCamera.enabled = true;
+                gameManager.message = "FOCUS ON YOUR RIGHT HAND";
+                look = lookRight;
+                direction = LookDirection.RIGHT;
+            }
+            else if (relativeLeftVolume == 0)
+            {
+                shoulderCamera.enabled = true;
+                gameManager.message = "FOCUS ON YOUR LEFT HAND";
+                look = lookLeft;
+                direction = LookDirection.LEFT;
+            }
+            else if (relativeLeftVolume < relativeRightVolume)
+            {
+                shoulderCamera.enabled = true;
+                gameManager.message = "FOCUS ON YOUR LEFT HAND";
+                look = lookLeft;
+                direction = LookDirection.LEFT;
+            }
+            else
+            {
+                shoulderCamera.enabled = true;
+                gameManager.message = "FOCUS ON YOUR RIGHT HAND";
+                look = lookRight;
+                direction = LookDirection.RIGHT;
+            }
+        }
+        if (gameManager.timer > UserContainer.Instance.time * 0.75f)
+        {
+            automating = false;
+            direction = LookDirection.CENTER;
+        }
+    }
+    private void Timed()
+    {
+        if (gameManager.timer < UserContainer.Instance.time * 0.5f)
+        {
+            look = lookLeft;
+            direction = LookDirection.LEFT;
+            gameManager.message = "FOCUS ON YOUR LEFT HAND";
+        }
+        else if (gameManager.timer < UserContainer.Instance.time * 0.75f)
+        {
+            look = lookRight;
+            direction = LookDirection.RIGHT;
+            gameManager.message = "FOCUS ON YOUR RIGHT HAND";
+        }
+        else
+        {
+            automating = false;
+        }
+    }
     void Update () {
         if (gameManager.Playing)
         {
             if (automating)
             {
                 timer += Time.deltaTime;
-                if (timer > UserContainer.Instance.time * 0.2f)
-                {
-                    ResetAlphas();
-                    timer = 0.0f;
-                    alphaTimer = 0.0f;
-                    appear = true;
-                    relativeRightVolume = ((RightHandBehaviour)gameManager.rightHand).RelativeLowerVolume +
-                        ((RightHandBehaviour)gameManager.rightHand).RelativeMiddleVolume +
-                        ((RightHandBehaviour)gameManager.rightHand).RelativeUpperVolume;
-                    relativeLeftVolume = ((LeftHandBehaviour)gameManager.leftHand).RelativeLowerVolume +
-                        ((LeftHandBehaviour)gameManager.leftHand).RelativeMiddleVolume +
-                        ((LeftHandBehaviour)gameManager.leftHand).RelativeUpperVolume;
-                    if (relativeRightVolume == 0)
-                    {
-                        shoulderCamera.enabled = true;
-                        gameManager.message = "FOCUS ON YOUR RIGHT HAND";
-                        look = lookRight;
-                        direction = LookDirection.RIGHT;
-                    }
-                    else if (relativeLeftVolume == 0)
-                    {
-                        shoulderCamera.enabled = true;
-                        gameManager.message = "FOCUS ON YOUR LEFT HAND";
-                        look = lookLeft;
-                        direction = LookDirection.LEFT;
-                    }
-                    else if (relativeLeftVolume < relativeRightVolume)
-                    {
-                        shoulderCamera.enabled = true;
-                        gameManager.message = "FOCUS ON YOUR LEFT HAND";
-                        look = lookLeft;
-                        direction = LookDirection.LEFT;
-                    }
-                    else
-                    {
-                        shoulderCamera.enabled = true;
-                        gameManager.message = "FOCUS ON YOUR RIGHT HAND";
-                        look = lookRight;
-                        direction = LookDirection.RIGHT;
-                    }
-                }
-                if (gameManager.timer > UserContainer.Instance.time * 0.75f)
-                {
-                    automating = false;
-                    direction = LookDirection.CENTER;
-                }
+                Timed();
                 shoulderCamera.gameObject.transform.rotation = Quaternion.RotateTowards(shoulderCamera.transform.rotation, Quaternion.Euler(look), Time.deltaTime * lerpScale);
                 Blink();
             }
@@ -195,6 +218,7 @@ public class FocusedCameraControl : MonoBehaviour {
                 }
                 else if (gameManager.timer > UserContainer.Instance.time * 0.25f)
                 {
+                    shoulderCamera.enabled = true;
                     automating = true;
                     timer = 0;
                 }
