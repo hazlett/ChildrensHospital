@@ -117,12 +117,12 @@ public class VolumeTracker {
             {
                 file.WriteLine(line);
             }
-            file.WriteLine(UserContainer.Instance.Users[UserContainer.Instance.currentUser].Name + "," +
-                UserContainer.Instance.Users[UserContainer.Instance.currentUser].ID.ToString() + "," +
+            file.WriteLine(UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Name + "," +
+                UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].ID.ToString() + "," +
                 DateTime.Now.ToString("g") + "," + 
-                UserContainer.Instance.Users[UserContainer.Instance.currentUser].Birthdate.ToString("MM/dd/yy") + "," +
-                UserContainer.Instance.Users[UserContainer.Instance.currentUser].BrookeScale + "," +
-                UserContainer.Instance.Users[UserContainer.Instance.currentUser].UlnaLength + "," +
+                UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Birthdate.ToString("MM/dd/yy") + "," +
+                UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].BrookeScale + "," +
+                UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].UlnaLength + "," +
                 volumes.TotalVolume().ToString("G8") + ","
                 + LowerLeftVolume().ToString("G8") + "," + LowerRightVolume().ToString("G8") + ","
                 + MiddleLeftVolume().ToString("G8") + "," + MiddleRightVolume().ToString("G8") + ","
@@ -210,6 +210,22 @@ public class VolumeTracker {
                 }
                 break;
         }
+        if (upperZRight > middleZRight)
+        {
+            middleZRight = upperZRight;
+        }
+        if (upperXRight > middleXRight)
+        {
+            middleXRight = upperXRight;
+        }
+        if (middleZRight > lowerZRight)
+        {
+            lowerZRight = middleZRight;
+        }
+        if (middleXRight > lowerXRight)
+        {
+            lowerXRight = middleXRight;
+        }
         if (rightHandPosition.y > yRight)
         {
             yRight = rightHandPosition.y;
@@ -250,6 +266,22 @@ public class VolumeTracker {
                     upperZLeft = leftHandPosition.z;
                 }
                 break;
+        }
+        if (upperZLeft > middleZLeft)
+        {
+            middleZLeft = upperZLeft;
+        }
+        if (upperXLeft > middleXLeft)
+        {
+            middleXLeft = upperXLeft;
+        }
+        if (middleZLeft > lowerZLeft)
+        {
+            lowerZLeft = middleZLeft;
+        }
+        if (middleXLeft > lowerXLeft)
+        {
+            lowerXLeft = middleXLeft;
         }
         if (leftHandPosition.y > yLeft)
         {

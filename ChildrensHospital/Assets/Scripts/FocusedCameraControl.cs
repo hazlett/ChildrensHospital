@@ -20,7 +20,8 @@ public class FocusedCameraControl : MonoBehaviour {
     {
         CENTER,
         RIGHT,
-        LEFT
+        LEFT,
+        TOP
     }
     private LookDirection direction;
 
@@ -96,17 +97,33 @@ public class FocusedCameraControl : MonoBehaviour {
         {
             case LookDirection.LEFT:
                 color = LowerFarLeft.renderer.material.color;
-                color.a = alphaTimer / 3.0f;
+                color.a = alphaTimer / 8.0f;
                 LowerFarLeft.renderer.material.color = color;
                 MiddleFarLeft.renderer.material.color = color;
                 UpperFarLeft.renderer.material.color = color;
                 break;
             case LookDirection.RIGHT:
                 color = LowerFarRight.renderer.material.color;
-                color.a = alphaTimer / 4.0f;
+                color.a = alphaTimer / 8.0f;
                 LowerFarRight.renderer.material.color = color;
                 MiddleFarRight.renderer.material.color = color;
                 UpperFarRight.renderer.material.color = color;
+                break;
+            case LookDirection.CENTER:
+                color = MiddleLeft.renderer.material.color;
+                color.a = alphaTimer / 8.0f;
+                LowerRight.renderer.material.color = color;
+                MiddleRight.renderer.material.color = color;
+                UpperRight.renderer.material.color = color;
+                LowerLeft.renderer.material.color = color;
+                MiddleLeft.renderer.material.color = color;
+                UpperLeft.renderer.material.color = color;
+                break;
+            case LookDirection.TOP:
+                color = MiddleLeft.renderer.material.color;
+                color.a = alphaTimer / 8.0f;
+                TopRight.renderer.material.color = color;
+                TopLeft.renderer.material.color = color;
                 break;
         }
 
@@ -168,10 +185,11 @@ public class FocusedCameraControl : MonoBehaviour {
             }
             else
             {
-                direction = LookDirection.CENTER;
                 ResetAlphas();
                 if (gameManager.timer > UserContainer.Instance.time * 0.75f)
                 {
+                    Blink();
+                    direction = LookDirection.CENTER;
                     gameManager.message = "SESSION ENDS SOON";
                     shoulderCamera.enabled = false;
                 }
@@ -179,6 +197,11 @@ public class FocusedCameraControl : MonoBehaviour {
                 {
                     automating = true;
                     timer = 0;
+                }
+                else
+                {
+                    Blink();
+                    direction = LookDirection.TOP;
                 }
             }
         }

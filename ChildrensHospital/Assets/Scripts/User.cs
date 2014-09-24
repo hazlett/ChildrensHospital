@@ -48,20 +48,20 @@ public class User  {
 
         if (UserContainer.Instance.UserDictionary.ContainsKey(id))
         {
-            Name = UserContainer.Instance.Users[id].Name;
+            Name = UserContainer.Instance.UserDictionary[id].Name;
             ID = id;
-            Birthdate = UserContainer.Instance.Users[id].Birthdate;
-            BrookeScale = UserContainer.Instance.Users[id].BrookeScale;
-            UlnaLength = UserContainer.Instance.Users[id].UlnaLength;
-            Gender = UserContainer.Instance.Users[id].Gender;
+            Birthdate = UserContainer.Instance.UserDictionary[id].Birthdate;
+            BrookeScale = UserContainer.Instance.UserDictionary[id].BrookeScale;
+            UlnaLength = UserContainer.Instance.UserDictionary[id].UlnaLength;
+            Gender = UserContainer.Instance.UserDictionary[id].Gender;
 
             if (brookeScale != 0)
             {
-                BrookeScale = UserContainer.Instance.Users[id].BrookeScale = brookeScale;
+                BrookeScale = UserContainer.Instance.UserDictionary[id].BrookeScale = brookeScale;
             }
             if (ulnaLength != 0)
             {
-                UlnaLength = UserContainer.Instance.Users[id].UlnaLength = ulnaLength;
+                UlnaLength = UserContainer.Instance.UserDictionary[id].UlnaLength = ulnaLength;
             }
 
             UserContainer.Instance.currentUser = ID;

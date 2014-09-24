@@ -99,6 +99,22 @@ public class LeftHandBehaviour : MonoBehaviour {
         {
             yMax = gameObject.transform.position.y;
         }
+        if (upperZMax > middleZMax)
+        {
+            middleZMax = upperZMax;
+        }
+        if (upperXMax < middleXMax)
+        {
+            middleXMax = upperXMax;
+        }
+        if (middleZMax > lowerZMax)
+        {
+            lowerZMax = middleZMax;
+        }
+        if (middleXMax < lowerXMax)
+        {
+            lowerXMax = middleXMax;
+        }
         LowerLeft.transform.position = Vector3.Lerp(LowerLeft.transform.position, new Vector3(LowerLeft.transform.position.x, LowerLeft.transform.position.y, zOffset + scale * lowerZMax), Time.deltaTime * lerpScale);
         LowerFarLeft.transform.position = Vector3.Lerp(LowerFarLeft.transform.position, new Vector3(xOffset + lowerXMax, LowerFarLeft.transform.position.y, LowerFarLeft.transform.position.z), Time.deltaTime * lerpScale);
         MiddleLeft.transform.position = Vector3.Lerp(MiddleLeft.transform.position, new Vector3(MiddleLeft.transform.position.x, MiddleLeft.transform.position.y, zOffset + scale * middleZMax), Time.deltaTime * lerpScale);
