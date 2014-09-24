@@ -77,11 +77,11 @@ public class MainMenuGUI : MonoBehaviour
             {
                 calibrateMessage = "Please Calibrate";
             }
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 275, 300, 100), calibrateMessage, "GreyStart");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - 250, nativeVerticalResolution / 2 - 275, 500, 100), calibrateMessage, "GreyStart");
         }
         else
         {
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 275, 300, 100), "Choose User", "GreyStart");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - 250, nativeVerticalResolution / 2 - 275, 500, 100), "Please Select a User", "GreyStart");
         }
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 170, 300, 100), "New User"))
@@ -151,7 +151,7 @@ public class MainMenuGUI : MonoBehaviour
         GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 150, 300, 50), "Trial Length (sec)");
         timeString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 185, 300, 50), timeString);
 
-        GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution - 300, 540, 270), "Current User\n" + playerStatus);
+        GUI.Box(new Rect(scaledResolutionWidth / 2 - 275, nativeVerticalResolution - 300, 550, 300), "Current User\n" + playerStatus);
 
         // Error box
         if (invalidInput)
