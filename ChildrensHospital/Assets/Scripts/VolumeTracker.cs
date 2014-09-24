@@ -20,6 +20,9 @@ public class VolumeTracker {
     private float lowerXLeft, lowerXRight, middleXLeft, middleXRight, upperXLeft, upperXRight,
         lowerZLeft, lowerZRight, middleZLeft, middleZRight, upperZLeft, upperZRight,
         yLeft, yRight;
+    private float lowerFarLeft, middleFarLeft, upperFarLeft, lowerFrontLeft, middleFrontLeft, upperFrontLeft, topLeft,
+        lowerFarRight, middleFarRight, upperFarRight, lowerFrontRight, middleFrontRight, upperFrontRight, topRight,
+        totalSurfaceArea;
     private float lowerBound = 0.1f, upperBound = 0.3f;
     private Matrix4x4 transformMatrix;
     private int leftHandJoint = 7, rightHandJoint = 11;
@@ -111,7 +114,11 @@ public class VolumeTracker {
         {
             if (lines.Count == 0)
             {
-                file.WriteLine("User Name, User ID, Trial Date and Time, Birthdate, BrookeScale, UlnaLength, TotalVolume, LowerLeftVolume, LowerRightVolume, MiddleLeftVolume, MiddleRightVolume, UpperLeftVolume, UpperRightVolume, LowerXLeft, LowerXRight, MiddleXLeft, MiddleXRight, UpperXLeft, UpperXRight, LowerZLeft, LowerZRight, MiddleZLeft, MiddleZRight, UpperZLeft, UpperZRight, LowerY, MiddleY, LeftYReach, RightYReach, CalibrationMatrix, XOffset, YOffset, ZOffset");
+                file.WriteLine("User Name, User ID, Trial Date and Time, Birthdate, BrookeScale, UlnaLength,"  
+                + "TotalVolume, LowerLeftVolume, LowerRightVolume, MiddleLeftVolume, MiddleRightVolume, UpperLeftVolume, UpperRightVolume,"
+                + "TotalSurfaceArea, LowerFarLeft, LowerFarRight, MiddleFarLeft, MiddleFarRight, UpperFarLeft, UpperFarRight, LowerFrontLeft, LowerFrontRight, MiddleFrontLeft, MiddleFrontRight, UpperFrontLeft, UpperFrontRight, TopLeft, TopRight,"
+                + "LowerLeft, MiddleLeft, UpperLeft, LowerRight, MiddleRight, UpperRight, LowerXLeft, LowerXRight, MiddleXLeft, MiddleXRight, UpperXLeft, UpperXRight, LowerZLeft, LowerZRight, MiddleZLeft, MiddleZRight, UpperZLeft, UpperZRight,"
+                + "LowerY, MiddleY, LeftYReach, RightYReach, CalibrationMatrix, XOffset, YOffset, ZOffset");
             }
             foreach(string line in lines)
             {
@@ -127,6 +134,14 @@ public class VolumeTracker {
                 + LowerLeftVolume().ToString("G8") + "," + LowerRightVolume().ToString("G8") + ","
                 + MiddleLeftVolume().ToString("G8") + "," + MiddleRightVolume().ToString("G8") + ","
                 + UpperLeftVolume().ToString("G8") + "," + UpperRightVolume().ToString("G8") + ","
+                + totalSurfaceArea.ToString("G8") + ","
+                + lowerFarLeft.ToString("G8") + "," + lowerFarRight.ToString("G8") + ","
+                + middleFarLeft.ToString("G8") + "," + middleFarRight.ToString("G8") + ","
+                + upperFarLeft.ToString("G8") + "," + upperFarRight.ToString("G8") + ","
+                + lowerFrontLeft.ToString("G8") + "," + lowerFrontRight.ToString("G8") + ","
+                + middleFrontLeft.ToString("G8") + "," + middleFrontRight.ToString("G8") + ","
+                + upperFrontLeft.ToString("G8") + "," + upperFrontRight.ToString("G8") + ","
+                + topLeft.ToString("G8") + "," + topRight.ToString("G8") + ","
                 + lowerXLeft.ToString("G8") + "," + lowerXRight.ToString("G8") + "," 
                 + middleXLeft.ToString("G8") + "," + middleXRight.ToString("G8") + "," 
                 + upperXLeft.ToString("G8") + "," + upperXRight.ToString("G8") + "," 
@@ -141,6 +156,27 @@ public class VolumeTracker {
 
     }
 
+    private void CalculateSurfaceAreas()
+    {
+        totalSurfaceArea += lowerFarLeft = lowerBound * lowerZLeft;
+        totalSurfaceArea += middleFarLeft = (upperBound - lowerBound) * middleZLeft;
+        totalSurfaceArea += upperFarLeft = (yLeft - upperBound) * upperZLeft;
+        totalSurfaceArea += lowerFarRight = lowerBound * lowerZRight;
+        totalSurfaceArea += middleFarRight = (upperBound - lowerBound) * middleZRight;
+        totalSurfaceArea += upperFarRight = (yRight - upperBound) * upperZRight;
+
+        totalSurfaceArea += lowerFrontLeft = lowerBound * lowerXLeft;
+        totalSurfaceArea += middleFrontLeft = (upperBound - lowerBound) * middleXLeft;
+        totalSurfaceArea += upperFrontLeft = (yLeft - upperBound) * upperXLeft;
+        totalSurfaceArea += lowerFrontRight = lowerBound * lowerXRight;
+        totalSurfaceArea += middleFrontRight = (upperBound - lowerBound) * middleXRight;
+        totalSurfaceArea += upperFrontRight = (yRight - upperBound) * upperXRight;
+
+        totalSurfaceArea += topLeft = upperZLeft * upperXLeft;
+        totalSurfaceArea += topRight = upperZRight * upperXRight;
+
+        
+    }
     private string MatrixToString(Matrix4x4 matrix)
     {
         string matrixString = "";
