@@ -1108,7 +1108,7 @@ public class KinectManager : MonoBehaviour
 		kinectInitialized = true;
 		instance = this;
 		
-		DontDestroyOnLoad(gameObject);
+		//DontDestroyOnLoad(gameObject);
 		
 		// GUI Text.
 		if(calibrationText != null)

@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class GemGenerator : MonoBehaviour {
-
+    private static GemGenerator instance;
     private GameObject[] gems = new GameObject[1000];
     private float xMax = 2.5f, xMidLeft = 0.0f, xMidRight = 0.0f, xMin = -2.5f, zMin = 0.0f, zMax = 10.0f, yMin = 1.0f, yMax = 3.0f, zFarMin = 0.0f, zFarMax = 10.0f, zTop = 0.1f;
     private GameObject dirt,
@@ -64,7 +64,15 @@ public class GemGenerator : MonoBehaviour {
 
     void Awake()
     {
-        GameObject.DontDestroyOnLoad(this.gameObject);
+        if (!instance)
+        {
+            instance = this;
+            GameObject.DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void SetupGems()
