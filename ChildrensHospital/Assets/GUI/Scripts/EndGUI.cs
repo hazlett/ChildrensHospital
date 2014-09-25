@@ -49,16 +49,22 @@ public class EndGUI : MonoBehaviour
         {
             if (saveData)
             {
+               EventLogger.Instance.LogData("Saving Data");
                gameManager.Tracker.DebugExtremas();
             }
+            EventLogger.Instance.LogData("Trial Ended");
+            EventLogger.Instance.LogData("Starting New Trial");
             Application.LoadLevel("Game");
         }
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), "Quit"))
         {
             if (saveData)
             {
+                EventLogger.Instance.LogData("Saving Data");
                 gameManager.Tracker.DebugExtremas();
             }
+            EventLogger.Instance.LogData("Trial Ended");
+            EventLogger.Instance.LogData("Exiting to Menu");
             Application.LoadLevel("MainMenu");
         }
 

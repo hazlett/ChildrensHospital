@@ -33,7 +33,7 @@ public class VolumeTracker {
     private Vector3 offset;
     private Vector3 rightHandAxis = new Vector3(1.0f, 1.0f, -1.0f);
     private Vector3 leftHandAxis = new Vector3(-1.0f, 1.0f, -1.0f);
-    private string path = Environment.SpecialFolder.MyDocuments + @"\ReachVolumeGame";
+    private string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\ReachVolumeGame";
 	public VolumeTracker () {
         kinect = GameObject.Find("KinectManager").GetComponent<KinectManager>();
         transformMatrix = GameControl.Instance.TransformMatrix;

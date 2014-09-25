@@ -23,8 +23,8 @@ public class InstructionsGUI : MonoBehaviour
         "may need to calibrate again.\n\nGAMEPLAY\nThe game will take a few seconds to start, but once it does, the goal is to dig for gems.  " + 
         "As the user stretches, the dirt is eroded and gems are revealed and fall down.  The game will also show which side needs work if one " + 
         "side is less than the other by focusing the camera on it.\n\nEND GAME\nWhen the game ends, it will display the stats of the trial. You " + 
-        "will have an option to play the trial again or quit. It will also save the results if \"Save Trial\" is selected.\n\nSAVING\nGame data is " + 
-        "saved into a file under personal\\ReachVolumeGame\\Extremas.csv";
+        "will have an option to play the trial again or quit. It will also save the results if \"Save Trial\" is selected.\n\nSAVING\nGame data and "
+        + "game log are saved into a folder under MyDocuments\\ReachVolumeGame";
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;

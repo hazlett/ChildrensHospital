@@ -82,6 +82,8 @@
      <Compile Include="Assets\KinectScripts\KinectServer.cs" />
      <Compile Include="Assets\Scripts\Calibration.cs" />
      <Compile Include="Assets\Scripts\DebugCamera.cs" />
+     <Compile Include="Assets\Scripts\EndGame.cs" />
+     <Compile Include="Assets\Scripts\EventLogger.cs" />
      <Compile Include="Assets\Scripts\FocusedCameraControl.cs" />
      <Compile Include="Assets\Scripts\ForceStart.cs" />
      <Compile Include="Assets\Scripts\GameControl.cs" />

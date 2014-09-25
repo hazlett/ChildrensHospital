@@ -28,6 +28,7 @@ public class Calibration {
         catch (Exception e)
         {
             UnityEngine.Debug.LogError("Calibration Error: " + e.Message);
+            EventLogger.Instance.LogData("Calibration Failed: " + e.Message);
             return false;
         }
     }
@@ -37,6 +38,7 @@ public class Calibration {
         {
             forcedKill = true;
             calibration.Kill();
+            EventLogger.Instance.LogData("Calibration Restarted");
         }
         catch (Exception) { }
     }
@@ -44,6 +46,8 @@ public class Calibration {
     {
         UnityEngine.Debug.Log("Timed Calibrate");
         GameControl.Instance.Calibrated();
+        GameControl.Instance.ReadCalibration();
+        EventLogger.Instance.LogData("Calibration Restarted " + GameControl.Instance.TransformMatrix);
     }
 
     void calibration_Exited(object sender, EventArgs e)

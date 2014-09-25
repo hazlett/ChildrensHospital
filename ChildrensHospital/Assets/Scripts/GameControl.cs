@@ -30,6 +30,7 @@ public class GameControl : MonoBehaviour
     {
         isCalibrated = true;
         isCalibrating = false;
+        EventLogger.Instance.LogData("Calibrated Successfully.");
     }
     internal Matrix4x4 ReadCalibration(string fileName)
     {
@@ -56,8 +57,10 @@ public class GameControl : MonoBehaviour
         catch (Exception e)
         {
             UnityEngine.Debug.Log("Error getting transform: " + e.Message);
+            EventLogger.Instance.LogData("Error reading calibration matrix: " + e.Message);
         }
         transformMatrix = matrixCalibration;
+        EventLogger.Instance.LogData("Calibration Matrix: " + transformMatrix.ToString());
         return matrixCalibration;
     }
     internal Matrix4x4 ReadCalibration()

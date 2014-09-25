@@ -62,6 +62,7 @@ public class MainMenuGUI : MonoBehaviour
                 CheckTime();
                 if (!invalidInput)
                 {
+                    EventLogger.Instance.LogData("Game Started");
                     Application.LoadLevel("Game");
                 }
             }
@@ -114,6 +115,7 @@ public class MainMenuGUI : MonoBehaviour
                     }
                     catch (Exception)
                     { }
+                    EventLogger.Instance.LogData("Calibration Started");
                     calibration = new Calibration();
                     calibration.Calibrate();
                 }
@@ -131,6 +133,7 @@ public class MainMenuGUI : MonoBehaviour
                     }
                     catch (Exception)
                     { }
+                    EventLogger.Instance.LogData("Calibration Started");
                     calibration = new Calibration();
                     calibration.Calibrate();
                 }

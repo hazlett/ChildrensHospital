@@ -117,12 +117,28 @@ public class SettingsGUI : MonoBehaviour
 
                 if (saving)
                 {
+                    string gender = "female";
+                    if (male)
+                    {
+                        gender = "male";
+                    }
+
                     user = new User(name, ID, birthDateTime, brookeScale, ulnaLength, male);
                     user.SaveUser();
+                    EventLogger.Instance.LogData("New user selected.  Name: " + name + " ID: " + ID + " Birthday: "
+                        + birthDateTime + " Brooke Scale: " + brookeScale + " Ulna Length: " + ulnaLength + " Gender: " + gender);
                 }
                 else
                 {
+                    string gender = "female";
+                    if (UserContainer.Instance.UserDictionary[ID].Gender)
+                    {
+                        gender = "male";
+                    }
                     user.LoadSpecificUser(ID, brookeScale, ulnaLength);
+                    EventLogger.Instance.LogData("Existing user selected.  Name: " + UserContainer.Instance.UserDictionary[ID].Name + " ID: " + ID + " Birthday: "
+                        + UserContainer.Instance.UserDictionary[ID].Birthdate + " Brooke Scale: " + UserContainer.Instance.UserDictionary[ID].BrookeScale
+                        + " Ulna Length: " + UserContainer.Instance.UserDictionary[ID].UlnaLength + " Gender: " + gender);
                 }
             }
         }
