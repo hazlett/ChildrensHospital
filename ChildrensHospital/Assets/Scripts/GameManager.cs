@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour {
     private Volumes volumes;
     public Volumes Volumes { get { return volumes; } }
     private float lowerLeftVolume, lowerRightVolume, middleLeftVolume, middleRightVolume, upperLeftVolume, upperRightVolume, yRightValue, yLeftValue;
-    private bool GUIon;
+    internal bool GUIon;
     public bool DebugMode;
     internal MonoBehaviour rightHand, leftHand;
     private GameObject character;
@@ -89,21 +89,6 @@ public class GameManager : MonoBehaviour {
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Debug.Log("Pause");
-            if (Time.timeScale == 1)
-            {
-                Time.timeScale = 0;
-                endStats.enabled = true;
-            }
-            else
-            {
-                Time.timeScale = 1;
-                endStats.enabled = false;
-            }
-        }
-
         TimedScreenResize();
 	}
     void OnGUI()
@@ -127,6 +112,7 @@ public class GameManager : MonoBehaviour {
             GUI.Label(new Rect(scaledResolutionWidth / 2 - 200, 85, 400, 75), "Score: " + TotalVolume().ToString("F3"));
 
             //ShowAvatarVolumes();
+            
             ShowVolumes();
         }
     }

@@ -60,6 +60,7 @@
     <Compile Include="Assets\GUI\Scripts\EndGUI.cs" />
     <Compile Include="Assets\GUI\Scripts\InstructionsGUI.cs" />
     <Compile Include="Assets\GUI\Scripts\MainMenuGUI.cs" />
+    <Compile Include="Assets\GUI\Scripts\PauseGUI.cs" />
     <Compile Include="Assets\GUI\Scripts\SettingsGUI.cs" />
     <Compile Include="Assets\Gem Shader\Example\GemSpawner.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX2_Demo.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GemBehavior.cs" />
     <Compile Include="Assets\Scripts\GemGenerator.cs" />
+    <Compile Include="Assets\Scripts\KeyboardController.cs" />
     <Compile Include="Assets\Scripts\KinectDebug.cs" />
     <Compile Include="Assets\Scripts\LeftHandBehaviour.cs" />
     <Compile Include="Assets\Scripts\ManualCameraControl.cs" />
