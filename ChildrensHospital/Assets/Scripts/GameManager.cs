@@ -89,7 +89,20 @@ public class GameManager : MonoBehaviour {
             return;
         }
 
-        
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log("Pause");
+            if (Time.timeScale == 1)
+            {
+                Time.timeScale = 0;
+                endStats.enabled = true;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                endStats.enabled = false;
+            }
+        }
 
         TimedScreenResize();
 	}
