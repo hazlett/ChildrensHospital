@@ -90,6 +90,7 @@ public class VolumeTracker {
     }
     public void DebugExtremas()
     {
+        CalculateSurfaceAreas();
         List<string> lines = new List<string>();
         try
         {
@@ -117,7 +118,7 @@ public class VolumeTracker {
                 file.WriteLine("User Name, User ID, Trial Date and Time, Birthdate, BrookeScale, UlnaLength,"  
                 + "TotalVolume, LowerLeftVolume, LowerRightVolume, MiddleLeftVolume, MiddleRightVolume, UpperLeftVolume, UpperRightVolume,"
                 + "TotalSurfaceArea, LowerFarLeft, LowerFarRight, MiddleFarLeft, MiddleFarRight, UpperFarLeft, UpperFarRight, LowerFrontLeft, LowerFrontRight, MiddleFrontLeft, MiddleFrontRight, UpperFrontLeft, UpperFrontRight, TopLeft, TopRight,"
-                + "LowerLeft, MiddleLeft, UpperLeft, LowerRight, MiddleRight, UpperRight, LowerXLeft, LowerXRight, MiddleXLeft, MiddleXRight, UpperXLeft, UpperXRight, LowerZLeft, LowerZRight, MiddleZLeft, MiddleZRight, UpperZLeft, UpperZRight,"
+                + "LowerXLeft, LowerXRight, MiddleXLeft, MiddleXRight, UpperXLeft, UpperXRight, LowerZLeft, LowerZRight, MiddleZLeft, MiddleZRight, UpperZLeft, UpperZRight,"
                 + "LowerY, MiddleY, LeftYReach, RightYReach, CalibrationMatrix, XOffset, YOffset, ZOffset");
             }
             foreach(string line in lines)
@@ -158,22 +159,28 @@ public class VolumeTracker {
 
     private void CalculateSurfaceAreas()
     {
-        totalSurfaceArea += lowerFarLeft = lowerBound * lowerZLeft;
-        totalSurfaceArea += middleFarLeft = (upperBound - lowerBound) * middleZLeft;
-        totalSurfaceArea += upperFarLeft = (yLeft - upperBound) * upperZLeft;
-        totalSurfaceArea += lowerFarRight = lowerBound * lowerZRight;
-        totalSurfaceArea += middleFarRight = (upperBound - lowerBound) * middleZRight;
-        totalSurfaceArea += upperFarRight = (yRight - upperBound) * upperZRight;
+        lowerFarLeft = lowerBound * lowerZLeft;
+        middleFarLeft = (upperBound - lowerBound) * middleZLeft;
+        upperFarLeft = (yLeft - upperBound) * upperZLeft;
+        lowerFarRight = lowerBound * lowerZRight;
+        middleFarRight = (upperBound - lowerBound) * middleZRight;
+        upperFarRight = (yRight - upperBound) * upperZRight;
 
-        totalSurfaceArea += lowerFrontLeft = lowerBound * lowerXLeft;
-        totalSurfaceArea += middleFrontLeft = (upperBound - lowerBound) * middleXLeft;
-        totalSurfaceArea += upperFrontLeft = (yLeft - upperBound) * upperXLeft;
-        totalSurfaceArea += lowerFrontRight = lowerBound * lowerXRight;
-        totalSurfaceArea += middleFrontRight = (upperBound - lowerBound) * middleXRight;
-        totalSurfaceArea += upperFrontRight = (yRight - upperBound) * upperXRight;
+        lowerFrontLeft = lowerBound * lowerXLeft;
+        middleFrontLeft = (upperBound - lowerBound) * middleXLeft;
+        upperFrontLeft = (yLeft - upperBound) * upperXLeft;
+        lowerFrontRight = lowerBound * lowerXRight;
+        middleFrontRight = (upperBound - lowerBound) * middleXRight;
+        upperFrontRight = (yRight - upperBound) * upperXRight;
 
-        totalSurfaceArea += topLeft = upperZLeft * upperXLeft;
-        totalSurfaceArea += topRight = upperZRight * upperXRight;
+        topLeft = upperZLeft * upperXLeft;
+        topRight = upperZRight * upperXRight;
+
+        totalSurfaceArea = lowerFarLeft + middleFarLeft + upperFarLeft
+            + lowerFarRight + middleFarRight + upperFarRight
+            + lowerFrontLeft + middleFrontLeft + upperFrontLeft
+            + lowerFrontRight + middleFrontRight + upperFrontRight
+            + topLeft + topRight;
 
         
     }

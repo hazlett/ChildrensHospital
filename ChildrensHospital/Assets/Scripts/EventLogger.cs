@@ -22,7 +22,10 @@ public class EventLogger  {
 
     private EventLogger()
     {
+<<<<<<< HEAD
         // Create a ReachVolumeGame folder if it doesn't exist
+=======
+>>>>>>> origin/master
         if (!System.IO.Directory.Exists(path))
         {
             System.IO.Directory.CreateDirectory(path);
