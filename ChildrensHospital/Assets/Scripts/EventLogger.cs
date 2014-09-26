@@ -19,8 +19,14 @@ public class EventLogger  {
 
     private string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\ReachVolumeGame";
 
+
     private EventLogger()
     {
+        // Create a ReachVolumeGame folder if it doesn't exist
+        if (!System.IO.Directory.Exists(path))
+        {
+            System.IO.Directory.CreateDirectory(path);
+        }
         logFile = new FileStream(path + "\\ReachVolume.log", FileMode.Append);
         logger = new StreamWriter(logFile);
 
