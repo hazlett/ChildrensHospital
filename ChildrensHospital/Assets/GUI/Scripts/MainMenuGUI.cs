@@ -115,6 +115,7 @@ public class MainMenuGUI : MonoBehaviour
                     }
                     catch (Exception)
                     { }
+                    DocumentManager.Instance.ArgsCreated = false;
                     EventLogger.Instance.LogData("Calibration Started");
                     calibration = new Calibration();
                     calibration.Calibrate();

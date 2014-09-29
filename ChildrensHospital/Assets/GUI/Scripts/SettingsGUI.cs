@@ -125,6 +125,7 @@ public class SettingsGUI : MonoBehaviour
 
                     user = new User(name, ID, birthDateTime, brookeScale, ulnaLength, male);
                     user.SaveUser();
+                    DocumentManager.Instance.ArgsCreated = false;
                     EventLogger.Instance.LogData("New user selected.  Name: " + name + " ID: " + ID + " Birthday: "
                         + birthDateTime + " Brooke Scale: " + brookeScale + " Ulna Length: " + ulnaLength + " Gender: " + gender);
                 }
@@ -136,6 +137,7 @@ public class SettingsGUI : MonoBehaviour
                         gender = "male";
                     }
                     user.LoadSpecificUser(ID, brookeScale, ulnaLength);
+                    DocumentManager.Instance.ArgsCreated = false;
                     EventLogger.Instance.LogData("Existing user selected.  Name: " + UserContainer.Instance.UserDictionary[ID].Name + " ID: " + ID + " Birthday: "
                         + UserContainer.Instance.UserDictionary[ID].Birthdate + " Brooke Scale: " + UserContainer.Instance.UserDictionary[ID].BrookeScale
                         + " Ulna Length: " + UserContainer.Instance.UserDictionary[ID].UlnaLength + " Gender: " + gender);

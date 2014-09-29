@@ -55,6 +55,9 @@
     <Reference Include="I18N.West">
       <HintPath>Assets\Plugins\I18N.West.dll</HintPath>
     </Reference>
+    <Reference Include="PdfFileWriter">
+      <HintPath>Assets\Plugins\PdfFileWriter.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\GUI\Scripts\EndGUI.cs" />
@@ -93,6 +96,7 @@
     <Compile Include="Assets\KinectScripts\KinectServer.cs" />
     <Compile Include="Assets\Scripts\Calibration.cs" />
     <Compile Include="Assets\Scripts\DebugCamera.cs" />
+    <Compile Include="Assets\Scripts\DocumentManager.cs" />
     <Compile Include="Assets\Scripts\EndGame.cs" />
     <Compile Include="Assets\Scripts\EventLogger.cs" />
     <Compile Include="Assets\Scripts\FocusedCameraControl.cs" />
@@ -104,6 +108,7 @@
     <Compile Include="Assets\Scripts\KeyboardController.cs" />
     <Compile Include="Assets\Scripts\KinectDebug.cs" />
     <Compile Include="Assets\Scripts\LeftHandBehaviour.cs" />
+    <Compile Include="Assets\Scripts\LoadMainMenu.cs" />
     <Compile Include="Assets\Scripts\ManualCameraControl.cs" />
     <Compile Include="Assets\Scripts\ProjectionMatrix.cs" />
     <Compile Include="Assets\Scripts\RightHandBehaviour.cs" />

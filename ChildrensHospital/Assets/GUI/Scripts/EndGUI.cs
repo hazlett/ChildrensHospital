@@ -10,6 +10,7 @@ public class EndGUI : MonoBehaviour
 
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
     private bool saveData = true;
+    private string args;
 
     // Use this for initialization
     void Start()
@@ -17,6 +18,7 @@ public class EndGUI : MonoBehaviour
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
+        DocumentManager.Instance.CreateArgs();
         enabled = false;
     }
 
@@ -52,6 +54,7 @@ public class EndGUI : MonoBehaviour
                EventLogger.Instance.LogData("Saving Data");
                gameManager.Tracker.DebugExtremas();
             }
+            AppendArgs();
             EventLogger.Instance.LogData("Trial Ended");
             EventLogger.Instance.LogData("Starting New Trial");
             Application.LoadLevel("Game");
@@ -63,6 +66,8 @@ public class EndGUI : MonoBehaviour
                 EventLogger.Instance.LogData("Saving Data");
                 gameManager.Tracker.DebugExtremas();
             }
+            AppendArgs();
+            DocumentManager.Instance.CreateReport();
             EventLogger.Instance.LogData("Trial Ended");
             EventLogger.Instance.LogData("Exiting to Menu");
             Application.LoadLevel("MainMenu");
@@ -71,6 +76,12 @@ public class EndGUI : MonoBehaviour
         saveData = GUI.Toggle(new Rect(scaledResolutionWidth / 2 - 125, nativeVerticalResolution - 250, 50, 50), saveData, "");
 
         GUI.Label(new Rect(scaledResolutionWidth / 2 - 65, nativeVerticalResolution - 250, 200, 50), "Save Results", "ToggleLabel");
+    }
+
+
+    private void AppendArgs()
+    {
+        DocumentManager.Instance.AppendArgs(gameManager);
     }
 
     private void TimedScreenResize()

@@ -20,7 +20,7 @@ public class VolumeTracker {
     private float lowerXLeft, lowerXRight, middleXLeft, middleXRight, upperXLeft, upperXRight,
         lowerZLeft, lowerZRight, middleZLeft, middleZRight, upperZLeft, upperZRight,
         yLeft, yRight;
-    private float lowerFarLeft, middleFarLeft, upperFarLeft, lowerFrontLeft, middleFrontLeft, upperFrontLeft, topLeft,
+    internal float lowerFarLeft, middleFarLeft, upperFarLeft, lowerFrontLeft, middleFrontLeft, upperFrontLeft, topLeft,
         lowerFarRight, middleFarRight, upperFarRight, lowerFrontRight, middleFrontRight, upperFrontRight, topRight,
         totalSurfaceArea;
     private float lowerBound = 0.1f, upperBound = 0.3f;

@@ -24,14 +24,18 @@ public class GameControl : MonoBehaviour
     private Matrix4x4 transformMatrix;
     public Matrix4x4 TransformMatrix { get { return transformMatrix; } }
     private int idKey;
+    private DateTime calibrationTime;
+    public DateTime CalibrationTime { get { return calibrationTime; } }
     public int IdKey { get { return idKey; } }
 
     public void Calibrated()
     {
         isCalibrated = true;
         isCalibrating = false;
+        calibrationTime = DateTime.Now;
         EventLogger.Instance.LogData("Calibrated Successfully.");
     }
+
     internal Matrix4x4 ReadCalibration(string fileName)
     {
         Matrix4x4 matrixCalibration = new Matrix4x4();
