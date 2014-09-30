@@ -66,10 +66,15 @@ public class DocumentManager {
     }
     public void AppendArgs(GameManager gameManager)
     {
-        args += UserContainer.Instance.time.ToString();
+        args += UserContainer.Instance.time.ToString() + " ";
         args += gameManager.Tracker.GetVolumes().TotalVolume().ToString("G8") + " ";
         args += "???" + " ";
         args += gameManager.Tracker.totalSurfaceArea.ToString("G8") + " ";
         args += "???" + " ";
+        //args += "TrialTime" + " ";
+        //args += "TotalVolume" + " ";
+        //args += "VolumePredicted" + " ";
+        //args += "TotalSurfaceArea" + " ";
+        //args += "AreaPredicted" + " ";
     }
 }
