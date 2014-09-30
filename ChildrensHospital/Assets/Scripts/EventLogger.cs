@@ -17,7 +17,7 @@ public class EventLogger  {
         }
     }
 
-    private string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\ReachVolumeGame";
+    private string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\ACTIVE-seated";
 
 
     private EventLogger()
