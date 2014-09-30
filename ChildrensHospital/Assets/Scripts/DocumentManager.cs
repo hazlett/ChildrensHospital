@@ -12,6 +12,8 @@ public class DocumentManager {
     private string processPath;
     public bool ArgsCreated;
     private string args;
+    private int age;
+    private float percentVolume, percentArea;
     private DocumentManager()
     {
         processPath = Application.dataPath + @"/../Report/" + "ReportHandler.exe";
@@ -54,7 +56,7 @@ public class DocumentManager {
         args += UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].UlnaLength.ToString() + " ";
         args += UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].BrookeScale.ToString() + " ";
         DateTime currentDate = DateTime.Today;
-        int age = currentDate.Year - UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Birthdate.Year;
+        age = currentDate.Year - UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Birthdate.Year;
         if (UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Birthdate > currentDate.AddYears(-age))
         {
             age--;
@@ -64,11 +66,14 @@ public class DocumentManager {
         args += GameControl.Instance.CalibrationTime.ToString("dd-MM-yyyyThh:mm:ss") + " ";
         ArgsCreated = true;
     }
+
     public void AppendArgs(GameManager gameManager)
     {
+        CalculatePercents(gameManager);
+
         args += UserContainer.Instance.time.ToString() + " ";
         args += gameManager.Tracker.GetVolumes().TotalVolume().ToString("G8") + " ";
-        args += "???" + " ";
+        args += percentVolume.ToString("G8");
         args += gameManager.Tracker.totalSurfaceArea.ToString("G8") + " ";
         args += "???" + " ";
         //args += "TrialTime" + " ";
@@ -76,5 +81,38 @@ public class DocumentManager {
         //args += "VolumePredicted" + " ";
         //args += "TotalSurfaceArea" + " ";
         //args += "AreaPredicted" + " ";
+    }
+
+    private void CalculatePercents(GameManager gameManager) {
+        float height;
+
+        if (UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Gender)
+        {
+            height = 28.003f + (4.605f * UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].UlnaLength);
+            if (age < 18)
+            {
+                height += 1.308f * age;
+            }
+            else
+            {
+                height += 1.308f * 18;
+            }
+        }
+        else
+        {
+            height = 31.485f + (4.459f * UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].UlnaLength);
+            if (age < 18)
+            {
+                height += 1.315f * age;
+            }
+            else
+            {
+                height += 1.315f * 18;
+            }
+        }
+
+        percentVolume = height * height * height * 0.21586025f;
+
+        percentVolume = (gameManager.Tracker.GetVolumes().TotalVolume() / percentVolume) * 100.0f;
     }
 }
