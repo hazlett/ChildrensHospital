@@ -51,14 +51,16 @@ public class PauseGUI : MonoBehaviour
             {
                 gameManager.Tracker.DebugExtremas();
             }
+            Time.timeScale = 1;
             Application.LoadLevel("Game");
         }
-        if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), "Quit"))
+        if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), "Main Menu"))
         {
             if (saveData)
             {
                 gameManager.Tracker.DebugExtremas();
             }
+            Time.timeScale = 1;
             Application.LoadLevel("MainMenu");
         }
 
