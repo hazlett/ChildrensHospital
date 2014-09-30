@@ -87,9 +87,6 @@
  <Reference Include="I18N.West">
  <HintPath>C:/Users/bbric_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/I18N.West.dll</HintPath>
  </Reference>
- <Reference Include="PdfFileWriter">
- <HintPath>C:/Users/hazle_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/PdfFileWriter.dll</HintPath>
- </Reference>
  <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
  <HintPath>C:/Users/bbric_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
  </Reference>
@@ -101,6 +98,9 @@
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+ <Reference Include="PdfFileWriter">
+ <HintPath>C:/Users/bbric_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/PdfFileWriter.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
