@@ -108,40 +108,41 @@ public class GameManager : MonoBehaviour {
 
         if (GUIon)
         {
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - 200, 10, 400, 75), message);
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - 200, 85, 400, 75), "Score: " + TotalVolume().ToString("F3"));
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - 425, 10, 400, 75), message);
+            GUI.Label(new Rect(scaledResolutionWidth / 2 + 25, 10, 400, 75), "Score: " + TotalVolume().ToString("F3"));
 
             //ShowAvatarVolumes();
             
-            ShowVolumes();
+            //ShowVolumes();
         }
     }
 
-    private void ShowAvatarVolumes()
-    {
-        GUI.Label(new Rect(10, 10, 400, 75), "Lower Left Volume: " + lowerLeftVolume.ToString("F3"));
-        GUI.Label(new Rect(10, 85, 400, 75), "Middle Left Volume: " + middleLeftVolume.ToString("F3"));
-        GUI.Label(new Rect(10, 160, 400, 75), "Upper Left Volume: " + upperLeftVolume.ToString("F3"));
-        GUI.Label(new Rect(10, 235, 400, 75), "Left Y Value: " + yLeftValue.ToString("F3"));
-        GUI.Label(new Rect(scaledResolutionWidth - 410, 10, 400, 75), "Lower Right Volume: " + lowerRightVolume.ToString("F3"));
-        GUI.Label(new Rect(scaledResolutionWidth - 410, 85, 400, 75), "Middle Right Volume: " + middleRightVolume.ToString("F3"));
-        GUI.Label(new Rect(scaledResolutionWidth - 410, 160, 400, 75), "Upper Right Volume: " + upperRightVolume.ToString("F3"));
-        GUI.Label(new Rect(scaledResolutionWidth - 410, 235, 400, 75), "Right Y Value: " + yRightValue.ToString("F3"));
-    }
-    private void ShowVolumes()
-    {
-        GUI.Label(new Rect(10, 10, 400, 75), "Lower Left Volume: " + tracker.LowerLeftVolume().ToString("F3"));
-        GUI.Label(new Rect(10, 85, 400, 75), "Middle Left Volume: " + tracker.MiddleLeftVolume().ToString("F3"));
-        GUI.Label(new Rect(10, 160, 400, 75), "Upper Left Volume: " + tracker.UpperLeftVolume().ToString("F3"));
-        GUI.Label(new Rect(10, 235, 400, 75), "Left Y Value: " + tracker.YLeft.ToString("F3"));
-        GUI.Label(new Rect(scaledResolutionWidth - 410, 10, 400, 75), "Lower Right Volume: " + tracker.LowerRightVolume().ToString("F3"));
-        GUI.Label(new Rect(scaledResolutionWidth - 410, 85, 400, 75), "Middle Right Volume: " + tracker.MiddleRightVolume().ToString("F3"));
-        GUI.Label(new Rect(scaledResolutionWidth - 410, 160, 400, 75), "Upper Right Volume: " + tracker.UpperRightVolume().ToString("F3"));
-        GUI.Label(new Rect(scaledResolutionWidth - 410, 235, 400, 75), "Right Y Value: " + tracker.YRight.ToString("F3"));
-    }
+    //private void ShowAvatarVolumes()
+    //{
+    //    GUI.Label(new Rect(10, 10, 400, 75), "Lower Left Volume: " + lowerLeftVolume.ToString("F3"));
+    //    GUI.Label(new Rect(10, 85, 400, 75), "Middle Left Volume: " + middleLeftVolume.ToString("F3"));
+    //    GUI.Label(new Rect(10, 160, 400, 75), "Upper Left Volume: " + upperLeftVolume.ToString("F3"));
+    //    GUI.Label(new Rect(10, 235, 400, 75), "Left Y Value: " + yLeftValue.ToString("F3"));
+    //    GUI.Label(new Rect(scaledResolutionWidth - 410, 10, 400, 75), "Lower Right Volume: " + lowerRightVolume.ToString("F3"));
+    //    GUI.Label(new Rect(scaledResolutionWidth - 410, 85, 400, 75), "Middle Right Volume: " + middleRightVolume.ToString("F3"));
+    //    GUI.Label(new Rect(scaledResolutionWidth - 410, 160, 400, 75), "Upper Right Volume: " + upperRightVolume.ToString("F3"));
+    //    GUI.Label(new Rect(scaledResolutionWidth - 410, 235, 400, 75), "Right Y Value: " + yRightValue.ToString("F3"));
+    //}
+    //private void ShowVolumes()
+    //{
+    //    GUI.Label(new Rect(10, 10, 400, 75), "Lower Left Volume: " + tracker.LowerLeftVolume().ToString("F3"));
+    //    GUI.Label(new Rect(10, 85, 400, 75), "Middle Left Volume: " + tracker.MiddleLeftVolume().ToString("F3"));
+    //    GUI.Label(new Rect(10, 160, 400, 75), "Upper Left Volume: " + tracker.UpperLeftVolume().ToString("F3"));
+    //    GUI.Label(new Rect(10, 235, 400, 75), "Left Y Value: " + tracker.YLeft.ToString("F3"));
+    //    GUI.Label(new Rect(scaledResolutionWidth - 410, 10, 400, 75), "Lower Right Volume: " + tracker.LowerRightVolume().ToString("F3"));
+    //    GUI.Label(new Rect(scaledResolutionWidth - 410, 85, 400, 75), "Middle Right Volume: " + tracker.MiddleRightVolume().ToString("F3"));
+    //    GUI.Label(new Rect(scaledResolutionWidth - 410, 160, 400, 75), "Upper Right Volume: " + tracker.UpperRightVolume().ToString("F3"));
+    //    GUI.Label(new Rect(scaledResolutionWidth - 410, 235, 400, 75), "Right Y Value: " + tracker.YRight.ToString("F3"));
+    //}
     private void StartGame()
     {
         playing = true;
+        GameControl.Instance.IsPlaying = true;
         rightHand.enabled = true;
         leftHand.enabled = true;
         

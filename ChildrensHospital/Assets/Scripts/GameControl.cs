@@ -27,6 +27,8 @@ public class GameControl : MonoBehaviour
     private DateTime calibrationTime;
     public DateTime CalibrationTime { get { return calibrationTime; } }
     public int IdKey { get { return idKey; } }
+    private bool isPlaying = false;
+    public bool IsPlaying { get { return isPlaying; } set { isPlaying = value; } }
 
     public void Calibrated()
     {

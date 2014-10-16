@@ -117,7 +117,7 @@ public class VolumeTracker {
             {
                 file.WriteLine("User Name, User ID, Trial Date and Time, Birthdate, BrookeScale, UlnaLength,"  
                 + "TotalVolume, LowerLeftVolume, LowerRightVolume, MiddleLeftVolume, MiddleRightVolume, UpperLeftVolume, UpperRightVolume,"
-                + "TotalSurfaceArea, LowerFarLeft, LowerFarRight, MiddleFarLeft, MiddleFarRight, UpperFarLeft, UpperFarRight, LowerFrontLeft, LowerFrontRight, MiddleFrontLeft, MiddleFrontRight, UpperFrontLeft, UpperFrontRight, TopLeft, TopRight,"
+                + "TotalSurfaceArea, LowerFarLeft, LowerFarRight, MiddleFarLeft, MiddleFarRight, UpperFarLeft, UpperFarRight, LowerFrontLeft, LowerFrontRight, MiddleFrontLeft, MiddleFrontRight, UpperFrontLeft, UpperFrontRight,"
                 + "LowerXLeft, LowerXRight, MiddleXLeft, MiddleXRight, UpperXLeft, UpperXRight, LowerZLeft, LowerZRight, MiddleZLeft, MiddleZRight, UpperZLeft, UpperZRight,"
                 + "LowerY, MiddleY, LeftYReach, RightYReach, CalibrationMatrix, XOffset, YOffset, ZOffset");
             }
@@ -142,7 +142,7 @@ public class VolumeTracker {
                 + lowerFrontLeft.ToString("G8") + "," + lowerFrontRight.ToString("G8") + ","
                 + middleFrontLeft.ToString("G8") + "," + middleFrontRight.ToString("G8") + ","
                 + upperFrontLeft.ToString("G8") + "," + upperFrontRight.ToString("G8") + ","
-                + topLeft.ToString("G8") + "," + topRight.ToString("G8") + ","
+               // + topLeft.ToString("G8") + "," + topRight.ToString("G8") + ","
                 + lowerXLeft.ToString("G8") + "," + lowerXRight.ToString("G8") + "," 
                 + middleXLeft.ToString("G8") + "," + middleXRight.ToString("G8") + "," 
                 + upperXLeft.ToString("G8") + "," + upperXRight.ToString("G8") + "," 
@@ -173,14 +173,14 @@ public class VolumeTracker {
         middleFrontRight = (upperBound - lowerBound) * middleXRight;
         upperFrontRight = (yRight - upperBound) * upperXRight;
 
-        topLeft = upperZLeft * upperXLeft;
-        topRight = upperZRight * upperXRight;
+       // topLeft = upperZLeft * upperXLeft;
+       // topRight = upperZRight * upperXRight;
 
         totalSurfaceArea = lowerFarLeft + middleFarLeft + upperFarLeft
             + lowerFarRight + middleFarRight + upperFarRight
             + lowerFrontLeft + middleFrontLeft + upperFrontLeft
-            + lowerFrontRight + middleFrontRight + upperFrontRight
-            + topLeft + topRight;
+            + lowerFrontRight + middleFrontRight + upperFrontRight;
+           // + topLeft + topRight;
 
         
     }
@@ -353,5 +353,11 @@ public class VolumeTracker {
     {
         volumes.SetVolumes(LowerLeftVolume(), LowerRightVolume(), MiddleLeftVolume(), MiddleRightVolume(), UpperLeftVolume(), UpperRightVolume(), YRight, YLeft);
         return volumes;
+    }
+
+    public float GetSurfaceArea()
+    {
+        CalculateSurfaceAreas();
+        return totalSurfaceArea;
     }
 }

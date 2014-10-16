@@ -4,16 +4,29 @@ using System.Collections;
 public class GemBehavior : MonoBehaviour {
 
     private GameObject dirt;
+    private bool audioLinked = false;
 
-    public AudioSource audioPlay;
+    private AudioSource audioPlay;
     public GemGenerator.Area area;
     public string Dirt;
     public Vector3 dirtPosition;
 	void Start () {
 
+        
 	}
 	
 	void Update () {
+
+        if (GameControl.Instance.IsPlaying)
+        {
+            if (!audioLinked)
+            {
+                audioPlay = GameObject.Find("RockFall").GetComponent<AudioSource>();
+                audioLinked = true;
+            }
+        }
+
+
         if (this.rigidbody.useGravity == false)
         {
             if (dirt == null)
@@ -75,6 +88,9 @@ public class GemBehavior : MonoBehaviour {
     private void GravityOn()
     {
         this.rigidbody.useGravity = true;
-        audioPlay.Play();
+        if (!audioPlay.isPlaying)
+        {
+            audioPlay.Play();
+        }
     }
 }

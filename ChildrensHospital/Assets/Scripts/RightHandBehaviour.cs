@@ -55,7 +55,7 @@ public class RightHandBehaviour : MonoBehaviour {
                 if (!audioPlay.isPlaying)
                 {
                     audioPlay.Play();
-                }
+                } 
             }
         }
         else if (tracker.BoxStateRight == VolumeTracker.BoxStates.MIDDLE)
@@ -94,7 +94,7 @@ public class RightHandBehaviour : MonoBehaviour {
                 {
                     audioPlay.Play();
                 }
-            }
+            } 
         }
         if (gameObject.transform.position.y > yMax)
         {

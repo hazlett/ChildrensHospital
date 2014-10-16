@@ -22,6 +22,9 @@ public class User  {
     [XmlAttribute("UlnaLength")]
     public float UlnaLength;
 
+    [XmlAttribute("Diagnosis")]
+    public string Diagnosis;
+
     [XmlAttribute("Gender")]
     public bool Gender;
 
@@ -53,6 +56,7 @@ public class User  {
             Birthdate = UserContainer.Instance.UserDictionary[id].Birthdate;
             BrookeScale = UserContainer.Instance.UserDictionary[id].BrookeScale;
             UlnaLength = UserContainer.Instance.UserDictionary[id].UlnaLength;
+            Diagnosis = UserContainer.Instance.UserDictionary[id].Diagnosis;
             Gender = UserContainer.Instance.UserDictionary[id].Gender;
 
             if (brookeScale != 0)
@@ -69,7 +73,7 @@ public class User  {
     }
 
     public User() { }
-    public User(string name, int id, DateTime birthdate, int brookeScale, float ulnaLength, bool gender)
+    public User(string name, int id, DateTime birthdate, int brookeScale, float ulnaLength, string diagnosis, bool gender)
     {
         numberOfUsers = UserContainer.Instance.UserDictionary.Count;
         Name = name;
@@ -77,6 +81,7 @@ public class User  {
         Birthdate = birthdate;
         BrookeScale = brookeScale;
         UlnaLength = ulnaLength;
+        Diagnosis = diagnosis;
         Gender = gender;
     }
 
@@ -93,7 +98,7 @@ public class User  {
         }
 
         return ("Name: " + Name + " \nID: " + ID + " \nBirthdate: " + Birthdate.Month.ToString() + '/' + Birthdate.Day.ToString()
-            + '/' + Birthdate.Year.ToString() + " \nBrooke Scale: " + BrookeScale + " \nUlna Length: " + UlnaLength
-            + "\nGender: " + userGender + " Total Users: " + numberOfUsers);
+            + '/' + Birthdate.Year.ToString() + " \nBrooke Scale: " + BrookeScale + " \nUlna Length: " + UlnaLength + "\nDiagnosis: "
+            + Diagnosis + "\nGender: " + userGender);
     }
 }
