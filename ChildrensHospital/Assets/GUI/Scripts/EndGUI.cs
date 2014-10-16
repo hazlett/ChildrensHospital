@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 using System.IO;
-
+using System.Collections.Generic;
 public class EndGUI : MonoBehaviour
 {
     public GUISkin mainMenuSkin;
@@ -11,6 +11,7 @@ public class EndGUI : MonoBehaviour
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
     private bool saveData = true;
     private string args;
+    private static List<float> volumes = new List<float>();
 
     // Use this for initialization
     void Start()
@@ -47,8 +48,15 @@ public class EndGUI : MonoBehaviour
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "Results\nName: " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Name
            + "\nID: " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].ID + "\nVolume: " + gameManager.TotalVolume().ToString("F4") + " meters cubed\nOther Stats", "EndBox");
 
+        ///TODO: put in correct positions on screen
+        foreach(float volume in volumes)
+        {
+            GUILayout.Label(volume.ToString());
+        }
+
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 380, 300, 100), "Run Trial Again"))
         {
+            volumes.Add(gameManager.TotalVolume());
             if (saveData)
             {
                EventLogger.Instance.LogData("Saving Data");
@@ -61,6 +69,7 @@ public class EndGUI : MonoBehaviour
         }
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), "Quit"))
         {
+            volumes = new List<float>();
             if (saveData)
             {
                 EventLogger.Instance.LogData("Saving Data");
