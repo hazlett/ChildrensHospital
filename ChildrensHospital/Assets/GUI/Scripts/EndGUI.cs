@@ -48,7 +48,7 @@ public class EndGUI : MonoBehaviour
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "Results\nName: " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Name
            + "\nID: " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].ID + "\nVolume: " + gameManager.TotalVolume().ToString("F4") + " meters cubed\nOther Stats", "EndBox");
 
-        ///TODO: put in correct positions on screen
+        ///TODO: put in correct positions on screen.
         foreach(float volume in volumes)
         {
             GUILayout.Label(volume.ToString());
