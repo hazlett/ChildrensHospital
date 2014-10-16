@@ -9,16 +9,18 @@ public class MainMenuGUI : MonoBehaviour
     public GUISkin mainMenuSkin;
     public SettingsGUI settings;
     public InstructionsGUI instructions;
+    public DropdownUserListGUI dropdown;
     public KinectManager kinectManager;
 
     internal Calibration calibration;
 
-    private string playerStatus, timeString, errorMessage;
+    private string playerStatus, timeString, errorMessage, style;
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
     private bool manualCalibration = false, invalidInput = false;
 
     void Start()
     {
+        style = "activeDrop";
         errorMessage = "Invalid trial length. \nPlease enter a trial length between 0 and 120.";
         UserContainer.Instance.time = 60;
         timeString = UserContainer.Instance.time.ToString();
@@ -29,7 +31,6 @@ public class MainMenuGUI : MonoBehaviour
 
     void Update()
     {
-
         TimedScreenResize();
         SetPlayerStatus();
     }
@@ -161,6 +162,23 @@ public class MainMenuGUI : MonoBehaviour
         if (invalidInput)
         {
             GUI.Box(new Rect(scaledResolutionWidth / 2 - 380, 15, 760, 100), errorMessage);
+        }
+
+        if (dropdown.enabled)
+        {
+            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), "List of Users", "activeDropDown"))
+            {
+                dropdown.disabling = true;
+                dropdown.timer = dropdown.speed = 0;
+            }
+        }
+        else
+        {
+            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), "List of Users", "inactiveDropDown"))
+            {
+                dropdown.timer = 0.0f;
+                dropdown.enabled = true;
+            }
         }
 
         timeString = Regex.Replace(timeString, @"[^0-9]", "");

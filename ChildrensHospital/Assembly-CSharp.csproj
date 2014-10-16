@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\GUI\Scripts\CountdownGUI.cs" />
+     <Compile Include="Assets\GUI\Scripts\DropdownUserListGUI.cs" />
      <Compile Include="Assets\GUI\Scripts\EndGUI.cs" />
      <Compile Include="Assets\GUI\Scripts\InstructionsGUI.cs" />
      <Compile Include="Assets\GUI\Scripts\MainMenuGUI.cs" />
@@ -146,13 +147,13 @@
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="I18N">
- <HintPath>C:/Users/Reasearch/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/I18N.dll</HintPath>
+ <HintPath>C:/Users/bbric_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/I18N.dll</HintPath>
  </Reference>
  <Reference Include="I18N.West">
- <HintPath>C:/Users/Reasearch/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/I18N.West.dll</HintPath>
+ <HintPath>C:/Users/bbric_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/I18N.West.dll</HintPath>
  </Reference>
  <Reference Include="PdfFileWriter">
- <HintPath>C:/Users/Reasearch/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/PdfFileWriter.dll</HintPath>
+ <HintPath>C:/Users/bbric_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/PdfFileWriter.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
