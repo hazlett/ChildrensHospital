@@ -4,7 +4,7 @@ using System.Collections;
 public class GemGenerator : MonoBehaviour {
     private static GemGenerator instance;
     private GameObject[] gems = new GameObject[1000];
-    private float xMax = 2.5f, xMidLeft = 0.0f, xMidRight = 0.0f, xMin = -2.5f, zMin = 0.0f, zMax = 10.0f, yMin = 1.0f, yMax = 3.0f, zFarMin = 0.0f, zFarMax = 10.0f, zTop = 0.1f;
+    private float xMax = 2.5f, xMidLeft = 0.0f, xMidRight = 0.0f, xMin = -2.5f, zMin = 0.0f, zMax = 5.0f, yMin = 1.0f, yMax = 3.0f, zFarMin = 0.0f, zFarMax = 5.0f, zTop = 0.1f;
     private GameObject dirt,
         LOWERLEFT,
         LOWERRIGHT,
@@ -32,19 +32,19 @@ public class GemGenerator : MonoBehaviour {
         PERIDOT
     }
     enum SpawnArea
-    {
-        LOWERLEFT,
-        LOWERRIGHT,
-        MIDDLELEFT,
-        MIDDLERIGHT,
-        UPPERLEFT,
-        UPPERRIGHT,
+    { 
         TOPLEFT,
         TOPRIGHT,
+        LOWERLEFT,
+        LOWERRIGHT,        
         LOWERFARLEFT,
         LOWERFARRIGHT,
+        MIDDLELEFT,
+        MIDDLERIGHT,
         MIDDLEFARLEFT,
-        MIDDLEFARRIGHT,
+        MIDDLEFARRIGHT, 
+        UPPERLEFT,
+        UPPERRIGHT,
         UPPERFARLEFT,
         UPPERFARRIGHT
     }
@@ -100,11 +100,30 @@ public class GemGenerator : MonoBehaviour {
     }
 
     private void SpawnGems()
-    {  
+    {
         for (int i = 0; i < gems.Length - 1; i++)
         {
             float randomX, randomY, randomZ;
-            SpawnArea spawnArea = (SpawnArea)Random.Range(0, 13);
+            SpawnArea spawnArea;
+           // float weight = Random.Range(0.0f, 1.0f);
+            spawnArea = (SpawnArea)Random.Range(0,14);
+            //if (weight <= .1) //top
+            //{
+            //    spawnArea = (SpawnArea)Random.Range((int)SpawnArea.TOPLEFT, (int)SpawnArea.TOPRIGHT + 1);
+            //}
+            //else if (weight < .25) //lower
+            //{
+            //    spawnArea = (SpawnArea)Random.Range((int)SpawnArea.LOWERLEFT, (int)SpawnArea.LOWERFARRIGHT + 1);
+            //}
+            //else if (weight < .5) //middle
+            //{
+            //    spawnArea = (SpawnArea)Random.Range((int)SpawnArea.MIDDLELEFT, (int)SpawnArea.MIDDLEFARRIGHT + 1);
+            //}
+            //else //upper
+            //{
+            //    spawnArea = (SpawnArea)Random.Range((int)SpawnArea.UPPERLEFT, (int)SpawnArea.UPPERFARRIGHT + 1);
+            //}
+
             Area area;
             switch (spawnArea)
             {

@@ -14,8 +14,8 @@ public class SettingsGUI : MonoBehaviour
     private int ID, textBoxWidth = 300, textBoxHeight = 50, brookeScale;
     private DateTime birthDateTime;
 
+  
     internal User user = new User();
-
     internal bool newUser, invalidInput = false, saving = true, male = false;
 
     // Use this for initialization
