@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
 
     public GUISkin mainMenuSkin;
     public EndGUI endStats;
+    public CountdownGUI countdown;
+    public AudioSource startBell;
     private GemGenerator generator;
     public SpiderSpawner spiders;
     private float endTrial = 20.0f;
@@ -52,12 +54,13 @@ public class GameManager : MonoBehaviour {
         if (KinectManager.Instance.GetUsersCount() > 0)
         {
             timer += Time.deltaTime;
-            if (timer > 1.5)
+            if (timer > 3.0f)
             {
                 if (!playing)
                 {
                     message = "PLAYING GAME";
                     StartGame();
+                    startBell.Play();
                 }
                 else
                 {
@@ -68,7 +71,7 @@ public class GameManager : MonoBehaviour {
             else
             {
                 message = "SETTING UP GAME";
-                
+                countdown.enabled = true;
                 // Spawn Gems
                 generator.enabled = true;
                 

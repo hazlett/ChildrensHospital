@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GUI\Scripts\CountdownGUI.cs" />
     <Compile Include="Assets\GUI\Scripts\EndGUI.cs" />
     <Compile Include="Assets\GUI\Scripts\InstructionsGUI.cs" />
     <Compile Include="Assets\GUI\Scripts\MainMenuGUI.cs" />
