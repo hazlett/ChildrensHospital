@@ -31,6 +31,12 @@ public class GameManager : MonoBehaviour {
         tracker = new VolumeTracker();
         volumes = new Volumes();
 
+        GameObject[] backs = GameObject.FindGameObjectsWithTag("Back");
+        foreach (GameObject back in backs)
+        {
+            back.transform.localPosition += new Vector3(0, 0.05f, 0);
+        }
+
         timer = 0.0f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
@@ -112,7 +118,8 @@ public class GameManager : MonoBehaviour {
         if (GUIon)
         {
             GUI.Label(new Rect(scaledResolutionWidth / 2 - 425, 10, 400, 75), message);
-            GUI.Label(new Rect(scaledResolutionWidth / 2 + 25, 10, 400, 75), "Score: " + TotalVolume().ToString("F3"));
+            GUI.Label(new Rect(scaledResolutionWidth / 2 + 25, 10, 400, 75), "Volume: " + TotalVolume().ToString("F3"));
+            GUI.Label(new Rect(scaledResolutionWidth / 2 + 25, 95, 400, 75), "Score: " + GameControl.Instance.GemsCollected.ToString());
 
             //ShowAvatarVolumes();
             

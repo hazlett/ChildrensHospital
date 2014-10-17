@@ -5,7 +5,7 @@ public class GemBehavior : MonoBehaviour {
 
     private GameObject dirt;
     private bool audioLinked = false;
-
+    private bool collected = false;
     private AudioSource audioPlay;
     public GemGenerator.Area area;
     public string Dirt;
@@ -27,8 +27,8 @@ public class GemBehavior : MonoBehaviour {
         }
 
 
-        if (this.rigidbody.useGravity == false)
-        {
+        if (!collected)
+        { 
             if (dirt == null)
                 return;
             dirtPosition = dirt.transform.position;
@@ -87,10 +87,16 @@ public class GemBehavior : MonoBehaviour {
 
     private void GravityOn()
     {
-        this.rigidbody.useGravity = true;
-        if (!audioPlay.isPlaying)
+        if (!collected)
         {
-            audioPlay.Play();
+            collected = true;
+            GameControl.Instance.CollectGem();
+            this.rigidbody.useGravity = true;
+            rigidbody.AddForce(((Vector3.zero - transform.position).normalized + new Vector3(0,1,0)) * 100.0f);
+            //if (!audioPlay.isPlaying)
+            //{
+            //    audioPlay.Play();
+            //}
         }
     }
 }

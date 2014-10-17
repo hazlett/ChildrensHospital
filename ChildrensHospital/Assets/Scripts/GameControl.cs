@@ -29,7 +29,14 @@ public class GameControl : MonoBehaviour
     public int IdKey { get { return idKey; } }
     private bool isPlaying = false;
     public bool IsPlaying { get { return isPlaying; } set { isPlaying = value; } }
-
+    private int gemsCollected;
+    public int GemsCollected { get { return gemsCollected; } }
+    private int totalGems;
+    public int TotalGems { get { return totalGems; } set { totalGems = value; } }
+    public void CollectGem()
+    {
+        gemsCollected++;
+    }
     public void Calibrated()
     {
         isCalibrated = true;
