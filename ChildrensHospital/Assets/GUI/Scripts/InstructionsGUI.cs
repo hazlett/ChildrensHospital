@@ -12,19 +12,21 @@ public class InstructionsGUI : MonoBehaviour
 
     void Start()
     {
-        instuctionsList = "GETTING STARTED\nStart off by choosing either new user or existing user. The box below these buttons" +
+        instuctionsList = "GETTING STARTED\nStart off by choosing either new user or an existing user from the dropdown menu or the existing user button. The box below these buttons" +
         " shows the currently selected user, and their information (If you just started the game there won't be a currently selected user)." + 
         " You may also change the duration of the trial by inputting the number of seconds into the Trial Length field.\n\nNEW USER\nHere you" +
         " set the user's name, birthdate, Brooke scale, ulna length, and ID(Make sure you keep track of the ID number). If everything is" +
         " entered correctly, click save and this user will be updated as your current user.\n\nEXISTING USER\nHere you will enter the ID of the" +
         " user you want to load.  You may also change the Brooke Scale and/or ulna length if you need to by inputting new values. Click load to " +
-        "make this user your current user.\n\nCALIBRATION\nWhenever a new user is saved, or an existing user is loaded, the game will need to" +
+        "make this user your current user.\n\nLIST OF USERS DROPDOWN\nHere you will see a list of existing users that are in the system already." +
+        " Use this if you don't need to make any changes to the existing user you are selecting." +
+        "\n\nCALIBRATION\nWhenever a new user is saved, or an existing user is loaded, the game will need to" +
         " calibrate the Kinect.  Make sure that you have the calibration checkerboard in the correct position before clicking calibrate or you" + 
         " may need to calibrate again.\n\nGAMEPLAY\nThe game will take a few seconds to start, but once it does, the goal is to dig for gems.  " + 
-        "As the user stretches, the dirt is eroded and gems are revealed and fall down.  The game will also show which side needs work if one " + 
-        "side is less than the other by focusing the camera on it.\n\nEND GAME\nWhen the game ends, it will display the stats of the trial. You " + 
+        "As the user stretches, the dirt is eroded and gems are revealed and fall down. " + 
+        "\n\nEND GAME\nWhen the game ends, it will display the stats of the trial. You " + 
         "will have an option to play the trial again or quit. It will also save the results if \"Save Trial\" is selected.\n\nSAVING\nGame data and "
-        + "game log are saved into a folder under MyDocuments\\ReachVolumeGame";
+        + "game log are saved into a folder under MyDocuments\\ActiveSeated.  Reports are saved in the same location under the Reports folder.";
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
@@ -50,7 +52,7 @@ public class InstructionsGUI : MonoBehaviour
         // Scale the GUI to any resolution based on 1920 x 1080 base resolution
         GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(Screen.height / nativeVerticalResolution, Screen.height / nativeVerticalResolution, 1));
 
-        GUI.Box(new Rect(scaledResolutionWidth / 2 - 760, nativeVerticalResolution / 2 - 520, 1520, 920), instuctionsList, "Window");
+        GUI.Box(new Rect(scaledResolutionWidth / 2 - 810, nativeVerticalResolution / 2 - 520, 1620, 920), instuctionsList, "Window");
 
         if(GUI.Button(new Rect(scaledResolutionWidth - 325, nativeVerticalResolution - 125, 300, 100), "Back to Menu"))
         {
