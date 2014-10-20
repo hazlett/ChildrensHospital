@@ -16,7 +16,7 @@ public class SettingsGUI : MonoBehaviour
 
   
     internal User user = new User();
-    internal bool newUser, invalidInput = false, saving = true, male = false;
+    internal bool newUser, invalidInput = false, saving = true, male = true;
 
     // Use this for initialization
     void Start()

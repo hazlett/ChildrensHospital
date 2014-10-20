@@ -52,7 +52,7 @@ public class DropdownUserListGUI : MonoBehaviour {
         DrawDropDownList();
 
         // When clicked, the menu will move toward the end of the list
-        if (GUI.Button(new Rect(menuPosition.x, arrowsYPos, buttonSize.x / 2, buttonSize.y), " ", "Down"))
+        if (GUI.Button(new Rect(scaledResolutionWidth - buttonSize.x - 25, arrowsYPos, buttonSize.x / 2, buttonSize.y), " ", "Down"))
         {
             if (startList + maxDropdownSize < UserContainer.Instance.Users.Count)
             {
@@ -61,7 +61,7 @@ public class DropdownUserListGUI : MonoBehaviour {
         }
 
         // When clicked, the menu will move up towards the beginning of the list
-        if (GUI.Button(new Rect(menuPosition.x + buttonSize.x / 2, arrowsYPos, buttonSize.x / 2, buttonSize.y), " ", "Up"))
+        if (GUI.Button(new Rect(scaledResolutionWidth - buttonSize.x / 2 - 25, arrowsYPos, buttonSize.x / 2, buttonSize.y), " ", "Up"))
         {
             if (startList - 1 >= 0)
             {
@@ -79,7 +79,7 @@ public class DropdownUserListGUI : MonoBehaviour {
             if (startList + i < UserContainer.Instance.Users.Count)
             {
                 // Populates the fields of the menu, up to the maximum dropdown size
-                if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + buttonSize.y * (i + 1) * yPosition, buttonSize.x, buttonSize.y), UserContainer.Instance.Users[startList + i].Name + ", ID: " + UserContainer.Instance.Users[startList + i].ID, "Dropdown"))
+                if (GUI.Button(new Rect(scaledResolutionWidth - buttonSize.x - 25, 25 + buttonSize.y * (i + 1) * yPosition, buttonSize.x, buttonSize.y), UserContainer.Instance.Users[startList + i].Name + ", ID: " + UserContainer.Instance.Users[startList + i].ID, "Dropdown"))
                 {
                     // This chooses the specific field number 
                     // Put what you want to do based on which field is selected
@@ -92,7 +92,7 @@ public class DropdownUserListGUI : MonoBehaviour {
             else
             {
                 // If the dropdown menu has more fields than the list you are choosing from, it will populate the empty fields with "Empty"
-                GUI.Label(new Rect(menuPosition.x, menuPosition.y + buttonSize.y * (i + 1) * yPosition, buttonSize.x, buttonSize.y), "Empty", "Dropdown");
+                GUI.Label(new Rect(scaledResolutionWidth - buttonSize.x - 25, 25 + buttonSize.y * (i + 1) * yPosition, buttonSize.x, buttonSize.y), "Empty", "Dropdown");
             }
         }
     }
@@ -151,7 +151,7 @@ public class DropdownUserListGUI : MonoBehaviour {
     // Makes sure the menu fields don't exceed the screen bounds
     private void CheckMaxNumber()
     {
-        if (menuPosition.y + buttonSize.y * (maxDropdownSize + 1) + buttonSize.y > nativeVerticalResolution)
+        if (25 + buttonSize.y * (maxDropdownSize + 1) + buttonSize.y > nativeVerticalResolution)
         {
             maxDropdownSize--;
             CheckMaxNumber();
