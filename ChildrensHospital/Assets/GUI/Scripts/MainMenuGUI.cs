@@ -86,7 +86,7 @@ public class MainMenuGUI : MonoBehaviour
             GUI.Label(new Rect(scaledResolutionWidth / 2 - 250, nativeVerticalResolution / 2 - 275, 500, 100), "Please Select a User", "GreyStart");
         }
 
-        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 170, 300, 100), "New User"))
+        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 170, 300, 100), Languages.Instance.GetTranslation("New User")))
         {
             GameControl.Instance.IsCalibrated = false;
             settings.newUser = true;

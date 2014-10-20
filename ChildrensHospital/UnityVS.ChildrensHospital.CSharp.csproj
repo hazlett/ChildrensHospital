@@ -97,6 +97,10 @@
     <Compile Include="Assets\KinectScripts\KinectInterop.cs" />
     <Compile Include="Assets\KinectScripts\KinectManager.cs" />
     <Compile Include="Assets\KinectScripts\KinectServer.cs" />
+    <Compile Include="Assets\MultiLingual\LanguageSerializer.cs" />
+    <Compile Include="Assets\MultiLingual\LanguageUsed.cs" />
+    <Compile Include="Assets\MultiLingual\Languages.cs" />
+    <Compile Include="Assets\MultiLingual\TranslatorList.cs" />
     <Compile Include="Assets\Scripts\Calibration.cs" />
     <Compile Include="Assets\Scripts\DebugCamera.cs" />
     <Compile Include="Assets\Scripts\DocumentManager.cs" />
