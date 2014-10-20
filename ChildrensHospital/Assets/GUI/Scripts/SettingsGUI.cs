@@ -9,9 +9,10 @@ public class SettingsGUI : MonoBehaviour
 
     public GUISkin mainMenuSkin;
     public MainMenuGUI mainMenu;
-    private float nativeVerticalResolution, scaledResolutionWidth, updateGUI, ulnaLength;
-    private string birthdate, IDstring, name, ulnaLengthString, errorMessage, loadSave, diagnosis;
-    private int ID, textBoxWidth = 300, textBoxHeight = 50, brookeScale;
+    public DropdownUserListGUI dropdown;
+    private float nativeVerticalResolution, scaledResolutionWidth, updateGUI, ulnaLength, brookeScale;
+    internal string birthdate, IDstring, name, ulnaLengthString, errorMessage, loadSave, diagnosis;
+    private int ID, textBoxWidth = 300, textBoxHeight = 50, brookeInt;
     private DateTime birthDateTime;
 
   
@@ -62,6 +63,24 @@ public class SettingsGUI : MonoBehaviour
         // Scale the GUI to any resolution based on 1920 x 1080 base resolution
         GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(Screen.height / nativeVerticalResolution, Screen.height / nativeVerticalResolution, 1));
 
+
+        if (dropdown.enabled)
+        {
+            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), "List of Users", "activeDropDown"))
+            {
+                dropdown.disabling = true;
+                dropdown.timer = dropdown.speed = 0;
+            }
+        }
+        else
+        {
+            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), "List of Users", "inactiveDropDown"))
+            {
+                dropdown.timer = 0.0f;
+                dropdown.enabled = true;
+            }
+        }
+
         if (newUser)
         {
 
@@ -69,14 +88,14 @@ public class SettingsGUI : MonoBehaviour
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 420, textBoxWidth, textBoxHeight), "Name");
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 310, textBoxWidth, textBoxHeight), "ID");
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 200, textBoxWidth, textBoxHeight), "Birthdate (mm/dd/yy)");
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 90, textBoxWidth, textBoxHeight), "Brooke Scale: " + brookeScale.ToString());
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 90, textBoxWidth, textBoxHeight), "Brooke Scale: " + brookeInt);
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2, textBoxWidth, textBoxHeight), "Ulna Length");
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 90, textBoxWidth, textBoxHeight), "Diagnosis");
 
             name = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 385, textBoxWidth, textBoxHeight), name);
             IDstring = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 275, textBoxWidth, textBoxHeight), IDstring);
             birthdate = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 165, textBoxWidth, textBoxHeight), birthdate);
-            brookeScale = (int)GUI.HorizontalSlider(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 55, textBoxWidth, textBoxHeight), brookeScale, 1, 6);
+            brookeScale = GUI.HorizontalSlider(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 55, textBoxWidth, textBoxHeight), brookeScale, 1, 6);
             ulnaLengthString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 35, textBoxWidth, textBoxHeight), ulnaLengthString);
             diagnosis = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 125, textBoxWidth, textBoxHeight), diagnosis);
             male = GUI.Toggle(new Rect(scaledResolutionWidth / 2 - 80, nativeVerticalResolution / 2 + 215, 50, 25), male, " ", "Gender");
@@ -97,12 +116,12 @@ public class SettingsGUI : MonoBehaviour
         {
             // Text field labels for existing users
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 90, textBoxWidth, textBoxHeight), "Identification Number");
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 20, textBoxWidth, textBoxHeight), "Brooke Scale: " + brookeScale.ToString());
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 20, textBoxWidth, textBoxHeight), "Brooke Scale: " + brookeInt);
             GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 130, textBoxWidth, textBoxHeight), "Ulna Length");
 
             // Text fields for existing users
             IDstring = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 55, textBoxWidth, textBoxHeight), IDstring);
-            brookeScale = (int)GUI.HorizontalSlider(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 55, textBoxWidth, textBoxHeight), brookeScale, 0, 6);
+            brookeScale = GUI.HorizontalSlider(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 55, textBoxWidth, textBoxHeight), brookeScale, 0, 6);
             ulnaLengthString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 165, textBoxWidth, textBoxHeight), ulnaLengthString);
 
             loadSave = "Load";
@@ -125,7 +144,7 @@ public class SettingsGUI : MonoBehaviour
                         gender = "male";
                     }
 
-                    user = new User(name, ID, birthDateTime, brookeScale, ulnaLength, diagnosis, male);
+                    user = new User(name, ID, birthDateTime, brookeInt, ulnaLength, diagnosis, male);
                     user.SaveUser();
                     DocumentManager.Instance.ArgsCreated = false;
                     EventLogger.Instance.LogData("New user selected.  Name: " + name + " ID: " + ID + " Birthday: "
@@ -138,7 +157,7 @@ public class SettingsGUI : MonoBehaviour
                     {
                         gender = "male";
                     }
-                    user.LoadSpecificUser(ID, brookeScale, ulnaLength);
+                    user.LoadSpecificUser(ID, brookeInt, ulnaLength);
                     DocumentManager.Instance.ArgsCreated = false;
                     EventLogger.Instance.LogData("Existing user selected.  Name: " + UserContainer.Instance.UserDictionary[ID].Name + " ID: " + ID + " Birthday: "
                         + UserContainer.Instance.UserDictionary[ID].Birthdate + " Brooke Scale: " + UserContainer.Instance.UserDictionary[ID].BrookeScale
@@ -146,6 +165,8 @@ public class SettingsGUI : MonoBehaviour
                 }
             }
         }
+
+        brookeInt = Mathf.RoundToInt(brookeScale);
 
         // Cancel Button
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution - 150, 300, 100), "Cancel"))
@@ -166,6 +187,12 @@ public class SettingsGUI : MonoBehaviour
         birthdate = Regex.Replace(birthdate, @"[^0-9/]", "");
         ulnaLengthString = Regex.Replace(ulnaLengthString, @"[^0-9.]", "");
         IDstring = Regex.Replace(IDstring, @"[^0-9]", "");
+
+        // Error box
+        if (invalidInput)
+        {
+            GUI.Box(new Rect(scaledResolutionWidth / 2 - 380, 15, 760, 100), errorMessage);
+        }
     }
 
     private void TimedScreenResize()

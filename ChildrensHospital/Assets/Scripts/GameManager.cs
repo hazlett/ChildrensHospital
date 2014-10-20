@@ -150,6 +150,7 @@ public class GameManager : MonoBehaviour {
     //    GUI.Label(new Rect(scaledResolutionWidth - 410, 160, 400, 75), "Upper Right Volume: " + tracker.UpperRightVolume().ToString("F3"));
     //    GUI.Label(new Rect(scaledResolutionWidth - 410, 235, 400, 75), "Right Y Value: " + tracker.YRight.ToString("F3"));
     //}
+
     private void StartGame()
     {
         playing = true;
@@ -183,6 +184,10 @@ public class GameManager : MonoBehaviour {
     }
     internal float TotalVolume()
     {
+        GameControl.Instance.totalVolume = (tracker.LowerLeftVolume() + tracker.LowerRightVolume()
+            + tracker.MiddleLeftVolume() + tracker.MiddleRightVolume()
+            + tracker.UpperLeftVolume() + tracker.UpperRightVolume());
+
         return (tracker.LowerLeftVolume() + tracker.LowerRightVolume() 
             + tracker.MiddleLeftVolume() + tracker.MiddleRightVolume() 
             + tracker.UpperLeftVolume() + tracker.UpperRightVolume());

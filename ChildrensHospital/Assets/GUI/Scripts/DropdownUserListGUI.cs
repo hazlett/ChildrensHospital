@@ -5,7 +5,6 @@ public class DropdownUserListGUI : MonoBehaviour {
 
     public GUISkin dropdownSkin;
     public SettingsGUI settings;
-    public MainMenuGUI mainMenu;
     public int maxDropdownSize = 5;
     public float animationDuration = 1.5f;
     public Vector2 menuPosition = new Vector2(0, 0), buttonSize = new Vector2(400, 50);
@@ -84,7 +83,8 @@ public class DropdownUserListGUI : MonoBehaviour {
                     // This chooses the specific field number 
                     // Put what you want to do based on which field is selected
                     // Example:  Field 6 selected -> User 6 is loaded into the game
-                    settings.user.LoadSpecificUser(UserContainer.Instance.Users[startList + i].ID, 0, 0);
+                    settings.IDstring = UserContainer.Instance.Users[startList + i].ID.ToString();
+                    //settings.user.LoadSpecificUser(UserContainer.Instance.Users[startList + i].ID, 0, 0);
                     disabling = true;
                     timer = speed = 0.0f;
                 }

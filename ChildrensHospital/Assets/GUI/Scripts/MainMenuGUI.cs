@@ -158,29 +158,6 @@ public class MainMenuGUI : MonoBehaviour
 
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 275, nativeVerticalResolution - 300, 550, 300), "Current User\n" + playerStatus);
 
-        // Error box
-        if (invalidInput)
-        {
-            GUI.Box(new Rect(scaledResolutionWidth / 2 - 380, 15, 760, 100), errorMessage);
-        }
-
-        if (dropdown.enabled)
-        {
-            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), "List of Users", "activeDropDown"))
-            {
-                dropdown.disabling = true;
-                dropdown.timer = dropdown.speed = 0;
-            }
-        }
-        else
-        {
-            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), "List of Users", "inactiveDropDown"))
-            {
-                dropdown.timer = 0.0f;
-                dropdown.enabled = true;
-            }
-        }
-
         timeString = Regex.Replace(timeString, @"[^0-9]", "");
     }
     void OnDestroy()
