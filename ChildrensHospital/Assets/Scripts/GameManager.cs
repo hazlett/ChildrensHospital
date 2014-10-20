@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour {
         rightHand = GameObject.Find("RightHand").GetComponent<RightHandBehaviour>();
         leftHand = GameObject.Find("LeftHand").GetComponent<LeftHandBehaviour>();
         generator = GameObject.Find("GemGenerator").GetComponent<GemGenerator>();
-        generator.SetupGems();
+        GameControl.Instance.ResetGemCount();
 	}
 	
 	// Update is called once per frame
@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour {
                     GUIon = false;
                     endStats.enabled = true;
                     playing = false;
+                    GameControl.Instance.InGame = false;
                 }
             }
         }
@@ -153,6 +154,7 @@ public class GameManager : MonoBehaviour {
     {
         playing = true;
         GameControl.Instance.IsPlaying = true;
+        GameControl.Instance.InGame = true;
         rightHand.enabled = true;
         leftHand.enabled = true;
         

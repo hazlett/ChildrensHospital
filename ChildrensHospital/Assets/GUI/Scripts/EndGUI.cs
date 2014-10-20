@@ -11,7 +11,7 @@ public class EndGUI : MonoBehaviour
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
     private bool saveData = true;
     private string args;
-    private static List<float> volumes = new List<float>();
+    private static List<int> previousScores = new List<int>();
     private string previousVolumes;
     // Use this for initialization
     void Start()
@@ -26,9 +26,9 @@ public class EndGUI : MonoBehaviour
     void OnEnable()
     {
         previousVolumes = "";
-        foreach (float volume in volumes)
+        foreach (int score in previousScores)
         {
-            previousVolumes += (volume.ToString() + "\n");
+            previousVolumes += (score.ToString() + "\n");
         }
     }
     // Update is called once per frame
@@ -54,12 +54,12 @@ public class EndGUI : MonoBehaviour
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 350, nativeVerticalResolution / 2 - 445, 700, 850), "", "Window");
 
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "Results\nName: " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Name
-           + "\nID: " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].ID + "\nVolume: " + gameManager.TotalVolume().ToString("F4") + " meters cubed\nPrevious Volumes\n" + previousVolumes, "EndBox");
+           + "\nID: " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].ID + "\nVolume: " + gameManager.TotalVolume().ToString("F4") + " meters cubed\n" + "Gems Collected: " + GameControl.Instance.GemsCollected.ToString() + "\nPrevious Gems Collected\n" + previousVolumes, "EndBox");
 
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 380, 300, 100), "Run Trial Again"))
         {
-            volumes.Add(gameManager.TotalVolume());
+            previousScores.Add(GameControl.Instance.GemsCollected);
             if (saveData)
             {
                EventLogger.Instance.LogData("Saving Data");
@@ -72,7 +72,7 @@ public class EndGUI : MonoBehaviour
         }
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), "Quit"))
         {
-            volumes = new List<float>();
+            previousScores = new List<int>();
             if (saveData)
             {
                 EventLogger.Instance.LogData("Saving Data");

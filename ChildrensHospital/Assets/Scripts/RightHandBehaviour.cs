@@ -39,6 +39,11 @@ public class RightHandBehaviour : MonoBehaviour {
 
     void Update()
     {
+        if (!GameControl.Instance.InGame)
+        {
+            gameObject.transform.position = Vector3.zero;
+            return;
+        }
         if (tracker.BoxStateRight == VolumeTracker.BoxStates.LOWER)
         {
             if (gameObject.transform.position.z > lowerZMax)

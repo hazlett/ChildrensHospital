@@ -14,9 +14,10 @@ public class GemBehavior : MonoBehaviour {
 
         
 	}
-	
-	void Update () {
 
+	void Update () {
+        if (!GameControl.Instance.InGame)
+            return;
         if (GameControl.Instance.IsPlaying)
         {
             if (!audioLinked)

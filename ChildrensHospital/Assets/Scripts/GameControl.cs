@@ -33,6 +33,7 @@ public class GameControl : MonoBehaviour
     public int GemsCollected { get { return gemsCollected; } }
     private int totalGems;
     public int TotalGems { get { return totalGems; } set { totalGems = value; } }
+    public bool InGame;
     public void CollectGem()
     {
         gemsCollected++;
@@ -43,6 +44,10 @@ public class GameControl : MonoBehaviour
         isCalibrating = false;
         calibrationTime = DateTime.Now;
         EventLogger.Instance.LogData("Calibrated Successfully.");
+    }
+    public void ResetGemCount()
+    {
+        gemsCollected = 0;
     }
 
     internal Matrix4x4 ReadCalibration(string fileName)

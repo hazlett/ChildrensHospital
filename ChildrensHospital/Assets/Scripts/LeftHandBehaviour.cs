@@ -38,6 +38,11 @@ public class LeftHandBehaviour : MonoBehaviour {
 
     void Update()
     {
+        if (!GameControl.Instance.InGame)
+        {
+            gameObject.transform.position = Vector3.zero;
+            return;
+        }
         if (tracker.BoxStateLeft == VolumeTracker.BoxStates.LOWER)
         {
             if (gameObject.transform.position.z > lowerZMax)

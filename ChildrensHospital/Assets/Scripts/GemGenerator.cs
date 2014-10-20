@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class GemGenerator : MonoBehaviour {
-    private static GemGenerator instance;
     private GameObject[] gems = new GameObject[250];
     private GameObject[] assistedGems;
     private float spawnDistance = 0.025f;
@@ -67,19 +66,12 @@ public class GemGenerator : MonoBehaviour {
         InstantiateGems();
         InstatiateAssitedGems();
         this.enabled = false;
+        SetupGems();
     }
 
     void Awake()
     {
-        if (!instance)
-        {
-            instance = this;
-            GameObject.DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+
     }
 
     public void SetupGems()
