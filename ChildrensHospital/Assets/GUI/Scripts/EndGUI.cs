@@ -12,7 +12,7 @@ public class EndGUI : MonoBehaviour
     private bool saveData = true;
     private string args;
     private static List<float> volumes = new List<float>();
-
+    private string previousVolumes;
     // Use this for initialization
     void Start()
     {
@@ -23,6 +23,14 @@ public class EndGUI : MonoBehaviour
         enabled = false;
     }
 
+    void OnEnable()
+    {
+        previousVolumes = "";
+        foreach (float volume in volumes)
+        {
+            previousVolumes += (volume.ToString() + "\n");
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -46,13 +54,8 @@ public class EndGUI : MonoBehaviour
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 350, nativeVerticalResolution / 2 - 445, 700, 850), "", "Window");
 
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "Results\nName: " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Name
-           + "\nID: " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].ID + "\nVolume: " + gameManager.TotalVolume().ToString("F4") + " meters cubed\nOther Stats", "EndBox");
+           + "\nID: " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].ID + "\nVolume: " + gameManager.TotalVolume().ToString("F4") + " meters cubed\nPrevious Volumes\n" + previousVolumes, "EndBox");
 
-        ///TODO: put in correct positions on screen.
-        foreach(float volume in volumes)
-        {
-            GUILayout.Label(volume.ToString());
-        }
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 380, 300, 100), "Run Trial Again"))
         {

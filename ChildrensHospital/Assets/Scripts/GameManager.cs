@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour {
         {
             GUI.Label(new Rect(scaledResolutionWidth / 2 - 425, 10, 400, 75), message);
             GUI.Label(new Rect(scaledResolutionWidth / 2 + 25, 10, 400, 75), "Volume: " + TotalVolume().ToString("F3"));
-            GUI.Label(new Rect(scaledResolutionWidth / 2 + 25, 95, 400, 75), "Score: " + GameControl.Instance.GemsCollected.ToString());
+            GUI.Label(new Rect(scaledResolutionWidth / 2 + 25, 95, 400, 75), "Gems Collected: " + GameControl.Instance.GemsCollected.ToString());
 
             //ShowAvatarVolumes();
             
