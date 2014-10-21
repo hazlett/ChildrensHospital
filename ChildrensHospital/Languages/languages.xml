@@ -2,10 +2,10 @@
 <LanguageConverter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Languages>
     <Language>English</Language>
-    <Language>French</Language>
-    <Language>German</Language>
-    <Language>Spanish</Language>
-    <Language>Italian</Language>
+    <Language>Français</Language>
+    <Language>Deutsch</Language>
+    <Language>Español</Language>
+    <Language>Italiano</Language>
   </Languages>
   <LanguageKeys>
     <Key tag="New User">
