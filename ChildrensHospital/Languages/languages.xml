@@ -518,10 +518,10 @@
     <Key tag="PLAYING GAME">
       <Translations>
         <Translation>PLAYING GAME</Translation>
-        <Translation>JEU DE JEU</Translation>
-        <Translation>Spiel</Translation>
-        <Translation>JUEGO JUGAR</Translation>
-        <Translation>Playing Game</Translation>
+        <Translation>JEU EN JOUANT</Translation>
+        <Translation>SPIEL</Translation>
+        <Translation>JUEGA AL JUEGO</Translation>
+        <Translation>GIOCO DI</Translation>
       </Translations>
     </Key>
     <Key tag="SETTING UP GAME">
