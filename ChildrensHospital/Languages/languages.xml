@@ -1,57 +1,614 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <LanguageConverter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  
   <Languages>
     <Language>English</Language>
     <Language>French</Language>
+    <Language>German</Language>
+    <Language>Spanish</Language>
+    <Language>Italian</Language>
   </Languages>
-
   <LanguageKeys>
     <Key tag="New User">
       <Translations>
         <Translation>New User</Translation>
-        <Translation>Nouvel Utilisateur</Translation>
+        <Translation>Nouvel utilisateur</Translation>
+        <Translation>Neuer Benutzer</Translation>
+        <Translation>Nuevo usuario</Translation>
+        <Translation>Nuovo utente</Translation>
       </Translations>
     </Key>
     <Key tag="Existing User">
       <Translations>
         <Translation>Existing User</Translation>
-        <Translation>Utilisateur Existant</Translation>
+        <Translation>Utilisateur existant</Translation>
+        <Translation>Vorhandenen Benutzer</Translation>
+        <Translation>Usuario Existente</Translation>
+        <Translation>Utente esistente</Translation>
       </Translations>
     </Key>
     <Key tag="Calibrate">
       <Translations>
         <Translation>Calibrate</Translation>
         <Translation>Étalonner</Translation>
+        <Translation>Kalibrieren</Translation>
+        <Translation>Calibrar</Translation>
+        <Translation>Calibrare</Translation>
       </Translations>
     </Key>
     <Key tag="Recalibrate">
       <Translations>
         <Translation>Recalibrate</Translation>
         <Translation>Recalibrer</Translation>
+        <Translation>Neu kalibrieren</Translation>
+        <Translation>Vuelva a calibrar</Translation>
+        <Translation>Ricalibrare</Translation>
       </Translations>
     </Key>
-    <Key tag="INSTRUCTIONS">
+    <Key tag="Quit">
       <Translations>
-        <Translation>INSTRUCTIONS</Translation>
-        <Translation>INSTRUCTIONS</Translation>
+        <Translation>Quit</Translation>
+        <Translation>Quitter</Translation>
+        <Translation>Verlassen</Translation>
+        <Translation>Salir</Translation>
+        <Translation>Smettere</Translation>
       </Translations>
     </Key>
-    <Key tag="QUIT">
+    <Key tag="Instructions">
       <Translations>
-        <Translation>QUIT</Translation>
-        <Translation>ARRÉTER</Translation>
+        <Translation>Instructions</Translation>
+        <Translation>Instructions</Translation>
+        <Translation>Anleitung</Translation>
+        <Translation>Instrucciones</Translation>
+        <Translation>Istruzione</Translation>
       </Translations>
     </Key>
     <Key tag="List of Users">
       <Translations>
         <Translation>List of Users</Translation>
-        <Translation>Liste des Utilisateurs</Translation>
+        <Translation>Liste des utilisateurs</Translation>
+        <Translation>Liste der Benutzer</Translation>
+        <Translation>Lista de Usuarios</Translation>
+        <Translation>Lista degli Utenti</Translation>
       </Translations>
     </Key>
-
-
-
-
+    <Key tag="Empty">
+      <Translations>
+        <Translation>Empty</Translation>
+        <Translation>Vide</Translation>
+        <Translation>Leer</Translation>
+        <Translation>Vacío</Translation>
+        <Translation>Vuoto</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Run Trial Again">
+      <Translations>
+        <Translation>Run Trial Again</Translation>
+        <Translation>Exécutez Trial</Translation>
+        <Translation>Führen Trial</Translation>
+        <Translation>Ejecutar prueba de nuevo</Translation>
+        <Translation>Esegui prova di nuovo</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Saving Data">
+      <Translations>
+        <Translation>Saving Data</Translation>
+        <Translation>Enregistrement des données</Translation>
+        <Translation>Speichern von Daten</Translation>
+        <Translation>Almacenamiento de datos</Translation>
+        <Translation>Salvataggio dei dati</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Trial Ended">
+      <Translations>
+        <Translation>Trial Ended</Translation>
+        <Translation>Fin du procès</Translation>
+        <Translation>Prozess endete</Translation>
+        <Translation>Juicio terminó</Translation>
+        <Translation>Processo si è concluso</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Starting New Trial">
+      <Translations>
+        <Translation>Starting New Trial</Translation>
+        <Translation>À partir de nouveau procès</Translation>
+        <Translation>Ausgehend Neues Probe</Translation>
+        <Translation>Comenzando Nuevo Juicio</Translation>
+        <Translation>Avvio di New Trial</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Exiting to Menu">
+      <Translations>
+        <Translation>Exiting to Menu</Translation>
+        <Translation>Sortie au menu</Translation>
+        <Translation>Verlassen der Menü</Translation>
+        <Translation>Salir al Menú</Translation>
+        <Translation>Uscita al menu</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Save Results">
+      <Translations>
+        <Translation>Save Results</Translation>
+        <Translation>Enregistrer les résultats</Translation>
+        <Translation>Ergebnisse speichern</Translation>
+        <Translation>Guardar resultados</Translation>
+        <Translation>Salva risultati</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Back to Menu">
+      <Translations>
+        <Translation>Back to Menu</Translation>
+        <Translation>Retour au menu</Translation>
+        <Translation>Zurück zum Menü</Translation>
+        <Translation>Volver al Menú</Translation>
+        <Translation>Torna al menu</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Invalid trial length.">
+      <Translations>
+        <Translation>Invalid trial length.</Translation>
+        <Translation>Invalid longueur de procès.</Translation>
+        <Translation>Ungültige Versuch Länge.</Translation>
+        <Translation>Duración del ensayo no es válido.</Translation>
+        <Translation>Lunghezza di prova non valida.</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Please enter a trial length between 0 and 120.">
+      <Translations>
+        <Translation>Please enter a trial length between 0 and 120.</Translation>
+        <Translation>S'il vous plaît entrer une longueur de procès entre 0 et 120.</Translation>
+        <Translation>Bitte geben Sie eine Probe Länge zwischen 0 und 120.</Translation>
+        <Translation>Por favor introduce una longitud de prueba entre 0 y 120.</Translation>
+        <Translation>Inserisci una lunghezza di prova compreso tra 0 e 120.</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Game Started">
+      <Translations>
+        <Translation>Game Started</Translation>
+        <Translation>Jeu en route</Translation>
+        <Translation>Spiel gestartet</Translation>
+        <Translation>Juego Started</Translation>
+        <Translation>Gioco introduttiva</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Calibrating">
+      <Translations>
+        <Translation>Calibrating</Translation>
+        <Translation>Calibrage</Translation>
+        <Translation>Kalibrierung</Translation>
+        <Translation>Calibración</Translation>
+        <Translation>Calibrazione</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Please Calibrate">
+      <Translations>
+        <Translation>Please Calibrate</Translation>
+        <Translation>S'il vous plaît Calibrer</Translation>
+        <Translation>Bitte kalibrieren</Translation>
+        <Translation>Por favor Calibre</Translation>
+        <Translation>Si prega di Calibrazione</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Please Select a User">
+      <Translations>
+        <Translation>Please Select a User</Translation>
+        <Translation>S'il vous plaît Choisir un utilisateur</Translation>
+        <Translation>Bitte wählen Sie einen Benutzer</Translation>
+        <Translation>Seleccione un usuario</Translation>
+        <Translation>Si prega di selezionare un utente</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Calibration Started">
+      <Translations>
+        <Translation>Calibration Started</Translation>
+        <Translation>Calibration démarrée</Translation>
+        <Translation>Kalibrierung Schritte</Translation>
+        <Translation>Calibración Started</Translation>
+        <Translation>Calibrazione avviata</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Game Paused">
+      <Translations>
+        <Translation>Game Paused</Translation>
+        <Translation>Jeu en pause</Translation>
+        <Translation>Spiel Pause</Translation>
+        <Translation>Juego pausado</Translation>
+        <Translation>Gioco in pausa</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Name">
+      <Translations>
+        <Translation>Name</Translation>
+        <Translation>Nom</Translation>
+        <Translation>Name</Translation>
+        <Translation>Nombre</Translation>
+        <Translation>Nome</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Restart Trial">
+      <Translations>
+        <Translation>Restart Trial</Translation>
+        <Translation>Essai de redémarrage</Translation>
+        <Translation>Neustart Test</Translation>
+        <Translation>Juicio en Reiniciar</Translation>
+        <Translation>Trial Restart</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Main Menu">
+      <Translations>
+        <Translation>Main Menu</Translation>
+        <Translation>Menu principal</Translation>
+        <Translation>Hauptmenü</Translation>
+        <Translation>Menú Principal</Translation>
+        <Translation>Menu Principale</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Save Data">
+      <Translations>
+        <Translation>Save Data</Translation>
+        <Translation>Sauvegarder les données</Translation>
+        <Translation>Daten speichern</Translation>
+        <Translation>Guardar datos</Translation>
+        <Translation>Salva dati</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Save">
+      <Translations>
+        <Translation>Save</Translation>
+        <Translation>Enregistrer</Translation>
+        <Translation>Speichern</Translation>
+        <Translation>Guardar</Translation>
+        <Translation>Salva</Translation>
+      </Translations>
+    </Key>
+    <Key tag="ID">
+      <Translations>
+        <Translation>ID</Translation>
+        <Translation>ID</Translation>
+        <Translation>Identifikation</Translation>
+        <Translation>ID</Translation>
+        <Translation>ID</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Birthdate">
+      <Translations>
+        <Translation>Birthdate</Translation>
+        <Translation>Date de naissance</Translation>
+        <Translation>Geburtstag</Translation>
+        <Translation>Fecha de Nacimiento</Translation>
+        <Translation>Data di nascita</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Brooke Scale">
+      <Translations>
+        <Translation>Brooke Scale</Translation>
+        <Translation>Brooke échelle</Translation>
+        <Translation>Brooke Skala</Translation>
+        <Translation>Brooke Escala</Translation>
+        <Translation>Brooke Scala</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Ulna Length">
+      <Translations>
+        <Translation>Ulna Length</Translation>
+        <Translation>Ulna Longueur</Translation>
+        <Translation>Ulna Länge</Translation>
+        <Translation>Ulna Longitud</Translation>
+        <Translation>Ulna Lunghezza</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Diagnosis">
+      <Translations>
+        <Translation>Diagnosis</Translation>
+        <Translation>Diagnostic</Translation>
+        <Translation>Diagnose</Translation>
+        <Translation>Diagnóstico</Translation>
+        <Translation>Diagnosi</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Male">
+      <Translations>
+        <Translation>Male</Translation>
+        <Translation>Mâle</Translation>
+        <Translation>Männlich</Translation>
+        <Translation>Hombre</Translation>
+        <Translation>Maschio</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Female">
+      <Translations>
+        <Translation>Female</Translation>
+        <Translation>Femelle</Translation>
+        <Translation>Weiblich</Translation>
+        <Translation>Mujer</Translation>
+        <Translation>Femminile</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Identification Number">
+      <Translations>
+        <Translation>Identification Number</Translation>
+        <Translation>Numéro d'identification</Translation>
+        <Translation>Identifikationsnummer</Translation>
+        <Translation>Número de Identificación</Translation>
+        <Translation>Numero di identificazione</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Load">
+      <Translations>
+        <Translation>Load</Translation>
+        <Translation>Charge</Translation>
+        <Translation>Last</Translation>
+        <Translation>Carga</Translation>
+        <Translation>Carico</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Cancel">
+      <Translations>
+        <Translation>Cancel</Translation>
+        <Translation>Annuler</Translation>
+        <Translation>Stornieren</Translation>
+        <Translation>Cancelar</Translation>
+        <Translation>Annullare</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Name is blank">
+      <Translations>
+        <Translation>Name is blank</Translation>
+        <Translation>Nom est vide</Translation>
+        <Translation>Name ist leer</Translation>
+        <Translation>Nombre está en blanco</Translation>
+        <Translation>Nome è vuoto</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Please enter a valid name">
+      <Translations>
+        <Translation>Please enter a valid name</Translation>
+        <Translation>S'il vous plaît entrer un nom valide</Translation>
+        <Translation>Bitte geben Sie einen gültigen Namen</Translation>
+        <Translation>Por favor ingrese un nombre válido</Translation>
+        <Translation>Inserisci un nome valido</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Birthdate is invalid">
+      <Translations>
+        <Translation>Birthdate is invalid</Translation>
+        <Translation>Date de naissance est invalide</Translation>
+        <Translation>Geburtsdatum ist ungültig</Translation>
+        <Translation>Fecha de nacimiento no es válida</Translation>
+        <Translation>Data di nascita non è valida</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Please follow the given format">
+      <Translations>
+        <Translation>Please follow the given format</Translation>
+        <Translation>S'il vous plaît suivez le format donné</Translation>
+        <Translation>Bitte folgen Sie dem angegebenen Format</Translation>
+        <Translation>"Por favor</Translation>
+        <Translation> siga el formato dado"</Translation>
+        <Translation>Si prega di seguire il formato data</Translation>
+      </Translations>
+    </Key>
+    <Key tag="(mm/dd/yy)">
+      <Translations>
+        <Translation>(mm/dd/yy)</Translation>
+        <Translation>(Jj / mm / aa)</Translation>
+        <Translation>(Mm / tt / jj)</Translation>
+        <Translation>(Mm / dd / aa)</Translation>
+        <Translation>(Mm / gg / aa)</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Invald ulna length">
+      <Translations>
+        <Translation>Invald ulna length</Translation>
+        <Translation>Non valide ou inconnue longueur de l'ulna</Translation>
+        <Translation>Ungültige oder unbekannte Ulna Länge</Translation>
+        <Translation>Longitud cúbito Invald</Translation>
+        <Translation>Lunghezza dell'ulna Invald</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Please enter a correct length">
+      <Translations>
+        <Translation>Please enter a correct length</Translation>
+        <Translation>S'il vous plaît entrer une bonne longueur</Translation>
+        <Translation>Bitte geben Sie eine korrekte Länge</Translation>
+        <Translation>Por favor introduce una longitud correcta</Translation>
+        <Translation>Inserisci una lunghezza corretta</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Invalid identification number">
+      <Translations>
+        <Translation>Invalid identification number</Translation>
+        <Translation>Numéro d'identification valide</Translation>
+        <Translation>Ungültige Identifikationsnummer</Translation>
+        <Translation>Número de identificación no válida</Translation>
+        <Translation>Numero di identificazione non valido</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Please enter a correct indentification number">
+      <Translations>
+        <Translation>Please enter a correct indentification number</Translation>
+        <Translation>S'il vous plaît entrer un numéro de indentification correcte</Translation>
+        <Translation>Bitte geben Sie eine korrekte Identifikationsnummer</Translation>
+        <Translation>"Por favor</Translation>
+        <Translation> introduzca un número de identificación del correcto"</Translation>
+        <Translation>Si prega di inserire un numero corretto identificazione</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Please choose a new ID number">
+      <Translations>
+        <Translation>Please choose a new ID number</Translation>
+        <Translation>S'il vous plaît choisir un nouveau numéro d'identification</Translation>
+        <Translation>Bitte wählen Sie eine neue ID-Nummer</Translation>
+        <Translation>"Por favor</Translation>
+        <Translation> elija un nuevo número de identificación"</Translation>
+        <Translation>Si prega di scegliere un nuovo numero ID</Translation>
+      </Translations>
+    </Key>
+    <Key tag="ID Number">
+      <Translations>
+        <Translation>ID Number</Translation>
+        <Translation>Numéro d'identification</Translation>
+        <Translation>ID-Nummer</Translation>
+        <Translation>Número ID</Translation>
+        <Translation>Numero ID</Translation>
+      </Translations>
+    </Key>
+    <Key tag="No user with ID Number">
+      <Translations>
+        <Translation>No user with ID Number</Translation>
+        <Translation>Aucun utilisateur avec le numéro d'identification</Translation>
+        <Translation>Kein Benutzer mit ID-Nummer</Translation>
+        <Translation>Ningún usuario con Número de Identificación</Translation>
+        <Translation>Nessun utente con il numero ID</Translation>
+      </Translations>
+    </Key>
+    <Key tag="exists">
+      <Translations>
+        <Translation>exists</Translation>
+        <Translation>existe</Translation>
+        <Translation>existiert</Translation>
+        <Translation>existe</Translation>
+        <Translation>esiste</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Volume">
+      <Translations>
+        <Translation>Volume</Translation>
+        <Translation>Volume</Translation>
+        <Translation>Volumen</Translation>
+        <Translation>Volumen</Translation>
+        <Translation>Volume</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Gems Collected">
+      <Translations>
+        <Translation>Gems Collected</Translation>
+        <Translation>Gemmes collectées</Translation>
+        <Translation>Edelsteine ??gesammelt</Translation>
+        <Translation>Gems Apasionados</Translation>
+        <Translation>Gemme Raccolto</Translation>
+      </Translations>
+    </Key>
+    <Key tag="FOCUS ON YOUR RIGHT HAND">
+      <Translations>
+        <Translation>FOCUS ON YOUR RIGHT HAND</Translation>
+        <Translation>FOCUS SUR VOTRE DROITE</Translation>
+        <Translation>FOCUS auf der rechten</Translation>
+        <Translation>ENFOQUE EN SU MANO DERECHA</Translation>
+        <Translation>FOCUS SULLA DESTRA</Translation>
+      </Translations>
+    </Key>
+    <Key tag="FOCUS ON YOUR LEFT HAND">
+      <Translations>
+        <Translation>FOCUS ON YOUR LEFT HAND</Translation>
+        <Translation>FOCUS sur votre gauche</Translation>
+        <Translation>FOCUS auf der linken</Translation>
+        <Translation>ENFOQUE EN SU MANO IZQUIERDA</Translation>
+        <Translation>FOCUS SULLA MANO SINISTRA</Translation>
+      </Translations>
+    </Key>
+    <Key tag="SESSION ENDS SOON">
+      <Translations>
+        <Translation>SESSION ENDS SOON</Translation>
+        <Translation>SESSION shirts</Translation>
+        <Translation>SESSION kurz!</Translation>
+        <Translation>SESIÓN TERMINA PRONTO</Translation>
+        <Translation>SESSIONE FINISCE PRESTO</Translation>
+      </Translations>
+    </Key>
+    <Key tag="PLAYING GAME">
+      <Translations>
+        <Translation>PLAYING GAME</Translation>
+        <Translation>JEU DE JEU</Translation>
+        <Translation>Spiel</Translation>
+        <Translation>JUEGO JUGAR</Translation>
+        <Translation>Playing Game</Translation>
+      </Translations>
+    </Key>
+    <Key tag="SETTING UP GAME">
+      <Translations>
+        <Translation>SETTING UP GAME</Translation>
+        <Translation>MISE EN JEU</Translation>
+        <Translation>EINSTELLUNG SPIEL</Translation>
+        <Translation>CONFIGURACIÓN DE JUEGO</Translation>
+        <Translation>INSTALLAZIONE GIOCO</Translation>
+      </Translations>
+    </Key>
+    <Key tag="SKELETON NOT FOUND">
+      <Translations>
+        <Translation>SKELETON NOT FOUND</Translation>
+        <Translation>SKELETON NOT FOUND</Translation>
+        <Translation>SKELETON NICHT GEFUNDEN</Translation>
+        <Translation>ESQUELETO NOT FOUND</Translation>
+        <Translation>SCHELETRO NOT FOUND</Translation>
+      </Translations>
+    </Key>
+    <Key tag="MANUAL CONTROL">
+      <Translations>
+        <Translation>MANUAL CONTROL</Translation>
+        <Translation>COMMANDE MANUELLE</Translation>
+        <Translation>HANDSTEUERUNG</Translation>
+        <Translation>CONTROL DEL MANUAL</Translation>
+        <Translation>COMANDO MANUALE</Translation>
+      </Translations>
+    </Key>
+    <Key tag="AUTOMATING CAMERA">
+      <Translations>
+        <Translation>AUTOMATING CAMERA</Translation>
+        <Translation>CAMERA AUTOMATISATION</Translation>
+        <Translation>AUTOMATISIEREN CAMERA</Translation>
+        <Translation>CÁMARA AUTOMATIZACIÓN</Translation>
+        <Translation>AUTOMAZIONE CAMERA</Translation>
+      </Translations>
+    </Key>
+    <Key tag="MERICA">
+      <Translations>
+        <Translation>MERICA</Translation>
+        <Translation>Eiffel Tower Land</Translation>
+        <Translation>DEUTCHLAND</Translation>
+        <Translation>Bulls chase you</Translation>
+        <Translation>Gladiators</Translation>
+        <Translation />
+        <Translation />
+        <Translation />
+        <Translation />
+        <Translation />
+      </Translations>
+    </Key>
+    <Key tag="Start Trial">
+      <Translations>
+        <Translation>Trial Length</Translation>
+        <Translation>Longueur de Premiere Instance</Translation>
+        <Translation>Studie Lange</Translation>
+        <Translation>Trial Longitud</Translation>
+        <Translation>Trial Lunghezza</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Trial Length">
+      <Translations>
+        <Translation>Trial Length</Translation>
+        <Translation>Longueur de Premiere Instance</Translation>
+        <Translation>Studie Lange</Translation>
+        <Translation>Trial Longitud</Translation>
+        <Translation>Trial Lunghezza</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Current User">
+      <Translations>
+        <Translation>Current User</Translation>
+        <Translation>Utilisateur Actuel</Translation>
+        <Translation>Aktueller Benutzer</Translation>
+        <Translation>Usuario Actual</Translation>
+        <Translation>Utente Corrente</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Gender">
+      <Translations>
+        <Translation>Gender</Translation>
+        <Translation>Sexe</Translation>
+        <Translation>Geschlecht</Translation>
+        <Translation>Genero</Translation>
+        <Translation>Genere</Translation>
+      </Translations>
+    </Key>
   </LanguageKeys>
 </LanguageConverter>

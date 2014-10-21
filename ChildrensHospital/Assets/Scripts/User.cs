@@ -90,15 +90,15 @@ public class User  {
         string userGender;
         if (Gender)
         {
-            userGender = "Male";
+            userGender = Languages.Instance.GetTranslation("Male");
         }
         else
         {
-            userGender = "Female";
+            userGender = Languages.Instance.GetTranslation("Female");
         }
 
-        return ("Name: " + Name + " \nID: " + ID + " \nBirthdate: " + Birthdate.Month.ToString() + '/' + Birthdate.Day.ToString()
-            + '/' + Birthdate.Year.ToString() + " \nBrooke Scale: " + BrookeScale + " \nUlna Length: " + UlnaLength + "\nDiagnosis: "
-            + Diagnosis + "\nGender: " + userGender);
+        return (Languages.Instance.GetTranslation("Name") + ": " + Name + " \n" + Languages.Instance.GetTranslation("ID") + ": " + ID + " \n" + Languages.Instance.GetTranslation("Birthdate") + ": " + Birthdate.Month.ToString() + '/' + Birthdate.Day.ToString()
+            + '/' + Birthdate.Year.ToString() + " \n" + Languages.Instance.GetTranslation("Brooke Scale") + ": " + BrookeScale + " \n" + Languages.Instance.GetTranslation("Ulna Length") + ": " + UlnaLength + "\n" + Languages.Instance.GetTranslation("Diagnosis") + ": "
+            + Diagnosis + "\n" + Languages.Instance.GetTranslation("Gender") + ": " + userGender);
     }
 }

@@ -35,7 +35,10 @@ public class SettingsGUI : MonoBehaviour
     {
         TimedScreenResize();
     }
-
+    void OnDestroy()
+    {
+        LanguageUsed.Instance.Save();
+    }
     void OnEnable()
     {
         if (newUser)

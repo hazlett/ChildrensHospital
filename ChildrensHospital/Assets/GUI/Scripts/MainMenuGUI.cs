@@ -57,7 +57,7 @@ public class MainMenuGUI : MonoBehaviour
         if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (GameControl.Instance.IsCalibrated))
         {
             kinectManager.displayColorMap = false;
-            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 275, 300, 100), "Start Trial"))
+            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 275, 300, 100), Languages.Instance.GetTranslation("Start Trial")))
             {
                 GameControl.Instance.ReadCalibration();
                 CheckTime();
@@ -153,10 +153,10 @@ public class MainMenuGUI : MonoBehaviour
             Application.Quit();
         } 
 
-        GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 150, 300, 50), "Trial Length (sec)");
+        GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 150, 300, 50), Languages.Instance.GetTranslation("Trial Length") +" (sec)");
         timeString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 185, 300, 50), timeString);
 
-        GUI.Box(new Rect(scaledResolutionWidth / 2 - 275, nativeVerticalResolution - 300, 550, 300), "Current User\n" + playerStatus);
+        GUI.Box(new Rect(scaledResolutionWidth / 2 - 275, nativeVerticalResolution - 300, 550, 300), Languages.Instance.GetTranslation("Current User") + "\n" + playerStatus);
 
         // Error box
         if (invalidInput)
@@ -174,7 +174,7 @@ public class MainMenuGUI : MonoBehaviour
         }
         else
         {
-            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), "List of Users", "inactiveDropDown"))
+            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), Languages.Instance.GetTranslation("List of Users"), "inactiveDropDown"))
             {
                 dropdown.timer = 0.0f;
                 dropdown.enabled = true;

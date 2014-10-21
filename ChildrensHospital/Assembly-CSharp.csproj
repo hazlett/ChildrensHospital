@@ -107,6 +107,7 @@
      <Compile Include="Assets\Scripts\RightHandBehaviour.cs" />
      <Compile Include="Assets\Scripts\SpiderBehavior.cs" />
      <Compile Include="Assets\Scripts\SpiderSpawner.cs" />
+     <Compile Include="Assets\Scripts\TranslationDebug.cs" />
      <Compile Include="Assets\Scripts\User.cs" />
      <Compile Include="Assets\Scripts\UserContainer.cs" />
      <Compile Include="Assets\Scripts\VolumeTracker.cs" />
