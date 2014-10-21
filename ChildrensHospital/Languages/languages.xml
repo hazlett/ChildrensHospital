@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="Windows-1252"?>
+ï»¿<?xml version="1.0" encoding="utf-8"?>
 <LanguageConverter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Languages>
     <Language>English</Language>
-    <Language>Français</Language>
+    <Language>FranÃ§ais</Language>
     <Language>Deutsch</Language>
-    <Language>Español</Language>
+    <Language>EspaÃ±ol</Language>
     <Language>Italiano</Language>
   </Languages>
   <LanguageKeys>
@@ -29,7 +29,7 @@
     <Key tag="Calibrate">
       <Translations>
         <Translation>Calibrate</Translation>
-        <Translation>Étalonner</Translation>
+        <Translation>Ã‰talonner</Translation>
         <Translation>Kalibrieren</Translation>
         <Translation>Calibrar</Translation>
         <Translation>Calibrare</Translation>
@@ -76,15 +76,15 @@
         <Translation>Empty</Translation>
         <Translation>Vide</Translation>
         <Translation>Leer</Translation>
-        <Translation>Vacío</Translation>
+        <Translation>VacÃ­o</Translation>
         <Translation>Vuoto</Translation>
       </Translations>
     </Key>
     <Key tag="Run Trial Again">
       <Translations>
         <Translation>Run Trial Again</Translation>
-        <Translation>Exécutez Trial</Translation>
-        <Translation>Führen Trial</Translation>
+        <Translation>ExÃ©cutez Trial</Translation>
+        <Translation>FÃ¼hren Trial</Translation>
         <Translation>Ejecutar prueba de nuevo</Translation>
         <Translation>Esegui prova di nuovo</Translation>
       </Translations>
@@ -92,7 +92,7 @@
     <Key tag="Saving Data">
       <Translations>
         <Translation>Saving Data</Translation>
-        <Translation>Enregistrement des données</Translation>
+        <Translation>Enregistrement des donnÃ©es</Translation>
         <Translation>Speichern von Daten</Translation>
         <Translation>Almacenamiento de datos</Translation>
         <Translation>Salvataggio dei dati</Translation>
@@ -101,16 +101,16 @@
     <Key tag="Trial Ended">
       <Translations>
         <Translation>Trial Ended</Translation>
-        <Translation>Fin du procès</Translation>
+        <Translation>Fin du procÃ¨s</Translation>
         <Translation>Prozess endete</Translation>
-        <Translation>Juicio terminó</Translation>
-        <Translation>Processo si è concluso</Translation>
+        <Translation>Juicio terminÃ³</Translation>
+        <Translation>Processo si Ã¨ concluso</Translation>
       </Translations>
     </Key>
     <Key tag="Starting New Trial">
       <Translations>
         <Translation>Starting New Trial</Translation>
-        <Translation>À partir de nouveau procès</Translation>
+        <Translation>Ã€ partir de nouveau procÃ¨s</Translation>
         <Translation>Ausgehend Neues Probe</Translation>
         <Translation>Comenzando Nuevo Juicio</Translation>
         <Translation>Avvio di New Trial</Translation>
@@ -120,15 +120,15 @@
       <Translations>
         <Translation>Exiting to Menu</Translation>
         <Translation>Sortie au menu</Translation>
-        <Translation>Verlassen der Menü</Translation>
-        <Translation>Salir al Menú</Translation>
+        <Translation>Verlassen der MenÃ¼</Translation>
+        <Translation>Salir al MenÃº</Translation>
         <Translation>Uscita al menu</Translation>
       </Translations>
     </Key>
     <Key tag="Save Results">
       <Translations>
         <Translation>Save Results</Translation>
-        <Translation>Enregistrer les résultats</Translation>
+        <Translation>Enregistrer les rÃ©sultats</Translation>
         <Translation>Ergebnisse speichern</Translation>
         <Translation>Guardar resultados</Translation>
         <Translation>Salva risultati</Translation>
@@ -138,25 +138,25 @@
       <Translations>
         <Translation>Back to Menu</Translation>
         <Translation>Retour au menu</Translation>
-        <Translation>Zurück zum Menü</Translation>
-        <Translation>Volver al Menú</Translation>
+        <Translation>ZurÃ¼ck zum MenÃ¼</Translation>
+        <Translation>Volver al MenÃº</Translation>
         <Translation>Torna al menu</Translation>
       </Translations>
     </Key>
     <Key tag="Invalid trial length.">
       <Translations>
         <Translation>Invalid trial length.</Translation>
-        <Translation>Invalid longueur de procès.</Translation>
-        <Translation>Ungültige Versuch Länge.</Translation>
-        <Translation>Duración del ensayo no es válido.</Translation>
+        <Translation>Invalid longueur de procÃ¨s.</Translation>
+        <Translation>UngÃ¼ltige Versuch LÃ¤nge.</Translation>
+        <Translation>DuraciÃ³n del ensayo no es vÃ¡lido.</Translation>
         <Translation>Lunghezza di prova non valida.</Translation>
       </Translations>
     </Key>
     <Key tag="Please enter a trial length between 0 and 120.">
       <Translations>
         <Translation>Please enter a trial length between 0 and 120.</Translation>
-        <Translation>S'il vous plaît entrer une longueur de procès entre 0 et 120.</Translation>
-        <Translation>Bitte geben Sie eine Probe Länge zwischen 0 und 120.</Translation>
+        <Translation>S'il vous plaÃ®t entrer une longueur de procÃ¨s entre 0 et 120.</Translation>
+        <Translation>Bitte geben Sie eine Probe LÃ¤nge zwischen 0 und 120.</Translation>
         <Translation>Por favor introduce una longitud de prueba entre 0 y 120.</Translation>
         <Translation>Inserisci una lunghezza di prova compreso tra 0 e 120.</Translation>
       </Translations>
@@ -175,14 +175,14 @@
         <Translation>Calibrating</Translation>
         <Translation>Calibrage</Translation>
         <Translation>Kalibrierung</Translation>
-        <Translation>Calibración</Translation>
+        <Translation>CalibraciÃ³n</Translation>
         <Translation>Calibrazione</Translation>
       </Translations>
     </Key>
     <Key tag="Please Calibrate">
       <Translations>
         <Translation>Please Calibrate</Translation>
-        <Translation>S'il vous plaît Calibrer</Translation>
+        <Translation>S'il vous plaÃ®t Calibrer</Translation>
         <Translation>Bitte kalibrieren</Translation>
         <Translation>Por favor Calibre</Translation>
         <Translation>Si prega di Calibrazione</Translation>
@@ -191,8 +191,8 @@
     <Key tag="Please Select a User">
       <Translations>
         <Translation>Please Select a User</Translation>
-        <Translation>S'il vous plaît Choisir un utilisateur</Translation>
-        <Translation>Bitte wählen Sie einen Benutzer</Translation>
+        <Translation>S'il vous plaÃ®t Choisir un utilisateur</Translation>
+        <Translation>Bitte wÃ¤hlen Sie einen Benutzer</Translation>
         <Translation>Seleccione un usuario</Translation>
         <Translation>Si prega di selezionare un utente</Translation>
       </Translations>
@@ -200,9 +200,9 @@
     <Key tag="Calibration Started">
       <Translations>
         <Translation>Calibration Started</Translation>
-        <Translation>Calibration démarrée</Translation>
+        <Translation>Calibration dÃ©marrÃ©e</Translation>
         <Translation>Kalibrierung Schritte</Translation>
-        <Translation>Calibración Started</Translation>
+        <Translation>CalibraciÃ³n Started</Translation>
         <Translation>Calibrazione avviata</Translation>
       </Translations>
     </Key>
@@ -227,7 +227,7 @@
     <Key tag="Restart Trial">
       <Translations>
         <Translation>Restart Trial</Translation>
-        <Translation>Essai de redémarrage</Translation>
+        <Translation>Essai de redÃ©marrage</Translation>
         <Translation>Neustart Test</Translation>
         <Translation>Juicio en Reiniciar</Translation>
         <Translation>Trial Restart</Translation>
@@ -237,15 +237,15 @@
       <Translations>
         <Translation>Main Menu</Translation>
         <Translation>Menu principal</Translation>
-        <Translation>Hauptmenü</Translation>
-        <Translation>Menú Principal</Translation>
+        <Translation>HauptmenÃ¼</Translation>
+        <Translation>MenÃº Principal</Translation>
         <Translation>Menu Principale</Translation>
       </Translations>
     </Key>
     <Key tag="Save Data">
       <Translations>
         <Translation>Save Data</Translation>
-        <Translation>Sauvegarder les données</Translation>
+        <Translation>Sauvegarder les donnÃ©es</Translation>
         <Translation>Daten speichern</Translation>
         <Translation>Guardar datos</Translation>
         <Translation>Salva dati</Translation>
@@ -281,7 +281,7 @@
     <Key tag="Brooke Scale">
       <Translations>
         <Translation>Brooke Scale</Translation>
-        <Translation>Brooke échelle</Translation>
+        <Translation>Brooke Ã©chelle</Translation>
         <Translation>Brooke Skala</Translation>
         <Translation>Brooke Escala</Translation>
         <Translation>Brooke Scala</Translation>
@@ -291,7 +291,7 @@
       <Translations>
         <Translation>Ulna Length</Translation>
         <Translation>Ulna Longueur</Translation>
-        <Translation>Ulna Länge</Translation>
+        <Translation>Ulna LÃ¤nge</Translation>
         <Translation>Ulna Longitud</Translation>
         <Translation>Ulna Lunghezza</Translation>
       </Translations>
@@ -301,15 +301,15 @@
         <Translation>Diagnosis</Translation>
         <Translation>Diagnostic</Translation>
         <Translation>Diagnose</Translation>
-        <Translation>Diagnóstico</Translation>
+        <Translation>DiagnÃ³stico</Translation>
         <Translation>Diagnosi</Translation>
       </Translations>
     </Key>
     <Key tag="Male">
       <Translations>
         <Translation>Male</Translation>
-        <Translation>Mâle</Translation>
-        <Translation>Männlich</Translation>
+        <Translation>MÃ¢le</Translation>
+        <Translation>MÃ¤nnlich</Translation>
         <Translation>Hombre</Translation>
         <Translation>Maschio</Translation>
       </Translations>
@@ -326,9 +326,9 @@
     <Key tag="Identification Number">
       <Translations>
         <Translation>Identification Number</Translation>
-        <Translation>Numéro d'identification</Translation>
+        <Translation>NumÃ©ro d'identification</Translation>
         <Translation>Identifikationsnummer</Translation>
-        <Translation>Número de Identificación</Translation>
+        <Translation>NÃºmero de IdentificaciÃ³n</Translation>
         <Translation>Numero di identificazione</Translation>
       </Translations>
     </Key>
@@ -355,16 +355,16 @@
         <Translation>Name is blank</Translation>
         <Translation>Nom est vide</Translation>
         <Translation>Name ist leer</Translation>
-        <Translation>Nombre está en blanco</Translation>
-        <Translation>Nome è vuoto</Translation>
+        <Translation>Nombre estÃ¡ en blanco</Translation>
+        <Translation>Nome Ã¨ vuoto</Translation>
       </Translations>
     </Key>
     <Key tag="Please enter a valid name">
       <Translations>
         <Translation>Please enter a valid name</Translation>
-        <Translation>S'il vous plaît entrer un nom valide</Translation>
-        <Translation>Bitte geben Sie einen gültigen Namen</Translation>
-        <Translation>Por favor ingrese un nombre válido</Translation>
+        <Translation>S'il vous plaÃ®t entrer un nom valide</Translation>
+        <Translation>Bitte geben Sie einen gÃ¼ltigen Namen</Translation>
+        <Translation>Por favor ingrese un nombre vÃ¡lido</Translation>
         <Translation>Inserisci un nome valido</Translation>
       </Translations>
     </Key>
@@ -372,15 +372,15 @@
       <Translations>
         <Translation>Birthdate is invalid</Translation>
         <Translation>Date de naissance est invalide</Translation>
-        <Translation>Geburtsdatum ist ungültig</Translation>
-        <Translation>Fecha de nacimiento no es válida</Translation>
-        <Translation>Data di nascita non è valida</Translation>
+        <Translation>Geburtsdatum ist ungÃ¼ltig</Translation>
+        <Translation>Fecha de nacimiento no es vÃ¡lida</Translation>
+        <Translation>Data di nascita non Ã¨ valida</Translation>
       </Translations>
     </Key>
     <Key tag="Please follow the given format">
       <Translations>
         <Translation>Please follow the given format</Translation>
-        <Translation>S'il vous plaît suivez le format donné</Translation>
+        <Translation>S'il vous plaÃ®t suivez le format donnÃ©</Translation>
         <Translation>Bitte folgen Sie dem angegebenen Format</Translation>
         <Translation>"Por favor</Translation>
         <Translation> siga el formato dado"</Translation>
@@ -400,16 +400,16 @@
       <Translations>
         <Translation>Invald ulna length</Translation>
         <Translation>Non valide ou inconnue longueur de l'ulna</Translation>
-        <Translation>Ungültige oder unbekannte Ulna Länge</Translation>
-        <Translation>Longitud cúbito Invald</Translation>
+        <Translation>UngÃ¼ltige oder unbekannte Ulna LÃ¤nge</Translation>
+        <Translation>Longitud cÃºbito Invald</Translation>
         <Translation>Lunghezza dell'ulna Invald</Translation>
       </Translations>
     </Key>
     <Key tag="Please enter a correct length">
       <Translations>
         <Translation>Please enter a correct length</Translation>
-        <Translation>S'il vous plaît entrer une bonne longueur</Translation>
-        <Translation>Bitte geben Sie eine korrekte Länge</Translation>
+        <Translation>S'il vous plaÃ®t entrer une bonne longueur</Translation>
+        <Translation>Bitte geben Sie eine korrekte LÃ¤nge</Translation>
         <Translation>Por favor introduce una longitud correcta</Translation>
         <Translation>Inserisci una lunghezza corretta</Translation>
       </Translations>
@@ -417,47 +417,47 @@
     <Key tag="Invalid identification number">
       <Translations>
         <Translation>Invalid identification number</Translation>
-        <Translation>Numéro d'identification valide</Translation>
-        <Translation>Ungültige Identifikationsnummer</Translation>
-        <Translation>Número de identificación no válida</Translation>
+        <Translation>NumÃ©ro d'identification valide</Translation>
+        <Translation>UngÃ¼ltige Identifikationsnummer</Translation>
+        <Translation>NÃºmero de identificaciÃ³n no vÃ¡lida</Translation>
         <Translation>Numero di identificazione non valido</Translation>
       </Translations>
     </Key>
     <Key tag="Please enter a correct indentification number">
       <Translations>
         <Translation>Please enter a correct indentification number</Translation>
-        <Translation>S'il vous plaît entrer un numéro de indentification correcte</Translation>
+        <Translation>S'il vous plaÃ®t entrer un numÃ©ro de indentification correcte</Translation>
         <Translation>Bitte geben Sie eine korrekte Identifikationsnummer</Translation>
         <Translation>"Por favor</Translation>
-        <Translation> introduzca un número de identificación del correcto"</Translation>
+        <Translation> introduzca un nÃºmero de identificaciÃ³n del correcto"</Translation>
         <Translation>Si prega di inserire un numero corretto identificazione</Translation>
       </Translations>
     </Key>
     <Key tag="Please choose a new ID number">
       <Translations>
         <Translation>Please choose a new ID number</Translation>
-        <Translation>S'il vous plaît choisir un nouveau numéro d'identification</Translation>
-        <Translation>Bitte wählen Sie eine neue ID-Nummer</Translation>
+        <Translation>S'il vous plaÃ®t choisir un nouveau numÃ©ro d'identification</Translation>
+        <Translation>Bitte wÃ¤hlen Sie eine neue ID-Nummer</Translation>
         <Translation>"Por favor</Translation>
-        <Translation> elija un nuevo número de identificación"</Translation>
+        <Translation> elija un nuevo nÃºmero de identificaciÃ³n"</Translation>
         <Translation>Si prega di scegliere un nuovo numero ID</Translation>
       </Translations>
     </Key>
     <Key tag="ID Number">
       <Translations>
         <Translation>ID Number</Translation>
-        <Translation>Numéro d'identification</Translation>
+        <Translation>NumÃ©ro d'identification</Translation>
         <Translation>ID-Nummer</Translation>
-        <Translation>Número ID</Translation>
+        <Translation>NÃºmero ID</Translation>
         <Translation>Numero ID</Translation>
       </Translations>
     </Key>
     <Key tag="No user with ID Number">
       <Translations>
         <Translation>No user with ID Number</Translation>
-        <Translation>Aucun utilisateur avec le numéro d'identification</Translation>
+        <Translation>Aucun utilisateur avec le numÃ©ro d'identification</Translation>
         <Translation>Kein Benutzer mit ID-Nummer</Translation>
-        <Translation>Ningún usuario con Número de Identificación</Translation>
+        <Translation>NingÃºn usuario con NÃºmero de IdentificaciÃ³n</Translation>
         <Translation>Nessun utente con il numero ID</Translation>
       </Translations>
     </Key>
@@ -482,8 +482,8 @@
     <Key tag="Gems Collected">
       <Translations>
         <Translation>Gems Collected</Translation>
-        <Translation>Gemmes collectées</Translation>
-        <Translation>Edelsteine ??gesammelt</Translation>
+        <Translation>Gemmes collectÃ©es</Translation>
+        <Translation>Edelsteine gesammelt</Translation>
         <Translation>Gems Apasionados</Translation>
         <Translation>Gemme Raccolto</Translation>
       </Translations>
@@ -509,9 +509,9 @@
     <Key tag="SESSION ENDS SOON">
       <Translations>
         <Translation>SESSION ENDS SOON</Translation>
-        <Translation>SESSION shirts</Translation>
-        <Translation>SESSION kurz!</Translation>
-        <Translation>SESIÓN TERMINA PRONTO</Translation>
+        <Translation>session se termine bientÃ´t</Translation>
+        <Translation>Sitzung endet bald</Translation>
+        <Translation>SESIÃ“N TERMINA PRONTO</Translation>
         <Translation>SESSIONE FINISCE PRESTO</Translation>
       </Translations>
     </Key>
@@ -529,15 +529,15 @@
         <Translation>SETTING UP GAME</Translation>
         <Translation>MISE EN JEU</Translation>
         <Translation>EINSTELLUNG SPIEL</Translation>
-        <Translation>CONFIGURACIÓN DE JUEGO</Translation>
+        <Translation>CONFIGURACIÃ“N DE JUEGO</Translation>
         <Translation>INSTALLAZIONE GIOCO</Translation>
       </Translations>
     </Key>
     <Key tag="SKELETON NOT FOUND">
       <Translations>
         <Translation>SKELETON NOT FOUND</Translation>
-        <Translation>SKELETON NOT FOUND</Translation>
-        <Translation>SKELETON NICHT GEFUNDEN</Translation>
+        <Translation>SQUELETTE INTROUVABLE</Translation>
+        <Translation>SKELETT NICHT GEFUNDEN</Translation>
         <Translation>ESQUELETO NOT FOUND</Translation>
         <Translation>SCHELETRO NOT FOUND</Translation>
       </Translations>
@@ -556,31 +556,17 @@
         <Translation>AUTOMATING CAMERA</Translation>
         <Translation>CAMERA AUTOMATISATION</Translation>
         <Translation>AUTOMATISIEREN CAMERA</Translation>
-        <Translation>CÁMARA AUTOMATIZACIÓN</Translation>
+        <Translation>CÃMARA AUTOMATIZACIÃ“N</Translation>
         <Translation>AUTOMAZIONE CAMERA</Translation>
-      </Translations>
-    </Key>
-    <Key tag="MERICA">
-      <Translations>
-        <Translation>MERICA</Translation>
-        <Translation>Eiffel Tower Land</Translation>
-        <Translation>DEUTCHLAND</Translation>
-        <Translation>Bulls chase you</Translation>
-        <Translation>Gladiators</Translation>
-        <Translation />
-        <Translation />
-        <Translation />
-        <Translation />
-        <Translation />
       </Translations>
     </Key>
     <Key tag="Start Trial">
       <Translations>
-        <Translation>Trial Length</Translation>
-        <Translation>Longueur de Premiere Instance</Translation>
-        <Translation>Studie Lange</Translation>
-        <Translation>Trial Longitud</Translation>
-        <Translation>Trial Lunghezza</Translation>
+        <Translation>Start Trial</Translation>
+        <Translation>DÃ©but de premiÃ¨re instance</Translation>
+        <Translation>START-Studie</Translation>
+        <Translation>Inicio Juicio</Translation>
+        <Translation>Inizio Trial</Translation>
       </Translations>
     </Key>
     <Key tag="Trial Length">
@@ -617,6 +603,33 @@
         <Translation>Sprachen</Translation>
         <Translation>Idiomas</Translation>
         <Translation>Lingue</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Results">
+      <Translations>
+        <Translation>Results</Translation>
+        <Translation>RÃ©sultats</Translation>
+        <Translation>Ergebnisse</Translation>
+        <Translation>Resultados</Translation>
+        <Translation>Risultati</Translation>
+      </Translations>
+    </Key>
+    <Key tag="meters cubed">
+      <Translations>
+        <Translation>meters cubed</Translation>
+        <Translation>mÃ¨tres cubes</Translation>
+        <Translation>Meter in WÃ¼rfel geschnitten</Translation>
+        <Translation>metros en cubos</Translation>
+        <Translation>metri cubi</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Previous Gems Collected">
+      <Translations>
+        <Translation>Previous Gems Collected</Translation>
+        <Translation>Gems prÃ©cÃ©dentes collectÃ©es</Translation>
+        <Translation>ZurÃ¼ck Edelsteine â€‹â€‹gesammelt</Translation>
+        <Translation>Gems anteriores Apasionados</Translation>
+        <Translation>Gemme precedenti Raccolto</Translation>
       </Translations>
     </Key>
   </LanguageKeys>
