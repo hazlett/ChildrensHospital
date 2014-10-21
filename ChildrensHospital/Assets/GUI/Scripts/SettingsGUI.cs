@@ -63,24 +63,6 @@ public class SettingsGUI : MonoBehaviour
         // Scale the GUI to any resolution based on 1920 x 1080 base resolution
         GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(Screen.height / nativeVerticalResolution, Screen.height / nativeVerticalResolution, 1));
 
-
-        if (dropdown.enabled)
-        {
-            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), "List of Users", "activeDropDown"))
-            {
-                dropdown.disabling = true;
-                dropdown.timer = dropdown.speed = 0;
-            }
-        }
-        else
-        {
-            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), "List of Users", "inactiveDropDown"))
-            {
-                dropdown.timer = 0.0f;
-                dropdown.enabled = true;
-            }
-        }
-
         if (newUser)
         {
 
@@ -126,6 +108,23 @@ public class SettingsGUI : MonoBehaviour
 
             loadSave = "Load";
             saving = false;
+
+            if (dropdown.enabled)
+            {
+                if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), "List of Users", "activeDropDown"))
+                {
+                    dropdown.disabling = true;
+                    dropdown.timer = dropdown.speed = 0;
+                }
+            }
+            else
+            {
+                if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), "List of Users", "inactiveDropDown"))
+                {
+                    dropdown.timer = 0.0f;
+                    dropdown.enabled = true;
+                }
+            }
         }
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution - 255, 300, 100), loadSave))
