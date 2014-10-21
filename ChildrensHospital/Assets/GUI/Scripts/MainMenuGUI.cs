@@ -9,7 +9,7 @@ public class MainMenuGUI : MonoBehaviour
     public GUISkin mainMenuSkin;
     public SettingsGUI settings;
     public InstructionsGUI instructions;
-    public DropdownUserListGUI dropdown;
+    public DropdownLanguagesGUI dropdown;
     public KinectManager kinectManager;
 
     internal Calibration calibration;
@@ -17,6 +17,7 @@ public class MainMenuGUI : MonoBehaviour
     private string playerStatus, timeString, errorMessage, style;
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
     private bool manualCalibration = false, invalidInput = false;
+    private Vector2 labelSize = new Vector2(600, 100), buttonSize = new Vector2(350, 100);
 
     void Start()
     {
@@ -57,7 +58,7 @@ public class MainMenuGUI : MonoBehaviour
         if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (GameControl.Instance.IsCalibrated))
         {
             kinectManager.displayColorMap = false;
-            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 275, 300, 100), Languages.Instance.GetTranslation("Start Trial")))
+            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 175, nativeVerticalResolution / 2 - 275, 350, buttonSize.y), Languages.Instance.GetTranslation("Start Trial")))
             {
                 GameControl.Instance.ReadCalibration();
                 CheckTime();
@@ -79,14 +80,14 @@ public class MainMenuGUI : MonoBehaviour
             {
                 calibrateMessage = Languages.Instance.GetTranslation("Please Calibrate");
             }
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - 250, nativeVerticalResolution / 2 - 275, 500, 100), calibrateMessage, "GreyStart");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - labelSize.x / 2, nativeVerticalResolution / 2 - 275, labelSize.x, labelSize.y), calibrateMessage, "GreyStart");
         }
         else
         {
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - 250, nativeVerticalResolution / 2 - 275, 500, 100), Languages.Instance.GetTranslation("Please Select a User"), "GreyStart");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - labelSize.x / 2, nativeVerticalResolution / 2 - 275, labelSize.x, labelSize.y), Languages.Instance.GetTranslation("Please Select a User"), "GreyStart");
         }
 
-        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 170, 300, 100), Languages.Instance.GetTranslation("New User")))
+        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 - 170, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("New User")))
         {
             GameControl.Instance.IsCalibrated = false;
             settings.newUser = true;
@@ -94,7 +95,7 @@ public class MainMenuGUI : MonoBehaviour
             this.enabled = false;
         }
 
-        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 65, 300, 100), Languages.Instance.GetTranslation("Existing User")))
+        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 - 65, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Existing User")))
         {
             GameControl.Instance.IsCalibrated = false;
             settings.newUser = false;
@@ -106,7 +107,7 @@ public class MainMenuGUI : MonoBehaviour
         {
             if (!GameControl.Instance.IsCalibrated)
             {
-                if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 40, 300, 100), Languages.Instance.GetTranslation("Calibrate")))
+                if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 40, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Calibrate")))
                 {
                     kinectManager.displayColorMap = true;
                     GameControl.Instance.IsCalibrating = true;
@@ -124,7 +125,7 @@ public class MainMenuGUI : MonoBehaviour
             }
             else
             {
-                if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 40, 300, 100), Languages.Instance.GetTranslation("Recalibrate")))
+                if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 40, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Recalibrate")))
                 {
                     kinectManager.displayColorMap = true;
                     GameControl.Instance.IsCalibrating = true;
@@ -142,19 +143,19 @@ public class MainMenuGUI : MonoBehaviour
             }
         }
 
-        if (GUI.Button(new Rect(25, nativeVerticalResolution - 250, 300, 100), Languages.Instance.GetTranslation("Instructions")))
+        if (GUI.Button(new Rect(25, nativeVerticalResolution - 250, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Instructions")))
         {
             instructions.enabled = true;
             this.enabled = false;
         }
 
-        if (GUI.Button(new Rect(25, nativeVerticalResolution - 125, 300, 100), Languages.Instance.GetTranslation("Quit")))
+        if (GUI.Button(new Rect(25, nativeVerticalResolution - 125, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Quit")))
         {
             Application.Quit();
         } 
 
-        GUI.Label(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 150, 300, 50), Languages.Instance.GetTranslation("Trial Length") +" (sec)");
-        timeString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 + 185, 300, 50), timeString);
+        GUI.Label(new Rect(scaledResolutionWidth / 2 - labelSize.x / 2, nativeVerticalResolution / 2 + 150, labelSize.x, 50), Languages.Instance.GetTranslation("Trial Length") +" (sec)");
+        timeString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 185, buttonSize.x, 50), timeString);
 
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 275, nativeVerticalResolution - 300, 550, 300), Languages.Instance.GetTranslation("Current User") + "\n" + playerStatus);
 
@@ -166,7 +167,7 @@ public class MainMenuGUI : MonoBehaviour
 
         if (dropdown.enabled)
         {
-            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), Languages.Instance.GetTranslation("List of Users"), "activeDropDown"))
+            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), Languages.Instance.GetTranslation("Languages"), "activeDropDown"))
             {
                 dropdown.disabling = true;
                 dropdown.timer = dropdown.speed = 0;
@@ -174,7 +175,7 @@ public class MainMenuGUI : MonoBehaviour
         }
         else
         {
-            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), Languages.Instance.GetTranslation("List of Users"), "inactiveDropDown"))
+            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), Languages.Instance.GetTranslation("Languages"), "inactiveDropDown"))
             {
                 dropdown.timer = 0.0f;
                 dropdown.enabled = true;

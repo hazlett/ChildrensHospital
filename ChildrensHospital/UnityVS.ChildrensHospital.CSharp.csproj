@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\GUI\Scripts\CountdownGUI.cs" />
+    <Compile Include="Assets\GUI\Scripts\DropdownLanguagesGUI.cs" />
     <Compile Include="Assets\GUI\Scripts\DropdownUserListGUI.cs" />
     <Compile Include="Assets\GUI\Scripts\EndGUI.cs" />
     <Compile Include="Assets\GUI\Scripts\InstructionsGUI.cs" />

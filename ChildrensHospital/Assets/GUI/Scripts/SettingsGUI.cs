@@ -14,7 +14,7 @@ public class SettingsGUI : MonoBehaviour
     internal string birthdate, IDstring, name, ulnaLengthString, errorMessage, loadSave, diagnosis;
     private int ID, textBoxWidth = 300, textBoxHeight = 50, brookeInt;
     private DateTime birthDateTime;
-
+    private Vector2 labelSize = new Vector2(600, 50), buttonSize = new Vector2(350, 100);
   
     internal User user = new User();
     internal bool newUser, invalidInput = false, saving = true, male = true;
@@ -73,12 +73,12 @@ public class SettingsGUI : MonoBehaviour
         {
 
             // Text fields for new users
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 420, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("Name"));
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 310, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("ID"));
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 200, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("Birthdate") + " " + Languages.Instance.GetTranslation("(mm/dd/yy)"));
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 90, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("Brooke Scale") +": " + brookeInt);
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("Ulna Length"));
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 90, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("Diagnosis"));
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (labelSize.x / 2), nativeVerticalResolution / 2 - 420, labelSize.x, labelSize.y), Languages.Instance.GetTranslation("Name"));
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (labelSize.x / 2), nativeVerticalResolution / 2 - 310, labelSize.x, labelSize.y), Languages.Instance.GetTranslation("ID"));
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (labelSize.x / 2), nativeVerticalResolution / 2 - 200, labelSize.x, labelSize.y), Languages.Instance.GetTranslation("Birthdate") + " " + Languages.Instance.GetTranslation("(mm/dd/yy)"));
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (labelSize.x / 2), nativeVerticalResolution / 2 - 90, labelSize.x, labelSize.y), Languages.Instance.GetTranslation("Brooke Scale") +": " + brookeInt);
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (labelSize.x / 2), nativeVerticalResolution / 2, labelSize.x, labelSize.y), Languages.Instance.GetTranslation("Ulna Length"));
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (labelSize.x / 2), nativeVerticalResolution / 2 + 90, labelSize.x, labelSize.y), Languages.Instance.GetTranslation("Diagnosis"));
 
             name = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 385, textBoxWidth, textBoxHeight), name);
             IDstring = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 275, textBoxWidth, textBoxHeight), IDstring);
@@ -90,11 +90,11 @@ public class SettingsGUI : MonoBehaviour
 
             if (male)
             {
-                GUI.Label(new Rect(scaledResolutionWidth / 2 - 70, nativeVerticalResolution / 2 + 130, 200, 200), Languages.Instance.GetTranslation("Male"));
+                GUI.Label(new Rect(scaledResolutionWidth / 2 - 50, nativeVerticalResolution / 2 + 130, 200, 200), Languages.Instance.GetTranslation("Male"));
             }
             else
             {
-                GUI.Label(new Rect(scaledResolutionWidth / 2 - 70, nativeVerticalResolution / 2 + 130, 200, 200), Languages.Instance.GetTranslation("Female"));
+                GUI.Label(new Rect(scaledResolutionWidth / 2 - 50, nativeVerticalResolution / 2 + 130, 200, 200), Languages.Instance.GetTranslation("Female"));
             }
 
             loadSave = Languages.Instance.GetTranslation("Save");
@@ -103,9 +103,9 @@ public class SettingsGUI : MonoBehaviour
         else
         {
             // Text field labels for existing users
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 90, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("Identification Number"));
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 20, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("Brooke Scale") + ": " + brookeInt);
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 130, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("Ulna Length"));
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (labelSize.x / 2), nativeVerticalResolution / 2 - 90, labelSize.x, labelSize.y), Languages.Instance.GetTranslation("Identification Number"));
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (labelSize.x / 2), nativeVerticalResolution / 2 + 20, labelSize.x, labelSize.y), Languages.Instance.GetTranslation("Brooke Scale") + ": " + brookeInt);
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (labelSize.x / 2), nativeVerticalResolution / 2 + 130, labelSize.x, labelSize.y), Languages.Instance.GetTranslation("Ulna Length"));
 
             // Text fields for existing users
             IDstring = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 55, textBoxWidth, textBoxHeight), IDstring);
