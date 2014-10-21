@@ -28,7 +28,7 @@ public class Languages {
         }
         catch (Exception e)
         {
-            Debug.Log("Language translate error: " + e.Message);
+            Debug.Log("Key: " + key + " | ErrorMessage: " + e.Message);
             return key;
         }
         
