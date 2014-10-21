@@ -41,6 +41,7 @@ public class SettingsGUI : MonoBehaviour
     }
     void OnEnable()
     {
+        dropdown.enabled = true;
         if (newUser)
         {
             brookeScale = 1;
@@ -64,10 +65,7 @@ public class SettingsGUI : MonoBehaviour
         }
 
         // Scale the GUI to any resolution based on 1920 x 1080 base resolution
-        GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(Screen.height / nativeVerticalResolution, Screen.height / nativeVerticalResolution, 1));
-
-
-       
+        GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(Screen.height / nativeVerticalResolution, Screen.height / nativeVerticalResolution, 1));       
 
         if (newUser)
         {
@@ -114,23 +112,6 @@ public class SettingsGUI : MonoBehaviour
 
             loadSave = Languages.Instance.GetTranslation("Load");
             saving = false;
-
-            if (dropdown.enabled)
-            {
-                if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), Languages.Instance.GetTranslation("List of Users"), "activeDropDown"))
-                {
-                    dropdown.disabling = true;
-                    dropdown.timer = dropdown.speed = 0;
-                }
-            }
-            else
-            {
-                if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), Languages.Instance.GetTranslation("List of Users"), "inactiveDropDown"))
-                {
-                    dropdown.timer = 0.0f;
-                    dropdown.enabled = true;
-                }
-            }
         }
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution - 255, 300, 100), loadSave))
@@ -139,6 +120,9 @@ public class SettingsGUI : MonoBehaviour
             if (!invalidInput)
             {
                 mainMenu.enabled = true;
+                dropdown.yPosition = 0.0f;
+                dropdown.opened = false;
+                dropdown.enabled = false;
                 this.enabled = false;
 
                 if (saving)
@@ -178,6 +162,9 @@ public class SettingsGUI : MonoBehaviour
         {
             invalidInput = false;
             mainMenu.enabled = true;
+            dropdown.yPosition = 0.0f;
+            dropdown.opened = false;
+            dropdown.enabled = false;
             this.enabled = false;
         }
 
