@@ -12,24 +12,23 @@ public class InstructionsGUI : MonoBehaviour
 
     void Start()
     {
-        instuctionsList = "GETTING STARTED\nStart off by choosing either new user or an existing user from the dropdown menu or the existing user button. The box below these buttons" +
-        " shows the currently selected user, and their information (If you just started the game there won't be a currently selected user)." + 
-        " You may also change the duration of the trial by inputting the number of seconds into the Trial Length field.\n\nNEW USER\nHere you" +
-        " set the user's name, birthdate, Brooke scale, ulna length, and ID(Make sure you keep track of the ID number). If everything is" +
-        " entered correctly, click save and this user will be updated as your current user.\n\nEXISTING USER\nHere you will enter the ID of the" +
-        " user you want to load.  You may also change the Brooke Scale and/or ulna length if you need to by inputting new values. Click load to " +
-        "make this user your current user.\n\nLIST OF USERS DROPDOWN\nHere you will see a list of existing users that are in the system already." +
-        " Use this if you don't need to make any changes to the existing user you are selecting." +
-        "\n\nCALIBRATION\nWhenever a new user is saved, or an existing user is loaded, the game will need to" +
-        " calibrate the Kinect.  Make sure that you have the calibration checkerboard in the correct position before clicking calibrate or you" + 
-        " may need to calibrate again.\n\nGAMEPLAY\nThe game will take a few seconds to start, but once it does, the goal is to dig for gems.  " + 
-        "As the user stretches, the dirt is eroded and gems are revealed and fall down. " + 
-        "\n\nEND GAME\nWhen the game ends, it will display the stats of the trial. You " + 
-        "will have an option to play the trial again or quit. It will also save the results if \"Save Trial\" is selected.\n\nSAVING\nGame data and "
-        + "game log are saved into a folder under MyDocuments\\ActiveSeated.  Reports are saved in the same location under the Reports folder.";
+        instuctionsList = "CHOOSE NEW USER OR EXISTING USER\nEnter all data for new user.\nFor existing user, confirm that Brooke Scale and Ulna Length are correct." +
+        " \nTrial Length is defaulted to 60 seconds. Enter in a new duration if needed." +
+        " \n\nCALIBRATION\nCheckered box is precisely aligned with the back edge of the table.  Center dot in center of the table.  Click calibrate." +
+        " If unsuccessful, check to see that the box is located within the red square on the screen and recalibrate.  You will need to recalibrate if" +
+        " you move the table or camera." +
+        "\n\nGAMEPLAY\n1. Before clicking Start Trial\nEnsure the patient is in the proper sitting position.\nInstruct the subject that they are in a cave" +
+        " searching for jewels.  To get the jewels he/she must use their arm movements (lasers in the game) to push the walls back.  There are 3 sections to each wall" +
+        " (tabletop, mid, over the head).  Be sure to push all 3 sections.  The ceiling will glow yellow first.  Continue to push each wall as it glows." +
+        " Push it up as high as you can (by leaning as far as possible) to get the most jewels.\nRemember:  Don't stand up, don't hold on to the table or chair." +
+        "\n2. Click Start Trial and the countdown begins.  When the bell rings the avatar on the screen will mimic the subject's movements." +
+        "\n\nEND GAME\nIf the trial was NOT valid, uncheck the Save Results box.  Play a minimum of 2 times.  Play additional trials until the subject achieves their " +
+        "high score.  When achieved, click Quit." +
+        "\n\nREPORT\nThe report generats automatically when the game is done and you click Quit.  It is automatically saved in My Documents\\ACTIVE-Seated\\Reports. ";
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
+        Debug.Log(instuctionsList);
         this.enabled = false;
     }
 
