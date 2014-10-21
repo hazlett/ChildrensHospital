@@ -92,6 +92,8 @@ public class MainMenuGUI : MonoBehaviour
             GameControl.Instance.IsCalibrated = false;
             settings.newUser = true;
             settings.enabled = true;
+            dropdown.yPosition = 0;
+            dropdown.opened = dropdown.enabled = false;
             this.enabled = false;
         }
 
@@ -100,6 +102,8 @@ public class MainMenuGUI : MonoBehaviour
             GameControl.Instance.IsCalibrated = false;
             settings.newUser = false;
             settings.enabled = true;
+            dropdown.yPosition = 0;
+            dropdown.opened = dropdown.enabled = false;
             this.enabled = false;
         }
 
@@ -146,6 +150,8 @@ public class MainMenuGUI : MonoBehaviour
         if (GUI.Button(new Rect(25, nativeVerticalResolution - 250, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Instructions")))
         {
             instructions.enabled = true;
+            dropdown.yPosition = 0;
+            dropdown.opened = dropdown.enabled = false;
             this.enabled = false;
         }
 
@@ -163,23 +169,6 @@ public class MainMenuGUI : MonoBehaviour
         if (invalidInput)
         {
             GUI.Box(new Rect(scaledResolutionWidth / 2 - 380, 15, 760, 100), errorMessage);
-        }
-
-        if (dropdown.enabled)
-        {
-            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), Languages.Instance.GetTranslation("Languages"), "activeDropDown"))
-            {
-                dropdown.disabling = true;
-                dropdown.timer = dropdown.speed = 0;
-            }
-        }
-        else
-        {
-            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), Languages.Instance.GetTranslation("Languages"), "inactiveDropDown"))
-            {
-                dropdown.timer = 0.0f;
-                dropdown.enabled = true;
-            }
         }
 
         timeString = Regex.Replace(timeString, @"[^0-9]", "");

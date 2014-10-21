@@ -45,6 +45,7 @@ public class InstructionsGUI : MonoBehaviour
         if(GUI.Button(new Rect(scaledResolutionWidth - 325, nativeVerticalResolution - 125, 300, 100), Languages.Instance.GetTranslation("Back to Menu")))
         {
             this.enabled = false;
+            mainMenu.dropdown.enabled = true;
             mainMenu.enabled = true;
         }
         

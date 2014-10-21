@@ -119,10 +119,10 @@ public class SettingsGUI : MonoBehaviour
             ApplyChanges();
             if (!invalidInput)
             {
+                mainMenu.dropdown.enabled = true;
                 mainMenu.enabled = true;
                 dropdown.yPosition = 0.0f;
-                dropdown.opened = false;
-                dropdown.enabled = false;
+                dropdown.opened = dropdown.enabled = false;
                 this.enabled = false;
 
                 if (saving)
@@ -161,10 +161,10 @@ public class SettingsGUI : MonoBehaviour
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution - 150, 300, 100), Languages.Instance.GetTranslation("Cancel")))
         {
             invalidInput = false;
+            mainMenu.dropdown.enabled = true;
             mainMenu.enabled = true;
             dropdown.yPosition = 0.0f;
-            dropdown.opened = false;
-            dropdown.enabled = false;
+            dropdown.opened = dropdown.enabled = false;
             this.enabled = false;
         }
 

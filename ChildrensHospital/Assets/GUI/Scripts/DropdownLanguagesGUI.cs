@@ -8,9 +8,9 @@ public class DropdownLanguagesGUI : MonoBehaviour {
     public float animationDuration = 1.5f;
     public Vector2 menuPosition = new Vector2(0, 0), buttonSize = new Vector2(400, 50);
 
-    internal bool disabling;
-    internal float timer, speed;
-    private float nativeVerticalResolution, scaledResolutionWidth, updateGUI, yPosition, arrowsYPos;
+    internal bool disabling, opened;
+    internal float timer, speed, yPosition;
+    private float nativeVerticalResolution, scaledResolutionWidth, updateGUI, arrowsYPos;
     private int startList;
 
     void Start()
@@ -19,11 +19,10 @@ public class DropdownLanguagesGUI : MonoBehaviour {
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
-        this.enabled = false;
     }
 
     // Makes sure the animation will function properly upon opening the menu again
-    void OnDisable()
+    private void ReInitialize()
     {
         disabling = false;
         timer = yPosition = startList = 0;
@@ -46,24 +45,26 @@ public class DropdownLanguagesGUI : MonoBehaviour {
         // Scale the GUI to any resolution based on 1920 x 1080 base resolution
         GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(Screen.height / nativeVerticalResolution, Screen.height / nativeVerticalResolution, 1));
 
-        // Draws the dropdown list
-        DrawDropDownList();
-
-        // When clicked, the menu will move toward the end of the list
-        if (GUI.Button(new Rect(scaledResolutionWidth - buttonSize.x - 25, arrowsYPos, buttonSize.x / 2, buttonSize.y), " ", "Down"))
+        if (opened)
         {
-            if (startList + maxDropdownSize < UserContainer.Instance.Users.Count)
+            // Draws the dropdown menu
+            DrawDropDownList();
+            DrawArrows();
+
+            // Closes the dropdown menu
+            if (GUI.Button(new Rect(scaledResolutionWidth - buttonSize.x - 25, 25, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Languages"), "ActiveDropdown"))
             {
-                startList++;
+                disabling = true;
+                timer = speed = 0;
             }
         }
-
-        // When clicked, the menu will move up towards the beginning of the list
-        if (GUI.Button(new Rect(scaledResolutionWidth - buttonSize.x / 2 - 25, arrowsYPos, buttonSize.x / 2, buttonSize.y), " ", "Up"))
+        else
         {
-            if (startList - 1 >= 0)
+            // Open the dropdown menu
+            if (GUI.Button(new Rect(scaledResolutionWidth - buttonSize.x - 25, 25, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Languages"), "InactiveDropdown"))
             {
-                startList--;
+                timer = speed = 0.0f;
+                opened = true;
             }
         }
 
@@ -92,6 +93,27 @@ public class DropdownLanguagesGUI : MonoBehaviour {
             {
                 // If the dropdown menu has more fields than the list you are choosing from, it will populate the empty fields with "Empty"
                 GUI.Label(new Rect(scaledResolutionWidth - buttonSize.x - 25, 25 + buttonSize.y * (i + 1) * yPosition, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Empty"), "Dropdown");
+            }
+        }
+    }
+
+    private void DrawArrows()
+    {
+        // When clicked, the menu will move toward the end of the list
+        if (GUI.Button(new Rect(scaledResolutionWidth - buttonSize.x - 25, arrowsYPos, buttonSize.x / 2, buttonSize.y), " ", "Down"))
+        {
+            if (startList + maxDropdownSize < UserContainer.Instance.UserDictionary.Count)
+            {
+                startList++;
+            }
+        }
+
+        // When clicked, the menu will move up towards the beginning of the list
+        if (GUI.Button(new Rect(scaledResolutionWidth - buttonSize.x / 2 - 25, arrowsYPos, buttonSize.x / 2, buttonSize.y), " ", "Up"))
+        {
+            if (startList - 1 >= 0)
+            {
+                startList--;
             }
         }
     }
@@ -130,7 +152,8 @@ public class DropdownLanguagesGUI : MonoBehaviour {
             }
             else
             {
-                this.enabled = false;
+                opened = false;
+                ReInitialize();
             }
         }
         // If the dropdown is opening, animate down
