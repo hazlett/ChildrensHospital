@@ -21,7 +21,7 @@ public class MainMenuGUI : MonoBehaviour
     void Start()
     {
         style = "activeDrop";
-        errorMessage = "Invalid trial length. \nPlease enter a trial length between 0 and 120.";
+        errorMessage = Languages.Instance.GetTranslation("Invalid trial length.") + " \n" + Languages.Instance.GetTranslation("Please enter a trial length between 0 and 120.");
         UserContainer.Instance.time = 60;
         timeString = UserContainer.Instance.time.ToString();
         updateGUI = 0.5f;
@@ -63,7 +63,7 @@ public class MainMenuGUI : MonoBehaviour
                 CheckTime();
                 if (!invalidInput)
                 {
-                    EventLogger.Instance.LogData("Game Started");
+                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Game Started"));
                     Application.LoadLevel("Game");
                 }
             }
@@ -73,17 +73,17 @@ public class MainMenuGUI : MonoBehaviour
             string calibrateMessage;
             if (GameControl.Instance.IsCalibrating)
             {
-                calibrateMessage = "Calibrating";
+                calibrateMessage = Languages.Instance.GetTranslation("Calibrating");
             }
             else
             {
-                calibrateMessage = "Please Calibrate";
+                calibrateMessage = Languages.Instance.GetTranslation("Please Calibrate");
             }
             GUI.Label(new Rect(scaledResolutionWidth / 2 - 250, nativeVerticalResolution / 2 - 275, 500, 100), calibrateMessage, "GreyStart");
         }
         else
         {
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - 250, nativeVerticalResolution / 2 - 275, 500, 100), "Please Select a User", "GreyStart");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - 250, nativeVerticalResolution / 2 - 275, 500, 100), Languages.Instance.GetTranslation("Please Select a User"), "GreyStart");
         }
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution / 2 - 170, 300, 100), Languages.Instance.GetTranslation("New User")))
@@ -117,7 +117,7 @@ public class MainMenuGUI : MonoBehaviour
                     catch (Exception)
                     { }
                     DocumentManager.Instance.ArgsCreated = false;
-                    EventLogger.Instance.LogData("Calibration Started");
+                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Calibration Started"));
                     calibration = new Calibration();
                     calibration.Calibrate();
                 }
@@ -135,20 +135,20 @@ public class MainMenuGUI : MonoBehaviour
                     }
                     catch (Exception)
                     { }
-                    EventLogger.Instance.LogData("Calibration Started");
+                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Calibration Started"));
                     calibration = new Calibration();
                     calibration.Calibrate();
                 }
             }
         }
 
-        if (GUI.Button(new Rect(25, nativeVerticalResolution - 250, 300, 100), Languages.Instance.GetTranslation("INSTRUCTIONS")))
+        if (GUI.Button(new Rect(25, nativeVerticalResolution - 250, 300, 100), Languages.Instance.GetTranslation("Instructions")))
         {
             instructions.enabled = true;
             this.enabled = false;
         }
 
-        if (GUI.Button(new Rect(25, nativeVerticalResolution - 125, 300, 100), Languages.Instance.GetTranslation("QUIT")))
+        if (GUI.Button(new Rect(25, nativeVerticalResolution - 125, 300, 100), Languages.Instance.GetTranslation("Quit")))
         {
             Application.Quit();
         } 

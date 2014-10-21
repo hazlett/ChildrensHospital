@@ -12,7 +12,7 @@ public class ManualCameraControl : MonoBehaviour {
 	void Update () {
 	    if (Input.GetKeyUp(KeyCode.C))
         {
-            control.gameManager.message = "MANUAL CONTROL";
+            control.gameManager.message = Languages.Instance.GetTranslation("MANUAL CONTROL");
             control.enabled = false;
             shoulderCamera.enabled = !shoulderCamera.enabled;
             shoulderCamera.gameObject.GetComponent<DebugCamera>().enabled = true;
@@ -22,7 +22,7 @@ public class ManualCameraControl : MonoBehaviour {
             control.enabled = !control.enabled;
             if (control.enabled)
             {
-                control.gameManager.message = "AUTOMATING CAMERA";
+                control.gameManager.message = Languages.Instance.GetTranslation("AUTOMATING CAMERA");
             }
             shoulderCamera.gameObject.GetComponent<DebugCamera>().enabled = !control.enabled;
             control.automating = true;

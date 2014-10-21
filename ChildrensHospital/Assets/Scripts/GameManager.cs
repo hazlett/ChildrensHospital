@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour {
             {
                 if (!playing)
                 {
-                    message = "PLAYING GAME";
+                    message = Languages.Instance.GetTranslation("PLAYING GAME");
                     StartGame();
                     startBell.Play();
                 }
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour {
             }
             else
             {
-                message = "SETTING UP GAME";
+                message = Languages.Instance.GetTranslation("SETTING UP GAME");
                 countdown.enabled = true;
                 // Spawn Gems
                 generator.enabled = true;
@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour {
         }
         else
         {
-            message = "SKELETON NOT FOUND";
+            message = Languages.Instance.GetTranslation("SKELETON NOT FOUND");
             return;
         }
 
@@ -119,8 +119,8 @@ public class GameManager : MonoBehaviour {
         if (GUIon)
         {
             GUI.Label(new Rect(scaledResolutionWidth / 2 - 425, 10, 400, 75), message);
-            GUI.Label(new Rect(scaledResolutionWidth / 2 + 25, 10, 400, 75), "Volume: " + TotalVolume().ToString("F3"));
-            GUI.Label(new Rect(scaledResolutionWidth / 2 + 25, 95, 400, 75), "Gems Collected: " + GameControl.Instance.GemsCollected.ToString());
+            GUI.Label(new Rect(scaledResolutionWidth / 2 + 25, 10, 400, 75), Languages.Instance.GetTranslation("Volume") + ": " + TotalVolume().ToString("F3"));
+            GUI.Label(new Rect(scaledResolutionWidth / 2 + 25, 95, 400, 75), Languages.Instance.GetTranslation("Gems Collected") + ": " + GameControl.Instance.GemsCollected.ToString());
 
             //ShowAvatarVolumes();
             

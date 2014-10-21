@@ -145,28 +145,28 @@ public class FocusedCameraControl : MonoBehaviour {
             if (relativeRightVolume == 0)
             {
                 shoulderCamera.enabled = true;
-                gameManager.message = "FOCUS ON YOUR RIGHT HAND";
+                gameManager.message = Languages.Instance.GetTranslation("FOCUS ON YOUR RIGHT HAND");
                 look = lookRight;
                 direction = LookDirection.RIGHT;
             }
             else if (relativeLeftVolume == 0)
             {
                 shoulderCamera.enabled = true;
-                gameManager.message = "FOCUS ON YOUR LEFT HAND";
+                gameManager.message = Languages.Instance.GetTranslation("FOCUS ON YOUR LEFT HAND");
                 look = lookLeft;
                 direction = LookDirection.LEFT;
             }
             else if (relativeLeftVolume < relativeRightVolume)
             {
                 shoulderCamera.enabled = true;
-                gameManager.message = "FOCUS ON YOUR LEFT HAND";
+                gameManager.message = Languages.Instance.GetTranslation("FOCUS ON YOUR LEFT HAND");
                 look = lookLeft;
                 direction = LookDirection.LEFT;
             }
             else
             {
                 shoulderCamera.enabled = true;
-                gameManager.message = "FOCUS ON YOUR RIGHT HAND";
+                gameManager.message = Languages.Instance.GetTranslation("FOCUS ON YOUR RIGHT HAND");
                 look = lookRight;
                 direction = LookDirection.RIGHT;
             }
@@ -183,13 +183,13 @@ public class FocusedCameraControl : MonoBehaviour {
         {
             look = lookLeft;
             direction = LookDirection.LEFT;
-            gameManager.message = "FOCUS ON YOUR LEFT HAND";
+            gameManager.message = Languages.Instance.GetTranslation("FOCUS ON YOUR LEFT HAND");
         }
         else if (gameManager.timer < UserContainer.Instance.time * 0.75f)
         {
             look = lookRight;
             direction = LookDirection.RIGHT;
-            gameManager.message = "FOCUS ON YOUR RIGHT HAND";
+            gameManager.message = Languages.Instance.GetTranslation("FOCUS ON YOUR RIGHT HAND");
         }
         else
         {
@@ -213,7 +213,7 @@ public class FocusedCameraControl : MonoBehaviour {
                 {
                     Blink();
                     direction = LookDirection.CENTER;
-                    gameManager.message = "SESSION ENDS SOON";
+                    gameManager.message = Languages.Instance.GetTranslation("SESSION ENDS SOON");
                     shoulderCamera.enabled = false;
                 }
                 else if (gameManager.timer > UserContainer.Instance.time * 0.25f)

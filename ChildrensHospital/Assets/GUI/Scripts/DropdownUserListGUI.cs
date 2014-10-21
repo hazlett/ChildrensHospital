@@ -92,7 +92,7 @@ public class DropdownUserListGUI : MonoBehaviour {
             else
             {
                 // If the dropdown menu has more fields than the list you are choosing from, it will populate the empty fields with "Empty"
-                GUI.Label(new Rect(scaledResolutionWidth - buttonSize.x - 25, 25 + buttonSize.y * (i + 1) * yPosition, buttonSize.x, buttonSize.y), "Empty", "Dropdown");
+                GUI.Label(new Rect(scaledResolutionWidth - buttonSize.x - 25, 25 + buttonSize.y * (i + 1) * yPosition, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Empty"), "Dropdown");
             }
         }
     }

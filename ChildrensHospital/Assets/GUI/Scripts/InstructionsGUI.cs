@@ -53,7 +53,7 @@ public class InstructionsGUI : MonoBehaviour
 
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 810, nativeVerticalResolution / 2 - 520, 1620, 920), instuctionsList, "Window");
 
-        if(GUI.Button(new Rect(scaledResolutionWidth - 325, nativeVerticalResolution - 125, 300, 100), "Back to Menu"))
+        if(GUI.Button(new Rect(scaledResolutionWidth - 325, nativeVerticalResolution - 125, 300, 100), Languages.Instance.GetTranslation("Back to Menu")))
         {
             this.enabled = false;
             mainMenu.enabled = true;

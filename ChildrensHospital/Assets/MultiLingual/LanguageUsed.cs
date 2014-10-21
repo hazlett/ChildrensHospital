@@ -9,14 +9,13 @@ public class LanguageUsed {
     private static LanguageUsed instance = new LanguageUsed();
     public static LanguageUsed Instance { get { return instance; } }
     [XmlIgnore]
-    private string path;
+    private string path = Path.Combine(Application.persistentDataPath, "currentLanguage.xml");
 
     [XmlElement("Current")]
     public int CurrentLanguage;
 
-    public void Load(string path)
+    public void Load()
     {
-        this.path = path;
         XmlSerializer serializer = new XmlSerializer(typeof(LanguageUsed));
         if (File.Exists(path))
         {
@@ -26,6 +25,12 @@ public class LanguageUsed {
                 instance = serializer.Deserialize(stream) as LanguageUsed;
             }
         }
+        else
+        {
+            CurrentLanguage = 0;
+            Save();
+        }
+
     }
     public void Save()
     {

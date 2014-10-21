@@ -26,7 +26,7 @@ public class SettingsGUI : MonoBehaviour
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
         birthdate = IDstring = name = ulnaLengthString = diagnosis = "";
-        loadSave = "Save";
+        loadSave = Languages.Instance.GetTranslation("Save");
         this.enabled = false;
     }
 
@@ -66,7 +66,7 @@ public class SettingsGUI : MonoBehaviour
 
         if (dropdown.enabled)
         {
-            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), "List of Users", "activeDropDown"))
+            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), Languages.Instance.GetTranslation("List of Users"), "activeDropDown"))
             {
                 dropdown.disabling = true;
                 dropdown.timer = dropdown.speed = 0;
@@ -74,7 +74,7 @@ public class SettingsGUI : MonoBehaviour
         }
         else
         {
-            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), "List of Users", "inactiveDropDown"))
+            if (GUI.Button(new Rect(scaledResolutionWidth - 425, 25, 400, 50), Languages.Instance.GetTranslation("List of Users"), "inactiveDropDown"))
             {
                 dropdown.timer = 0.0f;
                 dropdown.enabled = true;
@@ -85,12 +85,12 @@ public class SettingsGUI : MonoBehaviour
         {
 
             // Text fields for new users
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 420, textBoxWidth, textBoxHeight), "Name");
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 310, textBoxWidth, textBoxHeight), "ID");
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 200, textBoxWidth, textBoxHeight), "Birthdate (mm/dd/yy)");
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 90, textBoxWidth, textBoxHeight), "Brooke Scale: " + brookeInt);
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2, textBoxWidth, textBoxHeight), "Ulna Length");
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 90, textBoxWidth, textBoxHeight), "Diagnosis");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 420, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("Name"));
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 310, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("ID"));
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 200, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("Birthdate") + " " + Languages.Instance.GetTranslation("(mm/dd/yy)"));
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 90, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("Brooke Scale") +": " + brookeInt);
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("Ulna Length"));
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 90, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("Diagnosis"));
 
             name = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 385, textBoxWidth, textBoxHeight), name);
             IDstring = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 275, textBoxWidth, textBoxHeight), IDstring);
@@ -102,29 +102,29 @@ public class SettingsGUI : MonoBehaviour
 
             if (male)
             {
-                GUI.Label(new Rect(scaledResolutionWidth / 2 - 70, nativeVerticalResolution / 2 + 130, 200, 200), "Male");
+                GUI.Label(new Rect(scaledResolutionWidth / 2 - 70, nativeVerticalResolution / 2 + 130, 200, 200), Languages.Instance.GetTranslation("Male"));
             }
             else
             {
-                GUI.Label(new Rect(scaledResolutionWidth / 2 - 70, nativeVerticalResolution / 2 + 130, 200, 200), "Female");
+                GUI.Label(new Rect(scaledResolutionWidth / 2 - 70, nativeVerticalResolution / 2 + 130, 200, 200), Languages.Instance.GetTranslation("Female"));
             }
 
-            loadSave = "Save";
+            loadSave = Languages.Instance.GetTranslation("Save");
             saving = true;
         }
         else
         {
             // Text field labels for existing users
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 90, textBoxWidth, textBoxHeight), "Identification Number");
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 20, textBoxWidth, textBoxHeight), "Brooke Scale: " + brookeInt);
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 130, textBoxWidth, textBoxHeight), "Ulna Length");
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 90, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("Identification Number"));
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 20, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("Brooke Scale") + ": " + brookeInt);
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 130, textBoxWidth, textBoxHeight), Languages.Instance.GetTranslation("Ulna Length"));
 
             // Text fields for existing users
             IDstring = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 55, textBoxWidth, textBoxHeight), IDstring);
             brookeScale = GUI.HorizontalSlider(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 55, textBoxWidth, textBoxHeight), brookeScale, 0, 6);
             ulnaLengthString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 165, textBoxWidth, textBoxHeight), ulnaLengthString);
 
-            loadSave = "Load";
+            loadSave = Languages.Instance.GetTranslation("Load");
             saving = false;
         }
 
@@ -138,10 +138,10 @@ public class SettingsGUI : MonoBehaviour
 
                 if (saving)
                 {
-                    string gender = "female";
+                    string gender = Languages.Instance.GetTranslation("female");
                     if (male)
                     {
-                        gender = "male";
+                        gender = Languages.Instance.GetTranslation("male");
                     }
 
                     user = new User(name, ID, birthDateTime, brookeInt, ulnaLength, diagnosis, male);
@@ -152,10 +152,10 @@ public class SettingsGUI : MonoBehaviour
                 }
                 else
                 {
-                    string gender = "female";
+                    string gender = Languages.Instance.GetTranslation("female");
                     if (UserContainer.Instance.UserDictionary[ID].Gender)
                     {
-                        gender = "male";
+                        gender = Languages.Instance.GetTranslation("male");
                     }
                     user.LoadSpecificUser(ID, brookeInt, ulnaLength);
                     DocumentManager.Instance.ArgsCreated = false;
@@ -169,7 +169,7 @@ public class SettingsGUI : MonoBehaviour
         brookeInt = Mathf.RoundToInt(brookeScale);
 
         // Cancel Button
-        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution - 150, 300, 100), "Cancel"))
+        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution - 150, 300, 100), Languages.Instance.GetTranslation("Cancel")))
         {
             invalidInput = false;
             mainMenu.enabled = true;
@@ -212,7 +212,7 @@ public class SettingsGUI : MonoBehaviour
         {
             if (name.Equals(string.Empty))
             {
-                errorMessage = "  Name is blank.\n  Please enter a valid name.";
+                errorMessage = "  " + Languages.Instance.GetTranslation("Name is blank") + ".\n  " + Languages.Instance.GetTranslation("Please enter a valid name") + ".";
                 invalidInput = true;
                 return;
             }
@@ -228,7 +228,7 @@ public class SettingsGUI : MonoBehaviour
             }
             catch (Exception)
             {
-                errorMessage = "  Birthdate is invalid.\n  Please follow the given format.";
+                errorMessage = "  " + Languages.Instance.GetTranslation("Birthdate is invalid") + ".\n  " + Languages.Instance.GetTranslation("Please follow the given format");
                 invalidInput = true;
                 return;
             }
@@ -240,7 +240,7 @@ public class SettingsGUI : MonoBehaviour
             }
             catch (Exception)
             {
-                errorMessage = "  Invalid ulna length.\n  Please enter a correct length.";
+                errorMessage = "  " + Languages.Instance.GetTranslation("Invalid ulna length") + ".\n  " + "Please enter a correct length" + ".";
                 invalidInput = true;
                 return;
             }
@@ -252,7 +252,7 @@ public class SettingsGUI : MonoBehaviour
                 if (UserContainer.Instance.UserDictionary.ContainsKey(ID))
                 {
                     invalidInput = true;
-                    errorMessage = "  ID Number " + IDstring + " exists.\n  Please choose a new ID number.";
+                    errorMessage = "  " + Languages.Instance.GetTranslation("ID Number") + " " + IDstring + " " + Languages.Instance.GetTranslation("exists") + ".\n  " + "Please choose a new ID number" + ".";
                 }
                 else
                 {
@@ -261,7 +261,7 @@ public class SettingsGUI : MonoBehaviour
             }
             catch (Exception)
             {
-                errorMessage = "  Invalid identification number.\n  Please enter a correct identification number.";
+                errorMessage = "  " + Languages.Instance.GetTranslation("Invalid identification number") + ".\n  " + Languages.Instance.GetTranslation("Please enter a correct identification number") + ".";
                 invalidInput = true;
                 return;
             }
@@ -283,7 +283,7 @@ public class SettingsGUI : MonoBehaviour
             }
             catch (Exception)
             {
-                errorMessage = "  Invalid ulna length.\n  Please enter a correct length.";
+                errorMessage = "  " + Languages.Instance.GetTranslation("Invalid ulna length") + ".\n  " + "Please enter a correct length" + ".";
                 invalidInput = true;
                 return;
             }
@@ -295,7 +295,7 @@ public class SettingsGUI : MonoBehaviour
                 if (!UserContainer.Instance.UserDictionary.ContainsKey(ID))
                 {
                     invalidInput = true;
-                    errorMessage = "  No user with ID Number: " + IDstring + " exists.\n  Please enter a correct identification number.";
+                    errorMessage = "  " +  Languages.Instance.GetTranslation("No user with ID Number") + ": " + IDstring + " " +  Languages.Instance.GetTranslation("exists") + ".\n  " +  Languages.Instance.GetTranslation("Please enter a correct identification number") + ".";
                 }
                 else
                 {
@@ -304,7 +304,7 @@ public class SettingsGUI : MonoBehaviour
             }
             catch (Exception)
             {
-                errorMessage = "  Invalid identification number.\n  Please enter a correct identification number.";
+                errorMessage = "  " + Languages.Instance.GetTranslation("Invalid identification number") + ".\n  " + Languages.Instance.GetTranslation("Please enter a correct identification number") + ".";
                 invalidInput = true;
                 return;
             }

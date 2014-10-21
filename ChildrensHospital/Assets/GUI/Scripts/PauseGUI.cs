@@ -42,10 +42,10 @@ public class PauseGUI : MonoBehaviour
 
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 350, nativeVerticalResolution / 2 - 445, 700, 850), "", "Window");
 
-        GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "Game Paused\nName: " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Name
+        GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), Languages.Instance.GetTranslation("Game Paused") + "\n" + Languages.Instance.GetTranslation("Name") + ": " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Name
             + "\nVolume: " + gameManager.TotalVolume().ToString("F4") + " meters cubed", "EndBox");
 
-        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 380, 300, 100), "Restart Trial"))
+        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Restart Trial")))
         {
             if (saveData)
             {
@@ -54,7 +54,7 @@ public class PauseGUI : MonoBehaviour
             Time.timeScale = 1;
             Application.LoadLevel("Game");
         }
-        if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), "Main Menu"))
+        if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Main Menu")))
         {
             if (saveData)
             {
@@ -66,7 +66,7 @@ public class PauseGUI : MonoBehaviour
 
         saveData = GUI.Toggle(new Rect(scaledResolutionWidth / 2 - 125, nativeVerticalResolution - 250, 50, 50), saveData, "");
 
-        GUI.Label(new Rect(scaledResolutionWidth / 2 - 65, nativeVerticalResolution - 250, 200, 50), "Save Data", "ToggleLabel");
+        GUI.Label(new Rect(scaledResolutionWidth / 2 - 65, nativeVerticalResolution - 250, 200, 50), Languages.Instance.GetTranslation("Save Data"), "ToggleLabel");
     }
 
     private void TimedScreenResize()

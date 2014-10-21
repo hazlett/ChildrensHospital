@@ -18,8 +18,9 @@ public class LanguageSerializer {
     public List<TranslatorList> translatorList;
 
 
-    public void Load(string path)
+    public void Load()
     {
+        string path = Application.dataPath + @"/../Languages/languages.xml";
         XmlSerializer serializer = new XmlSerializer(typeof(LanguageSerializer));
         if (File.Exists(path))
         {
@@ -29,10 +30,15 @@ public class LanguageSerializer {
                 instance = serializer.Deserialize(stream) as LanguageSerializer;
             }
         }
+        else
+        {
+            languages = new List<string>();
+            translatorList = new List<TranslatorList>();
+        }
     }
     public void Save()
     {
-        string path = Path.Combine(Application.persistentDataPath, "languagesTest.xml");
+        string path = Application.dataPath + @"/../Languages/languages.xml";
         Debug.Log("Saving");
         XmlSerializer serializer = new XmlSerializer(typeof(LanguageSerializer));
         using (FileStream stream = new FileStream(path, FileMode.Create))

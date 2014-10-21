@@ -21,7 +21,6 @@ public class SplashGUI : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        Debug.Log(timer);
         if (timer > 5.0f)
         {
             Application.LoadLevel("MainMenu");

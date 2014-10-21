@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<LanguageConverter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  
+  <Languages>
+    <Language>English</Language>
+    <Language>French</Language>
+  </Languages>
+
+  <LanguageKeys>
+    <Key tag="New User">
+      <Translations>
+        <Translation>New User</Translation>
+        <Translation>Nouvel Utilisateur</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Existing User">
+      <Translations>
+        <Translation>Existing User</Translation>
+        <Translation>Utilisateur Existant</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Calibrate">
+      <Translations>
+        <Translation>Calibrate</Translation>
+        <Translation>Étalonner</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Recalibrate">
+      <Translations>
+        <Translation>Recalibrate</Translation>
+        <Translation>Recalibrer</Translation>
+      </Translations>
+    </Key>
+    <Key tag="INSTRUCTIONS">
+      <Translations>
+        <Translation>INSTRUCTIONS</Translation>
+        <Translation>INSTRUCTIONS</Translation>
+      </Translations>
+    </Key>
+    <Key tag="QUIT">
+      <Translations>
+        <Translation>QUIT</Translation>
+        <Translation>ARRÉTER</Translation>
+      </Translations>
+    </Key>
+    <Key tag="List of Users">
+      <Translations>
+        <Translation>List of Users</Translation>
+        <Translation>Liste des Utilisateurs</Translation>
+      </Translations>
+    </Key>
+
+
+
+
+  </LanguageKeys>
+</LanguageConverter>

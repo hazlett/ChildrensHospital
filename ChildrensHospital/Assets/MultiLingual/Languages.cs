@@ -13,11 +13,15 @@ public class Languages {
     private Languages()
     {
         translations = new Dictionary<string, List<string>>();
-        LanguageUsed.Instance.Load(Path.Combine(Application.persistentDataPath, "currentLanguage.xml"));
-        LanguageSerializer.Instance.Load(Path.Combine(Application.persistentDataPath, "languages.xml"));
+        LanguageUsed.Instance.Load();
+        LanguageSerializer.Instance.Load();
         foreach (TranslatorList translatorList in LanguageSerializer.Instance.translatorList)
         {
-            translations.Add(translatorList.key, translatorList.translations);
+            try
+            {
+                translations.Add(translatorList.key, translatorList.translations);
+            }
+            catch (Exception) { }
         }
     }
     public string GetTranslation(string key)
@@ -26,9 +30,8 @@ public class Languages {
         {
             return translations[key][LanguageUsed.Instance.CurrentLanguage];
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            Debug.Log("Key: " + key + " | ErrorMessage: " + e.Message);
             return key;
         }
         
