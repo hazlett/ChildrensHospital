@@ -53,8 +53,8 @@ public class EndGUI : MonoBehaviour
 
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 350, nativeVerticalResolution / 2 - 445, 700, 850), "", "Window");
 
-        GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "Results\nName: " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Name
-           + "\nID: " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].ID + "\nVolume: " + gameManager.TotalVolume().ToString("F4") + " meters cubed\n" + "Gems Collected: " + GameControl.Instance.GemsCollected.ToString() + "\nPrevious Gems Collected\n" + previousVolumes, "EndBox");
+        GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), Languages.Instance.GetTranslation("Results") + "\n" + Languages.Instance.GetTranslation("Name") + ": " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Name
+           + "\n" + Languages.Instance.GetTranslation("ID") + ": " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].ID + "\n" + Languages.Instance.GetTranslation("Volume") + ": " + gameManager.TotalVolume().ToString("F4") + " " + Languages.Instance.GetTranslation("meters cubed") + "\n" + Languages.Instance.GetTranslation("Gems Collected") + ": " + GameControl.Instance.GemsCollected.ToString() + "\n" + Languages.Instance.GetTranslation("Previous Gems Collected") + "\n" + previousVolumes, "EndBox");
 
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Run Trial Again")))
