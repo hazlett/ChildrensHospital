@@ -610,5 +610,14 @@
         <Translation>Genere</Translation>
       </Translations>
     </Key>
+    <Key tag="Languages">
+      <Translations>
+        <Translation>Languages</Translation>
+        <Translation>Langues</Translation>
+        <Translation>Sprachen</Translation>
+        <Translation>Idiomas</Translation>
+        <Translation>Lingue</Translation>
+      </Translations>
+    </Key>
   </LanguageKeys>
 </LanguageConverter>
