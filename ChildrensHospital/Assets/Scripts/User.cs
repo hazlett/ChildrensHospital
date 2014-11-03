@@ -11,7 +11,7 @@ public class User  {
     public string Name;
 
     [XmlAttribute("ID")]
-    public int ID = -1;
+    public string ID = "-1";
 
     [XmlAttribute("Birthdate")]
     public DateTime Birthdate;
@@ -46,7 +46,7 @@ public class User  {
         numberOfUsers = UserContainer.Instance.Users.Count;
     }
 
-    public void LoadSpecificUser(int id, int brookeScale, float ulnaLength)
+    public void LoadSpecificUser(string id, int brookeScale, float ulnaLength)
     {
 
         if (UserContainer.Instance.UserDictionary.ContainsKey(id))
@@ -73,7 +73,7 @@ public class User  {
     }
 
     public User() { }
-    public User(string name, int id, DateTime birthdate, int brookeScale, float ulnaLength, string diagnosis, bool gender)
+    public User(string name, string id, DateTime birthdate, int brookeScale, float ulnaLength, string diagnosis, bool gender)
     {
         numberOfUsers = UserContainer.Instance.UserDictionary.Count;
         Name = name;

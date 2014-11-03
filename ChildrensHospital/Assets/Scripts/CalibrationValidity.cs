@@ -25,6 +25,7 @@ public class CalibrationValidity {
     
     public bool CheckValidity(Matrix4x4 matrix)
     {
+        Debug.Log("Transformation Matrix: " + MatrixToString(matrix));
         if (matrix.m33 != 1)
         {
             errorCode = 5;

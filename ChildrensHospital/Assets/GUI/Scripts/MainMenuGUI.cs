@@ -62,7 +62,6 @@ public class MainMenuGUI : MonoBehaviour
             {
                 if (GameControl.Instance.ReadCalibration() != Matrix4x4.zero)
                 {
-
                     CheckTime();
 
                     if (!invalidInput)
