@@ -60,13 +60,17 @@ public class MainMenuGUI : MonoBehaviour
             //kinectManager.displayColorMap = false;
             if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 175, nativeVerticalResolution / 2 - 275, 350, buttonSize.y), Languages.Instance.GetTranslation("Start Trial")))
             {
-                GameControl.Instance.ReadCalibration();
-                CheckTime();
-                if (!invalidInput)
+                if (GameControl.Instance.ReadCalibration() != Matrix4x4.zero)
                 {
-                    kinectManager.displayColorMap = false;
-                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Game Started"));
-                    Application.LoadLevel("Game");
+
+                    CheckTime();
+
+                    if (!invalidInput)
+                    {
+                        kinectManager.displayColorMap = false;
+                        EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Game Started"));
+                        Application.LoadLevel("Game");
+                    }
                 }
             }
         }

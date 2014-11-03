@@ -89,6 +89,8 @@
      <Compile Include="Assets\MultiLingual\Languages.cs" />
      <Compile Include="Assets\MultiLingual\TranslatorList.cs" />
      <Compile Include="Assets\Scripts\Calibration.cs" />
+     <Compile Include="Assets\Scripts\CalibrationValidity.cs" />
+     <Compile Include="Assets\Scripts\DataValidity.cs" />
      <Compile Include="Assets\Scripts\DebugCamera.cs" />
      <Compile Include="Assets\Scripts\DocumentManager.cs" />
      <Compile Include="Assets\Scripts\EndGame.cs" />
