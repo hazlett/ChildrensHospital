@@ -41,7 +41,6 @@ public class SettingsGUI : MonoBehaviour
     }
     void OnEnable()
     {
-        dropdown.enabled = true;
         if (newUser)
         {
             brookeScale = 1;
@@ -112,6 +111,8 @@ public class SettingsGUI : MonoBehaviour
 
             loadSave = Languages.Instance.GetTranslation("Load");
             saving = false;
+
+            dropdown.enabled = true;
         }
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution - 255, 300, 100), loadSave))

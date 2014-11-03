@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
     public SpiderSpawner spiders;
     private float endTrial = 20.0f;
     public float EndTrial {get {return endTrial;} }
-    internal float timer;
+    internal float timer, totalVolume;
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
     internal string message;
     private Volumes volumes;
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour {
             timer += Time.deltaTime;
             if (timer > 3.0f)
             {
-                if (!playing)
+                if (!playing && timer - 3.0f < UserContainer.Instance.time)
                 {
                     message = Languages.Instance.GetTranslation("PLAYING GAME");
                     StartGame();
@@ -82,15 +82,20 @@ public class GameManager : MonoBehaviour {
                 generator.enabled = true;
                 
             }
-            if (timer > UserContainer.Instance.time)
+            if (timer - 3.0f > UserContainer.Instance.time)
             {
                 if (!DebugMode)
                 { 
                     GUIon = false;
                     endStats.enabled = true;
                     playing = false;
+                    GameControl.Instance.IsPlaying = false;
                     GameControl.Instance.InGame = false;
                 }
+            }
+            if (timer - 3.0f == UserContainer.Instance.time - 1.0f)
+            {
+                GameControl.Instance.CollectGem();
             }
         }
         else
@@ -184,13 +189,16 @@ public class GameManager : MonoBehaviour {
     }
     internal float TotalVolume()
     {
-        GameControl.Instance.totalVolume = (tracker.LowerLeftVolume() + tracker.LowerRightVolume()
-            + tracker.MiddleLeftVolume() + tracker.MiddleRightVolume()
-            + tracker.UpperLeftVolume() + tracker.UpperRightVolume());
+        if (GameControl.Instance.IsPlaying)
+        {
+            totalVolume = (tracker.LowerLeftVolume() + tracker.LowerRightVolume()
+                + tracker.MiddleLeftVolume() + tracker.MiddleRightVolume()
+                + tracker.UpperLeftVolume() + tracker.UpperRightVolume());
 
-        return (tracker.LowerLeftVolume() + tracker.LowerRightVolume() 
-            + tracker.MiddleLeftVolume() + tracker.MiddleRightVolume() 
-            + tracker.UpperLeftVolume() + tracker.UpperRightVolume());
+            GameControl.Instance.totalVolume = totalVolume;
+        }
+
+        return totalVolume;
     }
 
     private void TimedScreenResize()

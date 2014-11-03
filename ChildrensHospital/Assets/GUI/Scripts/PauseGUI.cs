@@ -43,9 +43,9 @@ public class PauseGUI : MonoBehaviour
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 350, nativeVerticalResolution / 2 - 445, 700, 850), "", "Window");
 
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), Languages.Instance.GetTranslation("Game Paused") + "\n" + Languages.Instance.GetTranslation("Name") + ": " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Name
-            + "\nVolume: " + gameManager.TotalVolume().ToString("F4") + " meters cubed", "EndBox");
+            + "\n" + Languages.Instance.GetTranslation("Volume") + ": " + gameManager.TotalVolume().ToString("F4") + " " + Languages.Instance.GetTranslation("meters cubed"), "EndBox");
 
-        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Restart Trial")))
+        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 380, 325, 100), Languages.Instance.GetTranslation("Restart Trial")))
         {
             if (saveData)
             {
@@ -54,7 +54,7 @@ public class PauseGUI : MonoBehaviour
             Time.timeScale = 1;
             Application.LoadLevel("Game");
         }
-        if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Main Menu")))
+        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 10, nativeVerticalResolution - 380, 325, 100), Languages.Instance.GetTranslation("Main Menu")))
         {
             if (saveData)
             {
@@ -64,9 +64,9 @@ public class PauseGUI : MonoBehaviour
             Application.LoadLevel("MainMenu");
         }
 
-        saveData = GUI.Toggle(new Rect(scaledResolutionWidth / 2 - 125, nativeVerticalResolution - 250, 50, 50), saveData, "");
+        saveData = GUI.Toggle(new Rect(scaledResolutionWidth / 2 - 200, nativeVerticalResolution - 250, 50, 50), saveData, "");
 
-        GUI.Label(new Rect(scaledResolutionWidth / 2 - 65, nativeVerticalResolution - 250, 200, 50), Languages.Instance.GetTranslation("Save Data"), "ToggleLabel");
+        GUI.Label(new Rect(scaledResolutionWidth / 2, nativeVerticalResolution - 250, 200, 50), Languages.Instance.GetTranslation("Save Data"), "ToggleLabel");
     }
 
     private void TimedScreenResize()
