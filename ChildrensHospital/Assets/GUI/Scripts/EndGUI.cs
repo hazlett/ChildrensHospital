@@ -9,7 +9,7 @@ public class EndGUI : MonoBehaviour
     public GameManager gameManager;
 
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
-    private bool saveData = true;
+    private bool saveData = true, popUp = false, quit = true;
     private string args;
     private static List<int> previousScores = new List<int>();
     private string previousScoresString;
@@ -26,6 +26,7 @@ public class EndGUI : MonoBehaviour
 
     void OnEnable()
     {
+        popUp = false;
         previousScoresString = "";
         foreach (int score in previousScores)
         {
@@ -52,6 +53,24 @@ public class EndGUI : MonoBehaviour
         // Scale the GUI to any resolution based on 1920 x 1080 base resolution
         GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(Screen.height / nativeVerticalResolution, Screen.height / nativeVerticalResolution, 1));
 
+        if (popUp)
+        {
+            DrawPopup();
+        }
+        else
+        {
+            DrawMain();
+        }
+    }
+
+
+    private void AppendArgs()
+    {
+        DocumentManager.Instance.AppendArgs(gameManager);
+    }
+
+    private void DrawMain()
+    {
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 350, nativeVerticalResolution / 2 - 445, 700, 850), "", "Window");
 
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), Languages.Instance.GetTranslation("Results") + "\n" + Languages.Instance.GetTranslation("Name") + ": " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Name
@@ -71,15 +90,15 @@ public class EndGUI : MonoBehaviour
                     previousVolumes.Add(GameControl.Instance.totalVolume);
                     EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Saving Data"));
                     gameManager.Tracker.DebugExtremas();
+                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Trial Ended"));
+                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Starting New Trial"));
+                    Application.LoadLevel("Game");
                 }
                 else
                 {
-                    
+                    quit = false;
                 }
             }
-            EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Trial Ended"));
-            EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Starting New Trial"));
-            Application.LoadLevel("Game");
         }
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Quit")))
         {
@@ -88,13 +107,23 @@ public class EndGUI : MonoBehaviour
             previousVolumes = new List<float>();
             if (saveData)
             {
-                EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Saving Data"));
-                gameManager.Tracker.DebugExtremas();
+                string validityCheck = DataValidity.Instance.CheckValidity(previousVolumes);
+                Debug.Log("Validity check: " + validityCheck);
+                if (validityCheck == null)
+                {
+                    previousVolumes.Add(GameControl.Instance.totalVolume);
+                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Saving Data"));
+                    gameManager.Tracker.DebugExtremas();
+                    DocumentManager.Instance.CreateReport();
+                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Trial Ended"));
+                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Exiting to Menu"));
+                    Application.LoadLevel("MainMenu");
+                }
+                else
+                {
+                    quit = true;
+                }
             }
-            DocumentManager.Instance.CreateReport();
-            EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Trial Ended"));
-            EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Exiting to Menu"));
-            Application.LoadLevel("MainMenu");
         }
 
         saveData = GUI.Toggle(new Rect(scaledResolutionWidth / 2 - 200, nativeVerticalResolution - 250, 50, 50), saveData, "");
@@ -102,10 +131,53 @@ public class EndGUI : MonoBehaviour
         GUI.Label(new Rect(scaledResolutionWidth / 2, nativeVerticalResolution - 250, 200, 50), Languages.Instance.GetTranslation("Save Results"), "ToggleLabel");
     }
 
-
-    private void AppendArgs()
+    private void DrawPopup()
     {
-        DocumentManager.Instance.AppendArgs(gameManager);
+        GUI.Box(new Rect(scaledResolutionWidth / 2 - 350, nativeVerticalResolution / 2 - 445, 700, 850), "", "Window");
+        GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "This trial doesn't look valid to us.\nAre you sure you would like to save this data?", "EndBox");
+
+        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Yes")))
+        {
+            previousVolumes.Add(GameControl.Instance.totalVolume);
+            EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Saving Data"));
+            gameManager.Tracker.DebugExtremas();
+            
+            if(quit)
+            {                
+                DocumentManager.Instance.CreateReport();
+                EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Trial Ended"));
+                EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Exiting to Menu"));
+                Application.LoadLevel("MainMenu");
+            }
+            else
+            {
+                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Trial Ended"));
+                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Starting New Trial"));
+                    Application.LoadLevel("Game");
+            }
+
+
+            popUp = false;
+        }
+
+        if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("No")))
+        {
+            if(quit)
+            {                
+                DocumentManager.Instance.CreateReport();
+                EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Trial Ended"));
+                EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Exiting to Menu"));
+                Application.LoadLevel("MainMenu");
+            }
+            else
+            {
+                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Trial Ended"));
+                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Starting New Trial"));
+                    Application.LoadLevel("Game");
+            }
+            
+            popUp = false;
+        }
     }
 
     private void TimedScreenResize()
