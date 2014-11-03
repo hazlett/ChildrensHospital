@@ -14,6 +14,7 @@ public class DocumentManager {
     private string args;
     private int age;
     private float percentVolume, percentArea, predictedVolume, predictedArea;
+    public float PredictedVolume { get { return predictedVolume; } }
     private DocumentManager()
     {
         processPath = Application.dataPath + @"/../Report/" + "ReportHandler.exe";
@@ -124,4 +125,5 @@ public class DocumentManager {
         percentVolume = (gameManager.Tracker.GetVolumes().TotalVolume() / predictedVolume) * 100.0f;
         percentArea = (gameManager.Tracker.GetSurfaceArea() / predictedArea) * 100.0f;
     }
+
 }

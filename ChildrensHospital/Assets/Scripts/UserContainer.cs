@@ -17,10 +17,12 @@ public class UserContainer {
     }
 
     [XmlIgnore]
-    public Dictionary<int, User> UserDictionary = new Dictionary<int, User>();
+    public Dictionary<string, User> UserDictionary = new Dictionary<string, User>();
 
     [XmlIgnore]
-    public int currentUser, time;
+    public int time;
+    [XmlIgnore]
+    public string currentUser;
 
     [XmlArray("Users"), XmlArrayItem("User")]
     public List<User> Users = new List<User>();

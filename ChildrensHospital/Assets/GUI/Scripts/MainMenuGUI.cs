@@ -57,15 +57,19 @@ public class MainMenuGUI : MonoBehaviour
 
         if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (GameControl.Instance.IsCalibrated))
         {
-            kinectManager.displayColorMap = false;
+            //kinectManager.displayColorMap = false;
             if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 175, nativeVerticalResolution / 2 - 275, 350, buttonSize.y), Languages.Instance.GetTranslation("Start Trial")))
             {
-                GameControl.Instance.ReadCalibration();
-                CheckTime();
-                if (!invalidInput)
+                if (GameControl.Instance.ReadCalibration() != Matrix4x4.zero)
                 {
-                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Game Started"));
-                    Application.LoadLevel("Game");
+                    CheckTime();
+
+                    if (!invalidInput)
+                    {
+                        kinectManager.displayColorMap = false;
+                        EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Game Started"));
+                        Application.LoadLevel("Game");
+                    }
                 }
             }
         }
@@ -113,7 +117,7 @@ public class MainMenuGUI : MonoBehaviour
             {
                 if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 40, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Calibrate")))
                 {
-                    kinectManager.displayColorMap = true;
+                    //kinectManager.displayColorMap = true;
                     GameControl.Instance.IsCalibrating = true;
                     try
                     {
@@ -131,7 +135,7 @@ public class MainMenuGUI : MonoBehaviour
             {
                 if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 40, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Recalibrate")))
                 {
-                    kinectManager.displayColorMap = true;
+                    //kinectManager.displayColorMap = true;
                     GameControl.Instance.IsCalibrating = true;
                     GameControl.Instance.IsCalibrated = false;
                     try

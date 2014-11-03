@@ -12,7 +12,8 @@ public class SettingsGUI : MonoBehaviour
     public DropdownUserListGUI dropdown;
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI, ulnaLength, brookeScale;
     internal string birthdate, IDstring, name, ulnaLengthString, errorMessage, loadSave, diagnosis;
-    private int ID, textBoxWidth = 300, textBoxHeight = 50, brookeInt;
+    private string ID;
+    private int textBoxWidth = 300, textBoxHeight = 50, brookeInt;
     private DateTime birthDateTime;
     private Vector2 labelSize = new Vector2(600, 50), buttonSize = new Vector2(350, 100);
   
@@ -176,10 +177,10 @@ public class SettingsGUI : MonoBehaviour
         }
 
         // Limiting entry characters for each specific text field
-        name = Regex.Replace(name, @"[^a-zA-Z.]", "");
+        name = Regex.Replace(name, @"[^a-zA-Z -.]", "");
         birthdate = Regex.Replace(birthdate, @"[^0-9/]", "");
         ulnaLengthString = Regex.Replace(ulnaLengthString, @"[^0-9.]", "");
-        IDstring = Regex.Replace(IDstring, @"[^0-9]", "");
+        IDstring = Regex.Replace(IDstring, @"[^0-9a-zA-Z.]", "");
 
         // Error box
         if (invalidInput)
@@ -240,7 +241,7 @@ public class SettingsGUI : MonoBehaviour
 
             try
             {
-                ID = int.Parse(IDstring);
+                ID = IDstring;
 
                 if (UserContainer.Instance.UserDictionary.ContainsKey(ID))
                 {
@@ -283,7 +284,7 @@ public class SettingsGUI : MonoBehaviour
 
             try
             {
-                ID = int.Parse(IDstring);
+                ID = IDstring;
 
                 if (!UserContainer.Instance.UserDictionary.ContainsKey(ID))
                 {

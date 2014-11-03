@@ -72,11 +72,19 @@ public class GameControl : MonoBehaviour
                     matrixCalibration.SetRow(i, row);
                 }
             }
+            if (!CalibrationValidity.Instance.CheckValidity(matrixCalibration))
+            {
+                UnityEngine.Debug.Log("Calibration Error: " + CalibrationValidity.Instance.GetError());
+                EventLogger.Instance.LogData("Calibration Error: " + CalibrationValidity.Instance.GetError());
+                isCalibrated = false;
+                matrixCalibration = Matrix4x4.zero;
+            }
         }
         catch (Exception e)
         {
             UnityEngine.Debug.Log("Error getting transform: " + e.Message);
             EventLogger.Instance.LogData("Error reading calibration matrix: " + e.Message);
+            matrixCalibration = Matrix4x4.zero;
         }
         transformMatrix = matrixCalibration;
         EventLogger.Instance.LogData("Calibration Matrix: " + transformMatrix.ToString());
