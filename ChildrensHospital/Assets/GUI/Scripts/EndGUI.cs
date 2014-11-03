@@ -85,9 +85,9 @@ public class EndGUI : MonoBehaviour
             Application.LoadLevel("MainMenu");
         }
 
-        saveData = GUI.Toggle(new Rect(scaledResolutionWidth / 2 - 125, nativeVerticalResolution - 250, 50, 50), saveData, "");
+        saveData = GUI.Toggle(new Rect(scaledResolutionWidth / 2 - 200, nativeVerticalResolution - 250, 50, 50), saveData, "");
 
-        GUI.Label(new Rect(scaledResolutionWidth / 2 - 65, nativeVerticalResolution - 250, 200, 50), Languages.Instance.GetTranslation("Save Results"), "ToggleLabel");
+        GUI.Label(new Rect(scaledResolutionWidth / 2, nativeVerticalResolution - 250, 200, 50), Languages.Instance.GetTranslation("Save Results"), "ToggleLabel");
     }
 
 
