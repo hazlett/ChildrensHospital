@@ -12,7 +12,7 @@ public class EndGUI : MonoBehaviour
     private bool saveData = true, popUp = false, quit = true;
     private string args;
     private static List<int> previousScores = new List<int>();
-    private string previousScoresString;
+    private string previousScoresString, validityCheck;
     private static List<float> previousVolumes = new List<float>();
     // Use this for initialization
     void Start()
@@ -32,6 +32,7 @@ public class EndGUI : MonoBehaviour
         {
             previousScoresString += (score.ToString() + "\n");
         }
+        validityCheck = DataValidity.Instance.CheckValidity(previousVolumes);
     }
     // Update is called once per frame
     void Update()
@@ -83,7 +84,7 @@ public class EndGUI : MonoBehaviour
             previousScores.Add(GameControl.Instance.GemsCollected);
             if (saveData)
             {
-                string validityCheck = DataValidity.Instance.CheckValidity(previousVolumes);
+                validityCheck = DataValidity.Instance.CheckValidity(previousVolumes);
                 Debug.Log("Validity check: " + validityCheck);
                 if (validityCheck == null)
                 {
@@ -96,8 +97,15 @@ public class EndGUI : MonoBehaviour
                 }
                 else
                 {
+                    popUp = true;
                     quit = false;
                 }
+            }
+            else 
+            {
+                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Trial Ended"));
+                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Starting New Trial"));
+                    Application.LoadLevel("Game");
             }
         }
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Quit")))
@@ -107,7 +115,7 @@ public class EndGUI : MonoBehaviour
             previousVolumes = new List<float>();
             if (saveData)
             {
-                string validityCheck = DataValidity.Instance.CheckValidity(previousVolumes);
+                validityCheck = DataValidity.Instance.CheckValidity(previousVolumes);
                 Debug.Log("Validity check: " + validityCheck);
                 if (validityCheck == null)
                 {
@@ -121,8 +129,15 @@ public class EndGUI : MonoBehaviour
                 }
                 else
                 {
+                    popUp = true;
                     quit = true;
                 }
+            }
+            else
+            {
+                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Trial Ended"));
+                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Exiting to Menu"));
+                    Application.LoadLevel("MainMenu");
             }
         }
 
@@ -134,7 +149,7 @@ public class EndGUI : MonoBehaviour
     private void DrawPopup()
     {
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 350, nativeVerticalResolution / 2 - 445, 700, 850), "", "Window");
-        GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "This trial doesn't look valid to us.\nAre you sure you would like to save this data?", "EndBox");
+        GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "Based on our calculations, this doesn't look like a valid trial.\n" + validityCheck +"\n\nAre you sure you would like to save this data?", "EndBox");
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Yes")))
         {
