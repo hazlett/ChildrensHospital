@@ -28,20 +28,20 @@ public class FocusedCameraControl : MonoBehaviour {
 	void Start () {
         timer = 0;
         objects = new List<GameObject>();
-        LowerRight = GameObject.Find("LowerRight");
-        MiddleRight = GameObject.Find("MiddleRight");
-        UpperRight = GameObject.Find("UpperRight");
-        TopRight = GameObject.Find("TopRight");
-        LowerFarRight = GameObject.Find("LowerFarRight");
-        MiddleFarRight = GameObject.Find("MiddleFarRight");
-        UpperFarRight = GameObject.Find("UpperFarRight");
-        LowerLeft = GameObject.Find("LowerLeft");
-        MiddleLeft = GameObject.Find("MiddleLeft");
-        UpperLeft = GameObject.Find("UpperLeft");
-        TopLeft = GameObject.Find("TopLeft");
-        LowerFarLeft = GameObject.Find("LowerFarLeft");
-        MiddleFarLeft = GameObject.Find("MiddleFarLeft");
-        UpperFarLeft = GameObject.Find("UpperFarLeft");
+        LowerRight = GameObject.Find("LowerRightArrow");
+        MiddleRight = GameObject.Find("MiddleRightArrow");
+        UpperRight = GameObject.Find("UpperRightArrow");
+        TopRight = GameObject.Find("TopRightArrow");
+        LowerFarRight = GameObject.Find("LowerFarRightArrow");
+        MiddleFarRight = GameObject.Find("MiddleFarRightArrow");
+        UpperFarRight = GameObject.Find("UpperFarRightArrow");
+        LowerLeft = GameObject.Find("LowerLeftArrow");
+        MiddleLeft = GameObject.Find("MiddleLeftArrow");
+        UpperLeft = GameObject.Find("UpperLeftArrow");
+        TopLeft = GameObject.Find("TopLeftArrow");
+        LowerFarLeft = GameObject.Find("LowerFarLeftArrow");
+        MiddleFarLeft = GameObject.Find("MiddleFarLeftArrow");
+        UpperFarLeft = GameObject.Find("UpperFarLeftArrow");
         objects.Add(LowerRight);
         objects.Add(MiddleRight);
         objects.Add(UpperRight);
@@ -85,7 +85,7 @@ public class FocusedCameraControl : MonoBehaviour {
         }
         else
         {
-            if (alphaTimer > 0)
+            if (alphaTimer > 0.5)
                 alphaTimer -= Time.deltaTime;
             else
             {
@@ -97,21 +97,21 @@ public class FocusedCameraControl : MonoBehaviour {
         {
             case LookDirection.LEFT:
                 color = LowerFarLeft.renderer.material.color;
-                color.a = alphaTimer / 8.0f;
+                color.a = alphaTimer / 1.5f;
                 LowerFarLeft.renderer.material.color = color;
                 MiddleFarLeft.renderer.material.color = color;
                 UpperFarLeft.renderer.material.color = color;
                 break;
             case LookDirection.RIGHT:
                 color = LowerFarRight.renderer.material.color;
-                color.a = alphaTimer / 8.0f;
+                color.a = alphaTimer / 1.5f;
                 LowerFarRight.renderer.material.color = color;
                 MiddleFarRight.renderer.material.color = color;
                 UpperFarRight.renderer.material.color = color;
                 break;
             case LookDirection.CENTER:
                 color = MiddleLeft.renderer.material.color;
-                color.a = alphaTimer / 8.0f;
+                color.a = alphaTimer / 4.5f;
                 LowerRight.renderer.material.color = color;
                 MiddleRight.renderer.material.color = color;
                 UpperRight.renderer.material.color = color;
@@ -121,7 +121,7 @@ public class FocusedCameraControl : MonoBehaviour {
                 break;
             case LookDirection.TOP:
                 color = MiddleLeft.renderer.material.color;
-                color.a = alphaTimer / 8.0f;
+                color.a = alphaTimer / 1.5f;
                 TopRight.renderer.material.color = color;
                 TopLeft.renderer.material.color = color;
                 break;
