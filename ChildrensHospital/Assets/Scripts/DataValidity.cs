@@ -33,14 +33,16 @@ public class DataValidity {
                 averageVolume += volume;
             }
             averageVolume /= volumes.Count;
-            if (Approximately(GameControl.Instance.totalVolume, averageVolume, 0.10f, true))
+            string exception = null;
+            if (!Approximately(GameControl.Instance.totalVolume, averageVolume, 0.10f, true))
             {
-                return null;
+                exception += Languages.Instance.GetTranslation("Your volume is") + " " + ((GameControl.Instance.totalVolume / averageVolume) * 100).ToString("F1") + "% " + Languages.Instance.GetTranslation("of your previous average volumes");
             }
-            else
+            if (!Approximately(GameControl.Instance.totalVolume, DocumentManager.Instance.PredictedVolume, 0.25f, true))
             {
-                return Languages.Instance.GetTranslation("Your volume is") + " " + ((GameControl.Instance.totalVolume / averageVolume) * 100).ToString("F1") + "% " + Languages.Instance.GetTranslation("of your previous average volumes");
+                exception += Languages.Instance.GetTranslation("Your volume is") + " " + ((GameControl.Instance.totalVolume / DocumentManager.Instance.PredictedVolume) * 100).ToString("F1") + "% " + Languages.Instance.GetTranslation("of the predicted volume");         
             }
+            return exception;
         }
         else
         {

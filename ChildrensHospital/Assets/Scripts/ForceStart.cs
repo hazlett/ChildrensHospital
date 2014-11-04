@@ -10,7 +10,7 @@ public class ForceStart : MonoBehaviour {
 	void Update () {
 	    if (Input.GetKeyUp(KeyCode.K))
         {
-            GameControl.Instance.IsCalibrated = true;
+            GameControl.Instance.ReadCalibration();
         }
 	}
 }
