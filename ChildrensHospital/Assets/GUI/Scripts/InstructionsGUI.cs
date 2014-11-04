@@ -40,9 +40,11 @@ public class InstructionsGUI : MonoBehaviour
         // Scale the GUI to any resolution based on 1920 x 1080 base resolution
         GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(Screen.height / nativeVerticalResolution, Screen.height / nativeVerticalResolution, 1));
 
+        GUI.depth = -1;
+
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 810, nativeVerticalResolution / 2 - 520, 1620, 920), instructions[textureNumber], "Window");
 
-        if(GUI.Button(new Rect(scaledResolutionWidth - 325, nativeVerticalResolution - 125, 300, 100), Languages.Instance.GetTranslation("Back to Menu")))
+        if(GUI.Button(new Rect(25, nativeVerticalResolution - 125, 300, 100), Languages.Instance.GetTranslation("Back to Menu")))
         {
             this.enabled = false;
             mainMenu.dropdown.enabled = true;
