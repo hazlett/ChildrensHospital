@@ -34,13 +34,18 @@ public class VolumeTracker {
     private Vector3 rightHandAxis = new Vector3(1.0f, 1.0f, -1.0f);
     private Vector3 leftHandAxis = new Vector3(-1.0f, 1.0f, -1.0f);
     private string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\ACTIVE-seated";
-	public VolumeTracker () {
+	public VolumeTracker (float ulnaLength) {
         kinect = GameObject.Find("KinectManager").GetComponent<KinectManager>();
         transformMatrix = GameControl.Instance.TransformMatrix;
         volumes = new Volumes();
         offset = new Vector3(0.0f, -0.01f, 0.30f);
         trackLeft = true;
         trackRight = true;
+        if (ulnaLength > 0)
+        {
+            upperBound = ulnaLength / 100.0f;
+            lowerBound = upperBound / 3.0f;
+        }
 	}
     public VolumeTracker(bool trackLeft, bool trackRight)
     {

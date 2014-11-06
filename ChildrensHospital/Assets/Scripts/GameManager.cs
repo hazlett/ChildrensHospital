@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
     public bool Playing { get { return playing; } }
 
 	void Start () {
-        tracker = new VolumeTracker();
+        tracker = new VolumeTracker(UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].UlnaLength);
         volumes = new Volumes();
 
         GameObject[] backs = GameObject.FindGameObjectsWithTag("Back");
