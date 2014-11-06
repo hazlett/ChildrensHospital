@@ -140,10 +140,13 @@ public class MainMenuGUI : MonoBehaviour
         if (GUI.Button(new Rect(25, nativeVerticalResolution - 125, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Quit")))
         {
             Application.Quit();
-        } 
+        }
 
-        GUI.Label(new Rect(scaledResolutionWidth / 2 - labelSize.x / 2, nativeVerticalResolution / 2 + 150, labelSize.x, 50), Languages.Instance.GetTranslation("Trial Length") +" (sec)");
-        timeString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 185, buttonSize.x, 50), timeString);
+        if (!popUp)
+        {
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - labelSize.x / 2, nativeVerticalResolution / 2 + 150, labelSize.x, 50), Languages.Instance.GetTranslation("Trial Length") + " (sec)");
+            timeString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 185, buttonSize.x, 50), timeString);
+        }
 
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 275, nativeVerticalResolution - 300, 550, 300), Languages.Instance.GetTranslation("Current User") + "\n" + playerStatus);
 
