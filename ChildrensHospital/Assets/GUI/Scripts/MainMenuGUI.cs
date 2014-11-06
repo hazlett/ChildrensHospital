@@ -16,7 +16,7 @@ public class MainMenuGUI : MonoBehaviour
 
     private string playerStatus, timeString, errorMessage, style;
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
-    private bool manualCalibration = false, invalidInput = false;
+    private bool manualCalibration = false, invalidInput = false, popUp = false;
     private Vector2 labelSize = new Vector2(600, 100), buttonSize = new Vector2(350, 100);
 
     void Start()
@@ -117,36 +117,14 @@ public class MainMenuGUI : MonoBehaviour
             {
                 if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 40, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Calibrate")))
                 {
-                    //kinectManager.displayColorMap = true;
-                    GameControl.Instance.IsCalibrating = true;
-                    try
-                    {
-                        calibration.Kill();
-                    }
-                    catch (Exception)
-                    { }
-                    DocumentManager.Instance.ArgsCreated = false;
-                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Calibration Started"));
-                    calibration = new Calibration();
-                    calibration.Calibrate();
+                    popUp = true;
                 }
             }
             else
             {
                 if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 40, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Recalibrate")))
                 {
-                    //kinectManager.displayColorMap = true;
-                    GameControl.Instance.IsCalibrating = true;
-                    GameControl.Instance.IsCalibrated = false;
-                    try
-                    {
-                        calibration.Kill();
-                    }
-                    catch (Exception)
-                    { }
-                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Calibration Started"));
-                    calibration = new Calibration();
-                    calibration.Calibrate();
+                    popUp = true;
                 }
             }
         }
@@ -175,8 +153,41 @@ public class MainMenuGUI : MonoBehaviour
             GUI.Box(new Rect(scaledResolutionWidth / 2 - 380, 15, 760, 100), errorMessage);
         }
 
+        DrawPopup();
+
         timeString = Regex.Replace(timeString, @"[^0-9]", "");
     }
+
+    private void DrawPopup()
+    {
+        if (popUp)
+        {
+            GUI.Box(new Rect(scaledResolutionWidth / 2 - 350, nativeVerticalResolution / 2 - 445, 700, 750), "", "Window");
+            GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "Make sure the circle on your calibration box is centered with the patient's body!", "EndBox");
+
+            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Okay")))
+            {
+                GameControl.Instance.IsCalibrating = true;
+                GameControl.Instance.IsCalibrated = false;
+                try
+                {
+                    calibration.Kill();
+                }
+                catch (Exception)
+                { }
+                EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Calibration Started"));
+                calibration = new Calibration();
+                calibration.Calibrate();
+                popUp = false;
+            }
+
+            //if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("No")))
+            //{            
+            //    popUp = false;
+            //}
+        }
+    }
+
     void OnDestroy()
     {
         try
