@@ -16,7 +16,7 @@ public class MainMenuGUI : MonoBehaviour
 
     private string playerStatus, timeString, errorMessage, style;
     private float nativeVerticalResolution, scaledResolutionWidth, updateGUI;
-    private bool manualCalibration = false, invalidInput = false, popUp = false;
+    private bool manualCalibration = false, invalidInput = false, popUp = false, calibrationError = false;
     private Vector2 labelSize = new Vector2(600, 100), buttonSize = new Vector2(350, 100);
 
     void Start()
@@ -55,95 +55,103 @@ public class MainMenuGUI : MonoBehaviour
         // Scale the GUI to any resolution based on 1920 x 1080 base resolution
         GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(Screen.height / nativeVerticalResolution, Screen.height / nativeVerticalResolution, 1));
 
-        if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (GameControl.Instance.IsCalibrated))
-        {
-            //kinectManager.displayColorMap = false;
-            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 175, nativeVerticalResolution / 2 - 275, 350, buttonSize.y), Languages.Instance.GetTranslation("Start Trial")))
-            {
-                if (GameControl.Instance.ReadCalibration() != Matrix4x4.zero)
-                {
-                    CheckTime();
-
-                    if (!invalidInput)
-                    {
-                        kinectManager.displayColorMap = false;
-                        EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Game Started"));
-                        Application.LoadLevel("Game");
-                    }
-                }
-            }
-        }
-        else if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (!GameControl.Instance.IsCalibrated))
-        {
-            string calibrateMessage;
-            if (GameControl.Instance.IsCalibrating)
-            {
-                calibrateMessage = Languages.Instance.GetTranslation("Calibrating");
-            }
-            else
-            {
-                calibrateMessage = Languages.Instance.GetTranslation("Please Calibrate");
-            }
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - labelSize.x / 2, nativeVerticalResolution / 2 - 275, labelSize.x, labelSize.y), calibrateMessage, "GreyStart");
-        }
-        else
-        {
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - labelSize.x / 2, nativeVerticalResolution / 2 - 275, labelSize.x, labelSize.y), Languages.Instance.GetTranslation("Please Select a User"), "GreyStart");
-        }
-
-        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 - 170, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("New User")))
-        {
-            GameControl.Instance.IsCalibrated = false;
-            settings.newUser = true;
-            settings.enabled = true;
-            dropdown.yPosition = 0;
-            dropdown.opened = dropdown.enabled = false;
-            this.enabled = false;
-        }
-
-        if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 - 65, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Existing User")))
-        {
-            GameControl.Instance.IsCalibrated = false;
-            settings.newUser = false;
-            settings.enabled = true;
-            dropdown.yPosition = 0;
-            dropdown.opened = dropdown.enabled = false;
-            this.enabled = false;
-        }
-
-        if (UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID))
-        {
-            if (!GameControl.Instance.IsCalibrated)
-            {
-                if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 40, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Calibrate")))
-                {
-                    popUp = true;
-                }
-            }
-            else
-            {
-                if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 40, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Recalibrate")))
-                {
-                    popUp = true;
-                }
-            }
-        }
-
-        if (GUI.Button(new Rect(25, nativeVerticalResolution - 250, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Instructions")))
-        {
-            instructions.enabled = true;
-            dropdown.yPosition = 0;
-            dropdown.opened = dropdown.enabled = false;
-            this.enabled = false;
-        }
-
-        if (GUI.Button(new Rect(25, nativeVerticalResolution - 125, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Quit")))
-        {
-            Application.Quit();
-        }
 
         if (!popUp)
         {
+            if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (GameControl.Instance.IsCalibrated))
+            {
+                //kinectManager.displayColorMap = false;
+                if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 175, nativeVerticalResolution / 2 - 275, 350, buttonSize.y), Languages.Instance.GetTranslation("Start Trial")))
+                {
+                    if (GameControl.Instance.ReadCalibration() != Matrix4x4.zero)
+                    {
+                        CheckTime();
+
+                        if (!invalidInput)
+                        {
+                            kinectManager.displayColorMap = false;
+                            EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Game Started"));
+                            Application.LoadLevel("Game");
+                        }
+                    }
+                    else
+                    {
+                        popUp = true;
+                        calibrationError = true;
+                    }
+                }
+            }
+            else if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (!GameControl.Instance.IsCalibrated))
+            {
+                string calibrateMessage;
+                if (GameControl.Instance.IsCalibrating)
+                {
+                    calibrateMessage = Languages.Instance.GetTranslation("Calibrating");
+                }
+                else
+                {
+                    calibrateMessage = Languages.Instance.GetTranslation("Please Calibrate");
+                }
+                GUI.Label(new Rect(scaledResolutionWidth / 2 - labelSize.x / 2, nativeVerticalResolution / 2 - 275, labelSize.x, labelSize.y), calibrateMessage, "GreyStart");
+            }
+            else
+            {
+                GUI.Label(new Rect(scaledResolutionWidth / 2 - labelSize.x / 2, nativeVerticalResolution / 2 - 275, labelSize.x, labelSize.y), Languages.Instance.GetTranslation("Please Select a User"), "GreyStart");
+            }
+
+            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 - 170, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("New User")))
+            {
+                GameControl.Instance.IsCalibrated = false;
+                settings.newUser = true;
+                settings.enabled = true;
+                dropdown.yPosition = 0;
+                dropdown.opened = dropdown.enabled = false;
+                this.enabled = false;
+            }
+
+            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 - 65, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Existing User")))
+            {
+                GameControl.Instance.IsCalibrated = false;
+                settings.newUser = false;
+                settings.enabled = true;
+                dropdown.yPosition = 0;
+                dropdown.opened = dropdown.enabled = false;
+                this.enabled = false;
+            }
+
+            if (UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID))
+            {
+                if (!GameControl.Instance.IsCalibrated)
+                {
+                    if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 40, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Calibrate")))
+                    {
+                        popUp = true;
+                        calibrationError = false;
+                    }
+                }
+                else
+                {
+                    if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 40, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Recalibrate")))
+                    {
+                        popUp = true;
+                        calibrationError = false;
+                    }
+                }
+            }
+
+            if (GUI.Button(new Rect(25, nativeVerticalResolution - 250, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Instructions")))
+            {
+                instructions.enabled = true;
+                dropdown.yPosition = 0;
+                dropdown.opened = dropdown.enabled = false;
+                this.enabled = false;
+            }
+
+            if (GUI.Button(new Rect(25, nativeVerticalResolution - 125, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Quit")))
+            {
+                Application.Quit();
+            }
+
             GUI.Label(new Rect(scaledResolutionWidth / 2 - labelSize.x / 2, nativeVerticalResolution / 2 + 150, labelSize.x, 50), Languages.Instance.GetTranslation("Trial Length") + " (sec)");
             timeString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 185, buttonSize.x, 50), timeString);
         }
@@ -166,22 +174,36 @@ public class MainMenuGUI : MonoBehaviour
         if (popUp)
         {
             GUI.Box(new Rect(scaledResolutionWidth / 2 - 350, nativeVerticalResolution / 2 - 445, 700, 750), "", "Window");
-            GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "Make sure the circle on your calibration box is centered with the patient's body!", "EndBox");
 
-            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Okay")))
+            if (calibrationError)
             {
-                GameControl.Instance.IsCalibrating = true;
-                GameControl.Instance.IsCalibrated = false;
-                try
+                GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "Calibration Error!\n\nMake sure the part of the box with 'table' on it is closest to the table.", "EndBox");
+
+                if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Okay")))
                 {
-                    calibration.Kill();
+                    popUp = false;
+                    calibrationError = false;
                 }
-                catch (Exception)
-                { }
-                EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Calibration Started"));
-                calibration = new Calibration();
-                calibration.Calibrate();
-                popUp = false;
+            }
+            else
+            {
+                GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "Make sure the circle on your calibration box is centered with the patient's body!", "EndBox");
+
+                if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Okay")))
+                {
+                    GameControl.Instance.IsCalibrating = true;
+                    GameControl.Instance.IsCalibrated = false;
+                    try
+                    {
+                        calibration.Kill();
+                    }
+                    catch (Exception)
+                    { }
+                    EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Calibration Started"));
+                    calibration = new Calibration();
+                    calibration.Calibrate();
+                    popUp = false;
+                }
             }
 
             //if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("No")))

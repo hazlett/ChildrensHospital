@@ -50,19 +50,19 @@ public class CalibrationValidity {
             EventLogger.Instance.LogData("Transform Matrix Error: " + errors[errorCode] + "  :  " + MatrixToString(matrix));
             return false;
         }
-        if (!Approx(xAxis * Mathf.Rad2Deg, 0.0f, 30.0f))
+        if (!Approx(xAxis * Mathf.Rad2Deg, 0.0f, 45.0f))
         {
             errorCode = 5;
             EventLogger.Instance.LogData("Transform Matrix Error: " + errors[errorCode] + "  :  " + MatrixToString(matrix));
             return false;
         }
-        if (!Approx(yAxis * Mathf.Rad2Deg, 0.0f, 10.0f))
+        if (!Approx(yAxis * Mathf.Rad2Deg, 0.0f, 45.0f))
         {
             errorCode = 6;
             EventLogger.Instance.LogData("Transform Matrix Error: " + errors[errorCode] + "  :  " + MatrixToString(matrix));
             return false;
         }
-        if (!Approx(zAxis * Mathf.Rad2Deg, 180.0f, 10.0f))
+        if (!Approx(zAxis * Mathf.Rad2Deg, 180.0f, 45.0f))
         {       
             errorCode = 7;
             EventLogger.Instance.LogData("Transform Matrix Error: " + errors[errorCode] + "  :  " + MatrixToString(matrix));
