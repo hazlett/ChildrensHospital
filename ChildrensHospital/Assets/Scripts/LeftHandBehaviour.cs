@@ -120,6 +120,11 @@ public class LeftHandBehaviour : MonoBehaviour {
         {
             lowerXMax = middleXMax;
         }
+        if (UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].BrookeScale == 5 || UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].BrookeScale == 4)
+        {
+            upperXMax = middleXMax = lowerXMax;
+            upperZMax = middleZMax = lowerZMax;
+        }
         LowerLeft.transform.position = Vector3.Lerp(LowerLeft.transform.position, new Vector3(LowerLeft.transform.position.x, LowerLeft.transform.position.y, zOffset + scale * lowerZMax), Time.deltaTime * lerpScale);
         LowerFarLeft.transform.position = Vector3.Lerp(LowerFarLeft.transform.position, new Vector3(xOffset + lowerXMax, LowerFarLeft.transform.position.y, LowerFarLeft.transform.position.z), Time.deltaTime * lerpScale);
         MiddleLeft.transform.position = Vector3.Lerp(MiddleLeft.transform.position, new Vector3(MiddleLeft.transform.position.x, MiddleLeft.transform.position.y, zOffset + scale * middleZMax), Time.deltaTime * lerpScale);

@@ -121,6 +121,11 @@ public class RightHandBehaviour : MonoBehaviour {
         {
             lowerXMax = middleXMax;
         }
+        if (UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].BrookeScale == 5 || UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].BrookeScale == 4)
+        {
+            upperXMax = middleXMax = lowerXMax;
+            upperZMax = middleZMax = lowerZMax;
+        }
         LowerRight.transform.position = Vector3.Lerp(LowerRight.transform.position, new Vector3(LowerRight.transform.position.x, LowerRight.transform.position.y, zOffset + scale * lowerZMax), Time.deltaTime * lerpScale);
         LowerFarRight.transform.position = Vector3.Lerp(LowerFarRight.transform.position, new Vector3(xOffset + lowerXMax, LowerFarRight.transform.position.y, LowerFarRight.transform.position.z), Time.deltaTime * lerpScale);
         MiddleRight.transform.position = Vector3.Lerp(MiddleRight.transform.position, new Vector3(MiddleRight.transform.position.x, MiddleRight.transform.position.y, zOffset + scale * middleZMax), Time.deltaTime * lerpScale);
