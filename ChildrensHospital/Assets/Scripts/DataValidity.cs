@@ -57,7 +57,7 @@ public class DataValidity {
     {
         if (percentage)
         {
-            return ((value >= compareValue * (1 - check)) && (value <= value * (1 + check)));
+            return ((value >= compareValue * (1 - check)) && (value <= compareValue * (1 + check)));
         }
         else
         {
