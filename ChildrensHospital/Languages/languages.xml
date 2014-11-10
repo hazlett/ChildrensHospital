@@ -632,5 +632,170 @@
         <Translation>Gemme precedenti Raccolto</Translation>
       </Translations>
     </Key>
+    <Key tag="No validity check called for the calibration matrix">
+      <Translations>
+        <Translation>No validity check called for the calibration matrix</Translation>
+        <Translation>Aucune vérification de validité a appelé à la matrice d'étalonnage</Translation>
+        <Translation>Keine Plausibilitätsprüfung für die Kalibrierungsmatrix genannt</Translation>
+        <Translation>Sin verificación de validez llamado para la matriz de calibración</Translation>
+        <Translation>Nessun controllo di validità chiesto la matrice di calibrazione</Translation>
+      </Translations>
+    </Key>
+    <Key tag="No calibration matrix validity error">
+      <Translations>
+        <Translation>No calibration matrix validity error</Translation>
+        <Translation>Aucune matrice d'étalonnage erreur de validité</Translation>
+        <Translation>Kein Kalibriermatrix Gültigkeit Fehler</Translation>
+        <Translation>No hay error validez matriz de calibración</Translation>
+        <Translation>Nessuna matrice di calibrazione errore validità</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Calibration box orientation error">
+      <Translations>
+        <Translation>Calibration box orientation error</Translation>
+        <Translation>Erreur de calibrage boîte d'orientation</Translation>
+        <Translation>Kalibrierbox Orientierungsfehler</Translation>
+        <Translation>Calibración de error de orientación caja</Translation>
+        <Translation>Errore di calibrazione orientamento della scatola</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Unknown error">
+      <Translations>
+        <Translation>Unknown error</Translation>
+        <Translation>Erreur inconnue</Translation>
+        <Translation>Unbekannter Fehler</Translation>
+        <Translation>Error desconocido</Translation>
+        <Translation>Errore sconosciuto</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Unknown error">
+      <Translations>
+        <Translation>Unknown error</Translation>
+        <Translation>Erreur inconnue</Translation>
+        <Translation>Unbekannter Fehler</Translation>
+        <Translation>Error desconocido</Translation>
+        <Translation>Errore sconosciuto</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Rotate box around x axis. Try tilting the kinect sensor if the box is upright">
+      <Translations>
+        <Translation>Rotate box around x axis. Try tilting the kinect sensor if the box is upright</Translation>
+        <Translation>Boîte autour de l'axe x tourner. Essayez d'incliner le capteur de Kinect si la boîte est en position verticale</Translation>
+        <Translation>"Drehen Kasten um x-Achse. Versuchen Kippen der Kinect Sensor</Translation>
+        <Translation> wenn die Box aufrecht"</Translation>
+        <Translation>Cuadro alrededor del eje x Gire. Intente inclinar el sensor kinect si la caja está en posición vertical</Translation>
+        <Translation>Riquadro intorno all'asse x Ruotare. Prova inclinando il sensore kinect se la casella è in posizione verticale</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Rotate box around y axis">
+      <Translations>
+        <Translation>Rotate box around y axis</Translation>
+        <Translation>Boîte autour de l'axe y tourner</Translation>
+        <Translation>Drehen Kasten um y-Achse</Translation>
+        <Translation>Caja alrededor de eje y girar</Translation>
+        <Translation>Ruotare casella intorno all'asse y</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Rotate box around z axis">
+      <Translations>
+        <Translation>Rotate box around z axis</Translation>
+        <Translation>Boîte autour de l'axe z Tourner</Translation>
+        <Translation>Drehen Kasten um z-Achse</Translation>
+        <Translation>Cuadro alrededor del eje z Gire</Translation>
+        <Translation>Ruotare casella intorno all'asse z</Translation>
+      </Translations>
+    </Key>
+    <Key tag="This error message should never happen. Contact developers with an out of bounds exception in calibration validity">
+      <Translations>
+        <Translation>This error message should never happen. Contact developers with an out of bounds exception in calibration validity</Translation>
+        <Translation>Ce message d'erreur ne devrait jamais arriver. Contactez les développeurs avec un hors limites exception en la validité du calibrage</Translation>
+        <Translation>Diese Fehlermeldung sollte nie passieren. Kontakt Entwickler mit einem außerhalb der Grenzen Ausnahme in Eichgültigkeit</Translation>
+        <Translation>Este mensaje de error no debe ocurrir. Desarrolladores de contacto con un fuera de límites en la excepción validez de calibración</Translation>
+        <Translation>Questo messaggio di errore non dovrebbe mai accadere. Sviluppatori contatto con un fuori limite eccezione in validità della taratura</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Your volume is">
+      <Translations>
+        <Translation>Your volume is</Translation>
+        <Translation>Votre volume est</Translation>
+        <Translation>Ihr Volumen ist</Translation>
+        <Translation>Su volumen es</Translation>
+        <Translation>Il volume è</Translation>
+      </Translations>
+    </Key>
+    <Key tag="of the predicted volume">
+      <Translations>
+        <Translation>of the predicted volume</Translation>
+        <Translation>du volume prévu</Translation>
+        <Translation>der vorhergesagte Volumen</Translation>
+        <Translation>del volumen predicho</Translation>
+        <Translation>del volume previsto</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Unknown error occurred while validating the volume data">
+      <Translations>
+        <Translation>Unknown error occurred while validating the volume data</Translation>
+        <Translation>Une erreur inconnue est survenue lors de la validation des données de volume</Translation>
+        <Translation>Während der Validierung der Volumendaten unbekannter Fehler aufgetreten</Translation>
+        <Translation>Error desconocido al validar los datos de volumen</Translation>
+        <Translation>Si è verificato un errore sconosciuto durante la convalida dei dati di volume</Translation>
+      </Translations>
+    </Key>
+    <Key tag="of your previous average volumes">
+      <Translations>
+        <Translation>of your previous average volumes</Translation>
+        <Translation>de vos volumes moyens précédents</Translation>
+        <Translation>Ihrer bisherigen Durchschnittsvolumen</Translation>
+        <Translation>de sus volúmenes medios anteriores</Translation>
+        <Translation>dei vostri precedenti volumi medi</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Calibration Error!">
+      <Translations>
+        <Translation>Calibration Error!</Translation>
+        <Translation>Erreur de calibrage!</Translation>
+        <Translation>Kalibrierungsfehler!</Translation>
+        <Translation>Error de calibración!</Translation>
+        <Translation>Errore di calibrazione!</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Make sure the circle on your calibration box is centered with the patient's body!">
+      <Translations>
+        <Translation>Make sure the circle on your calibration box is centered with the patient's body!</Translation>
+        <Translation>Assurez-vous que le cercle sur votre boîte d'étalonnage est centré avec le corps du patient!</Translation>
+        <Translation>"Achten Sie darauf</Translation>
+        <Translation> den Kreis auf Ihrem Eichfeld ist mit dem Körper des Patienten zentriert!"</Translation>
+        <Translation>Asegúrese de que el círculo en su caja de calibración se centra con el cuerpo del paciente!</Translation>
+        <Translation>Assicurarsi che il cerchio sulla tua casella di calibrazione è centrato con il corpo del paziente!</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Okay">
+      <Translations>
+        <Translation>Okay</Translation>
+        <Translation>Bien</Translation>
+        <Translation>Okay</Translation>
+        <Translation>Bueno</Translation>
+        <Translation>Bene</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Calibration Error!">
+      <Translations>
+        <Translation>Calibration Error!</Translation>
+        <Translation>Erreur de calibrage!</Translation>
+        <Translation>Kalibrierungsfehler!</Translation>
+        <Translation>Error de calibración!</Translation>
+        <Translation>Errore di calibrazione!</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Make sure the part of the box with 'table' on it is closest to the table.">
+      <Translations>
+        <Translation>Make sure the part of the box with 'table' on it is closest to the table.</Translation>
+        <Translation>Assurez-vous que la partie de la boîte à «table» sur il est plus proche de la table.</Translation>
+        <Translation>"Sicherstellen</Translation>
+        <Translation> dass der Teil der Box mit ""Tisch"" auf am nächsten zu dem Tisch ist."</Translation>
+        <Translation>"Asegúrese de que la parte de la caja con ""mesa"" en él está más cerca de la mesa."</Translation>
+        <Translation>Assicurarsi che la parte della scatola con 'tavolo' su di esso è più vicino al tavolo.</Translation>
+      </Translations>
+    </Key>
   </LanguageKeys>
 </LanguageConverter>
