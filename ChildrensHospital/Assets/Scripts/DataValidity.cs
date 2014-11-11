@@ -67,27 +67,27 @@ public class DataValidity {
         {
             case 0:
                 {
-                    return Approximately(GameControl.Instance.totalVolume, 180.6f, 28.1f, false);
+                    return Approximately(GameControl.Instance.totalVolume, 180.6f, 1.5f * 28.1f, false);
                 }
             case 1:
                 {
-                    return Approximately(GameControl.Instance.totalVolume, 133.2f, 25.6f, false);
+                    return Approximately(GameControl.Instance.totalVolume, 133.2f, 1.5f * 25.6f, false);
                 }
             case 2:
                 {
-                    return Approximately(GameControl.Instance.totalVolume, 97.5f, 24.0f, false);
+                    return Approximately(GameControl.Instance.totalVolume, 97.5f, 1.5f * 24.0f, false);
                 }
             case 3:
                 {
-                    return Approximately(GameControl.Instance.totalVolume, 62.4f, 18.4f, false);
+                    return Approximately(GameControl.Instance.totalVolume, 62.4f, 1.5f * 18.4f, false);
                 }
             case 4:
                 {
-                    return Approximately(GameControl.Instance.totalVolume, 31.0f, 6.7f, false);
+                    return Approximately(GameControl.Instance.totalVolume, 31.0f, 1.5f * 6.7f, false);
                 }
             case 5:
                 {
-                    return Approximately(GameControl.Instance.totalVolume, 10.1f, 4.8f, false);
+                    return Approximately(GameControl.Instance.totalVolume, 10.1f, 1.5f * 4.8f, false);
                 }
             default:
                 {
