@@ -177,7 +177,7 @@ public class MainMenuGUI : MonoBehaviour
 
             if (calibrationError)
             {
-                GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "Calibration Error!\n\nMake sure the part of the box with 'table' on it is closest to the table.", "EndBox");
+                GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), Languages.Instance.GetTranslation("Calibration Error!") + "\n\n" + Languages.Instance.GetTranslation("Make sure the part of the box with 'table' on it is closest to the table."), "EndBox");
 
                 if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Okay")))
                 {
@@ -187,7 +187,7 @@ public class MainMenuGUI : MonoBehaviour
             }
             else
             {
-                GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), "Make sure the circle on your calibration box is centered with the patient's body!", "EndBox");
+                GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), Languages.Instance.GetTranslation("Make sure the circle on your calibration box is centered with the patient's body!"), "EndBox");
 
                 if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 150, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Okay")))
                 {

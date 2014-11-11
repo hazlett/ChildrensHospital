@@ -7,6 +7,8 @@ public class LeftHandBehaviour : MonoBehaviour {
     public float lowerXMax, middleXMax, upperXMax, yMax, lowerZMax, middleZMax, upperZMax, lowerHeight, middleHeight, upperHeight;
     private GameObject LowerLeft, MiddleLeft, UpperLeft, TopLeft, LowerFarLeft, MiddleFarLeft, UpperFarLeft;
     private float scale, lerpScale = 0.5f;
+    private int brookeScale = 0;
+    private float slope;
     private VolumeTracker tracker;
 
     public AudioSource audioPlay;
@@ -22,6 +24,8 @@ public class LeftHandBehaviour : MonoBehaviour {
         LowerFarLeft = GameObject.Find("LowerFarLeft");
         MiddleFarLeft = GameObject.Find("MiddleFarLeft");
         UpperFarLeft = GameObject.Find("UpperFarLeft");
+        brookeScale = UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].BrookeScale;
+        ScaleFunction();
        // ResetMaxes();
     }
 
@@ -47,7 +51,7 @@ public class LeftHandBehaviour : MonoBehaviour {
         {
             if (gameObject.transform.position.z > lowerZMax)
             {
-                lowerZMax = gameObject.transform.position.z;
+                lowerZMax = gameObject.transform.position.z * slope;
                 if (!audioPlay.isPlaying)
                 {
                     audioPlay.Play();
@@ -55,7 +59,7 @@ public class LeftHandBehaviour : MonoBehaviour {
             }
             if (gameObject.transform.position.x < lowerXMax)
             {
-                lowerXMax = gameObject.transform.position.x;
+                lowerXMax = gameObject.transform.position.x * slope;
                 if (!audioPlay.isPlaying)
                 {
                     audioPlay.Play();
@@ -66,7 +70,7 @@ public class LeftHandBehaviour : MonoBehaviour {
         {
             if (gameObject.transform.position.z > middleZMax)
             {
-                middleZMax = gameObject.transform.position.z;
+                middleZMax = gameObject.transform.position.z * slope;
                 if (!audioPlay.isPlaying)
                 {
                     audioPlay.Play();
@@ -74,7 +78,7 @@ public class LeftHandBehaviour : MonoBehaviour {
             }
             if (gameObject.transform.position.x < middleXMax)
             {
-                middleXMax = gameObject.transform.position.x;
+                middleXMax = gameObject.transform.position.x * slope;
                 if (!audioPlay.isPlaying)
                 {
                     audioPlay.Play();
@@ -85,7 +89,7 @@ public class LeftHandBehaviour : MonoBehaviour {
         {
             if (gameObject.transform.position.z > upperZMax)
             {
-                upperZMax = gameObject.transform.position.z;
+                upperZMax = gameObject.transform.position.z * slope;
                 if (!audioPlay.isPlaying)
                 {
                     audioPlay.Play();
@@ -93,7 +97,7 @@ public class LeftHandBehaviour : MonoBehaviour {
             }
             if (gameObject.transform.position.x < upperXMax)
             {
-                upperXMax = gameObject.transform.position.x;
+                upperXMax = gameObject.transform.position.x * slope;
                 if (!audioPlay.isPlaying)
                 {
                     audioPlay.Play();
@@ -132,6 +136,33 @@ public class LeftHandBehaviour : MonoBehaviour {
         UpperLeft.transform.position = Vector3.Lerp(UpperLeft.transform.position, new Vector3(UpperLeft.transform.position.x, UpperLeft.transform.position.y, zOffset + scale * upperZMax), Time.deltaTime * lerpScale);
         UpperFarLeft.transform.position = Vector3.Lerp(UpperFarLeft.transform.position, new Vector3(xOffset + upperXMax, UpperFarLeft.transform.position.y, UpperFarLeft.transform.position.z), Time.deltaTime * lerpScale);
         TopLeft.transform.position = Vector3.Lerp(TopLeft.transform.position, new Vector3(TopLeft.transform.position.x, yOffset + yMax * yMax, TopLeft.transform.position.z), Time.deltaTime * lerpScale);
+    }
+    private void ScaleFunction()
+    {
+        slope = 1.0f;
+        switch (brookeScale)
+        {
+            case 2:
+                {
+                    slope = 1.5f;
+                }
+                break;
+            case 3:
+                {
+                    slope = 2.0f;
+                }
+                break;
+            case 4:
+                {
+                    slope = 2.5f;
+                }
+                break;
+            case 5:
+                {
+                    slope = 3.0f;
+                }
+                break;
+        }
     }
     public float LowerVolume
     {
