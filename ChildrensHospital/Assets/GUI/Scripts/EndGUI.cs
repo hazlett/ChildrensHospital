@@ -19,7 +19,7 @@ public class EndGUI : MonoBehaviour
     {
         if (UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Gender)
         {
-            spiderGems = "Spiders Squished";
+            spiderGems = Languages.Instance.GetTranslation("Spiders Squished");
         }
         else
         {

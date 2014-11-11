@@ -6,6 +6,7 @@ public class DataValidity {
 
     private static DataValidity instance = new DataValidity();
     public static DataValidity Instance { get { return instance; } }
+    private float expected;
    
     private DataValidity()
     {
@@ -30,7 +31,7 @@ public class DataValidity {
             }
             else
             {
-                return Languages.Instance.GetTranslation("Your volume is") + " " + ((GameControl.Instance.totalVolume / DocumentManager.Instance.PredictedVolume) * 100).ToString("F1") + "% " + Languages.Instance.GetTranslation("of the predicted volume");
+                return Languages.Instance.GetTranslation("Your volume is") + " " + ((GameControl.Instance.totalVolume / expected) * 100).ToString("F1") + "% " + Languages.Instance.GetTranslation("of the expected volume");
             }
         }
         else if (volumes.Count > 0)
@@ -52,7 +53,7 @@ public class DataValidity {
             //}
             if (!CheckDeviation())
             {
-                exception += Languages.Instance.GetTranslation("Your volume is") + " " + ((GameControl.Instance.totalVolume / DocumentManager.Instance.PredictedVolume) * 100).ToString("F1") + "% " + Languages.Instance.GetTranslation("of the predicted volume");
+                exception += Languages.Instance.GetTranslation("Your volume is") + " " + ((GameControl.Instance.totalVolume / expected) * 100).ToString("F1") + "% " + Languages.Instance.GetTranslation("of the expected volume");
             }
             return exception;
         }
@@ -67,27 +68,38 @@ public class DataValidity {
         {
             case 0:
                 {
-                    return Approximately(GameControl.Instance.totalVolume, 180.6f, 1.5f * 28.1f, false);
+                    expected = 180.6f;
+                    return Approximately(GameControl.Instance.totalVolume, 1.806f, 1.5f * 0.281f, false);
                 }
             case 1:
                 {
-                    return Approximately(GameControl.Instance.totalVolume, 133.2f, 1.5f * 25.6f, false);
+                    expected = 133.2f;
+                    return Approximately(GameControl.Instance.totalVolume, 1.332f, 1.5f * 0.256f, false);
                 }
             case 2:
                 {
-                    return Approximately(GameControl.Instance.totalVolume, 97.5f, 1.5f * 24.0f, false);
+                    expected = 97.5f;
+                    return Approximately(GameControl.Instance.totalVolume, 0.975f, 1.5f * 0.240f, false);
                 }
             case 3:
                 {
-                    return Approximately(GameControl.Instance.totalVolume, 62.4f, 1.5f * 18.4f, false);
+                    expected = 62.4f;
+                    return Approximately(GameControl.Instance.totalVolume, 0.624f, 1.5f * 0.184f, false);
                 }
             case 4:
                 {
-                    return Approximately(GameControl.Instance.totalVolume, 31.0f, 1.5f * 6.7f, false);
+                    expected = 31.0f;
+                    return Approximately(GameControl.Instance.totalVolume, 0.310f, 1.5f * 0.067f, false);
                 }
             case 5:
                 {
-                    return Approximately(GameControl.Instance.totalVolume, 10.1f, 1.5f * 4.8f, false);
+                    expected = 10.1f;
+                    return Approximately(GameControl.Instance.totalVolume, 0.101f, 1.5f * 0.048f, false);
+                }
+            case 6:
+                {
+                    expected = 0.0f;
+                    return true;
                 }
             default:
                 {

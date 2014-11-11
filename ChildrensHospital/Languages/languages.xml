@@ -797,5 +797,23 @@
         <Translation>Assicurarsi che la parte della scatola con 'tavolo' su di esso è più vicino al tavolo.</Translation>
       </Translations>
     </Key>
+    <Key tag="Spiders Squished">
+      <Translations>
+        <Translation>Spiders Squished</Translation>
+        <Translation>araignées écrasées</Translation>
+        <Translation>Spinnen zerquetscht</Translation>
+        <Translation>arañas aplastados</Translation>
+        <Translation>ragni schiacciati</Translation>
+      </Translations>
+    </Key>
+    <Key tag="of the expected volume">
+      <Translations>
+        <Translation>of the expected volume</Translation>
+        <Translation>du volume prévu</Translation>
+        <Translation>der erwarteten Volumen</Translation>
+        <Translation>del volumen esperado</Translation>
+        <Translation>del volume previsto</Translation>
+      </Translations>
+    </Key>
   </LanguageKeys>
 </LanguageConverter>
