@@ -15,6 +15,7 @@ public class DataValidity {
 
     public string CheckValidity(List<float> volumes)
     {
+        Debug.Log("Number of volumes: " + volumes.Count);
         if (volumes.Count == 0)
         {
             //if (Approximately(GameControl.Instance.totalVolume, DocumentManager.Instance.PredictedVolume, 0.25f, true))
@@ -45,7 +46,7 @@ public class DataValidity {
             string exception = null;
             if (!Approximately(GameControl.Instance.totalVolume, averageVolume, 0.10f, true))
             {
-                exception += Languages.Instance.GetTranslation("Your volume is") + " " + ((GameControl.Instance.totalVolume / averageVolume) * 100).ToString("F1") + "% " + Languages.Instance.GetTranslation("of your previous average volumes");
+                exception += Languages.Instance.GetTranslation("Your volume is") + " " + ((GameControl.Instance.totalVolume / averageVolume) * 100).ToString("F1") + "% " + Languages.Instance.GetTranslation("of your previous average volumes") + "\n";
             }
             //if (!Approximately(GameControl.Instance.totalVolume, DocumentManager.Instance.PredictedVolume, 0.25f, true))
             //{
