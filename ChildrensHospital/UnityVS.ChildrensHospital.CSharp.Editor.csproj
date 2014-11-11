@@ -91,6 +91,7 @@
     <Compile Include="Assets\JMO Assets\JMO Assets 3\Cartoon FX Easy Editor\Editor\CFXEasyEditor.cs" />
     <Compile Include="Assets\Toon_Level_Kit\TLK-Medias\Scripts\Editor\ButterflyInspector.cs" />
     <Compile Include="Assets\Toon_Level_Kit\TLK-Medias\Scripts\Editor\MaxAtlasSize.cs" />
+    <None Include="Assets\FX Mega Pack\FX Mega Pack - Readme.txt" />
     <None Include="Assets\Gem Shader\diamond shader.shader" />
     <None Include="Assets\JMO Assets\!JMO Assets Readme.txt" />
     <None Include="Assets\JMO Assets\Cartoon FX Easy Editor\CartoonFX Easy Editor Readme.txt" />

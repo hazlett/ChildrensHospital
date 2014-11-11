@@ -46,6 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\FX Mega Pack\Scripts\ParticleSpawner.js" />
+     <Compile Include="Assets\FX Mega Pack\Scripts\RandomRotate.js" />
+     <Compile Include="Assets\FX Mega Pack\Scripts\RotateY.js" />
      <Compile Include="Assets\Toon_Level_Kit\Examples\Script\NightWitch.js" />
      <Compile Include="Assets\Toon_Level_Kit\Examples\Script\SimpleTurn.js" />
      <Compile Include="Assets\Toon_Level_Kit\TLK-Medias\Scripts\AnimatedTextureUV.js" />
@@ -64,6 +67,7 @@
      <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX2 Particle Alpha Blend Add.shader" />
      <None Include="Assets\JMO Assets\Cartoon FX Easy Editor\CartoonFX Easy Editor Readme.txt" />
      <None Include="Assets\JMO Assets\!JMO Assets Readme.txt" />
+     <None Include="Assets\FX Mega Pack\FX Mega Pack - Readme.txt" />
      <None Include="Assets\Toon_Level_Kit\TLK-Medias\Shaders\Leave.shader" />
      <None Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_WaterWiggle.shader" />
      <None Include="Assets\Toon_Level_Kit\TLK-Medias\Shaders\Rim2.shader" />
@@ -75,13 +79,13 @@
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="I18N">
- <HintPath>C:/Users/Reasearch/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/I18N.dll</HintPath>
+ <HintPath>C:/Users/bbric_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/I18N.dll</HintPath>
  </Reference>
  <Reference Include="I18N.West">
- <HintPath>C:/Users/Reasearch/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/I18N.West.dll</HintPath>
+ <HintPath>C:/Users/bbric_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/I18N.West.dll</HintPath>
  </Reference>
  <Reference Include="PdfFileWriter">
- <HintPath>C:/Users/Reasearch/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/PdfFileWriter.dll</HintPath>
+ <HintPath>C:/Users/bbric_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/PdfFileWriter.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
