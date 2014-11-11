@@ -125,7 +125,15 @@ public class GameManager : MonoBehaviour {
         {
             GUI.Label(new Rect(scaledResolutionWidth / 2 - 425, 10, 400, 75), message);
             GUI.Label(new Rect(scaledResolutionWidth / 2 + 25, 10, 400, 75), Languages.Instance.GetTranslation("Volume") + ": " + TotalVolume().ToString("F3"));
-            GUI.Label(new Rect(scaledResolutionWidth / 2 + 25, 95, 400, 75), Languages.Instance.GetTranslation("Gems Collected") + ": " + GameControl.Instance.GemsCollected.ToString());
+
+            if (UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Gender)
+            {
+                GUI.Label(new Rect(scaledResolutionWidth / 2 + 25, 95, 400, 75), Languages.Instance.GetTranslation("Spiders Squished") + ": " + GameControl.Instance.GemsCollected.ToString());
+            }
+            else
+            {
+                GUI.Label(new Rect(scaledResolutionWidth / 2 + 25, 95, 400, 75), Languages.Instance.GetTranslation("Gems Collected") + ": " + GameControl.Instance.GemsCollected.ToString());
+            }
 
             //ShowAvatarVolumes();
             

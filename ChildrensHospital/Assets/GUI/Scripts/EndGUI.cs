@@ -12,11 +12,19 @@ public class EndGUI : MonoBehaviour
     private bool saveData = true, popUp = false, quit = true;
     private string args;
     private static List<int> previousScores = new List<int>();
-    private string previousScoresString, validityCheck;
+    private string previousScoresString, validityCheck, spiderGems;
     private static List<float> previousVolumes = new List<float>();
     // Use this for initialization
     void Start()
     {
+        if (UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Gender)
+        {
+            spiderGems = "Spiders Squished";
+        }
+        else
+        {
+            spiderGems = Languages.Instance.GetTranslation("Gems Collected");
+        }
         updateGUI = 0.5f;
         nativeVerticalResolution = 1080.0f;
         scaledResolutionWidth = nativeVerticalResolution / Screen.height * Screen.width;
@@ -75,7 +83,8 @@ public class EndGUI : MonoBehaviour
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 350, nativeVerticalResolution / 2 - 445, 700, 850), "", "Window");
 
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 270, nativeVerticalResolution / 2 - 400, 540, 540), Languages.Instance.GetTranslation("Results") + "\n" + Languages.Instance.GetTranslation("Name") + ": " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Name
-           + "\n" + Languages.Instance.GetTranslation("ID") + ": " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].ID + "\n" + Languages.Instance.GetTranslation("Volume") + ": " + gameManager.TotalVolume().ToString("F4") + " " + Languages.Instance.GetTranslation("meters cubed") + "\n" + Languages.Instance.GetTranslation("Gems Collected") + ": " + GameControl.Instance.GemsCollected.ToString() + "\n" + Languages.Instance.GetTranslation("Previous Gems Collected") + "\n" + previousScoresString, "EndBox");
+           + "\n" + Languages.Instance.GetTranslation("ID") + ": " + UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].ID + "\n" + Languages.Instance.GetTranslation("Volume") + ": " + gameManager.TotalVolume().ToString("F4") + " " + Languages.Instance.GetTranslation("meters cubed") + 
+           "\n" + spiderGems + ": " + GameControl.Instance.GemsCollected.ToString() + "\n" + Languages.Instance.GetTranslation("Previous") + " " + spiderGems + "\n" + previousScoresString, "EndBox");
 
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Run Trial Again")))

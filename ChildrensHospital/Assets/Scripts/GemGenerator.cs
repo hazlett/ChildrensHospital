@@ -60,13 +60,16 @@ public class GemGenerator : MonoBehaviour {
 
     void Start()
     {
-        assistedGems = new GameObject[(int)((6 / spawnDistance) * (zMax - zMin))];
-        GameControl.Instance.TotalGems = assistedGems.Length + gems.Length;
-        Debug.Log(GameControl.Instance.TotalGems);
-        InstantiateGems();
-        InstatiateAssitedGems();
-        this.enabled = false;
-        SetupGems();
+        if (UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Gender == false)
+        {
+            assistedGems = new GameObject[(int)((6 / spawnDistance) * (zMax - zMin))];
+            GameControl.Instance.TotalGems = assistedGems.Length + gems.Length;
+            Debug.Log(GameControl.Instance.TotalGems);
+            InstantiateGems();
+            InstatiateAssitedGems();
+            this.enabled = false;
+            SetupGems();
+        }
     }
 
     void Awake()

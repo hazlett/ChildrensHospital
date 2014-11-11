@@ -3,84 +3,99 @@ using System.Collections;
 
 public class SpiderBehavior : MonoBehaviour {
 
-    private GameObject mainCamera, dirt;
-    private Vector3 mainCameraBehind;
 
+    private GameObject dirt;
+    private bool audioLinked = false;
+    private bool collected = false;
+    private AudioSource audioPlay;
     public SpiderSpawner.Area area;
     public string Dirt;
     public Vector3 dirtPosition;
     public Animation spiderAnimation;
 
+    private float angle, speed, radius;
+    private int around;
+
     void Start()
     {
-        mainCamera = GameObject.Find("Main Camera");
-        mainCameraBehind = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z - 2);
+        Random.seed = Random.Range(-1000, 1000);
+        around = Random.Range(-1, 1);
+        if (around == 0) { around = 1; }
+        radius = Random.Range(1, 5);
         spiderAnimation.wrapMode = WrapMode.Loop;
+        spiderAnimation["Walk"].speed = 2.0f;
     }
 
     void Update()
     {
+        MoveSpider();
+        if (!GameControl.Instance.InGame)
+            return;
+        if (GameControl.Instance.IsPlaying)
+        {
+            if (!audioLinked)
+            {
+                audioPlay = GameObject.Find("SpiderSquish").GetComponent<AudioSource>();
+                audioLinked = true;
+            }
+        }
+
+
+        if (!collected)
+        {
             if (dirt == null)
                 return;
             dirtPosition = dirt.transform.position;
             switch (area)
             {
                 case SpiderSpawner.Area.XRIGHT:
-                    if (dirt.transform.position.x > this.transform.position.x + 0.1f)
+                    if (dirt.transform.position.x > this.transform.position.x)
                     {
-                        KillSpider();
+                        Invoke("KillSpider", 0.25f);
                         //this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
                     }
 
-                    if (this.transform.position.z < mainCamera.transform.position.z - 1)
-                    {
-                        GameObject.Destroy(this.gameObject);
-                    }
+
                     break;
                 case SpiderSpawner.Area.XLEFT:
-                    if (dirt.transform.position.x < this.transform.position.x - 0.1f)
+                    if (dirt.transform.position.x < this.transform.position.x)
                     {
-                        KillSpider();
+                        Invoke("KillSpider", 0.25f);
                         //this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
                     }
 
-                    if (this.transform.position.z < mainCamera.transform.position.z - 1)
-                    {
-                        GameObject.Destroy(this.gameObject);
-                    }
                     break;
                 case SpiderSpawner.Area.Y:
-                    if (dirt.transform.position.y > this.transform.position.y + 0.3f)
+                    if (dirt.transform.position.y > this.transform.position.y)
                     {
-                        KillSpider();
+                        Invoke("KillSpider", 0.25f);
                         //this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
                     }
 
 
-                    if (this.transform.position.z < mainCamera.transform.position.z - 1)
-                    {
-                        GameObject.Destroy(this.gameObject);
-                    }
+
                     break;
                 case SpiderSpawner.Area.Z:
-                    if (dirt.transform.position.z > this.transform.position.z + 0.1f)
+                    if (dirt.transform.position.z > this.transform.position.z)
                     {
-                        KillSpider();
+                        Invoke("KillSpider", 0.25f);
                         //this.transform.position = Vector3.Lerp(this.transform.position, mainCameraBehind, Time.deltaTime * 2);
                     }
 
-                    if (this.transform.position.z < mainCamera.transform.position.z - 1)
-                    {
-                        GameObject.Destroy(this.gameObject);
-                    }
+
                     break;
             }
-            if (this.transform.position.z < mainCamera.transform.position.z - 7)
-            {
-                GameObject.Destroy(this.gameObject);
-            }
+
+        }
       
     }
+
+    public void MoveSpider()
+    {
+        this.transform.Rotate(Vector3.forward, around);
+        this.transform.position += this.transform.up * 0.001f * radius;
+    }
+
     public void SetDirt(GameObject dirt, SpiderSpawner.Area area)
     {
         if (dirt == null)
@@ -96,6 +111,13 @@ public class SpiderBehavior : MonoBehaviour {
     {
         GameObject particles = (GameObject)Instantiate(Resources.Load<GameObject>("Prefabs/SpiderBlood"));
         particles.transform.position = this.transform.position;
+
+        GameControl.Instance.CollectGem();
+
+        if (!audioPlay.isPlaying)
+        {
+            audioPlay.Play();
+        }
         
         GameObject.Destroy(this.gameObject);
     }
