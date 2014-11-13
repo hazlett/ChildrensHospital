@@ -164,6 +164,13 @@
  </Reference>
  <Reference Include="PdfFileWriter">
  <HintPath>C:/Users/bbric_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/PdfFileWriter.dll</HintPath>
+ <HintPath>C:/Users/hazle_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/I18N.dll</HintPath>
+ </Reference>
+ <Reference Include="I18N.West">
+ <HintPath>C:/Users/hazle_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/I18N.West.dll</HintPath>
+ </Reference>
+ <Reference Include="PdfFileWriter">
+ <HintPath>C:/Users/hazle_000/Documents/GitHub/ChildrensHospital/ChildrensHospital/Assets/Plugins/PdfFileWriter.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
