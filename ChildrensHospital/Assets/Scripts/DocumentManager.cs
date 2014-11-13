@@ -55,7 +55,14 @@ public class DocumentManager {
         args = "";
         args += UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].ID.ToString() + " ";
         args += UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].UlnaLength.ToString() + " ";
-        args += UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Diagnosis.ToString() + " ";
+        if (UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Diagnosis == "" || UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Diagnosis == null)
+        {
+            args += "n/a" + " ";
+        }
+        else
+        {
+            args += UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Diagnosis.ToString() + " ";
+        }
         args += DateTime.Today.ToString("dd-MM-yyyy") + " ";
         args += UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].BrookeScale.ToString() + " ";
         DateTime currentDate = DateTime.Today;
