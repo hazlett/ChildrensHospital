@@ -7,10 +7,9 @@ public class LeftHandBehaviour : MonoBehaviour {
     public float lowerXMax, middleXMax, upperXMax, yMax, lowerZMax, middleZMax, upperZMax, lowerHeight, middleHeight, upperHeight;
     private GameObject LowerLeft, MiddleLeft, UpperLeft, TopLeft, LowerFarLeft, MiddleFarLeft, UpperFarLeft;
     private float scale, lerpScale = 0.5f;
+    private VolumeTracker tracker;
     private int brookeScale = 0;
     private float slope;
-    private VolumeTracker tracker;
-
     public AudioSource audioPlay;
 
     void Start()
@@ -25,7 +24,8 @@ public class LeftHandBehaviour : MonoBehaviour {
         MiddleFarLeft = GameObject.Find("MiddleFarLeft");
         UpperFarLeft = GameObject.Find("UpperFarLeft");
         brookeScale = UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].BrookeScale;
-        ScaleFunction();
+        scale = 1.0f;
+        //ScaleFunction();
        // ResetMaxes();
     }
 

@@ -6,10 +6,10 @@ public class RightHandBehaviour : MonoBehaviour {
     public float LowerYBound, UpperYBound, xOffset, yOffset, zOffset;
     public float lowerXMax, middleXMax, upperXMax, yMax, lowerZMax, middleZMax, upperZMax, lowerHeight, middleHeight, upperHeight;
     private GameObject LowerRight, MiddleRight, UpperRight, TopRight, LowerFarRight, MiddleFarRight, UpperFarRight;
-    private float scale, lerpScale = 0.5f, maxSides = 2.5f, maxForward = 5.0f;
+    private float scale, lerpScale = 0.5f;
     private VolumeTracker tracker;
     private int brookeScale = 0;
-    private float slope, ulnaLength;
+    private float slope;
     public AudioSource audioPlay;
 
     void Start()
@@ -25,8 +25,8 @@ public class RightHandBehaviour : MonoBehaviour {
         UpperFarRight = GameObject.Find("UpperFarRight");
         UpperFarRight.renderer.material.color = new Color(0,0,0,0);
         brookeScale = UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].BrookeScale;
-        ulnaLength = UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].UlnaLength / 100.0f;
-        ScaleFunction();
+        slope = 1.0f;
+        //ScaleFunction();
        // ResetMaxes();
     }
 
