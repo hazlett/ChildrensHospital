@@ -51,7 +51,7 @@ public class LeftHandBehaviour : MonoBehaviour {
         {
             if (gameObject.transform.position.z > lowerZMax)
             {
-                lowerZMax = gameObject.transform.position.z * slope;
+                lowerZMax = gameObject.transform.position.z;
                 if (!audioPlay.isPlaying)
                 {
                     audioPlay.Play();
@@ -59,7 +59,7 @@ public class LeftHandBehaviour : MonoBehaviour {
             }
             if (gameObject.transform.position.x < lowerXMax)
             {
-                lowerXMax = gameObject.transform.position.x * slope;
+                lowerXMax = gameObject.transform.position.x;
                 if (!audioPlay.isPlaying)
                 {
                     audioPlay.Play();
@@ -70,7 +70,7 @@ public class LeftHandBehaviour : MonoBehaviour {
         {
             if (gameObject.transform.position.z > middleZMax)
             {
-                middleZMax = gameObject.transform.position.z * slope;
+                middleZMax = gameObject.transform.position.z;
                 if (!audioPlay.isPlaying)
                 {
                     audioPlay.Play();
@@ -78,7 +78,7 @@ public class LeftHandBehaviour : MonoBehaviour {
             }
             if (gameObject.transform.position.x < middleXMax)
             {
-                middleXMax = gameObject.transform.position.x * slope;
+                middleXMax = gameObject.transform.position.x;
                 if (!audioPlay.isPlaying)
                 {
                     audioPlay.Play();
@@ -89,7 +89,7 @@ public class LeftHandBehaviour : MonoBehaviour {
         {
             if (gameObject.transform.position.z > upperZMax)
             {
-                upperZMax = gameObject.transform.position.z * slope;
+                upperZMax = gameObject.transform.position.z;
                 if (!audioPlay.isPlaying)
                 {
                     audioPlay.Play();
@@ -97,7 +97,7 @@ public class LeftHandBehaviour : MonoBehaviour {
             }
             if (gameObject.transform.position.x < upperXMax)
             {
-                upperXMax = gameObject.transform.position.x * slope;
+                upperXMax = gameObject.transform.position.x;
                 if (!audioPlay.isPlaying)
                 {
                     audioPlay.Play();
@@ -129,12 +129,12 @@ public class LeftHandBehaviour : MonoBehaviour {
             upperXMax = middleXMax = lowerXMax;
             upperZMax = middleZMax = lowerZMax;
         }
-        LowerLeft.transform.position = Vector3.Lerp(LowerLeft.transform.position, new Vector3(LowerLeft.transform.position.x, LowerLeft.transform.position.y, zOffset + scale * lowerZMax), Time.deltaTime * lerpScale);
-        LowerFarLeft.transform.position = Vector3.Lerp(LowerFarLeft.transform.position, new Vector3(xOffset + lowerXMax, LowerFarLeft.transform.position.y, LowerFarLeft.transform.position.z), Time.deltaTime * lerpScale);
-        MiddleLeft.transform.position = Vector3.Lerp(MiddleLeft.transform.position, new Vector3(MiddleLeft.transform.position.x, MiddleLeft.transform.position.y, zOffset + scale * middleZMax), Time.deltaTime * lerpScale);
-        MiddleFarLeft.transform.position = Vector3.Lerp(MiddleFarLeft.transform.position, new Vector3(xOffset + middleXMax, MiddleFarLeft.transform.position.y, MiddleFarLeft.transform.position.z), Time.deltaTime * lerpScale);
-        UpperLeft.transform.position = Vector3.Lerp(UpperLeft.transform.position, new Vector3(UpperLeft.transform.position.x, UpperLeft.transform.position.y, zOffset + scale * upperZMax), Time.deltaTime * lerpScale);
-        UpperFarLeft.transform.position = Vector3.Lerp(UpperFarLeft.transform.position, new Vector3(xOffset + upperXMax, UpperFarLeft.transform.position.y, UpperFarLeft.transform.position.z), Time.deltaTime * lerpScale);
+        LowerLeft.transform.position = Vector3.Lerp(LowerLeft.transform.position, new Vector3(LowerLeft.transform.position.x, LowerLeft.transform.position.y, zOffset + scale * lowerZMax * slope), Time.deltaTime * lerpScale);
+        LowerFarLeft.transform.position = Vector3.Lerp(LowerFarLeft.transform.position, new Vector3(xOffset + lowerXMax * slope, LowerFarLeft.transform.position.y, LowerFarLeft.transform.position.z), Time.deltaTime * lerpScale);
+        MiddleLeft.transform.position = Vector3.Lerp(MiddleLeft.transform.position, new Vector3(MiddleLeft.transform.position.x, MiddleLeft.transform.position.y, zOffset + scale * middleZMax * slope), Time.deltaTime * lerpScale);
+        MiddleFarLeft.transform.position = Vector3.Lerp(MiddleFarLeft.transform.position, new Vector3(xOffset + middleXMax * slope, MiddleFarLeft.transform.position.y, MiddleFarLeft.transform.position.z), Time.deltaTime * lerpScale);
+        UpperLeft.transform.position = Vector3.Lerp(UpperLeft.transform.position, new Vector3(UpperLeft.transform.position.x, UpperLeft.transform.position.y, zOffset + scale * upperZMax * slope), Time.deltaTime * lerpScale);
+        UpperFarLeft.transform.position = Vector3.Lerp(UpperFarLeft.transform.position, new Vector3(xOffset + upperXMax * slope, UpperFarLeft.transform.position.y, UpperFarLeft.transform.position.z), Time.deltaTime * lerpScale);
         TopLeft.transform.position = Vector3.Lerp(TopLeft.transform.position, new Vector3(TopLeft.transform.position.x, yOffset + yMax * yMax, TopLeft.transform.position.z), Time.deltaTime * lerpScale);
     }
     private void ScaleFunction()
