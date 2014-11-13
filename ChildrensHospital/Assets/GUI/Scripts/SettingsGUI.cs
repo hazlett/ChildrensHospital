@@ -173,7 +173,8 @@ public class SettingsGUI : MonoBehaviour
         name = Regex.Replace(name, @"[^a-zA-Z -.]", "");
         birthdate = Regex.Replace(birthdate, @"[^0-9/]", "");
         ulnaLengthString = Regex.Replace(ulnaLengthString, @"[^0-9.]", "");
-        IDstring = Regex.Replace(IDstring, @"[^0-9a-zA-Z.]", "");
+        IDstring = Regex.Replace(IDstring, @"[^0-9a-zA-Z.]", ""); 
+        diagnosis = Regex.Replace(diagnosis, @"[^a-zA-Z.]", "");
 
         // Error box
         if (invalidInput)
@@ -251,6 +252,12 @@ public class SettingsGUI : MonoBehaviour
                 errorMessage = "  " + Languages.Instance.GetTranslation("Invalid identification number") + ".\n  " + Languages.Instance.GetTranslation("Please enter a correct identification number") + ".";
                 invalidInput = true;
                 return;
+            }
+
+            if (diagnosis.Length == 0)
+            {
+                errorMessage = "  No diagnosis entered. \nPlease enter a diagnosis for the user.";
+                invalidInput = true;
             }
         }
 
