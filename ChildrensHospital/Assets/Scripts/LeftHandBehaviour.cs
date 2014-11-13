@@ -24,7 +24,7 @@ public class LeftHandBehaviour : MonoBehaviour {
         MiddleFarLeft = GameObject.Find("MiddleFarLeft");
         UpperFarLeft = GameObject.Find("UpperFarLeft");
         brookeScale = UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].BrookeScale;
-        scale = 1.0f;
+        slope = 1.0f;
         //ScaleFunction();
        // ResetMaxes();
     }
