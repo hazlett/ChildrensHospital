@@ -51,7 +51,7 @@ public class SpiderSpawner : MonoBehaviour {
 
     void Start()
     {
-        if (UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Gender)
+        if (!GameControl.Instance.Gems)
         {
             assistedSpiders = new GameObject[(int)((6 / spawnDistance) * (zMax - zMin))];
             GameControl.Instance.TotalGems = assistedSpiders.Length + spiders.Length;

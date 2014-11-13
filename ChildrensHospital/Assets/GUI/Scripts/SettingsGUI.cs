@@ -265,15 +265,18 @@ public class SettingsGUI : MonoBehaviour
         {
             try
             {
-                if (ulnaLengthString.Equals(""))
+                Debug.Log("UlnaLengthString: " + ulnaLengthString.Length);
+                if (ulnaLengthString.Length == 0)
                 {
-                    ulnaLength = 0;
+                    Debug.Log("Invalid");
+                    errorMessage = "  No ulna length entered. \nPlease enter a new ulna length for the user.";
+                    invalidInput = true;
                 }
                 else
                 {
                     ulnaLength = float.Parse(ulnaLengthString);
+                    invalidInput = false;
                 }
-                invalidInput = false;
             }
             catch (Exception)
             {
@@ -290,10 +293,6 @@ public class SettingsGUI : MonoBehaviour
                 {
                     invalidInput = true;
                     errorMessage = "  " +  Languages.Instance.GetTranslation("No user with ID Number") + ": " + IDstring + " " +  Languages.Instance.GetTranslation("exists") + ".\n  " +  Languages.Instance.GetTranslation("Please enter a correct identification number") + ".";
-                }
-                else
-                {
-                    invalidInput = false;
                 }
             }
             catch (Exception)

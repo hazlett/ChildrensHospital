@@ -61,7 +61,7 @@ public class MainMenuGUI : MonoBehaviour
             if ((UserContainer.Instance.UserDictionary.ContainsKey(settings.user.ID)) && (GameControl.Instance.IsCalibrated))
             {
                 //kinectManager.displayColorMap = false;
-                if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 175, nativeVerticalResolution / 2 - 275, 350, buttonSize.y), Languages.Instance.GetTranslation("Start Trial")))
+                if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 175, nativeVerticalResolution / 2 - 350, 350, buttonSize.y), Languages.Instance.GetTranslation("Start Trial")))
                 {
                     if (GameControl.Instance.ReadCalibration() != Matrix4x4.zero)
                     {
@@ -92,14 +92,14 @@ public class MainMenuGUI : MonoBehaviour
                 {
                     calibrateMessage = Languages.Instance.GetTranslation("Please Calibrate");
                 }
-                GUI.Label(new Rect(scaledResolutionWidth / 2 - labelSize.x / 2, nativeVerticalResolution / 2 - 275, labelSize.x, labelSize.y), calibrateMessage, "GreyStart");
+                GUI.Label(new Rect(scaledResolutionWidth / 2 - labelSize.x / 2, nativeVerticalResolution / 2 - 350, labelSize.x, labelSize.y), calibrateMessage, "GreyStart");
             }
             else
             {
-                GUI.Label(new Rect(scaledResolutionWidth / 2 - labelSize.x / 2, nativeVerticalResolution / 2 - 275, labelSize.x, labelSize.y), Languages.Instance.GetTranslation("Please Select a User"), "GreyStart");
+                GUI.Label(new Rect(scaledResolutionWidth / 2 - labelSize.x / 2, nativeVerticalResolution / 2 - 350, labelSize.x, labelSize.y), Languages.Instance.GetTranslation("Please Select a User"), "GreyStart");
             }
 
-            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 - 170, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("New User")))
+            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 - 245, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("New User")))
             {
                 GameControl.Instance.IsCalibrated = false;
                 settings.newUser = true;
@@ -109,7 +109,7 @@ public class MainMenuGUI : MonoBehaviour
                 this.enabled = false;
             }
 
-            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 - 65, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Existing User")))
+            if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 - 140, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Existing User")))
             {
                 GameControl.Instance.IsCalibrated = false;
                 settings.newUser = false;
@@ -123,7 +123,7 @@ public class MainMenuGUI : MonoBehaviour
             {
                 if (!GameControl.Instance.IsCalibrated)
                 {
-                    if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 40, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Calibrate")))
+                    if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 - 35, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Calibrate")))
                     {
                         popUp = true;
                         calibrationError = false;
@@ -131,7 +131,7 @@ public class MainMenuGUI : MonoBehaviour
                 }
                 else
                 {
-                    if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 40, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Recalibrate")))
+                    if (GUI.Button(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 - 35, buttonSize.x, buttonSize.y), Languages.Instance.GetTranslation("Recalibrate")))
                     {
                         popUp = true;
                         calibrationError = false;
@@ -152,8 +152,19 @@ public class MainMenuGUI : MonoBehaviour
                 Application.Quit();
             }
 
-            GUI.Label(new Rect(scaledResolutionWidth / 2 - labelSize.x / 2, nativeVerticalResolution / 2 + 150, labelSize.x, 50), Languages.Instance.GetTranslation("Trial Length") + " (sec)");
-            timeString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 185, buttonSize.x, 50), timeString);
+            GUI.Label(new Rect(scaledResolutionWidth / 2 - labelSize.x / 2, nativeVerticalResolution / 2 + 80, labelSize.x, 50), Languages.Instance.GetTranslation("Trial Length") + " (sec)");
+            timeString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - buttonSize.x / 2, nativeVerticalResolution / 2 + 115, buttonSize.x, 50), timeString);
+
+
+            GameControl.Instance.Gems = GUI.Toggle(new Rect(scaledResolutionWidth / 2 - 80, nativeVerticalResolution / 2 + 200, 50, 25), GameControl.Instance.Gems, " ", "Gender");
+            if (GameControl.Instance.Gems)
+            {
+                GUI.Label(new Rect(scaledResolutionWidth / 2 - 50, nativeVerticalResolution / 2 + 115, 200, 200), Languages.Instance.GetTranslation("Gems"));
+            }
+            else
+            {
+                GUI.Label(new Rect(scaledResolutionWidth / 2 - 50, nativeVerticalResolution / 2 + 115, 200, 200), Languages.Instance.GetTranslation("Spiders"));
+            }
         }
 
         GUI.Box(new Rect(scaledResolutionWidth / 2 - 275, nativeVerticalResolution - 300, 550, 300), Languages.Instance.GetTranslation("Current User") + "\n" + playerStatus);
@@ -161,7 +172,7 @@ public class MainMenuGUI : MonoBehaviour
         // Error box
         if (invalidInput)
         {
-            GUI.Box(new Rect(scaledResolutionWidth / 2 - 380, 15, 760, 100), errorMessage);
+            GUI.Box(new Rect(scaledResolutionWidth / 2 - 550, 15, 760, 100), errorMessage);
         }
 
         DrawPopup();

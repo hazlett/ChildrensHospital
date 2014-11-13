@@ -60,7 +60,7 @@ public class GemGenerator : MonoBehaviour {
 
     void Start()
     {
-        if (UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].Gender == false)
+        if (GameControl.Instance.Gems)
         {
             assistedGems = new GameObject[(int)((6 / spawnDistance) * (zMax - zMin))];
             GameControl.Instance.TotalGems = assistedGems.Length + gems.Length;

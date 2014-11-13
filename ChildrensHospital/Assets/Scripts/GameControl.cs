@@ -34,7 +34,7 @@ public class GameControl : MonoBehaviour
     private int totalGems;
     public int TotalGems { get { return totalGems; } set { totalGems = value; } }
     internal float totalVolume;
-    public bool InGame;
+    public bool InGame, Gems;
     public void CollectGem()
     {
         gemsCollected = Mathf.RoundToInt(totalVolume * 243.1187f);
