@@ -42,14 +42,7 @@ public class SettingsGUI : MonoBehaviour
     }
     void OnEnable()
     {
-        if (newUser)
-        {
-            brookeScale = 1;
-        }
-        else
-        {
-            brookeScale = 0;
-        }
+        brookeScale = 1;
         birthdate = IDstring = name = ulnaLengthString = "";
     }
 
@@ -81,7 +74,7 @@ public class SettingsGUI : MonoBehaviour
             name = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 385, textBoxWidth, textBoxHeight), name);
             IDstring = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 275, textBoxWidth, textBoxHeight), IDstring);
             birthdate = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 165, textBoxWidth, textBoxHeight), birthdate);
-            brookeScale = GUI.HorizontalSlider(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 55, textBoxWidth, textBoxHeight), brookeScale, 1, 6);
+            brookeScale = GUI.HorizontalSlider(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 55, textBoxWidth, textBoxHeight), brookeScale, 1, 5);
             ulnaLengthString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 35, textBoxWidth, textBoxHeight), ulnaLengthString);
             diagnosis = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 125, textBoxWidth, textBoxHeight), diagnosis);
             male = GUI.Toggle(new Rect(scaledResolutionWidth / 2 - 80, nativeVerticalResolution / 2 + 215, 50, 25), male, " ", "Gender");
@@ -107,7 +100,7 @@ public class SettingsGUI : MonoBehaviour
 
             // Text fields for existing users
             IDstring = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 - 55, textBoxWidth, textBoxHeight), IDstring);
-            brookeScale = GUI.HorizontalSlider(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 55, textBoxWidth, textBoxHeight), brookeScale, 0, 6);
+            brookeScale = GUI.HorizontalSlider(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 55, textBoxWidth, textBoxHeight), brookeScale, 1, 5);
             ulnaLengthString = GUI.TextField(new Rect(scaledResolutionWidth / 2 - (textBoxWidth / 2), nativeVerticalResolution / 2 + 165, textBoxWidth, textBoxHeight), ulnaLengthString);
 
             loadSave = Languages.Instance.GetTranslation("Load");

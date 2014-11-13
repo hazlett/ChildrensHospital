@@ -58,5 +58,23 @@ public class UserContainer {
             Debug.Log(Users[i].ID);
             UserDictionary.Add(Users[i].ID, Users[i]);
         }
+        SortList();
+    }
+
+    private void SortList()
+    {
+        List<string> tempList = new List<string>();
+        for (int i = 0; i < Users.Count; i++)
+        {
+            for (int j = i + 1; j < Users.Count; j++)
+            {
+                if (string.CompareOrdinal(Users[i].ID, Users[j].ID) > 0)
+                {
+                    User temp = Users[j];
+                    Users.Remove(Users[j]);
+                    Users.Insert(i, temp);
+                }
+            }
+        }
     }
 }
