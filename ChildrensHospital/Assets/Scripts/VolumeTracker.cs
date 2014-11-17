@@ -222,10 +222,10 @@ public class VolumeTracker {
     private void TranslatePositions()
     {
         leftHandPosition = transformMatrix.MultiplyPoint3x4(leftHandPosition);
-        leftHandPosition -= offset;
+        leftHandPosition += offset;
         leftHandPosition = Vector3.Scale(leftHandPosition, leftHandAxis);
         rightHandPosition = transformMatrix.MultiplyPoint3x4(rightHandPosition);
-        rightHandPosition -= offset;
+        rightHandPosition += offset;
         rightHandPosition = Vector3.Scale(rightHandPosition, rightHandAxis);
     }
     private void TrackRight()
