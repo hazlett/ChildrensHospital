@@ -256,7 +256,7 @@ public class SettingsGUI : MonoBehaviour
 
             if (diagnosis.Length == 0)
             {
-                errorMessage = "  No diagnosis entered. \nPlease enter a diagnosis for the user.";
+                errorMessage = "  " + Languages.Instance.GetTranslation("No diagnosis entered.") +"\n" + Languages.Instance.GetTranslation("Please enter a diagnosis for the user.");
                 invalidInput = true;
             }
         }
@@ -269,7 +269,7 @@ public class SettingsGUI : MonoBehaviour
                 if (ulnaLengthString.Length == 0)
                 {
                     Debug.Log("Invalid");
-                    errorMessage = "  No ulna length entered. \nPlease enter a new ulna length for the user.";
+                    errorMessage = "  " + Languages.Instance.GetTranslation("No ulna length entered.") + "\n" + Languages.Instance.GetTranslation("Please enter a new ulna length for the user.");
                     invalidInput = true;
                 }
                 else
@@ -280,7 +280,7 @@ public class SettingsGUI : MonoBehaviour
             }
             catch (Exception)
             {
-                errorMessage = "  " + Languages.Instance.GetTranslation("Invalid ulna length") + ".\n  " + "Please enter a correct length" + ".";
+                errorMessage = "  " + Languages.Instance.GetTranslation("Invalid ulna length") + ".\n  " + Languages.Instance.GetTranslation("Please enter a correct length") + ".";
                 invalidInput = true;
                 return;
             }

@@ -815,5 +815,62 @@
         <Translation>del volume previsto</Translation>
       </Translations>
     </Key>
+    <Key tag="No diagnosis entered.">
+      <Translations>
+        <Translation>No diagnosis entered.</Translation>
+        <Translation>Aucun diagnostic est entré.</Translation>
+        <Translation>Keine Diagnose eingetragen.</Translation>
+        <Translation>No entró en el diagnóstico.</Translation>
+        <Translation>Nessuna diagnosi è entrato.</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Please enter a diagnosis for the user.">
+      <Translations>
+        <Translation>Please enter a diagnosis for the user.</Translation>
+        <Translation>Se il vous plaît entrer un diagnostic pour l'utilisateur.</Translation>
+        <Translation>Bitte geben Sie eine Diagnose für den Anwender.</Translation>
+        <Translation>"Por favor</Translation>
+        <Translation> introduzca un diagnóstico para el usuario."</Translation>
+        <Translation>Inserire una diagnosi per l'utente.</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Please enter a correct identification number">
+      <Translations>
+        <Translation>Please enter a correct identification number</Translation>
+        <Translation>Se il vous plaît entrer un numéro d'identification correct</Translation>
+        <Translation>Bitte geben Sie eine korrekte Identifikationsnummer</Translation>
+        <Translation>"Por favor</Translation>
+        <Translation> introduzca un número de identificación correcto"</Translation>
+        <Translation>Si prega di inserire un numero di identificazione corretta</Translation>
+      </Translations>
+    </Key>
+    <Key tag="No ulna length entered.">
+      <Translations>
+        <Translation>No ulna length entered.</Translation>
+        <Translation>Aucune longueur de cubitus entré.</Translation>
+        <Translation>Kein Ulna Länge eingegeben.</Translation>
+        <Translation>Sin longitud cúbito entró.</Translation>
+        <Translation>No Lunghezza ulna entrato.</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Please enter a new ulna length for the user.">
+      <Translations>
+        <Translation>Please enter a new ulna length for the user.</Translation>
+        <Translation>Se il vous plaît entrer une nouvelle longueur de cubitus pour l'utilisateur.</Translation>
+        <Translation>Bitte geben Sie eine neue Ulna Länge für den Benutzer.</Translation>
+        <Translation>"Por favor</Translation>
+        <Translation> introduzca una nueva longitud del cúbito para el usuario."</Translation>
+        <Translation>Si prega di inserire una nuova lunghezza dell'ulna per l'utente.</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Please enter a correct length">
+      <Translations>
+        <Translation>Please enter a correct length</Translation>
+        <Translation>Se il vous plaît entrer une longueur correcte</Translation>
+        <Translation>Bitte geben Sie eine korrekte Länge</Translation>
+        <Translation>Por favor introduzca una longitud correcta</Translation>
+        <Translation>Si prega di inserire una lunghezza corretta</Translation>
+      </Translations>
+    </Key>
   </LanguageKeys>
 </LanguageConverter>
