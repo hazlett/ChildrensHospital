@@ -872,5 +872,23 @@
         <Translation>Si prega di inserire una lunghezza corretta</Translation>
       </Translations>
     </Key>
+    <Key tag="Gems">
+      <Translations>
+        <Translation>gems</Translation>
+        <Translation>gemmes</Translation>
+        <Translation>Edelsteine</Translation>
+        <Translation>gemas</Translation>
+        <Translation>gemme</Translation>
+      </Translations>
+    </Key>
+    <Key tag="Spiders">
+      <Translations>
+        <Translation>spiders</Translation>
+        <Translation>araignées</Translation>
+        <Translation>Spinnen</Translation>
+        <Translation>arañas</Translation>
+        <Translation>ragni</Translation>
+      </Translations>
+    </Key>
   </LanguageKeys>
 </LanguageConverter>

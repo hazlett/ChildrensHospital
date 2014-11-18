@@ -15,6 +15,9 @@ public class DocumentManager {
     private int age;
     private float percentVolume, percentArea, predictedVolume, predictedArea;
     public float PredictedVolume { get { return predictedVolume; } }
+    public float PredictedSurfaceArea { get { return predictedArea; } }
+    public float PercentVolume { get { return percentVolume; } }
+    public float PercentArea { get { return percentArea; } }
     private DocumentManager()
     {
         processPath = Application.dataPath + @"/../Report/" + "ReportHandler.exe";
