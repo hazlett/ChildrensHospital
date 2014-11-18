@@ -32,7 +32,7 @@ public class DataValidity {
             }
             else
             {
-                return Languages.Instance.GetTranslation("Your volume is") + " " + ((GameControl.Instance.totalVolume / expected) * 100).ToString("F1") + "% " + Languages.Instance.GetTranslation("of the expected volume");
+                return Languages.Instance.GetTranslation("The percent predicted volume seems to be outside the norm");
             }
         }
         else if (volumes.Count > 0)
@@ -54,7 +54,7 @@ public class DataValidity {
             //}
             if (!CheckDeviation())
             {
-                exception += Languages.Instance.GetTranslation("Your volume is") + " " + ((GameControl.Instance.totalVolume / expected) * 100).ToString("F1") + "% " + Languages.Instance.GetTranslation("of the expected volume");
+                exception += Languages.Instance.GetTranslation("The percent predicted volume seems to be outside the norm");
             }
             return exception;
         }
@@ -69,33 +69,33 @@ public class DataValidity {
         {
             case 0:
                 {
-                    expected = 1.806f;
-                    return Approximately(GameControl.Instance.totalVolume, 1.806f, 1.5f * 0.281f, false);
+                    expected = 180.6f;
+                    return Approximately(DocumentManager.Instance.PercentVolume, 180.6f, 1.5f * 28.1f, false);
                 }
             case 1:
                 {
-                    expected = 1.332f;
-                    return Approximately(GameControl.Instance.totalVolume, 1.332f, 1.5f * 0.256f, false);
+                    expected = 133.2f;
+                    return Approximately(DocumentManager.Instance.PercentVolume, 133.2f, 1.5f * 25.6f, false);
                 }
             case 2:
                 {
-                    expected = 0.975f;
-                    return Approximately(GameControl.Instance.totalVolume, 0.975f, 1.5f * 0.240f, false);
+                    expected = 97.5f;
+                    return Approximately(DocumentManager.Instance.PercentVolume, 97.5f, 1.5f * 24.0f, false);
                 }
             case 3:
                 {
-                    expected = 0.624f;
-                    return Approximately(GameControl.Instance.totalVolume, 0.624f, 1.5f * 0.184f, false);
+                    expected = 62.4f;
+                    return Approximately(DocumentManager.Instance.PercentVolume, 62.4f, 1.5f * 18.4f, false);
                 }
             case 4:
                 {
-                    expected = 0.310f;
-                    return Approximately(GameControl.Instance.totalVolume, 0.310f, 1.5f * 0.067f, false);
+                    expected = 31.0f;
+                    return Approximately(DocumentManager.Instance.PercentVolume, 31.0f, 1.5f * 6.7f, false);
                 }
             case 5:
                 {
-                    expected = 0.101f;
-                    return Approximately(GameControl.Instance.totalVolume, 0.101f, 1.5f * 0.048f, false);
+                    expected = 10.1f;
+                    return Approximately(DocumentManager.Instance.PercentVolume, 10.1f, 1.5f * 4.8f, false);
                 }
             case 6:
                 {
