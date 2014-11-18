@@ -187,8 +187,7 @@ public class EndGUI : MonoBehaviour
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("No")))
         {
             if(quit)
-            {                
-                DocumentManager.Instance.CreateReport();
+            {
                 EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Trial Ended"));
                 EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Exiting to Menu"));
                 Application.LoadLevel("MainMenu");
