@@ -49,7 +49,10 @@ public class DocumentManager {
             EventLogger.Instance.LogData("ERROR Saving report: " + e.Message);
         }
     }
-
+    public void InitializePercents(GameManager gameManager)
+    {
+        CalculatePercents(gameManager);
+    }
     public void CreateArgs()
     {
         if (ArgsCreated)

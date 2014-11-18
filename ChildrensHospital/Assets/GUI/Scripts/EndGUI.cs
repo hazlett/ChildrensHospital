@@ -40,6 +40,7 @@ public class EndGUI : MonoBehaviour
         {
             previousScoresString += (score.ToString() + "\n");
         }
+        DocumentManager.Instance.InitializePercents(gameManager);
         validityCheck = DataValidity.Instance.CheckValidity(previousVolumes);
     }
     // Update is called once per frame
@@ -119,8 +120,7 @@ public class EndGUI : MonoBehaviour
         }
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Quit")))
         {
-            previousScores = new List<int>();
-            previousVolumes = new List<float>();
+
             if (saveData)
             {
                 validityCheck = DataValidity.Instance.CheckValidity(previousVolumes);
@@ -134,6 +134,8 @@ public class EndGUI : MonoBehaviour
                     DocumentManager.Instance.CreateReport();
                     EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Trial Ended"));
                     EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Exiting to Menu"));
+                    previousScores = new List<int>();
+                    previousVolumes = new List<float>();
                     Application.LoadLevel("MainMenu");
                 }
                 else
@@ -146,6 +148,8 @@ public class EndGUI : MonoBehaviour
             {
                     EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Trial Ended"));
                     EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Exiting to Menu"));
+                    previousScores = new List<int>();
+                    previousVolumes = new List<float>();
                     Application.LoadLevel("MainMenu");
             }
         }
@@ -172,6 +176,8 @@ public class EndGUI : MonoBehaviour
                 DocumentManager.Instance.CreateReport();
                 EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Trial Ended"));
                 EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Exiting to Menu"));
+                previousScores = new List<int>();
+                previousVolumes = new List<float>();
                 Application.LoadLevel("MainMenu");
             }
             else
@@ -192,6 +198,8 @@ public class EndGUI : MonoBehaviour
                 DocumentManager.Instance.CreateReport();
                 EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Trial Ended"));
                 EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Exiting to Menu"));
+                previousScores = new List<int>();
+                previousVolumes = new List<float>();
                 Application.LoadLevel("MainMenu");
             }
             else
