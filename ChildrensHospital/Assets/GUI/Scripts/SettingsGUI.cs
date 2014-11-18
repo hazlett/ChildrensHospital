@@ -261,30 +261,27 @@ public class SettingsGUI : MonoBehaviour
             }
         }
 
+        if (ulnaLengthString.Length == 0)
+        {
+            Debug.Log("Invalid");
+            errorMessage = "  " + Languages.Instance.GetTranslation("No ulna length entered.") + "\n" + Languages.Instance.GetTranslation("Please enter a new ulna length for the user.");
+            invalidInput = true;
+            return;
+        }
+        else if (float.Parse(ulnaLengthString) < 10 || float.Parse(ulnaLengthString) > 40)
+        {
+            errorMessage = "  " + Languages.Instance.GetTranslation("Invalid ulna length") + ".\n  " + Languages.Instance.GetTranslation("Please enter a correct length") + ".";
+            invalidInput = true;
+            return;
+        }
+        else
+        {
+            ulnaLength = float.Parse(ulnaLengthString);
+            invalidInput = false;
+        }
+
         if (!newUser)
         {
-            try
-            {
-                Debug.Log("UlnaLengthString: " + ulnaLengthString.Length);
-                if (ulnaLengthString.Length == 0)
-                {
-                    Debug.Log("Invalid");
-                    errorMessage = "  " + Languages.Instance.GetTranslation("No ulna length entered.") + "\n" + Languages.Instance.GetTranslation("Please enter a new ulna length for the user.");
-                    invalidInput = true;
-                }
-                else
-                {
-                    ulnaLength = float.Parse(ulnaLengthString);
-                    invalidInput = false;
-                }
-            }
-            catch (Exception)
-            {
-                errorMessage = "  " + Languages.Instance.GetTranslation("Invalid ulna length") + ".\n  " + Languages.Instance.GetTranslation("Please enter a correct length") + ".";
-                invalidInput = true;
-                return;
-            }
-
             try
             {
                 ID = IDstring;
