@@ -89,7 +89,6 @@ public class EndGUI : MonoBehaviour
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Run Trial Again")))
         {
-            AppendArgs();
             previousScores.Add(GameControl.Instance.GemsCollected);
             if (saveData)
             {
@@ -97,6 +96,7 @@ public class EndGUI : MonoBehaviour
                 Debug.Log("Validity check: " + validityCheck);
                 if (validityCheck == null)
                 {
+                    AppendArgs();
                     previousVolumes.Add(GameControl.Instance.totalVolume);
                     EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Saving Data"));
                     gameManager.Tracker.DebugExtremas();
@@ -119,7 +119,6 @@ public class EndGUI : MonoBehaviour
         }
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 + 15, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Quit")))
         {
-            AppendArgs();
             previousScores = new List<int>();
             previousVolumes = new List<float>();
             if (saveData)
@@ -128,6 +127,7 @@ public class EndGUI : MonoBehaviour
                 Debug.Log("Validity check: " + validityCheck);
                 if (validityCheck == null)
                 {
+                    AppendArgs();
                     previousVolumes.Add(GameControl.Instance.totalVolume);
                     EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Saving Data"));
                     gameManager.Tracker.DebugExtremas();
@@ -162,6 +162,7 @@ public class EndGUI : MonoBehaviour
 
         if (GUI.Button(new Rect(scaledResolutionWidth / 2 - 315, nativeVerticalResolution - 380, 300, 100), Languages.Instance.GetTranslation("Yes")))
         {
+            AppendArgs();
             previousVolumes.Add(GameControl.Instance.totalVolume);
             EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Saving Data"));
             gameManager.Tracker.DebugExtremas();
@@ -188,6 +189,7 @@ public class EndGUI : MonoBehaviour
         {
             if(quit)
             {
+                DocumentManager.Instance.CreateReport();
                 EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Trial Ended"));
                 EventLogger.Instance.LogData(Languages.Instance.GetTranslation("Exiting to Menu"));
                 Application.LoadLevel("MainMenu");
