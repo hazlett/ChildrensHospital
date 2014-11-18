@@ -41,7 +41,7 @@ public class VolumeTracker {
         kinect = GameObject.Find("KinectManager").GetComponent<KinectManager>();
         transformMatrix = GameControl.Instance.TransformMatrix;
         volumes = new Volumes();
-        offset = new Vector3(0.0f, -0.01f, 0.30f);
+        offset = new Vector3(0.0f, -0.01f, 0.07f);
         if (ulnaLength > 0)
         {
             upperBound = ulnaLength / 100.0f;
