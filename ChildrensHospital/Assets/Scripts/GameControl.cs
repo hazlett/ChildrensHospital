@@ -37,7 +37,18 @@ public class GameControl : MonoBehaviour
     public bool InGame, Gems;
     public void CollectGem()
     {
-        gemsCollected = Mathf.RoundToInt(totalVolume * 243.1187f);
+        if (UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].BrookeScale == 5)
+        {
+            gemsCollected = Mathf.RoundToInt(totalVolume * 243.1187f) * 10;
+        }
+        else if (UserContainer.Instance.UserDictionary[UserContainer.Instance.currentUser].BrookeScale == 4)
+        {
+            gemsCollected = Mathf.RoundToInt(totalVolume * 243.1187f) * 5;
+        }
+        else
+        {
+            gemsCollected = Mathf.RoundToInt(totalVolume * 243.1187f);
+        }
     }
     public void Calibrated()
     {

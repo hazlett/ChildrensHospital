@@ -92,6 +92,9 @@ public class DocumentManager {
         args += percentVolume.ToString("G8") + " ";
         args += gameManager.Tracker.GetSurfaceArea().ToString("G8") + " ";
         args += percentArea.ToString("G8") + " ";
+        args += gameManager.Tracker.TrunkLeft + " ";
+        args += gameManager.Tracker.TrunkForward + " ";
+        args += gameManager.Tracker.TrunkRight + " ";
 
         //args += "TrialTime" + " ";
         //args += "TotalVolume" + " ";
