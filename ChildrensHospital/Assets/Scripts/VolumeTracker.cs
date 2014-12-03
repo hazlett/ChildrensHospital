@@ -34,9 +34,9 @@ public class VolumeTracker {
     private Vector3 leftHandAxis = new Vector3(-1.0f, 1.0f, -1.0f);
     private string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\ACTIVE-seated";
     private Vector3 trunkAxis = new Vector3(1.0f, 1.0f, -1.0f);
-    public string TrunkLeft { get { return (trunkLeft * -1.0f).ToString("G8"); } }
-    public string TrunkRight { get { return trunkRight.ToString("G8"); } }
-    public string TrunkForward { get { return trunkForward.ToString("G8"); } }
+    public string TrunkLeft { get { return (trunkLeft * -1.0f).ToString("F2"); } }
+    public string TrunkRight { get { return trunkRight.ToString("F2"); } }
+    public string TrunkForward { get { return trunkForward.ToString("F2"); } }
 	public VolumeTracker (float ulnaLength) {
         kinect = GameObject.Find("KinectManager").GetComponent<KinectManager>();
         transformMatrix = GameControl.Instance.TransformMatrix;

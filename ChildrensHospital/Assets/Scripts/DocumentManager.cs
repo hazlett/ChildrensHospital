@@ -88,10 +88,10 @@ public class DocumentManager {
         CalculatePercents(gameManager);
 
         args += UserContainer.Instance.time.ToString() + " ";
-        args += gameManager.Tracker.GetVolumes().TotalVolume().ToString("G8") + " ";
-        args += percentVolume.ToString("G8") + " ";
-        args += gameManager.Tracker.GetSurfaceArea().ToString("G8") + " ";
-        args += percentArea.ToString("G8") + " ";
+        args += gameManager.Tracker.GetVolumes().TotalVolume().ToString("F2") + " ";
+        args += percentVolume.ToString("F2") + " ";
+        args += gameManager.Tracker.GetSurfaceArea().ToString("F2") + " ";
+        args += percentArea.ToString("F2") + " ";
         args += gameManager.Tracker.TrunkLeft + " ";
         args += gameManager.Tracker.TrunkForward + " ";
         args += gameManager.Tracker.TrunkRight + " ";
